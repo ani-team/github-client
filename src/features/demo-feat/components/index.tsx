@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { usePrevious } from "shared/hooks";
 
 type Props = {
     borderColor?: React.CSSProperties["borderColor"];
@@ -12,10 +13,24 @@ type Props = {
  * !!! FIXME: Удалить позднее (после реализации реальных фич)
  */
 const DemoFeat = ({ borderColor = "#a6b2c3" }: Props) => {
+    const [count, setCount] = useState(0);
+    const prevCount = usePrevious(count);
+
     return (
-        <div className="demo-feat p-4 border border-solid" style={{ borderColor }}>
+        <div className="demo-feat p-4 border border-solid" style={{ borderColor, borderWidth: count }}>
             <h2>DemoFeat</h2>
             <p>Контент для демонстрации отображения и функционала фичи</p>
+            <div className="demo-feat__content flex">
+                <div className="demo-feat__history w-15 shadow p-4 mr-4">
+                    <p className="text-gray-500">{prevCount || "-"}</p>
+                    <p>{count}</p>
+                </div>
+                <div className="demo-feat__actions">
+                    <button type="button" onClick={() => setCount(count + 1)} className="demo-feat__btn">
+                        Reduce
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
