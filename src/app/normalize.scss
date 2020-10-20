@@ -1,0 +1,32 @@
+// document
+body {
+    min-height: 900px;
+    min-width: 1600px;
+}
+
+html,
+body,
+#root,
+.gitcli-app {
+    position: relative;
+    height: 100%;
+}
+
+// scrollbar
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: transparent;
+
+    &-track {
+        border-radius: 5px;
+        background-color: transparent;
+    }
+    &-thumb {
+        border-radius: 5px;
+        background-color: #a6b2c3;
+    }
+    &-corner {
+        background-color: #fff;
+    }
+}
