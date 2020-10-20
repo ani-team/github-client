@@ -23,7 +23,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npm run test:react && npm run test:lint",
+    "test:react": "react-scripts test --watchAll=false",
+    "test:react--watch": "react-scripts test --watchAll=true",
     "test:lint": "eslint src",
     "eject": "react-scripts eject",
     "deps:clean": "git clean -fxd",
