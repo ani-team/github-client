@@ -3,6 +3,11 @@
 @import "./vars.scss";
 @import "./normalize.scss";
 
-.gitcli-app {
-    // app styles
+.gc-app {
+    display: flex;
+    flex-direction: column;
+    &-content {
+        margin: 10px 10%;
+        flex-grow: 1;
+    }
 }
