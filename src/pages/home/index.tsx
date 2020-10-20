@@ -1,4 +1,5 @@
 import React from "react";
+import { DemoFeat } from "features";
 
 /**
  * @page Страница "Home"
@@ -8,6 +9,7 @@ const HomePage = () => {
         <div className="page page-home">
             <h1>HomePage</h1>
             <p>Welcome to our GithubClient!</p>
+            <DemoFeat borderColor="#0065cc" />
         </div>
     );
 };
