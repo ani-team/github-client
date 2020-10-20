@@ -24,6 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint:test": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "eject": "react-scripts eject",
     "deps:clean": "git clean -fxd",
     "deps:reinstall": "npm run deps:clean && npm i"
@@ -44,6 +46,10 @@
     ]
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.10"
+    "@types/classnames": "^2.2.10",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.13.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2"
   }
 }
