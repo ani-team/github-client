@@ -1,6 +1,11 @@
 # github-client
 Github клиент в рамках курса *React Akvelon 2020*.
 
+## Ресурсы
+
+- [Структура проекта](STRUCTURE.md)
+- [Рекомендации по разработке](RECOMMENDATIONS.md)
+- [Project WIKI](/wiki)
 
 ## Технический стек
 - **UI**: `react`, `antd`, `classnames`, `tailwindcss`
@@ -40,14 +45,6 @@ npm run deps:reinstall  (переустановка зависимостей)
 npm run api:gen         (сгенерировать типы и хуки для работы с API - одноразово)
 npm run api:gen---watch (сгенерировать типы и хуки для работы с API - watch-mode)
 ```
-
-## Структура проекта
-
-- [STRUCTURE.md](STRUCTURE.md)
-
-## Рекомендации по разработке
-
-- [RECOMMENDATIONS.md](RECOMMENDATIONS.md)
 
 ## VSCode
 
