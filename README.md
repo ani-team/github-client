@@ -1,11 +1,13 @@
 # github-client
 Github клиент в рамках курса *React Akvelon 2020*.
 
+<div style="display:flex">
 <img alt="github" width="64" src="https://image.flaticon.com/icons/png/512/25/25231.png"/>
 <img alt="react" width="64" src="https://cdn.auth0.com/blog/react-js/react.png"/>
 <img alt="antdesign" width="64" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"/>
 <img alt="graphql" width="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1200px-GraphQL_Logo.svg.png"/>
 <img alt="apollo" width="64" src="https://miro.medium.com/max/300/0*xdVGlEH7f9cRVaR-"/>
+</div>
 
 ## Ресурсы
 
