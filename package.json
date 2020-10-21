@@ -33,7 +33,9 @@
     "test:lint": "eslint src",
     "eject": "react-scripts eject",
     "deps:clean": "git clean -fxd",
-    "deps:reinstall": "npm run deps:clean && npm i"
+    "deps:reinstall": "npm run deps:clean && npm i",
+    "api:gen": "graphql-codegen -r dotenv/config",
+    "api:gen--watch": "graphql-codegen -r dotenv/config -w"
   },
   "eslintConfig": {
     "extends": "react-app"
