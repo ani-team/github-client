@@ -15,7 +15,7 @@ type Props = {
  * !!! FIXME: Удалить позднее (после реализации реальных фич)
  */
 const DemoFeat = ({ borderColor = "#a6b2c3" }: Props) => {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     const prevCount = usePrevious(count);
     const { data, loading } = useHelloQuery();
 
