@@ -12,10 +12,7 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    plugins: [
-        "react",
-        "@typescript-eslint",
-    ],
+    plugins: ["react", "@typescript-eslint"],
     extends: [
         "react-app",
         "eslint:recommended",
@@ -24,6 +21,5 @@ module.exports = {
         "prettier",
         "prettier/react",
     ],
-    rules: {
-    },
+    rules: {},
 };

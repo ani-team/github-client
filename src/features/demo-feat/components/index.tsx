@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { usePrevious } from "shared/hooks";
 import { Spin } from "antd";
+import { usePrevious } from "shared/hooks";
 import { useHelloQuery } from "../query.gen";
 
 type Props = {
