@@ -72,9 +72,9 @@ function YourComponent(props: Props) {
 #### Use models
 ```ts
 // Non runtime imports (better)
-import("models").Claim
+import("models.gen").Claim
 // ES2015 module imports (little bit worse, since without runtime code)
-import { Claim } from "models"
+import { Claim } from "models.gen"
 ```
 
 > codegen by `@graphql-codegen`, more details in [codegen.yml](/codegen.yml)
