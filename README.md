@@ -45,6 +45,15 @@ npm run api:gen---watch (сгенерировать типы и хуки для 
 
 - [STRUCTURE.md](STRUCTURE.md)
 
-## Рекомендации к разработке
+## Рекомендации по разработке
 
 - [RECOMMENDATIONS.md](RECOMMENDATIONS.md)
+
+## VSCode
+
+Список плагинов для лучшего DX:
+> Для всех - настроена базово необходимая конфигурация в проекте
+
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - Автокомплит классов в компонентах
+- [Apollo GraphQL](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) - IntelliSense с автокомплитом (но возможны подтормаживания)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Форматирование по сохранению, pre-commit-hook, тестирование от линта
