@@ -1,7 +1,7 @@
 module.exports = {
     client: {
         includes: ["**/*.gql"],
-        excludes: ["node_modules/**/*", "src/models.ts"],
+        excludes: ["node_modules/**/*", "src/*.gen.ts"],
         service: {
             name: "github-api",
             url: "https://api.github.com/graphql",

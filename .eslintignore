@@ -2,4 +2,3 @@ node_modules/**
 dist/**
 build/**
 *.gen.ts
-src/models.ts
