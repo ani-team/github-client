@@ -3,7 +3,10 @@
 # FIXME: Добавить возможность сплитить модели внутри себя?
 # FIXME: remove (| null) ?
 # FIXME: убрать опциональность полей (config#avoidOptionals)
-schema: ${API_DOMAIN}
+schema:
+  - ${REACT_APP_API_URL}:
+      headers:
+        Authorization: Bearer ${REACT_APP_ACCESS_TOKEN}
 documents: src/**/*.gql
 config:
   # Сгенерированные файлы напрямую менять нельзя (!), только через обертки / доп. файлы

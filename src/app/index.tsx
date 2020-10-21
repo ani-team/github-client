@@ -1,10 +1,12 @@
 import React from "react";
 import { Layout } from "antd";
 import Routing from "pages";
+import withApollo from "./with-apollo";
 import "./index.scss";
 
 /**
  * Entry-point приложения
+ * @remark Содержит в HOC-обертке логику работы с API (apollo)
  */
 const App = () => {
     return (
@@ -21,4 +23,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default withApollo(App);
