@@ -5,7 +5,7 @@ Github клиент в рамках курса *React Akvelon 2020*.
 
 - [Структура проекта](STRUCTURE.md)
 - [Рекомендации по разработке](RECOMMENDATIONS.md)
-- [Project WIKI](/wiki)
+- [Project WIKI](https://github.com/martis-git/github-client/wiki)
 
 ## Технический стек
 - **UI**: `react`, `antd`, `classnames`, `tailwindcss`
