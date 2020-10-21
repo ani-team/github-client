@@ -1,0 +1,13 @@
+// NOTE: Временно используем вспомогательные utilities-классы, на время разработки прототипа приложения
+@import "~tailwindcss/dist/utilities.css";
+@import "./vars.scss";
+@import "./normalize.scss";
+
+.gc-app {
+    display: flex;
+    flex-direction: column;
+    &-content {
+        margin: 10px 10%;
+        flex-grow: 1;
+    }
+}
