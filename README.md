@@ -35,7 +35,7 @@ npm run deps:clean      (удаление лишних созданных фай
 npm run deps:reinstall  (переустановка зависимостей)
 ```
 
-## Кодогенерация API
+### Кодогенерация API
 ```bash
 npm run api:gen         (сгенерировать типы и хуки для работы с API - одноразово)
 npm run api:gen---watch (сгенерировать типы и хуки для работы с API - watch-mode)
@@ -54,6 +54,6 @@ npm run api:gen---watch (сгенерировать типы и хуки для 
 Список плагинов для лучшего DX:
 > Для всех - настроена базово необходимая конфигурация в проекте
 
-- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - Автокомплит классов в компонентах
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - Автокомплит Tailwind классов в компонентах
 - [Apollo GraphQL](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) - IntelliSense с автокомплитом (но возможны подтормаживания)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Форматирование по сохранению, pre-commit-hook, тестирование от линта

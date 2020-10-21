@@ -6,7 +6,7 @@ import "./index.scss";
 
 /**
  * Entry-point приложения
- * @remark Содержит в HOC-обертке логику работы с API (apollo)
+ * @remark Содержит в HOC-обертке логику подключения к API (apollo)
  */
 const App = () => {
     return (
