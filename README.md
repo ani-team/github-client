@@ -51,7 +51,7 @@ npm run deps:reinstall  (переустановка зависимостей)
 ### Кодогенерация API
 ```bash
 npm run api:gen         (сгенерировать типы и хуки для работы с API - одноразово)
-npm run api:gen---watch (сгенерировать типы и хуки для работы с API - watch-mode)
+npm run api:gen--watch  (сгенерировать типы и хуки для работы с API - watch-mode)
 ```
 
 ## VSCode
