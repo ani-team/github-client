@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.2.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -12,6 +13,7 @@
     "@types/react-dom": "^16.9.8",
     "antd": "^4.7.2",
     "classnames": "^2.2.6",
+    "graphql": "^15.3.0",
     "node-sass": "^4.14.1",
     "normalize.css": "^8.0.1",
     "react": "^16.14.0",
@@ -25,13 +27,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "npm run test:react && npm run test:lint",
-    "test:react": "react-scripts test --watchAll=false",
-    "test:react--watch": "react-scripts test --watchAll=true",
-    "test:lint": "eslint src",
+    "test": "npm run react:test && npm run lint:test",
+    "react:test": "react-scripts test --watchAll=false",
+    "react:test--watch": "react-scripts test --watchAll=true",
+    "lint:test": "eslint src",
+    "lint:fix": "eslint src --fix",
     "eject": "react-scripts eject",
     "deps:clean": "git clean -fxd",
-    "deps:reinstall": "npm run deps:clean && npm i"
+    "deps:reinstall": "npm run deps:clean && npm i",
+    "api:gen": "graphql-codegen -r dotenv/config",
+    "api:gen--watch": "graphql-codegen -r dotenv/config -w"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,6 +54,12 @@
     ]
   },
   "devDependencies": {
+    "@graphql-codegen/add": "^2.0.1",
+    "@graphql-codegen/cli": "^1.18.0",
+    "@graphql-codegen/near-operation-file-preset": "^1.17.11",
+    "@graphql-codegen/typescript": "^1.17.11",
+    "@graphql-codegen/typescript-operations": "^1.17.8",
+    "@graphql-codegen/typescript-react-apollo": "^2.0.7",
     "@types/classnames": "^2.2.10",
     "@types/react-router-dom": "^5.1.6",
     "eslint": "^7.11.0",
