@@ -1,0 +1,34 @@
+.gc-app {
+    /* base */
+    --clr-primary: #0a84ff;
+    --clr-primary--dk: #1c3162;
+    --clr-primary--hover: #4ea6ff;
+    --clr-primary--active: #0065cc;
+    --clr-primary--alpha-15: #0a84ff26;
+    --clr-primary--alpha-4: #0a84ff0a;
+    --clr-danger: #ff3b30;
+    --clr-danger--active: #c73a33;
+    // grayscale
+    --clr-secondary: #7487a1;
+    --clr-secondary--dk: #69788f;
+    --clr-secondary--lt: #8699b4;
+    --clr-muted: #a6b2c3;
+    --clr-light: #e4e7ec;
+    --clr-light--lt: #f5f8fc;
+
+    /* foreground/background */
+    --clr-foreground: #fff;
+    --clr-foreground--accent: #f5faff;
+    --clr-foreground--selected: #daedff;
+    --clr-foreground--overlay: rgba(255, 255, 255, 0.8);
+    --clr-background: #e7f3ff;
+
+    /* text */
+    --clr-text: #2a323e;
+    --fsz: 12px;
+    --fw--light: 300;
+    --fw--medium: 500;
+
+    /* misc */
+    --transition: 0.25s;
+}

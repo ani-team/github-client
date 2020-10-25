@@ -1,0 +1,8 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "tailwindCSS.includeLanguages": {
+        "plaintext": "javascript"
+    },
+}

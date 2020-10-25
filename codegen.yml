@@ -1,0 +1,36 @@
+# Конфигурация для кодогенерации схемы и запросов GraphQL для TypeScript
+# @remark Конфигурацию объявляем глобально, т.к. плагины должны использоваться одинаково для нескольких файлов
+# FIXME: Добавить возможность сплитить модели внутри себя?
+# FIXME: remove (| null) ?
+# FIXME: убрать опциональность полей (config#avoidOptionals)
+schema:
+  - ${REACT_APP_API_URL}:
+      headers:
+        Authorization: Bearer ${REACT_APP_ACCESS_TOKEN}
+documents: src/**/*.gql
+config:
+  # Сгенерированные файлы напрямую менять нельзя (!), только через обертки / доп. файлы
+  content: ${API_GENCOMMENT}
+  # Работа с запросами ведется через react-hooks
+  withHooks: true
+  # Из типов для схемы исключается служебное поле __typename
+  skipTypename: true
+  # Все типы из схемы и запросов - иммутабельны
+  immutableTypes: true
+  # Типы генерируются на лету, без Pick - для чистоты информации по типу
+  preResolveTypes: true
+generates:
+  src/models.gen.ts:
+    plugins:
+      - add
+      - typescript
+  src/:
+    preset: near-operation-file
+    # Типы схемы и запросы - разделены
+    presetConfig:
+      extension: .gen.ts
+      baseTypesPath: models.gen.ts
+    plugins:
+      - add
+      - typescript-operations
+      - typescript-react-apollo

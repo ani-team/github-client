@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.2.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -10,16 +11,32 @@
     "@types/node": "^12.12.67",
     "@types/react": "^16.9.52",
     "@types/react-dom": "^16.9.8",
+    "antd": "^4.7.2",
+    "classnames": "^2.2.6",
+    "graphql": "^15.3.0",
+    "node-sass": "^4.14.1",
+    "normalize.css": "^8.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "tailwindcss": "^1.9.5",
     "typescript": "^3.7.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "npm run react:test && npm run lint:test",
+    "react:test": "react-scripts test --watchAll=false",
+    "react:test--watch": "react-scripts test --watchAll=true",
+    "lint:test": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "eject": "react-scripts eject",
+    "deps:clean": "git clean -fxd",
+    "deps:reinstall": "npm run deps:clean && npm i",
+    "api:gen": "graphql-codegen -r dotenv/config",
+    "api:gen--watch": "graphql-codegen -r dotenv/config -w"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +52,33 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "^2.0.1",
+    "@graphql-codegen/cli": "^1.18.0",
+    "@graphql-codegen/near-operation-file-preset": "^1.17.11",
+    "@graphql-codegen/typescript": "^1.17.11",
+    "@graphql-codegen/typescript-operations": "^1.17.8",
+    "@graphql-codegen/typescript-react-apollo": "^2.0.7",
+    "@types/classnames": "^2.2.10",
+    "@types/react-router-dom": "^5.1.6",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.13.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.2",
+    "prettier": "^2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --max-warnings=10 --fix",
+      "git add"
+    ]
+  },
+  "homepage": "/github-client"
 }
