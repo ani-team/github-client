@@ -79,5 +79,6 @@
       "eslint --max-warnings=10 --fix",
       "git add"
     ]
-  }
+  },
+  "homepage": "/github-client"
 }
