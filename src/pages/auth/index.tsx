@@ -23,7 +23,11 @@ const AuthPage = () => {
                     type="info"
                     message="While available only GitHub OAuth autorization"
                 />
-                <a className="page-auth__link github" href={AUTH_URL} title="Authentication through Github OAuth">
+                <a
+                    className="page-auth__link github"
+                    href={AUTH_URL}
+                    title="Authentication through Github OAuth"
+                >
                     <GithubFilled style={{ fontSize: 64, color: "unset" }} />
                 </a>
             </Card>
