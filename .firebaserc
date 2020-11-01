@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "github-client-47c49"
+  },
+  "targets": {
+    "github-client-47c49": {
+      "hosting": {
+        "dev": [
+          "dev-github-client"
+        ],
+        "prod": [
+          "github-client-47c49"
+        ]
+      }
+    }
   }
 }
