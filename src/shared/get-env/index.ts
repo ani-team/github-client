@@ -18,8 +18,10 @@ const getEnvVar = (key: string) => {
 
 /** API entrypoint */
 export const API_URL = getEnvVar("REACT_APP_API_URL");
-/** API access token */
-export const ACCESS_TOKEN = getEnvVar("REACT_APP_ACCESS_TOKEN");
+/** OAuth GitHub (id) */
+export const CLIENT_ID = getEnvVar("REACT_APP_CLIENT_ID");
+/** OAuth GitHub (secret) */
+export const CLIENT_SECRET = getEnvVar("REACT_APP_CLIENT_SECRET");
 
 /** Режим запуска программы */
 export const NODE_ENV = getEnvVar("NODE_ENV");
