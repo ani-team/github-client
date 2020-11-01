@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Spin } from "antd";
+import { Spin, Alert } from "antd";
 import { usePrevious } from "shared/hooks";
 import { useHelloQuery } from "../query.gen";
 
@@ -17,12 +17,17 @@ type Props = {
 const DemoFeat = ({ borderColor = "#a6b2c3" }: Props) => {
     const [count, setCount] = useState(1);
     const prevCount = usePrevious(count);
-    const { data, loading } = useHelloQuery();
+    const { data, loading, error } = useHelloQuery();
 
     return (
-        <div className="demo-feat p-4 border border-solid" style={{ borderColor, borderWidth: count }}>
+        <div
+            className="demo-feat p-4 border border-solid"
+            style={{ borderColor, borderWidth: count }}
+        >
             <h2>DemoFeat</h2>
             <p>Контент для демонстрации отображения и функционала фичи</p>
+            {/* <button onClick={() => client.resetStore().then(console.log)}>Logout</button> */}
+            {error && <Alert message={error.message} type="error" showIcon />}
             <div className="demo-feat__content flex">
                 <div className="demo-feat__user w-20 shadow mr-4 flex justify-center items-center">
                     {loading && <Spin className="absolute" />}
@@ -33,7 +38,11 @@ const DemoFeat = ({ borderColor = "#a6b2c3" }: Props) => {
                     <p>{count}</p>
                 </div>
                 <div className="demo-feat__actions">
-                    <button type="button" onClick={() => setCount(count + 1)} className="demo-feat__btn">
+                    <button
+                        type="button"
+                        onClick={() => setCount(count + 1)}
+                        className="demo-feat__btn"
+                    >
                         Reduce
                     </button>
                 </div>
