@@ -1,0 +1,20 @@
+.page-auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    &__form {
+        width: 50%;
+        .ant-card-head {
+            background-color: var(--clr-primary);
+            color: var(--clr-foreground);
+        }
+    }
+    &__alerts {
+        margin-bottom: 20px;
+    }
+    &__link {
+        color: unset;
+    }
+}

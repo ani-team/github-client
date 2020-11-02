@@ -2,7 +2,7 @@ import React from "react";
 import { DemoFeat } from "features";
 
 /**
- * @page Страница "Home"
+ * @page Home
  */
 const HomePage = () => {
     return (
