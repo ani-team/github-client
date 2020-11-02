@@ -13,13 +13,15 @@ const App = () => {
     return (
         <div className="gc-app">
             <Layout>
-                <Layout.Header>
-                    <a className="gc-app__title text-white m-4" href="/">
-                        GC
-                    </a>
-                    <a className="text-white m-4" href="/debug">
-                        debug
-                    </a>
+                <Layout.Header className="flex">
+                    <div className="nav flex-grow">
+                        <a className="gc-app__title text-white m-4" href="/">
+                            GC
+                        </a>
+                        <a className="text-white m-4" href="/debug">
+                            debug
+                        </a>
+                    </div>
                     <Auth.User />
                 </Layout.Header>
                 <Layout.Content className="gc-app-content">

@@ -1,9 +1,12 @@
 import React from "react";
 import { Button } from "antd";
 import { useAuth } from "../hooks";
+import { useViewerQuery } from "./query.gen";
 
 const User = () => {
-    const { isAuth, token, logout } = useAuth();
+    const { isAuth, logout } = useAuth();
+    const { data } = useViewerQuery();
+    const { login } = data?.viewer || {};
 
     /**
      * FIXME: Использовать Link?
@@ -13,8 +16,10 @@ const User = () => {
         <span className="auth-user">
             {isAuth && (
                 <>
-                    {/* TODO: gen link to profile */}
-                    <span className="m-4 text-white">{token}</span>
+                    {/* FIXME: gen local link */}
+                    <a className="m-4 text-white" href={`https://github.com/${login}`}>
+                        {login}
+                    </a>
                     <Button className="m-4" onClick={logout}>
                         Logout
                     </Button>

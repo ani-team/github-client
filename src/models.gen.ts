@@ -2106,6 +2106,12 @@ export type CreateBranchProtectionRuleInput = {
   readonly requiredApprovingReviewCount?: Maybe<Scalars['Int']>;
   /** Are commits required to be signed. */
   readonly requiresCommitSignatures?: Maybe<Scalars['Boolean']>;
+  /** Are merge commits prohibited from being pushed to this branch. */
+  readonly requiresLinearHistory?: Maybe<Scalars['Boolean']>;
+  /** Are force pushes allowed on this branch. */
+  readonly allowsForcePushes?: Maybe<Scalars['Boolean']>;
+  /** Can this branch be deleted. */
+  readonly allowsDeletions?: Maybe<Scalars['Boolean']>;
   /** Can admins overwrite branch protection. */
   readonly isAdminEnforced?: Maybe<Scalars['Boolean']>;
   /** Are status checks required to update matching branches. */
@@ -16682,6 +16688,12 @@ export type UpdateBranchProtectionRuleInput = {
   readonly requiredApprovingReviewCount?: Maybe<Scalars['Int']>;
   /** Are commits required to be signed. */
   readonly requiresCommitSignatures?: Maybe<Scalars['Boolean']>;
+  /** Are merge commits prohibited from being pushed to this branch. */
+  readonly requiresLinearHistory?: Maybe<Scalars['Boolean']>;
+  /** Are force pushes allowed on this branch. */
+  readonly allowsForcePushes?: Maybe<Scalars['Boolean']>;
+  /** Can this branch be deleted. */
+  readonly allowsDeletions?: Maybe<Scalars['Boolean']>;
   /** Can admins overwrite branch protection. */
   readonly isAdminEnforced?: Maybe<Scalars['Boolean']>;
   /** Are status checks required to update matching branches. */
