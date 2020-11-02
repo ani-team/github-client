@@ -1,23 +1,19 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { Spin } from "antd";
+import React, { lazy } from "react";
+import { Route, Redirect } from "react-router-dom";
+import { Auth } from "features";
 
 const HomePage = lazy(() => import("./home"));
-const AuthPage = lazy(() => import("./auth"));
+const DebugPage = lazy(() => import("./debug"));
 
 /**
  * Роутинг приложения
  */
 const Routing = () => (
-    <BrowserRouter>
-        <Suspense fallback={<Spin />}>
-            <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/auth" component={AuthPage} />
-                <Redirect to="/" />
-            </Switch>
-        </Suspense>
-    </BrowserRouter>
+    <Auth.Router>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/debug" component={DebugPage} />
+        <Redirect to="/" />
+    </Auth.Router>
 );
 
 export default Routing;
