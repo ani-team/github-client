@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import * as qs from "query-string";
 import { useAuth } from "../hooks";
 import { getTokenUrl } from "./consts";
@@ -9,8 +9,7 @@ import { getTokenUrl } from "./consts";
  */
 export const useAccessCode = () => {
     const { search } = useLocation();
-    const history = useHistory();
-    const { setToken } = useAuth();
+    const { login } = useAuth();
     const [error, setError] = useState("");
     const { code } = qs.parse(search);
 
@@ -21,14 +20,12 @@ export const useAccessCode = () => {
             .then((r) => {
                 const data = qs.parse(r) as { [key: string]: any };
                 if (data.access_token) {
-                    setToken(data.access_token);
-                    // FIXME: specify redirect url?
-                    history.push("/");
+                    login(data.access_token);
                     return;
                 }
                 setError(data.error_description || data.error);
             });
-    }, [code, history, setToken]);
+    }, [code, login]);
 
     return { error };
 };

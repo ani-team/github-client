@@ -4,6 +4,7 @@ import { Spin } from "antd";
 import { useAuth } from "../hooks";
 
 // TODO: authRequired and notauthRequired routes (by props)
+// TODO: Сделать процесс авторизации - более четким и последовательным
 type Props = PropsWithChildren;
 
 const AuthPage = lazy(() => import("../page"));
