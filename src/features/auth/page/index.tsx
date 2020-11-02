@@ -23,7 +23,7 @@ const AuthPage = () => {
             <Card className="page-auth__form" title="SIGN IN">
                 <div className="page-auth__alerts">
                     {error && <Alert type="error" message={error} />}
-                    <Alert type="info" message="While available only GitHub OAuth autorization" />
+                    <Alert type="info" message="While available only GitHub OAuth authorization" />
                 </div>
                 <a
                     className="page-auth__link github"
