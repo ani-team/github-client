@@ -16,5 +16,6 @@ export const getTokenUrl = (code: string) => {
         client_secret: CLIENT_SECRET,
         code,
     });
+    // Временное решение, т.к. есть проблемы с чистым получением токена github с клиента
     return `${PROXY}/${TOKEN_URL}?${params}`;
 };

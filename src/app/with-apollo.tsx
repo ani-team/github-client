@@ -22,6 +22,9 @@ const authLink = setContext((_, { headers }) => {
     };
 });
 
+/**
+ * @see https://www.apollographql.com/docs/react/networking/authentication/
+ */
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),

@@ -26,7 +26,6 @@ const DemoFeat = ({ borderColor = "#a6b2c3" }: Props) => {
         >
             <h2>DemoFeat</h2>
             <p>Контент для демонстрации отображения и функционала фичи</p>
-            {/* <button onClick={() => client.resetStore().then(console.log)}>Logout</button> */}
             {error && <Alert message={error.message} type="error" showIcon />}
             <div className="demo-feat__content flex">
                 <div className="demo-feat__user w-20 shadow mr-4 flex justify-center items-center">
