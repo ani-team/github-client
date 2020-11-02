@@ -2,7 +2,7 @@ import React from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { API_URL } from "shared/get-env";
-import { TOKEN_KEY } from "shared/consts";
+import { Auth } from "features";
 
 // TODO: Уточнить, нужно ли дополнительно задавать контекст
 
@@ -12,7 +12,7 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
-    const token = localStorage.getItem(TOKEN_KEY);
+    const token = localStorage.getItem(Auth.TOKEN_KEY);
     // return the headers to the context so httpLink can read them
     return {
         headers: {
