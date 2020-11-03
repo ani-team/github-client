@@ -25,11 +25,7 @@ const User = () => {
                     </Button>
                 </>
             )}
-            {!isAuth && (
-                <Button className="m-4" type="primary">
-                    Sign In
-                </Button>
-            )}
+            {!isAuth && <Button className="m-4">Sign In</Button>}
         </span>
     );
 };

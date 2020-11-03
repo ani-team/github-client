@@ -3,12 +3,20 @@
     --clr-primary: #3399ff;
     --clr-primary--hover: #76ade4;
     --clr-primary--active: #2364a5;
-    --clr-gray: #eeeeee;
+    // оттенки серого
+    --clr-gray--900: #69788f;
+    --clr-gray--800: #7487a1;
+    --clr-gray--700: #8699b4;
+    --clr-gray--500: #a6b2c3;
+    --clr-gray--400: #b9c6da;
+    --clr-gray--200: #e4e7ec;
+    // Цвет с макета
+    --clr-gray--100: #eeeeee;
     --clr-foreground: #e5e5e5;
 
     /* text */
     --clr-text: #222222;
-    --fsz: 20px;
+    --fsz: 16px;
     --fw--light: 300;
     --fw--medium: 500;
 
