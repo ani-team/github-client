@@ -1,15 +1,15 @@
 // document
-body {
-    min-height: 900px;
-    min-width: 1600px;
-}
+//body {
+//    min-height: 900px;
+//    min-width: 1600px;
+//}
 
 html,
 body,
 #root,
 .gc-app {
     position: relative;
-    height: 100%;
+    min-height: 100%;
 }
 
 // scrollbar
