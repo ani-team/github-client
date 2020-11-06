@@ -1,0 +1,17 @@
+.repo-git-view {
+    background-color: #f4f6f6;
+
+    &--item {
+        padding-left: 8px !important;
+
+        img {
+            width: 24px;
+            height: auto;
+            padding: 4px;
+        }
+
+        span {
+            margin-left: 12px;
+        }
+    }
+}
