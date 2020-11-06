@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Row } from "antd";
 import "./index.scss";
-import { RepoGitView } from "../../features/repo-git-feat";
+import { RepoGitView } from "features";
 
 const RepositoryPage = () => {
     return (
