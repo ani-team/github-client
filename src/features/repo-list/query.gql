@@ -1,0 +1,18 @@
+query Repos ($login: String!) { 
+  user(login: $login) {
+    repositories(first: 50) {
+      edges {
+        node {
+          id
+          name
+          primaryLanguage {
+            name
+          }
+          updatedAt
+          viewerHasStarred
+          url
+        }
+      }
+    } 
+  }
+}
