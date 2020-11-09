@@ -1,8 +1,9 @@
 import React from "react";
-import { Card, Alert } from "antd";
+import { Alert, Card } from "antd";
 import { GithubFilled } from "@ant-design/icons";
+import { authorizeGithub } from "../firebase";
+import { useAuth } from "../hooks";
 import { useAccessCode } from "./hooks";
-import { AUTH_URL } from "./consts";
 import "./index.scss";
 
 // TODO: Разобраться с безопасностью авторизации
@@ -17,6 +18,13 @@ import "./index.scss";
  */
 const AuthPage = () => {
     const { error } = useAccessCode();
+    const { login } = useAuth();
+    const authorize = () => {
+        authorizeGithub().then((result) => {
+            console.log(result);
+            login(result.credential.accessToken);
+        });
+    };
 
     return (
         <div className="page page-auth">
@@ -25,13 +33,13 @@ const AuthPage = () => {
                     {error && <Alert type="error" message={error} />}
                     <Alert type="info" message="While available only GitHub OAuth authorization" />
                 </div>
-                <a
+                <span
                     className="page-auth__link github"
-                    href={AUTH_URL}
+                    onClick={authorize}
                     title="Authentication through Github OAuth"
                 >
                     <GithubFilled style={{ fontSize: 64, color: "unset" }} />
-                </a>
+                </span>
             </Card>
         </div>
     );
