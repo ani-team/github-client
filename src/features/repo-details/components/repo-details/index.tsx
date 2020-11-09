@@ -6,7 +6,7 @@ function RepoDetails(props: any) {
     return (
         <div className="flex flex-col">
             <DetailsCard title="Repo name">something</DetailsCard>
-            <DetailsCard className="mt-4" title="Collaborators">
+            <DetailsCard className="mt-4" title="Collaborators" primary>
                 nothing
             </DetailsCard>
         </div>
