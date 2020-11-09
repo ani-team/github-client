@@ -30,3 +30,15 @@ body,
         background-color: #fff;
     }
 }
+
+h1 {
+    font-size: 32px;
+    font-weight: var(--fw--medium);
+    line-height: 42px;
+}
+
+a {
+    font-size: 20px;
+    font-weight: var(--fw--medium);
+    line-height: 32px;
+}

@@ -5,6 +5,7 @@ import { Auth } from "features";
 const HomePage = lazy(() => import("./home"));
 const DebugPage = lazy(() => import("./debug"));
 const RepositoryPage = lazy(() => import("./repository"));
+const UserPage = lazy(() => import("./user"));
 
 /**
  * Роутинг приложения
@@ -13,6 +14,7 @@ const Routing = () => (
     <Auth.Router>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/debug" component={DebugPage} />
+        <Route exact path="/:username" component={UserPage} />
         <Route path="/:username/:repository/:branch(tree/[\w\d-_.]+)?" component={RepositoryPage} />
         <Redirect to="/" />
     </Auth.Router>
