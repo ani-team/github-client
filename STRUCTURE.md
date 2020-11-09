@@ -1,7 +1,16 @@
 # Structure
 Project was structured by [Feature Driven Development](https://www.notion.so/Feature-Driven-Development-dfe306d664ae4780bcf999ccdd15e532).
 
-## Principles
+## Project
+```md
+└── src/                            # Source files
+    ├── app/                        # Base app's resources
+    ├── features/                   # Crucial domain splitted app's features
+    ├── pages/                      # App's pages (build from features, shared)
+    └── shared/                     # Common used modules for dev
+```
+
+### Principles
 - low coupling
     - **feature** should not depend from **other features**
     - **page** should not depend from **other pages**
@@ -16,23 +25,6 @@ Project was structured by [Feature Driven Development](https://www.notion.so/Fea
         - and it's easier to refactor **totally (clean up)** only few modules, instead of one app totally
 
 > [more details](https://www.notion.so/Summary-YouTube-Feature-Driven-Arhitecture-b8609fd4452b41f499703c841e56b8e9#63dfc5b35e534147b8296e1aa915ad2b)
-
-## Folders
-```markdown
-└── src/                            # Source files
-    ├── app/                        # Base app's resources
-    ├── features/                   # Crucial domain splitted app's features
-    ├── pages/                      # App's pages (build from features, shared)
-    └── shared/                     # Common modules for dev
-        ├── components/             #   **Common used** React components
-        ├── helpers/                #   **Common used** Helpers
-        ├── hocs/                   #   **Common used** React HOCs
-        ├── hooks/                  #   **Common used** React Hooks
-        ├── fixtures/               #   **Common used** data helpers / dataSets
-        ├── get-env                 #   Module with **env**-vars
-        ├── mixins.scss             #   **Common used** SCSS mixins
-        └── consts.scss             #   **Common used** SCSS consts (not colors)
-```
 
 ## Feature
 
@@ -52,7 +44,7 @@ Project was structured by [Feature Driven Development](https://www.notion.so/Fea
             └── index.ts               # Feature's `entry-point` (with declared public feature's API)
 ```
 
-## Api
+## API
 - `src/models.gen.ts` - generated models types from graphql schema
 - `src/{path/to/feature}/{query}.gql` - request file (query / mutation) for fetch / post information by server API
 - `src/{path/to/feature}/{query}.gen.ts` - **READONLY** module with generated ts code of related request (in same dir with same name)
@@ -79,19 +71,24 @@ import { Claim } from "models.gen"
 
 > codegen by `@graphql-codegen`, more details in [codegen.yml](/codegen.yml)
 
-## Assets
-Perfectly, all static *assets* files should locate on related components level (**on using level**).
+## Shared
+**Shared module** - everything that:
+- Needed in at least 2 places
+- Has non-trivial logic
+- Has low frequency of change
 
-> Because of - generally - there is own **unique** icons collection for every UI area
-
-If its **very necesary and matter** for you - to have common-used icons, then locate their in `shared` folder (in this case - you can import them from any point of app)
-
-```markdown
+```md
 └── shared/
-      ├── assets/
+   ├── components/             #   **Common used** React components
+   ├── helpers/                #   **Common used** Helpers
+   ├── hocs/                   #   **Common used** React HOCs
+   ├── hooks/                  #   **Common used** React Hooks
+   ├── fixtures/               #   **Common used** data helpers / dataSets
+   ├── get-env                 #   Module with **env**-vars
+   ├── mixins.scss             #   **Common used** SCSS mixins
+   └── consts.scss             #   **Common used** SCSS consts (not colors)
 ```
 
-## Shared
 There is public API declaration file (`index.ts`) in all shared modules (with module's API for other modules)
 
 **Recommends to get all needed submodules namely with its**
@@ -102,4 +99,16 @@ Other words, if you want to import common component `Loader`:
 import Loader from "shared/components/loader";
 // Good (API is controlled by module entry-point file)
 import { Loader } from "shared/components";
+```
+
+### Shared/Assets
+Perfectly, all static *assets* files should locate on related components level (**on using level**).
+
+> Because of - generally - there is own **unique** icons collection for every UI area
+
+If its **very necesary and matter** for you - to have common-used icons, then locate their in `shared` folder (in this case - you can import them from any point of app)
+
+```markdown
+└── shared/
+      ├── assets/
 ```
