@@ -1,0 +1,40 @@
+.repo-item {
+    color: var(--clr-text);
+    background-color: var(--clr-gray--100);
+    border-radius: 10px;
+    width: 100%;
+    height: 140px;
+    margin: 22px 0;
+    border-radius: 10px;
+    padding: 22px;
+    display: inline-flex;
+    justify-content: space-between;
+
+    a {
+        color: var(--clr-text);
+        font-size: 20px;
+        font-weight: var(--fw--medium);
+        font-size: 24px;
+        line-height: 32px;
+    }
+    span {
+        font-size: 14px;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    #repo-info {
+        display: grid;
+        align-content: space-between;
+    }
+
+    #info {
+        display: grid;
+    }
+}
+
+.btn-repo {
+    display: flex;
+    border: 1px solid #3399FF;
+}

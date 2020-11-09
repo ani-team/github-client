@@ -604,6 +604,10 @@ export type BotAvatarUrlArgs = {
 
 /** A branch protection rule. */
 export type BranchProtectionRule = Node & {
+  /** Can this branch be deleted. */
+  readonly allowsDeletions: Scalars['Boolean'];
+  /** Are force pushes allowed on this branch. */
+  readonly allowsForcePushes: Scalars['Boolean'];
   /** A list of conflicts matching branches protection rule and other branch protection rules */
   readonly branchProtectionRuleConflicts: BranchProtectionRuleConflictConnection;
   /** The actor who created this branch protection rule. */
@@ -633,6 +637,8 @@ export type BranchProtectionRule = Node & {
   readonly requiresCodeOwnerReviews: Scalars['Boolean'];
   /** Are commits required to be signed. */
   readonly requiresCommitSignatures: Scalars['Boolean'];
+  /** Are merge commits prohibited from being pushed to this branch. */
+  readonly requiresLinearHistory: Scalars['Boolean'];
   /** Are status checks required to update matching branches. */
   readonly requiresStatusChecks: Scalars['Boolean'];
   /** Are branches required to be up to date before merging. */
@@ -13835,13 +13841,7 @@ export type RepositoryCollaboratorEdge = {
   /** A cursor for use in pagination. */
   readonly cursor: Scalars['String'];
   readonly node: User;
-  /**
-   * The permission the user has on the repository.
-   * 
-   * **Upcoming Change on 2020-10-01 UTC**
-   * **Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.
-   * **Reason:** This field may return additional values
-   */
+  /** The permission the user has on the repository. */
   readonly permission: RepositoryPermission;
   /** A list of sources for the user's access to the repository. */
   readonly permissionSources?: Maybe<ReadonlyArray<PermissionSource>>;
@@ -13970,13 +13970,7 @@ export type RepositoryInvitation = Node & {
   readonly inviter: User;
   /** The permalink for this repository invitation. */
   readonly permalink: Scalars['URI'];
-  /**
-   * The permission granted on this repository by this invitation.
-   * 
-   * **Upcoming Change on 2020-10-01 UTC**
-   * **Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.
-   * **Reason:** This field may return additional values
-   */
+  /** The permission granted on this repository by this invitation. */
   readonly permission: RepositoryPermission;
   /** The Repository the user is invited to. */
   readonly repository?: Maybe<RepositoryInfo>;
@@ -16232,13 +16226,7 @@ export type TeamRepositoryEdge = {
   /** A cursor for use in pagination. */
   readonly cursor: Scalars['String'];
   readonly node: Repository;
-  /**
-   * The permission level the team has on the repository
-   * 
-   * **Upcoming Change on 2020-10-01 UTC**
-   * **Description:** Type for `permission` will change from `RepositoryPermission!` to `String`.
-   * **Reason:** This field may return additional values
-   */
+  /** The permission level the team has on the repository */
   readonly permission: RepositoryPermission;
 };
 
