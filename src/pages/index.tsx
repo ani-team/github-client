@@ -13,7 +13,7 @@ const Routing = () => (
     <Auth.Router>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/debug" component={DebugPage} />
-        <Route exact path="/repository" component={RepositoryPage} />
+        <Route path="/:username/:repository/:branch(tree/[\w\d-_.]+)?" component={RepositoryPage} />
         <Redirect to="/" />
     </Auth.Router>
 );

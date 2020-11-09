@@ -1,0 +1,45 @@
+query RepoDefaultBranch($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    defaultBranchRef {
+      name
+    }
+  }
+}
+
+
+query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $expression: String!) {
+  repository(owner: $owner, name: $name) {
+    url
+    ref(qualifiedName: $qualifiedName) {
+      name
+      target {
+        ... on Commit {
+          id
+          messageHeadline
+          author {
+            date
+            user {
+              avatarUrl(size: 36)
+              login
+            }
+          }
+        }
+      }
+    }
+    object(expression: $expression) {
+      ... on Tree {
+        entries {
+          name
+          extension
+          type
+        }
+      }
+    }
+    refs(first: 20, refPrefix: "refs/heads/", orderBy: {field: ALPHABETICAL, direction: ASC}) {
+      nodes {
+        name
+        prefix
+      }
+    }
+  }
+}
