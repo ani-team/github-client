@@ -15,10 +15,12 @@ indent_style = space
 [{*.ats,*.ts,*.tsx}]
 indent_style = space
 tab_width = 2
+ij_typescript_use_double_quotes = true
 
 [{*.cjs,*.js,*.jsx}]
 indent_style = space
 tab_width = 2
+ij_javascript_use_double_quotes = true
 
 [{*.graphql,*.graphqls,*.gql}]
 indent_style = space
