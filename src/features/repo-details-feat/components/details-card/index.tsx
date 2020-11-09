@@ -1,6 +1,6 @@
 import React from "react";
-import "./index.scss";
 import classNames from "classnames";
+import "./index.scss";
 
 type Props = PropsWithChildren<{ title: string; className?: string; primary?: boolean }>;
 

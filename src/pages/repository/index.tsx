@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, Row } from "antd";
-import "./index.scss";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { RepoDetails, RepoExplorer } from "features";
 import { RepoIdentity } from "../../models";
+import "./index.scss";
 
 type RouteParams = {
     username: string;

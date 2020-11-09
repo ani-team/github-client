@@ -1,10 +1,10 @@
 import React from "react";
 import { List } from "antd";
-import "./index.scss";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import FileIcon from "../../assets/file.svg";
 import FolderIcon from "../../assets/folder.svg";
+import "./index.scss";
 
 type Props = {
     loading?: boolean;
@@ -18,14 +18,6 @@ type Props = {
 };
 
 function EntriesView({ loading, files, lastCommit, className }: Props) {
-    // const { data, loading } = useRepositoryGitInfoQuery({
-    //     variables: { owner: repo.owner, name: repo.name },
-    // });
-    // console.log(data);
-    // const files = Array.from(data?.repository?.object?.entries ?? []).sort((a, b) =>
-    //     b.type.localeCompare(a.type),
-    // );
-
     return (
         <div className={classNames("repo-git-view", className)}>
             <List

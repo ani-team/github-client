@@ -1,8 +1,8 @@
 import React from "react";
 import { Menu } from "antd";
-import "./index.scss";
 import { Link } from "react-router-dom";
 import { RepoIdentity } from "../../../../models";
+import "./index.scss";
 
 type Props = {
     repo: RepoIdentity;
