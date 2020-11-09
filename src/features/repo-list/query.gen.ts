@@ -14,7 +14,7 @@ export type ReposQuery = { readonly user?: Types.Maybe<{ readonly repositories: 
 export const ReposDocument = gql`
     query Repos($login: String!) {
   user(login: $login) {
-    repositories(first: 5) {
+    repositories(first: 50) {
       edges {
         node {
           id

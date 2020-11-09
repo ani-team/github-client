@@ -6,11 +6,7 @@ type Props = {
 };
 
 const Tab = (props: Props) => {
-    return (
-        <>
-            <button className="tab">{props.name}</button>
-        </>
-    );
+    return <button className="tab">{props.name}</button>;
 };
 
 export default Tab;

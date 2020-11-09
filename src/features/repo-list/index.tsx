@@ -1,24 +1,29 @@
 import React from "react";
 import { useReposQuery } from "./query.gen";
-import "./index.scss";
-import Tab from "./tabs";
+import Tab from "./tab";
 import RepoItem from "./repo-item";
+import "./index.scss";
 
 type Props = {
     username: string;
 };
 
-const RepoList = (props: Props) => {
+const RepoList = ({ username }: Props) => {
     const { data } = useReposQuery({
-        variables: { login: props.username },
+        variables: { login: username },
     });
 
     return (
         <div className="repo-list">
-            <Tab name="Repositories" />
-            {data?.user?.repositories.edges?.map((repo) => (
-                <RepoItem key={repo?.node?.id} {...repo?.node} />
-            ))}
+            <div className="repo-list__tabs">
+                <Tab name="Repositories" />
+            </div>
+            <div className="repo-list__items">
+                {data?.user?.repositories.edges?.map((edge) => (
+                    // FIXME: destruct more elegant later
+                    <RepoItem key={edge?.node?.id} {...edge?.node} />
+                ))}
+            </div>
         </div>
     );
 };

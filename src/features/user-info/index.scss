@@ -6,16 +6,12 @@
         width: 100%;
         border-radius: 10px;
     }
+    
     h1 {
-        font-size: 32px;
-        font-style: normal;
-        font-weight: var(--fw--medium);
-        line-height: 42px;
         margin: 20px 0;
     }
+
     span {
-        font-style: normal;
-        font-weight: normal;
         font-size: 20px;
         line-height: 28px;
     }
@@ -32,9 +28,7 @@
     border-radius: 10px;
     margin: 20px 0;
     outline-style: none;
-    box-sizing: border-box;
-    will-change: auto;
-    transition-duration: 0.4s;
+    transition: 0.4s;
 
     &:hover {
         cursor: pointer;

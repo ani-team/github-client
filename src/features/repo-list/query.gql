@@ -1,6 +1,6 @@
 query Repos ($login: String!) { 
   user(login: $login) {
-    repositories(first: 5) {
+    repositories(first: 50) {
       edges {
         node {
           id

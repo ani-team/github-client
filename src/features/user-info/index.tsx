@@ -11,11 +11,13 @@ const UserInfo = ({ username }: Props) => {
         variables: { login: username },
     });
 
+    const { name, avatarUrl, bio } = data?.user || {};
+
     return (
         <div className="user-info-block">
-            <img src={data?.user?.avatarUrl} alt="user avatar"></img>
-            <h1>{data?.user?.name}</h1>
-            <span>{data?.user?.bio}</span>
+            <img src={avatarUrl} alt="user avatar"></img>
+            <h1>{name}</h1>
+            <span>{bio}</span>
             <button className="btn btn-user">Follow</button>
         </div>
     );

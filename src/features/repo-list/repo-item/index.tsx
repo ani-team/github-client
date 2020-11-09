@@ -1,5 +1,5 @@
 import React from "react";
-import HeartIcon from "./icon";
+import FavBtn from "./fav-btn";
 import "./index.scss";
 
 // !!! FIXME: specify types
@@ -10,16 +10,14 @@ const RepoItem = (props: Props) => {
 
     return (
         <div className="repo-item">
-            <div id="repo-info">
-                <div>
-                    <a href={url}>{name}</a>
-                </div>
-                <div id="info">
+            <div className="repo-item__info">
+                <a href={url}>{name}</a>
+                <div className="info">
                     <span>{primaryLanguage?.name}</span>
                     <span>{updatedAt}</span>
                 </div>
             </div>
-            <HeartIcon viewerHasStarred={viewerHasStarred} />
+            <FavBtn isFav={viewerHasStarred} />
         </div>
     );
 };
