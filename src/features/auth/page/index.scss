@@ -16,5 +16,13 @@
     }
     &__link {
         color: unset;
+        cursor: pointer;
+        transition: color 0.25s linear;
+        border: none;
+        background: none;
+
+        &:hover {
+            color: #40a9ff;
+        }
     }
 }
