@@ -2,10 +2,11 @@ import firebase from "./init";
 
 type CredentialWithToken = { credential: { accessToken: string } };
 
-const isResultWithToken = (result: any): result is CredentialWithToken =>
-    typeof result?.credential?.accessToken === "string";
+const isResultWithToken = (result: any): result is CredentialWithToken => {
+    return typeof result?.credential?.accessToken === "string";
+};
 
-export default function authGithub(): Promise<firebase.auth.UserCredential & CredentialWithToken> {
+export default function authGithub() {
     const provider = new firebase.auth.GithubAuthProvider();
     provider.addScope("repo");
     return firebase

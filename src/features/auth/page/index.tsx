@@ -21,7 +21,6 @@ const AuthPage = () => {
     const { login } = useAuth();
     const authorize = () => {
         authorizeGithub().then((result) => {
-            console.log(result);
             login(result.credential.accessToken);
         });
     };
@@ -33,13 +32,13 @@ const AuthPage = () => {
                     {error && <Alert type="error" message={error} />}
                     <Alert type="info" message="While available only GitHub OAuth authorization" />
                 </div>
-                <span
+                <button
                     className="page-auth__link github"
                     onClick={authorize}
                     title="Authentication through Github OAuth"
                 >
                     <GithubFilled style={{ fontSize: 64, color: "unset" }} />
-                </span>
+                </button>
             </Card>
         </div>
     );
