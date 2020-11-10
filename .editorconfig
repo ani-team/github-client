@@ -1,0 +1,29 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = tab
+insert_final_newline = true
+max_line_length = 120
+tab_width = 4
+
+[*.scss]
+indent_style = space
+
+[{*.ats,*.ts,*.tsx}]
+indent_style = space
+tab_width = 2
+ij_typescript_use_double_quotes = true
+
+[{*.cjs,*.js,*.jsx}]
+indent_style = space
+tab_width = 2
+ij_javascript_use_double_quotes = true
+
+[{*.graphql,*.graphqls,*.gql}]
+indent_style = space
+
+[{*.htm,*.html,*.ng,*.sht,*.shtm,*.shtml}]
+indent_style = space
