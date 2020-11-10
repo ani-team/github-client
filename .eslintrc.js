@@ -30,11 +30,13 @@ module.exports = {
         "import/order": [
             2,
             {
-                pathGroups: ["shared/**", "pages", "features"].map((pattern) => ({
-                    pattern,
-                    group: "internal",
-                    position: "after",
-                })),
+                pathGroups: ["shared", "shared/**", "pages", "features", "features/**"].map(
+                    (pattern) => ({
+                        pattern,
+                        group: "internal",
+                        position: "after",
+                    }),
+                ),
                 // TODO: Добавить сортировку `import "./index.scss";` (располагать внизу)
                 pathGroupsExcludedImportTypes: ["builtin"],
                 groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
