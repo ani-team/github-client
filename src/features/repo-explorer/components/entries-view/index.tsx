@@ -1,6 +1,6 @@
 import React from "react";
 import { List } from "antd";
-import classNames from "classnames";
+import cn from "classnames";
 import { Link } from "react-router-dom";
 import FileIcon from "../../assets/file.svg";
 import FolderIcon from "../../assets/folder.svg";
@@ -19,7 +19,7 @@ type Props = {
 
 function EntriesView({ loading, files, lastCommit, className }: Props) {
     return (
-        <div className={classNames("repo-git-view", className)}>
+        <div className={cn("repo-git-view", className)}>
             <List
                 bordered
                 header={

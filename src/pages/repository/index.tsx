@@ -1,23 +1,23 @@
 import React from "react";
 import { Col, Row } from "antd";
-import { useParams } from "react-router";
+import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import { RepoDetails, RepoExplorer } from "features";
 import { RepoIdentity } from "../../models";
 import "./index.scss";
 
-type RouteParams = {
+type Props = RouteComponentProps<{
     username: string;
     repository: string;
     branch?: string;
-};
+}>;
 
-const RepositoryPage = () => {
-    const params = useParams<RouteParams>();
+const RepositoryPage = (props: Props) => {
+    const { username, repository, branch } = props.match.params;
     const identity: RepoIdentity = {
-        owner: params.username,
-        name: params.repository,
-        branch: params.branch ? params.branch.replace(/^tree\//, "") : undefined,
+        owner: username,
+        name: repository,
+        branch: branch ? branch.replace(/^tree\//, "") : undefined,
     };
     return (
         <div className="page page-repo">

@@ -29,7 +29,7 @@ generates:
     # Типы схемы и запросы - разделены
     presetConfig:
       extension: .gen.ts
-      baseTypesPath: models.gen.ts
+      baseTypesPath: models.ts
     plugins:
       - add
       - typescript-operations
