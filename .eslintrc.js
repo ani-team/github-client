@@ -12,7 +12,7 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    plugins: ["react", "@typescript-eslint"],
+    plugins: ["react", "@typescript-eslint", "@graphql-eslint"],
     extends: [
         "react-app",
         "eslint:recommended",
@@ -42,5 +42,16 @@ module.exports = {
                 groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
             },
         ],
+        "@graphql-eslint/no-anonymous-operations": 2,
     },
+    overrides: [
+        {
+            files: ["*.gql"],
+            parser: "@graphql-eslint/eslint-plugin",
+            plugins: ["@graphql-eslint"],
+            rules: {
+                "prettier/prettier": 0,
+            },
+        },
+    ],
 };
