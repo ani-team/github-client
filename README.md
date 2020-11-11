@@ -21,7 +21,7 @@ Github клиент в рамках курса *React Akvelon 2020*.
 - **Fetching**: `graphql`, `apollo-client (3+)`
    - **API Codegen**: `graphql-codegen`
 - **Routing**: `react-router`
-- **Tests**: `eslint + prettier`, `testing-library + jest`
+- **Tests**: `eslint + prettier + graphql-eslint + stylelint`, ~~`testing-library + jest`~~
 
 ## Использование
 
