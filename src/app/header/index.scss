@@ -1,13 +1,14 @@
 .gc-app .header {
     display: flex;
     align-items: center;
-    font-size: var(--fsz);
-    background-color: var(--clr-text) !important;
     height: 64px !important;
     overflow: hidden;
+    font-size: var(--fsz);
+    background-color: var(--clr-text) !important;
 
     &__logo {
         transition: var(--transition);
+
         img {
             // FIXME: temp
             filter: grayscale(1) contrast(100%) invert(75%) brightness(100%);
@@ -21,11 +22,11 @@
     &__search {
         // FIXME: temp (hardcoded)
         width: 256px;
-        background: transparent;
+        margin-left: 24px;
         color: var(--clr-gray--700);
+        background: transparent;
         border-color: var(--clr-gray--700);
         border-radius: 4px;
-        margin-left: 24px;
     }
 
     .ant-btn {

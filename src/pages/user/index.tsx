@@ -1,8 +1,7 @@
-import RepoList from "features/repo-list";
-import UserInfo from "features/user-info";
 import React from "react";
 import { Row, Col } from "antd";
 import { RouteComponentProps } from "react-router-dom";
+import { UserInfo, RepoList } from "features";
 
 type Props = RouteComponentProps<{
     username: string;

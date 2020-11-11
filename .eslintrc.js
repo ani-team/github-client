@@ -12,7 +12,7 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    plugins: ["react", "@typescript-eslint"],
+    plugins: ["react", "@typescript-eslint", "@graphql-eslint"],
     extends: [
         "react-app",
         "eslint:recommended",
@@ -30,15 +30,28 @@ module.exports = {
         "import/order": [
             2,
             {
-                pathGroups: ["shared/**", "pages", "features"].map((pattern) => ({
-                    pattern,
-                    group: "internal",
-                    position: "after",
-                })),
+                pathGroups: ["shared", "shared/**", "pages", "features", "features/**"].map(
+                    (pattern) => ({
+                        pattern,
+                        group: "internal",
+                        position: "after",
+                    }),
+                ),
                 // TODO: Добавить сортировку `import "./index.scss";` (располагать внизу)
                 pathGroupsExcludedImportTypes: ["builtin"],
                 groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
             },
         ],
+        "@graphql-eslint/no-anonymous-operations": 2,
     },
+    overrides: [
+        {
+            files: ["*.gql"],
+            parser: "@graphql-eslint/eslint-plugin",
+            plugins: ["@graphql-eslint"],
+            rules: {
+                "prettier/prettier": 0,
+            },
+        },
+    ],
 };

@@ -1,7 +1,7 @@
 # github-client
 Github клиент в рамках курса *React Akvelon 2020*.
 
-<div style="display:flex">
+<div style="display: flex;">
 <img title="github" alt="github" width="64" src="https://image.flaticon.com/icons/png/512/25/25231.png"/>
 <img title="react" alt="react" width="64" src="https://cdn.auth0.com/blog/react-js/react.png"/>
 <img title="antdesign" alt="antdesign" width="64" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"/>
@@ -21,7 +21,7 @@ Github клиент в рамках курса *React Akvelon 2020*.
 - **Fetching**: `graphql`, `apollo-client (3+)`
    - **API Codegen**: `graphql-codegen`
 - **Routing**: `react-router`
-- **Tests**: `eslint + prettier`, `testing-library + jest`
+- **Tests**: `eslint + prettier + graphql-eslint + stylelint`, ~~`testing-library + jest`~~
 
 ## Использование
 
@@ -38,8 +38,8 @@ npm run test            (запуск всех тестов)
 
 ```bash
 npm run react:test      (unit тесты)
-npm run lint:test       (тесты линтера)
-npm run lint:fix        (тесты линтера с исправлением)
+npm run lint:test       (тесты линтеров)
+npm run lint:fix        (тесты линтеров с исправлением)
 ```
 
 ### Работа с зависимостями
@@ -61,4 +61,4 @@ npm run api:gen--watch  (сгенерировать типы и хуки для 
 
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - Автокомплит Tailwind классов в компонентах
 - [Apollo GraphQL](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) - IntelliSense с автокомплитом (но возможны подтормаживания)
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Форматирование по сохранению, pre-commit-hook, тестирование от линта
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) - Форматирование по сохранению, тестирование от линта

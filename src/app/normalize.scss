@@ -13,15 +13,17 @@ body,
     background-color: transparent;
 
     &-track {
-        border-radius: 5px;
         background-color: transparent;
-    }
-    &-thumb {
         border-radius: 5px;
-        background-color: #a6b2c3;
     }
+
+    &-thumb {
+        background-color: #a6b2c3;
+        border-radius: 5px;
+    }
+
     &-corner {
-        background-color: #fff;
+        background-color: #ffffff;
     }
 }
 
