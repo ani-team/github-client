@@ -35,6 +35,8 @@
     "react:test--watch": "react-scripts test --watchAll=true",
     "lint:test": "eslint src",
     "lint:fix": "eslint src --fix",
+    "stylelint:test": "stylelint **/*.scss",
+    "stylelint:fix": "stylelint **/*.scss --fix",
     "eject": "react-scripts eject",
     "deps:clean": "git clean -fxd",
     "deps:reinstall": "npm run deps:clean && npm i",
@@ -70,6 +72,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.2",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "stylelint": "^13.7.2",
+    "stylelint-config-recommended": "^3.0.0"
   }
 }
