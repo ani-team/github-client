@@ -6,23 +6,25 @@
     }
 
     &__last-commit {
-        background-color: var(--clr-primary);
-        color: white;
         padding: 8px 12px;
+        color: white;
+        background-color: var(--clr-primary);
 
         img {
             border-radius: 50%;
         }
+
         a.author-name {
             margin-left: 12px;
             font-weight: bold;
             color: white;
         }
+
         span.commit-message {
             margin-left: 8px;
             overflow: hidden;
-            white-space: nowrap;
             text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 

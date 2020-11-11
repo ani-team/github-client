@@ -1,12 +1,12 @@
 .tab {
+    padding: 13px 21px;
     font-size: 19px;
     line-height: 33px;
     color: #000000;
     background: linear-gradient(270deg, rgba(51, 153, 255, 0) 8.76%, rgba(51, 153, 255, 0.33) 100%);
+    border: none;
     border-radius: 5px;
     outline-style: none;
-    padding: 13px 21px;
-    border: none;
 
     &:hover {
         cursor: pointer;

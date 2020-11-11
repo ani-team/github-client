@@ -1,25 +1,28 @@
 .page-auth {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
 
     &__form {
         width: 50%;
+
         .ant-card-head {
-            background-color: var(--clr-primary);
             color: var(--clr-foreground);
+            background-color: var(--clr-primary);
         }
     }
+
     &__alerts {
         margin-bottom: 20px;
     }
+
     &__link {
         color: unset;
         cursor: pointer;
-        transition: color 0.25s linear;
-        border: none;
         background: none;
+        border: none;
+        transition: color 0.25s linear;
 
         &:hover {
             color: #40a9ff;

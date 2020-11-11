@@ -6,8 +6,9 @@
 .gc-app {
     display: flex;
     flex-direction: column;
+
     &-content {
-        margin: 10px 10%;
         flex-grow: 1;
+        margin: 10px 10%;
     }
 }

@@ -6,7 +6,7 @@
         width: 100%;
         border-radius: 10px;
     }
-    
+
     h1 {
         margin: 20px 0;
     }
@@ -18,21 +18,21 @@
 }
 
 .btn-user {
+    box-sizing: border-box;
     display: flex;
-    border: 1px solid var(--clr-primary);
+    padding: 14px 50px;
+    margin: 20px 0;
     font-size: 18px;
     line-height: 26px;
-    padding: 14px 50px;
     background: var(--clr-gray--100);
-    box-sizing: border-box;
+    border: 1px solid var(--clr-primary);
     border-radius: 10px;
-    margin: 20px 0;
     outline-style: none;
     transition: 0.4s;
 
     &:hover {
         cursor: pointer;
-        border: 1px solid; 
         background: var(--clr-foreground);
+        border: 1px solid;
     }
 }
