@@ -1,5 +1,5 @@
 import React from "react";
-import { useUserInfoQuery } from "./query.gen";
+import { useUserInfoQuery } from "./queries.gen";
 import "./index.scss";
 
 type Props = {

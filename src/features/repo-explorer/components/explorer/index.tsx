@@ -1,7 +1,7 @@
 import React from "react";
 import { RepoIdentity } from "../../../../models";
 import RepoToolbar from "../toolbar";
-import { useRepoBranchInfoQuery, useRepoDefaultBranchQuery } from "../../query.gen";
+import { useRepoBranchInfoQuery, useRepoDefaultBranchQuery } from "../../queries.gen";
 import EntriesView from "../entries-view";
 
 type Props = {

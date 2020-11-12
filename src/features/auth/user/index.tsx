@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { useAuth } from "../hooks";
-import { useViewerQuery } from "./query.gen";
+import { useViewerQuery } from "./queries.gen";
 
 const User = () => {
     const { isAuth, logout } = useAuth();

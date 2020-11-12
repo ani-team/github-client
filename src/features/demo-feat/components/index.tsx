@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Spin, Alert } from "antd";
 import { usePrevious } from "shared/hooks";
-import { useHelloQuery } from "../query.gen";
+import { useHelloQuery } from "../queries.gen";
 
 type Props = {
     borderColor?: React.CSSProperties["borderColor"];
