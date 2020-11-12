@@ -1,38 +1,38 @@
-.user-info-block {
+.user-info {
     margin: 53px 0;
     color: var(--clr-text);
 
-    img {
+    &__img {
         width: 100%;
         border-radius: 10px;
     }
 
-    h1 {
+    &__name {
         margin: 20px 0;
     }
 
-    span {
+    &__bio {
         font-size: 20px;
         line-height: 28px;
     }
-}
 
-.btn-user {
-    box-sizing: border-box;
-    display: flex;
-    padding: 14px 50px;
-    margin: 20px 0;
-    font-size: 18px;
-    line-height: 26px;
-    background: var(--clr-gray--100);
-    border: 1px solid var(--clr-primary);
-    border-radius: 10px;
-    outline-style: none;
-    transition: 0.4s;
+    // !!! FIXME: styles (enhance colors)
+    &__btn.follow {
+        display: block;
+        width: 100px;
+        margin: 20px 0;
+        line-height: 26px;
+        text-align: center;
+        background: var(--clr-gray--100);
+        border: 1px solid var(--clr-primary);
+        border-radius: 10px;
+        outline: none;
+        transition: 0.4s;
 
-    &:hover {
-        cursor: pointer;
-        background: var(--clr-foreground);
-        border: 1px solid;
+        &:hover {
+            cursor: pointer;
+            background: var(--clr-foreground);
+            border: 1px solid;
+        }
     }
 }
