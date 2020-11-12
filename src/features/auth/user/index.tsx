@@ -16,7 +16,7 @@ const User = () => {
         <span className="auth-user">
             {isAuth && (
                 <>
-                    {/* FIXME: gen local link */}
+                    {/* FIXME: use h3 instead */}
                     <a className="m-4 text-white" href={`/${login}`}>
                         {login}
                     </a>
