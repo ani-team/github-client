@@ -1,5 +1,5 @@
 import React from "react";
-import { useReposQuery } from "./query.gen";
+import { useReposQuery } from "./queries.gen";
 import Tab from "./tab";
 import RepoItem from "./repo-item";
 import "./index.scss";

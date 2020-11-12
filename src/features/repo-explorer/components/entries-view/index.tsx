@@ -2,6 +2,7 @@ import React from "react";
 import { List } from "antd";
 import cn from "classnames";
 import { Link } from "react-router-dom";
+// FIXME: import as ReactComponent
 import FileIcon from "../../assets/file.svg";
 import FolderIcon from "../../assets/folder.svg";
 import "./index.scss";

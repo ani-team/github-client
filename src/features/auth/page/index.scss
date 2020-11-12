@@ -22,10 +22,15 @@
         cursor: pointer;
         background: none;
         border: none;
+        outline: none;
         transition: color 0.25s linear;
 
         &:hover {
-            color: #40a9ff;
+            color: var(--clr-primary);
+        }
+
+        &:active {
+            color: var(--clr-primary--active);
         }
     }
 }

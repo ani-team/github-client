@@ -1,1 +1,1 @@
-export { RepoExplorer } from "./components";
+export { default as RepoExplorer } from "./components";

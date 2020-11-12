@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Dropdown } from "antd";
+import { RepoIdentity } from "models";
 import BranchesMenu from "../branches-menu";
-import { RepoIdentity } from "../../../../models";
 
 type Props = {
     repo: RepoIdentity;

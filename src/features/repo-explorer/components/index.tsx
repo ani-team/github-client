@@ -1,8 +1,8 @@
 import React from "react";
-import { RepoIdentity } from "../../../../models";
-import RepoToolbar from "../toolbar";
-import { useRepoBranchInfoQuery, useRepoDefaultBranchQuery } from "../../query.gen";
-import EntriesView from "../entries-view";
+import { RepoIdentity } from "models";
+import { useRepoBranchInfoQuery, useRepoDefaultBranchQuery } from "../queries.gen";
+import RepoToolbar from "./toolbar";
+import EntriesView from "./entries-view";
 
 type Props = {
     repo: RepoIdentity;

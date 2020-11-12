@@ -1,1 +1,0 @@
-export { RepoDetails } from "./components";

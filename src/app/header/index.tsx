@@ -16,9 +16,6 @@ const Header = () => {
                     {!isAuth && <span className="gc-app__title text-white m-4">GITHUB-CLIENT</span>}
                 </a>
                 {isAuth && <Input className="header__search" placeholder="Search..." />}
-                <a className="text-gray-600 m-4" href="/debug">
-                    debug
-                </a>
             </div>
             <Auth.User />
         </Layout.Header>

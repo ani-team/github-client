@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { useAuth } from "../hooks";
-import { useViewerQuery } from "./query.gen";
+import { useViewerQuery } from "./queries.gen";
 
 const User = () => {
     const { isAuth, logout } = useAuth();
@@ -16,8 +16,8 @@ const User = () => {
         <span className="auth-user">
             {isAuth && (
                 <>
-                    {/* FIXME: gen local link */}
-                    <a className="m-4 text-white" href={`https://github.com/${login}`}>
+                    {/* FIXME: use h3 instead */}
+                    <a className="m-4 text-white" href={`/${login}`}>
                         {login}
                     </a>
                     <Button className="m-4" onClick={logout}>

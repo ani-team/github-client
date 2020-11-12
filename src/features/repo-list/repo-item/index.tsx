@@ -11,7 +11,8 @@ const RepoItem = (props: Props) => {
     return (
         <div className="repo-item">
             <div className="repo-item__info">
-                <a href={url}>{name}</a>
+                {/* FIXME: hardcoded, replace to generation by {username}/{reponame} */}
+                <a href={url.replace("https://github.com/", "/")}>{name}</a>
                 <div className="info">
                     <span>{primaryLanguage?.name}</span>
                     <span>{updatedAt}</span>

@@ -53,7 +53,7 @@ Project was structured by [Feature Driven Development](https://www.notion.so/Fea
 
 #### Use requests
 ```tsx
-import { useTodoQuery } from "./query.gen";
+import { useTodoQuery } from "./queries.gen";
 ...
 function YourComponent(props: Props) {
     const { data, loading, error } = useTodoQuery({ variables: { id }});
