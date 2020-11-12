@@ -17,7 +17,7 @@ const User = () => {
             {isAuth && (
                 <>
                     {/* FIXME: gen local link */}
-                    <a className="m-4 text-white" href={`https://github.com/${login}`}>
+                    <a className="m-4 text-white" href={`/${login}`}>
                         {login}
                     </a>
                     <Button className="m-4" onClick={logout}>
