@@ -1,5 +1,5 @@
 import React from "react";
-import DetailsCard from "../details-card";
+import DetailsCard from "./details-card";
 
 // TODO: customize props
 function RepoDetails(props: any) {
