@@ -5,9 +5,6 @@ import { authorizeGithub } from "../firebase";
 import { useAuth } from "../hooks";
 import "./index.scss";
 
-// TODO: Разобраться с безопасностью авторизации
-// (хранение данных о client_**, необходимость в прокси и т.д.)
-
 /**
  * @page Auth
  * @remark Авторизация проходит через firebase
