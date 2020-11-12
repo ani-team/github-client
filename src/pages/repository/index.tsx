@@ -3,7 +3,7 @@ import { Col, Row } from "antd";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import { RepoDetails, RepoExplorer } from "features";
-import { RepoIdentity } from "../../models";
+import { RepoIdentity } from "models";
 import "./index.scss";
 
 type Props = RouteComponentProps<{
