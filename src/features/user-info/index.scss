@@ -1,5 +1,4 @@
 .user-info {
-    margin: 53px 0;
     color: var(--clr-text);
 
     &__img {
@@ -8,7 +7,7 @@
     }
 
     &__name {
-        margin: 20px 0;
+        margin: 15px 0;
     }
 
     &__bio {
@@ -20,6 +19,7 @@
     &__btn.follow {
         display: block;
         width: 100px;
+        height: 100%;
         margin: 20px 0;
         line-height: 26px;
         text-align: center;

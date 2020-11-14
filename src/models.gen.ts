@@ -3092,7 +3092,9 @@ export enum DeploymentState {
   /** The deployment has queued */
   Queued = 'QUEUED',
   /** The deployment is in progress. */
-  InProgress = 'IN_PROGRESS'
+  InProgress = 'IN_PROGRESS',
+  /** The deployment is waiting. */
+  Waiting = 'WAITING'
 }
 
 /** Describes the status of a given deployment attempt. */

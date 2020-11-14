@@ -1,4 +1,5 @@
 import React from "react";
+import dayjs from "dayjs";
 import FavBtn from "./fav-btn";
 import "./index.scss";
 
@@ -16,7 +17,7 @@ const RepoItem = (props: Props) => {
                 <a href={url.replace("https://github.com/", "/")}>{name}</a>
                 <div className="repo-item__other-info">
                     <span style={{ color: hex }}>{primaryLanguage?.name}</span>
-                    <span>{updatedAt}</span>
+                    <span>Updated on {dayjs(updatedAt).format("D MMM YYYY")}</span>
                 </div>
             </div>
             <FavBtn isFav={viewerHasStarred} />

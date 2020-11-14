@@ -8,28 +8,26 @@
     background-color: var(--clr-gray--100);
     border-radius: 10px;
 
-    a {
-        font-size: 20px;
-        font-weight: var(--fw--medium);
-        color: var(--clr-text);
-    }
-
-    span {
-        font-size: 14px;
-        line-height: 24px;
-    }
-
-    .repo-item__info {
+    &__info {
         display: grid;
         align-content: space-between;
+
+        a {
+            font-family: var(--ff-secondary);
+            font-size: 20px;
+            font-weight: var(--fw--medium);
+            color: var(--clr-text);
+        }
+
+        span {
+            font-family: var(--ff-secondary);
+            font-size: 14px;
+            font-weight: var(--fw--regular);
+            line-height: 24px;
+        }
     }
 
-    .info {
+    &__other-info {
         display: grid;
     }
-}
-
-.btn-repo {
-    display: flex;
-    border: 1px solid #3399ff;
 }
