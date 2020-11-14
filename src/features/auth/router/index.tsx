@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Spin } from "antd";
 import { useAuth } from "../hooks";
 
@@ -8,6 +8,7 @@ import { useAuth } from "../hooks";
 type Props = PropsWithChildren;
 
 const AuthPage = lazy(() => import("../page"));
+const HomePage = lazy(() => import("pages/home"));
 
 const Router = ({ children }: Props) => {
     const { isAuth } = useAuth();
@@ -19,9 +20,9 @@ const Router = ({ children }: Props) => {
                     {isAuth && children}
                     {!isAuth && (
                         <>
-                            <AuthPage />
-                            {/* TODO: <Route exact path="auth" component={AuthPage} />
-                             <Redirect to="/auth" /> */}
+                            <Route exact path="/" component={HomePage} />
+                            <Route exact path="/auth" component={AuthPage} />
+                            {/* <Redirect to="/" /> */}
                         </>
                     )}
                 </Switch>
