@@ -2,7 +2,7 @@
 Project was structured by [Feature Driven Development](https://www.notion.so/Feature-Driven-Development-dfe306d664ae4780bcf999ccdd15e532).
 
 ## Project
-```md
+```sh
 └── src/                            # Source files
     ├── app/                        # Base app's resources
     ├── features/                   # Crucial domain splitted app's features
@@ -32,7 +32,7 @@ Project was structured by [Feature Driven Development](https://www.notion.so/Fea
 
 > More details - [here](https://www.notion.so/Summary-YouTube-Feature-Driven-Arhitecture-b8609fd4452b41f499703c841e56b8e9#18cb1679b2754951ae92627d371d1a88)
 
-```markdown
+```sh
 └── features/
     └── feature-name/
             ├── components/            # UI components (`React`, `Canvas`)
@@ -77,7 +77,7 @@ import { Claim } from "models.gen"
 - Has non-trivial logic
 - Has low frequency of change
 
-```md
+```sh
 └── shared/
    ├── components/             #   **Common used** React components
    ├── helpers/                #   **Common used** Helpers
