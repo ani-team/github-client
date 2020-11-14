@@ -17,7 +17,7 @@ const HomeHero = () => {
                 </a>
             </Col>
             <Col span={8}>
-                <Icon className="home-hero__icon"/>
+                <Icon className="home-hero__icon" />
             </Col>
         </Row>
     );
