@@ -5,7 +5,7 @@
     margin: 0 12%;
     user-select: none;
 
-    .home-hero__title {
+    &__title {
         max-width: 90%;
         margin: 0;
         font-family: var(--ff-secondary);
@@ -14,7 +14,7 @@
         line-height: 7vh;
     }
 
-    .home-hero__description {
+    &__description {
         margin: 25px 0;
         font-family: var(--ff-primary);
         font-size: 2vh;
@@ -22,7 +22,7 @@
         line-height: 28px;
     }
 
-    .home-hero__button {
+    &__button {
         padding: 10px 30px;
         font-family: var(--ff-primary);
         color: var(--clr-gray--100);
@@ -38,7 +38,7 @@
         }
     }
 
-    .home-hero__icon {
+    &__icon {
         max-width: 100%;
     }
 }
