@@ -1,4 +1,6 @@
 import React from "react";
+import HomeHero from "features/home-hero";
+import "./index.scss";
 
 /**
  * @page Home
@@ -6,8 +8,7 @@ import React from "react";
 const HomePage = () => {
     return (
         <div className="page page-home">
-            <h1>HomePage</h1>
-            <p>Welcome to our GithubClient!</p>
+            <HomeHero />
         </div>
     );
 };
