@@ -1,26 +1,26 @@
 import { Col, Row } from "antd";
 import React from "react";
-import GithubIcon from "./icon";
+import { ReactComponent as Icon } from "./github-icon.svg";
 import "./index.scss";
 
-const HomeInfo = () => {
+const HomeHero = () => {
     return (
-        <Row className="home-info">
+        <Row className="home-hero">
             <Col span={16}>
-                <h1 className="home-info__title">
+                <h1 className="home-hero__title">
                     Github in minimalistic design. Built for developers.
                 </h1>
-                <p className="home-info__description">Welcome to our GithubClient!</p>
+                <p className="home-hero__description">Welcome to our GithubClient!</p>
                 {/* FIXME: redirect to other page if user isAuth*/}
-                <a className="home-info__button" href="/auth">
+                <a className="home-hero__button" href="/auth">
                     START NOW
                 </a>
             </Col>
             <Col span={8}>
-                <GithubIcon />
+                <Icon className="home-hero__icon"/>
             </Col>
         </Row>
     );
 };
 
-export default HomeInfo;
+export default HomeHero;

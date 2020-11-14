@@ -1,5 +1,5 @@
+import HomeHero from "features/home-hero";
 import React from "react";
-import HomeInfo from "features/home";
 import "./index.scss";
 
 /**
@@ -8,7 +8,7 @@ import "./index.scss";
 const HomePage = () => {
     return (
         <div className="page page-home">
-            <HomeInfo />
+            <HomeHero/>
         </div>
     );
 };

@@ -1,29 +1,30 @@
-.home-info {
+.home-hero {
     display: flex;
     align-items: center;
     height: inherit;
     margin: 0 12%;
     user-select: none;
 
-    .home-info__title {
+    .home-hero__title {
         max-width: 90%;
         margin: 0;
-        font-family: var(--ff-Roboto-mono);
+        font-family: var(--ff-secondary);
         font-size: 5vh;
         font-weight: var(--fw--medium);
         line-height: 7vh;
     }
 
-    .home-info__description {
+    .home-hero__description {
         margin: 25px 0;
-        font-family: var(--ff-Roboto);
+        font-family: var(--ff-primary);
         font-size: 2vh;
         font-weight: var(--fw--light);
         line-height: 28px;
     }
 
-    .home-info__button {
+    .home-hero__button {
         padding: 10px 30px;
+        font-family: var(--ff-primary);
         color: var(--clr-gray--100);
         background: var(--clr-primary);
         border: none;
@@ -35,5 +36,9 @@
             cursor: pointer;
             background: var(--clr-primary--active);
         }
+    }
+
+    .home-hero__icon {
+        max-width: 100%;
     }
 }
