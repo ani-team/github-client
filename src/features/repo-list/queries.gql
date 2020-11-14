@@ -1,11 +1,12 @@
 query Repos ($login: String!) { 
   user(login: $login) {
-    repositories(first: 50) {
+    repositories(ownerAffiliations: OWNER, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
       edges {
         node {
           id
           name
           primaryLanguage {
+            color
             name
           }
           updatedAt

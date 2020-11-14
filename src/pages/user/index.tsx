@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col } from "antd";
 import { RouteComponentProps } from "react-router-dom";
 import { UserInfo, RepoList } from "features";
+import "./index.scss";
 
 type Props = RouteComponentProps<{
     username: string;
