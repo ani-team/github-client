@@ -8,6 +8,7 @@ import "./index.scss";
 // !!! FIXME: specify types
 type Props = any;
 
+// FIXME: refactor
 const Repo = (props: Props) => {
     const { name, primaryLanguage, updatedAt, url, viewerHasStarred, owner } = props as Partial<
         Repository
@@ -23,7 +24,6 @@ const Repo = (props: Props) => {
                 </a>
                 <div className="repo__other-info">
                     <Lang {...primaryLanguage} />
-                    {/* <span style={{ color: hex }}>{primaryLanguage?.name}</span> */}
                     <span>Updated on {dayjs(updatedAt).format("D MMM YYYY")}</span>
                 </div>
             </div>
