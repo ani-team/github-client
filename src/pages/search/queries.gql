@@ -5,10 +5,8 @@ enum SearchType {
 
 fragment RepoFields on Repository {
   id
-  owner {
-    login
-  }
   name
+  url
   updatedAt
   primaryLanguage {
     name

@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col, Skeleton } from "antd";
-import { HeartFilled, HeartOutlined } from "@ant-design/icons";
-import dayjs from "dayjs";
+import { Repo } from "shared/components";
 import { SearchType } from "models";
 import { useSearchQuery, RepoFieldsFragment } from "./queries.gen";
 import "./index.scss";
@@ -35,43 +34,11 @@ const SearchPage = () => {
                     {data?.search.edges?.map((edge) => {
                         // !!! FIXME: specify types
                         if (type === SearchType.Repository) {
-                            const {
-                                id,
-                                name,
-                                owner,
-                                updatedAt,
-                                viewerHasStarred,
-                                primaryLanguage,
-                            } = edge?.node as RepoFieldsFragment;
-                            const color = primaryLanguage?.color || "#222";
+                            const data = edge?.node as RepoFieldsFragment;
                             return (
-                                <div key={id} className="result__item repo mt-4 p-3">
-                                    <h3 className="repo__header flex justify-between">
-                                        <div className="repo__title">
-                                            {owner.login}/{name}
-                                        </div>
-                                        <div className="repo__starr">
-                                            {viewerHasStarred ? <HeartFilled /> : <HeartOutlined />}
-                                        </div>
-                                    </h3>
-                                    <div className="repo__lang flex items-center">
-                                        <div
-                                            className="repo__lang-marker"
-                                            style={{
-                                                backgroundColor: color,
-                                                width: 12,
-                                                height: 12,
-                                                borderRadius: "50%",
-                                            }}
-                                        />
-                                        <div className="repo__lang-label ml-2">
-                                            {primaryLanguage?.name}
-                                        </div>
-                                    </div>
-                                    <div className="repo__updatedAt">
-                                        Updated on {dayjs(updatedAt).format("D MMM YYYY")}
-                                    </div>
-                                </div>
+                                <ResultItem key={data.id}>
+                                    <Repo {...data} />
+                                </ResultItem>
                             );
                         }
                         return "???";
@@ -88,5 +55,9 @@ const SearchPage = () => {
         </Row>
     );
 };
+
+const ResultItem = ({ children }: PropsWithChildren) => (
+    <div className="result__item mb-4">{children}</div>
+);
 
 export default SearchPage;
