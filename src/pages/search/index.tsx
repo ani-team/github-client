@@ -1,19 +1,32 @@
 import React from "react";
 import { Row, Col, Skeleton } from "antd";
 import { useQueryParam, StringParam } from "use-query-params";
-import { Repo } from "shared/components";
+import { Repo, User } from "shared/components";
 import { SearchType } from "models";
-import { useSearchQuery, RepoFieldsFragment } from "./queries.gen";
+import { useSearchQuery, RepoFieldsFragment, UserFieldsFragment } from "./queries.gen";
 import "./index.scss";
+
+// !!! FIXME: decompose
+
+const typesMap: {
+    [key: string]: SearchType;
+} = {
+    repositories: SearchType.Repository,
+    users: SearchType.User,
+};
 
 /**
  * @page Search
  */
 const SearchPage = () => {
-    const type = SearchType.Repository;
-    const [query] = useQueryParam("q", StringParam);
+    const [searchQuery] = useQueryParam("q", StringParam);
+    const [searchType] = useQueryParam("type", StringParam);
+    const searchTypeEnum = typesMap[searchType || "repositories"];
     const { data, loading } = useSearchQuery({
-        variables: { type, query: query || "" },
+        variables: {
+            type: searchTypeEnum,
+            query: searchQuery || "",
+        },
     });
 
     const isEmpty = !loading && (!data || data.search.edges?.length === 0);
@@ -22,7 +35,7 @@ const SearchPage = () => {
         <Row className="page page-search">
             <Col span={18}>
                 <div className="toolbar">
-                    Results by <b>{query}</b> search
+                    Results by <b>{searchQuery}</b> search
                 </div>
                 <div className="results">
                     {loading && (
@@ -32,18 +45,32 @@ const SearchPage = () => {
                             <Skeleton active />
                         </>
                     )}
-                    {data?.search.edges?.map((edge) => {
-                        // !!! FIXME: specify types
-                        if (type === SearchType.Repository) {
-                            const data = edge?.node as RepoFieldsFragment;
-                            return (
-                                <ResultItem key={data.id}>
-                                    <Repo {...data} />
-                                </ResultItem>
-                            );
-                        }
-                        return "???";
-                    })}
+                    {/* FIXME: as wrapper? */}
+                    {/* FIXME: Пока что фильтруем Организации, т.к. под них нужна отдельная страница и логика */}
+                    {data?.search.edges
+                        // @ts-ignore FIXME: specify types
+                        ?.filter((edge) => edge?.node?.__typename !== "Organization")
+                        .map((edge) => {
+                            // !!! FIXME: specify types
+                            // FIXME: simplify
+                            if (searchTypeEnum === SearchType.Repository) {
+                                const data = edge?.node as RepoFieldsFragment;
+                                return (
+                                    <ResultItem key={data.id}>
+                                        <Repo {...data} />
+                                    </ResultItem>
+                                );
+                            }
+                            if (searchTypeEnum === SearchType.User) {
+                                const data = edge?.node as UserFieldsFragment;
+                                return (
+                                    <ResultItem key={data.id}>
+                                        <User {...data} />
+                                    </ResultItem>
+                                );
+                            }
+                            return null;
+                        })}
                     {isEmpty && "Not found anything"}
                 </div>
             </Col>
