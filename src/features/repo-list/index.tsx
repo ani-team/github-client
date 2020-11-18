@@ -1,7 +1,6 @@
 import React from "react";
-import { Repo } from "shared/components";
+import { Repo, Tabs } from "shared/components";
 import { useReposQuery } from "./queries.gen";
-import Tab from "./tab";
 import "./index.scss";
 
 type Props = {
@@ -17,9 +16,9 @@ const RepoList = ({ username }: Props) => {
 
     return (
         <div className="repo-list">
-            <div className="repo-list__tabs">
-                <Tab name="Repositories" />
-            </div>
+            <Tabs className="repo-list__tabs">
+                <Tabs.Item name="Repositories" />
+            </Tabs>
             <div className="repo-list__items">
                 {data?.user?.repositories.edges?.map((edge, index) => (
                     // FIXME: destruct more elegant later
