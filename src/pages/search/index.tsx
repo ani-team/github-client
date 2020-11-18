@@ -34,9 +34,9 @@ const SearchPage = () => {
     return (
         <Row className="page page-search">
             <Col span={18}>
-                <div className="toolbar">
-                    Results by <b>{searchQuery}</b> search
-                </div>
+                <h2 className="toolbar">
+                    Results by <b>{searchQuery}</b> search:
+                </h2>
                 <div className="results">
                     {loading && (
                         <>
