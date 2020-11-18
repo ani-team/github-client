@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Skeleton, Empty } from "antd";
 import { useQueryParam, StringParam } from "use-query-params";
-import { Repo, User } from "shared/components";
+import { Repo, User, Tabs } from "shared/components";
 import { SearchType } from "models";
 import { useSearchQuery, RepoFieldsFragment, UserFieldsFragment } from "./queries.gen";
 import "./index.scss";
@@ -21,7 +21,7 @@ const typesMap: {
  */
 const SearchPage = () => {
     const [searchQuery] = useQueryParam("q", StringParam);
-    const [searchType] = useQueryParam("type", StringParam);
+    const [searchType, setSearchType] = useQueryParam("type", StringParam);
     const searchTypeEnum = typesMap[searchType || "repositories"];
     const { data, loading } = useSearchQuery({
         variables: {
@@ -75,11 +75,24 @@ const SearchPage = () => {
                     {isEmpty && <Empty className="p-8" description="No results found" />}
                 </div>
             </Col>
-            <Col span={5} className="bg-gray-300 ml-4">
-                <div className="filters">
-                    <div className="filters__item">Repositories</div>
-                    <div className="filters__item">User</div>
-                </div>
+            <Col span={5} className="ml-4">
+                {/* FIXME: resolve on tabs level */}
+                <Tabs className="filters flex flex-col">
+                    {/* FIXME: resolve on tabs level */}
+                    {/* FIXME: simplify */}
+                    <Tabs.Item
+                        className="filters__item mb-2"
+                        name="Repositories"
+                        active={searchTypeEnum === SearchType.Repository}
+                        onClick={() => setSearchType("repositories")}
+                    />
+                    <Tabs.Item
+                        className="filters__item mb-2"
+                        name="User"
+                        active={searchTypeEnum === SearchType.User}
+                        onClick={() => setSearchType("users")}
+                    />
+                </Tabs>
             </Col>
         </Row>
     );
