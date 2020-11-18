@@ -1,0 +1,37 @@
+enum SearchType {
+    REPOSITORY
+    USER
+}
+
+fragment RepoFields on Repository {
+  id
+  owner {
+    login
+  }
+  name
+  updatedAt
+  primaryLanguage {
+    name
+    color
+  }
+  viewerHasStarred
+}
+
+fragment UserFields on User {
+  id
+  login
+  bio
+  avatarUrl
+  viewerIsFollowing
+}
+
+query Search($query: String!, $type: SearchType!) {
+  search(query: $query, type: $type, first: 50) {
+    edges {
+      node {
+        ...RepoFields
+        ...UserFields
+      }
+    }
+  }
+}

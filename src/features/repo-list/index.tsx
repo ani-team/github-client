@@ -8,6 +8,8 @@ type Props = {
     username: string;
 };
 
+// FIXME: rename to UserRepoList? (coz - user as dep)
+
 const RepoList = ({ username }: Props) => {
     const { data } = useReposQuery({
         variables: { login: username },
