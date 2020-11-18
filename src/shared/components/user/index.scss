@@ -1,4 +1,7 @@
 .user {
+    // FIXME: define on app level
+    font-family: var(--ff-secondary);
+    font-size: 14px;
     background-color: var(--clr-gray--100);
     border-radius: 10px;
 }

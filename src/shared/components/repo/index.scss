@@ -5,6 +5,9 @@
     height: 140px;
     padding: 22px;
     margin-top: 22px;
+    // FIXME: define on app level
+    font-family: var(--ff-secondary);
+    font-size: 14px;
     background-color: var(--clr-gray--100);
     border-radius: 10px;
 
@@ -13,16 +16,10 @@
         align-content: space-between;
 
         a {
-            font-family: var(--ff-secondary);
-            font-size: 20px;
-            font-weight: var(--fw--medium);
             color: var(--clr-text);
         }
 
         span {
-            font-family: var(--ff-secondary);
-            font-size: 14px;
-            font-weight: var(--fw--regular);
             line-height: 24px;
         }
     }

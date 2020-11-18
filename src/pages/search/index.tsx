@@ -34,7 +34,7 @@ const SearchPage = () => {
 
     return (
         <Row className="page page-search">
-            <Col span={18}>
+            <Col span={16}>
                 <h2 className="toolbar">
                     Results by <b>{searchQuery}</b> search:
                 </h2>
@@ -75,7 +75,7 @@ const SearchPage = () => {
                     {isEmpty && <Empty className="p-8" description="No results found" />}
                 </div>
             </Col>
-            <Col span={5} className="ml-4">
+            <Col span={7} className="ml-4">
                 {/* FIXME: resolve on tabs level */}
                 <Tabs className="filters flex flex-col">
                     {/* FIXME: resolve on tabs level */}

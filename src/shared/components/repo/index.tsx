@@ -18,7 +18,7 @@ const Repo = (props: Props) => {
         <div className="repo">
             <div className="repo__info">
                 {/* FIXME: hardcoded, replace to generation by {username}/{reponame} */}
-                <a href={url?.replace("https://github.com/", "/")}>
+                <a className="text-title" href={url?.replace("https://github.com/", "/")}>
                     {owner?.login && `${owner.login}/`}
                     {name}
                 </a>
