@@ -10,7 +10,7 @@ import "./index.scss";
  */
 const SearchPage = () => {
     const type = SearchType.Repository;
-    const query = "commitlint";
+    const query = "react";
     const { data, loading } = useSearchQuery({
         variables: { type, query },
     });

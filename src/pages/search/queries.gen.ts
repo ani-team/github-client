@@ -3,7 +3,7 @@ import * as Types from '../../models.gen';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-export type RepoFieldsFragment = { readonly id: string, readonly name: string, readonly url: any, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly name: string, readonly color?: Types.Maybe<string> }> };
+export type RepoFieldsFragment = { readonly id: string, readonly name: string, readonly url: any, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly owner: { readonly login: string } | { readonly login: string }, readonly primaryLanguage?: Types.Maybe<{ readonly name: string, readonly color?: Types.Maybe<string> }> };
 
 export type UserFieldsFragment = { readonly id: string, readonly login: string, readonly bio?: Types.Maybe<string>, readonly avatarUrl: any, readonly viewerIsFollowing: boolean };
 
@@ -20,6 +20,9 @@ export const RepoFieldsFragmentDoc = gql`
   id
   name
   url
+  owner {
+    login
+  }
   updatedAt
   primaryLanguage {
     name

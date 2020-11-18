@@ -7,6 +7,9 @@ fragment RepoFields on Repository {
   id
   name
   url
+  owner {
+    login
+  }
   updatedAt
   primaryLanguage {
     name
