@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Skeleton } from "antd";
+import { Row, Col, Skeleton, Empty } from "antd";
 import { useQueryParam, StringParam } from "use-query-params";
 import { Repo, User } from "shared/components";
 import { SearchType } from "models";
@@ -17,6 +17,7 @@ const typesMap: {
 
 /**
  * @page Search
+ * !!! TODO: split by features!!!
  */
 const SearchPage = () => {
     const [searchQuery] = useQueryParam("q", StringParam);
@@ -71,7 +72,7 @@ const SearchPage = () => {
                             }
                             return null;
                         })}
-                    {isEmpty && "Not found anything"}
+                    {isEmpty && <Empty className="p-8" description="No results found" />}
                 </div>
             </Col>
             <Col span={5} className="bg-gray-300 ml-4">
