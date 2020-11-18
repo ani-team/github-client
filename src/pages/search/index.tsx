@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Skeleton } from "antd";
+import { useQueryParam, StringParam } from "use-query-params";
 import { Repo } from "shared/components";
 import { SearchType } from "models";
 import { useSearchQuery, RepoFieldsFragment } from "./queries.gen";
@@ -10,9 +11,9 @@ import "./index.scss";
  */
 const SearchPage = () => {
     const type = SearchType.Repository;
-    const query = "react";
+    const [query] = useQueryParam("q", StringParam);
     const { data, loading } = useSearchQuery({
-        variables: { type, query },
+        variables: { type, query: query || "" },
     });
 
     const isEmpty = !loading && (!data || data.search.edges?.length === 0);

@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { QueryParamProvider } from "use-query-params";
 import { Spin } from "antd";
 import { useAuth } from "../hooks";
 
@@ -16,16 +17,19 @@ const Router = ({ children }: Props) => {
     return (
         <BrowserRouter>
             <Suspense fallback={<Spin />}>
-                <Switch>
-                    {isAuth && children}
-                    {!isAuth && (
-                        <>
-                            <Route exact path="/" component={HomePage} />
-                            <Route exact path="/auth" component={AuthPage} />
-                            {/* <Redirect to="/" /> */}
-                        </>
-                    )}
-                </Switch>
+                {/* FIXME: wrap not on this level */}
+                <QueryParamProvider ReactRouterRoute={Route}>
+                    <Switch>
+                        {isAuth && children}
+                        {!isAuth && (
+                            <>
+                                <Route exact path="/" component={HomePage} />
+                                <Route exact path="/auth" component={AuthPage} />
+                                {/* <Redirect to="/" /> */}
+                            </>
+                        )}
+                    </Switch>
+                </QueryParamProvider>
             </Suspense>
         </BrowserRouter>
     );
