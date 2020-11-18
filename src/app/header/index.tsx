@@ -26,7 +26,8 @@ const Header = () => {
                         placeholder="Search..."
                         defaultValue={search}
                         onKeyDown={({ key, target }) => {
-                            if (key === "Enter") {
+                            // @ts-ignore FIXME: specify types
+                            if (key === "Enter" && target.value) {
                                 // @ts-ignore FIXME: specify types
                                 window.location.replace(`/search?q=${target.value}`);
                             }
