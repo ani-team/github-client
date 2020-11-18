@@ -1,0 +1,11 @@
+{
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-recommended",
+        "stylelint-config-recess-order"
+    ],
+    "rules": {
+        "indentation": 4,
+        "color-hex-length": "long"
+    }
+}

@@ -18,8 +18,6 @@ const getEnvVar = (key: string) => {
 
 /** API entrypoint */
 export const API_URL = getEnvVar("REACT_APP_API_URL");
-/** API access token */
-export const ACCESS_TOKEN = getEnvVar("REACT_APP_ACCESS_TOKEN");
 
 /** Режим запуска программы */
 export const NODE_ENV = getEnvVar("NODE_ENV");

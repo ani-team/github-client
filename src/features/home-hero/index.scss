@@ -1,0 +1,44 @@
+.home-hero {
+    display: flex;
+    align-items: center;
+    height: inherit;
+    margin: 0 12%;
+    user-select: none;
+
+    &__title {
+        max-width: 90%;
+        margin: 0;
+        font-family: var(--ff-secondary);
+        font-size: 5vh;
+        font-weight: var(--fw--medium);
+        line-height: 7vh;
+    }
+
+    &__description {
+        margin: 25px 0;
+        font-family: var(--ff-primary);
+        font-size: 2vh;
+        font-weight: var(--fw--light);
+        line-height: 28px;
+    }
+
+    &__button {
+        padding: 10px 30px;
+        font-family: var(--ff-primary);
+        color: var(--clr-gray--100);
+        background: var(--clr-primary);
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        transition: 0.4s;
+
+        &:hover {
+            cursor: pointer;
+            background: var(--clr-primary--active);
+        }
+    }
+
+    &__icon {
+        max-width: 100%;
+    }
+}

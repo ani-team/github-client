@@ -1,0 +1,36 @@
+.page-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    &__form {
+        width: 50%;
+
+        .ant-card-head {
+            color: var(--clr-foreground);
+            background-color: var(--clr-primary);
+        }
+    }
+
+    &__alerts {
+        margin-bottom: 20px;
+    }
+
+    &__link {
+        color: unset;
+        cursor: pointer;
+        background: none;
+        border: none;
+        outline: none;
+        transition: color 0.25s linear;
+
+        &:hover {
+            color: var(--clr-primary);
+        }
+
+        &:active {
+            color: var(--clr-primary--active);
+        }
+    }
+}

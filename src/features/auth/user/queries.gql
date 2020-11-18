@@ -1,4 +1,4 @@
-query Hello {
+query Viewer {
   viewer {
     login
   }

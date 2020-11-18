@@ -2,6 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import Routing from "pages";
 import withApollo from "./with-apollo";
+import Header from "./header";
 import "./index.scss";
 
 /**
@@ -12,9 +13,7 @@ const App = () => {
     return (
         <div className="gc-app">
             <Layout>
-                <Layout.Header>
-                    <span className="gc-app__title text-white">GC</span>
-                </Layout.Header>
+                <Header />
                 <Layout.Content className="gc-app-content">
                     <Routing />
                 </Layout.Content>

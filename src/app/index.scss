@@ -2,12 +2,23 @@
 @import "~tailwindcss/dist/utilities.css";
 @import "./vars.scss";
 @import "./normalize.scss";
+@import "./utils.scss";
 
 .gc-app {
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    background-color: var(--clr-background);
+
     &-content {
-        margin: 10px 10%;
         flex-grow: 1;
+    }
+
+    .page {
+        margin: 10px 10%;
+    }
+
+    .ant-layout {
+        background-color: unset;
     }
 }

@@ -12,7 +12,7 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    plugins: ["react", "@typescript-eslint"],
+    plugins: ["react", "@typescript-eslint", "@graphql-eslint"],
     extends: [
         "react-app",
         "eslint:recommended",
@@ -30,7 +30,14 @@ module.exports = {
         "import/order": [
             2,
             {
-                pathGroups: ["shared/**", "pages", "features"].map((pattern) => ({
+                pathGroups: [
+                    "shared",
+                    "shared/**",
+                    "pages",
+                    "features",
+                    "features/**",
+                    "models",
+                ].map((pattern) => ({
                     pattern,
                     group: "internal",
                     position: "after",
@@ -40,5 +47,16 @@ module.exports = {
                 groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
             },
         ],
+        "@graphql-eslint/no-anonymous-operations": 2,
     },
+    overrides: [
+        {
+            files: ["*.gql"],
+            parser: "@graphql-eslint/eslint-plugin",
+            plugins: ["@graphql-eslint"],
+            rules: {
+                "prettier/prettier": 0,
+            },
+        },
+    ],
 };

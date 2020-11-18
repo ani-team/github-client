@@ -1,0 +1,45 @@
+.repo-git-view {
+    background-color: var(--clr-gray--100);
+
+    & .ant-list-header {
+        padding: 0 !important;
+    }
+
+    &__last-commit {
+        padding: 8px 12px;
+        color: white;
+        background-color: var(--clr-primary);
+
+        img {
+            border-radius: 50%;
+        }
+
+        a.author-name {
+            margin-left: 12px;
+            font-weight: bold;
+            color: white;
+        }
+
+        span.commit-message {
+            margin-left: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    &__item {
+        padding: 8px 0 8px 8px !important;
+        border-bottom-color: white !important;
+
+        img {
+            width: 24px;
+            height: auto;
+            padding: 4px;
+        }
+
+        span {
+            margin-left: 12px;
+        }
+    }
+}

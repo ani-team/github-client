@@ -1,0 +1,38 @@
+.user-info {
+    color: var(--clr-text);
+
+    &__img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    &__name {
+        margin: 15px 0;
+    }
+
+    &__bio {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    // !!! FIXME: styles (enhance colors)
+    &__btn.follow {
+        display: block;
+        width: 100px;
+        height: 100%;
+        margin: 20px 0;
+        line-height: 26px;
+        text-align: center;
+        background: var(--clr-gray--100);
+        border: 1px solid var(--clr-primary);
+        border-radius: 10px;
+        outline: none;
+        transition: 0.4s;
+
+        &:hover {
+            cursor: pointer;
+            background: var(--clr-foreground);
+            border: 1px solid;
+        }
+    }
+}
