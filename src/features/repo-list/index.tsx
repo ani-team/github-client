@@ -1,12 +1,13 @@
 import React from "react";
+import { Repo, Tabs } from "shared/components";
 import { useReposQuery } from "./queries.gen";
-import Tab from "./tab";
-import RepoItem from "./repo-item";
 import "./index.scss";
 
 type Props = {
     username: string;
 };
+
+// FIXME: rename to UserRepoList? (coz - user as dep)
 
 const RepoList = ({ username }: Props) => {
     const { data } = useReposQuery({
@@ -15,13 +16,13 @@ const RepoList = ({ username }: Props) => {
 
     return (
         <div className="repo-list">
-            <div className="repo-list__tabs">
-                <Tab name="Repositories" />
-            </div>
+            <Tabs className="repo-list__tabs">
+                <Tabs.Item name="Repositories" />
+            </Tabs>
             <div className="repo-list__items">
-                {data?.user?.repositories.edges?.map((edge) => (
+                {data?.user?.repositories.edges?.map((edge, index) => (
                     // FIXME: destruct more elegant later
-                    <RepoItem key={edge?.node?.id} {...edge?.node} />
+                    <Repo key={index} {...edge?.node} />
                 ))}
             </div>
         </div>

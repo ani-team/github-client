@@ -1,0 +1,20 @@
+.tab {
+    padding: 13px 21px;
+    font-family: var(--ff-primary);
+    font-size: 19px;
+    line-height: 33px;
+    color: #000000;
+    background: linear-gradient(270deg, rgba(238, 238, 238, 0.24) 35.11%, var(--clr-gray--100) 100%);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    transition: var(--transition);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.active {
+        background: linear-gradient(270deg, rgba(51, 153, 255, 0) 8.76%, rgba(51, 153, 255, 0.33) 100%);
+    }
+}

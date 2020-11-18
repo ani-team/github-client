@@ -5188,6 +5188,7 @@ export type IssueAssigneesArgs = {
 
 /** An Issue is a place to discuss ideas, enhancements, tasks, and bugs for a project. */
 export type IssueCommentsArgs = {
+  orderBy?: Maybe<IssueCommentOrder>;
   after?: Maybe<Scalars['String']>;
   before?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -5376,6 +5377,20 @@ export type IssueCommentEdge = {
   /** The item at the end of the edge. */
   readonly node?: Maybe<IssueComment>;
 };
+
+/** Ways in which lists of issue comments can be ordered upon return. */
+export type IssueCommentOrder = {
+  /** The field in which to order issue comments by. */
+  readonly field: IssueCommentOrderField;
+  /** The direction in which to order issue comments by the specified field. */
+  readonly direction: OrderDirection;
+};
+
+/** Properties by which issue comment connections can be ordered. */
+export enum IssueCommentOrderField {
+  /** Order issue comments by update time */
+  UpdatedAt = 'UPDATED_AT'
+}
 
 /** The connection type for Issue. */
 export type IssueConnection = {
@@ -8945,11 +8960,17 @@ export type Organization = Node & Actor & PackageOwner & ProjectOwner & Reposito
   readonly descriptionHTML?: Maybe<Scalars['String']>;
   /** The organization's public email. */
   readonly email?: Maybe<Scalars['String']>;
+  /** True if this user/organization has a GitHub Sponsors listing. */
+  readonly hasSponsorsListing: Scalars['Boolean'];
   readonly id: Scalars['ID'];
+  /** The interaction ability settings for this organization. */
+  readonly interactionAbility?: Maybe<RepositoryInteractionAbility>;
   /** The setting value for whether the organization has an IP allow list enabled. */
   readonly ipAllowListEnabledSetting: IpAllowListEnabledSettingValue;
   /** The IP addresses that are allowed to access resources owned by the organization. */
   readonly ipAllowListEntries: IpAllowListEntryConnection;
+  /** True if the viewer is sponsored by this user/organization. */
+  readonly isSponsoringViewer: Scalars['Boolean'];
   /** Whether the organization has verified its profile email and website, always false on Enterprise. */
   readonly isVerified: Scalars['Boolean'];
   /** Showcases a selection of repositories and gists that the profile owner has either curated or that have been selected automatically based on popularity. */
@@ -8998,7 +9019,7 @@ export type Organization = Node & Actor & PackageOwner & ProjectOwner & Reposito
   readonly resourcePath: Scalars['URI'];
   /** The Organization's SAML identity providers */
   readonly samlIdentityProvider?: Maybe<OrganizationIdentityProvider>;
-  /** The GitHub Sponsors listing for this user. */
+  /** The GitHub Sponsors listing for this user or organization. */
   readonly sponsorsListing?: Maybe<SponsorsListing>;
   /** This object's sponsorships as the maintainer. */
   readonly sponsorshipsAsMaintainer: SponsorshipConnection;
@@ -9028,8 +9049,12 @@ export type Organization = Node & Actor & PackageOwner & ProjectOwner & Reposito
   readonly viewerCanCreateRepositories: Scalars['Boolean'];
   /** Viewer can create teams on this organization. */
   readonly viewerCanCreateTeams: Scalars['Boolean'];
+  /** Whether or not the viewer is able to sponsor this user/organization. */
+  readonly viewerCanSponsor: Scalars['Boolean'];
   /** Viewer is an active member of this organization. */
   readonly viewerIsAMember: Scalars['Boolean'];
+  /** True if the viewer is sponsoring this user/organization. */
+  readonly viewerIsSponsoring: Scalars['Boolean'];
   /** The organization's public profile URL. */
   readonly websiteUrl?: Maybe<Scalars['URI']>;
 };
@@ -10488,6 +10513,7 @@ export type PullRequestAssigneesArgs = {
 
 /** A repository pull request. */
 export type PullRequestCommentsArgs = {
+  orderBy?: Maybe<IssueCommentOrder>;
   after?: Maybe<Scalars['String']>;
   before?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -13362,6 +13388,8 @@ export type Repository = Node & ProjectOwner & PackageOwner & Subscribable & Sta
   /** The repository's URL. */
   readonly homepageUrl?: Maybe<Scalars['URI']>;
   readonly id: Scalars['ID'];
+  /** The interaction ability settings for this repository. */
+  readonly interactionAbility?: Maybe<RepositoryInteractionAbility>;
   /** Indicates if the repository is unmaintained. */
   readonly isArchived: Scalars['Boolean'];
   /** Returns true if blank issue creation is allowed */
@@ -13962,6 +13990,38 @@ export type RepositoryInfo = {
 export type RepositoryInfoShortDescriptionHtmlArgs = {
   limit?: Maybe<Scalars['Int']>;
 };
+
+/** Repository interaction limit that applies to this object. */
+export type RepositoryInteractionAbility = {
+  /** The time the currently active limit expires. */
+  readonly expiresAt?: Maybe<Scalars['DateTime']>;
+  /** The current limit that is enabled on this object. */
+  readonly limit: RepositoryInteractionLimit;
+  /** The origin of the currently active interaction limit. */
+  readonly origin: RepositoryInteractionLimitOrigin;
+};
+
+/** A repository interaction limit. */
+export enum RepositoryInteractionLimit {
+  /** Users that have recently created their account will be unable to interact with the repository. */
+  ExistingUsers = 'EXISTING_USERS',
+  /** Users that have not previously committed to a repository’s default branch will be unable to interact with the repository. */
+  ContributorsOnly = 'CONTRIBUTORS_ONLY',
+  /** Users that are not collaborators will not be able to interact with the repository. */
+  CollaboratorsOnly = 'COLLABORATORS_ONLY',
+  /** No interaction limits are enabled. */
+  NoLimit = 'NO_LIMIT'
+}
+
+/** Indicates where an interaction limit is configured. */
+export enum RepositoryInteractionLimitOrigin {
+  /** A limit that is configured at the repository level. */
+  Repository = 'REPOSITORY',
+  /** A limit that is configured at the organization level. */
+  Organization = 'ORGANIZATION',
+  /** A limit that is configured at the user-wide level. */
+  User = 'USER'
+}
 
 /** An invitation for a user to be added to a repository. */
 export type RepositoryInvitation = Node & {
@@ -14895,12 +14955,20 @@ export type Sponsor = Organization | User;
 
 /** Entities that can be sponsored through GitHub Sponsors */
 export type Sponsorable = {
-  /** The GitHub Sponsors listing for this user. */
+  /** True if this user/organization has a GitHub Sponsors listing. */
+  readonly hasSponsorsListing: Scalars['Boolean'];
+  /** True if the viewer is sponsored by this user/organization. */
+  readonly isSponsoringViewer: Scalars['Boolean'];
+  /** The GitHub Sponsors listing for this user or organization. */
   readonly sponsorsListing?: Maybe<SponsorsListing>;
   /** This object's sponsorships as the maintainer. */
   readonly sponsorshipsAsMaintainer: SponsorshipConnection;
   /** This object's sponsorships as the sponsor. */
   readonly sponsorshipsAsSponsor: SponsorshipConnection;
+  /** Whether or not the viewer is able to sponsor this user/organization. */
+  readonly viewerCanSponsor: Scalars['Boolean'];
+  /** True if the viewer is sponsoring this user/organization. */
+  readonly viewerIsSponsoring: Scalars['Boolean'];
 };
 
 
@@ -15046,7 +15114,7 @@ export type Sponsorship = Node & {
    * @deprecated `Sponsorship.sponsor` will be removed. Use `Sponsorship.sponsorEntity` instead. Removal on 2020-10-01 UTC.
    */
   readonly sponsor?: Maybe<User>;
-  /** The user or organization that is sponsoring. Returns null if the sponsorship is private. */
+  /** The user or organization that is sponsoring, if you have permission to view them. */
   readonly sponsorEntity?: Maybe<Sponsor>;
   /** The entity that is being sponsored */
   readonly sponsorable: Sponsorable;
@@ -17497,9 +17565,13 @@ export type User = Node & Actor & PackageOwner & ProjectOwner & RepositoryOwner 
   readonly gistComments: GistCommentConnection;
   /** A list of the Gists the user has created. */
   readonly gists: GistConnection;
+  /** True if this user/organization has a GitHub Sponsors listing. */
+  readonly hasSponsorsListing: Scalars['Boolean'];
   /** The hovercard information for this user in a given context */
   readonly hovercard: Hovercard;
   readonly id: Scalars['ID'];
+  /** The interaction ability settings for this user. */
+  readonly interactionAbility?: Maybe<RepositoryInteractionAbility>;
   /** Whether or not this user is a participant in the GitHub Security Bug Bounty. */
   readonly isBountyHunter: Scalars['Boolean'];
   /** Whether or not this user is a participant in the GitHub Campus Experts Program. */
@@ -17512,6 +17584,8 @@ export type User = Node & Actor & PackageOwner & ProjectOwner & RepositoryOwner 
   readonly isHireable: Scalars['Boolean'];
   /** Whether or not this user is a site administrator. */
   readonly isSiteAdmin: Scalars['Boolean'];
+  /** True if the viewer is sponsored by this user/organization. */
+  readonly isSponsoringViewer: Scalars['Boolean'];
   /** Whether or not this user is the viewing user. */
   readonly isViewer: Scalars['Boolean'];
   /** A list of issue comments made by this user. */
@@ -17562,7 +17636,7 @@ export type User = Node & Actor & PackageOwner & ProjectOwner & RepositoryOwner 
   readonly resourcePath: Scalars['URI'];
   /** Replies this user has saved */
   readonly savedReplies?: Maybe<SavedReplyConnection>;
-  /** The GitHub Sponsors listing for this user. */
+  /** The GitHub Sponsors listing for this user or organization. */
   readonly sponsorsListing?: Maybe<SponsorsListing>;
   /** This object's sponsorships as the maintainer. */
   readonly sponsorshipsAsMaintainer: SponsorshipConnection;
@@ -17586,8 +17660,12 @@ export type User = Node & Actor & PackageOwner & ProjectOwner & RepositoryOwner 
   readonly viewerCanCreateProjects: Scalars['Boolean'];
   /** Whether or not the viewer is able to follow the user. */
   readonly viewerCanFollow: Scalars['Boolean'];
+  /** Whether or not the viewer is able to sponsor this user/organization. */
+  readonly viewerCanSponsor: Scalars['Boolean'];
   /** Whether or not this user is followed by the viewer. */
   readonly viewerIsFollowing: Scalars['Boolean'];
+  /** True if the viewer is sponsoring this user/organization. */
+  readonly viewerIsSponsoring: Scalars['Boolean'];
   /** A list of repositories the given user is watching. */
   readonly watching: RepositoryConnection;
   /** A URL pointing to the user's public website/blog. */
@@ -17676,6 +17754,7 @@ export type UserHovercardArgs = {
 
 /** A user is an individual's account on GitHub that owns repositories and can make new content. */
 export type UserIssueCommentsArgs = {
+  orderBy?: Maybe<IssueCommentOrder>;
   after?: Maybe<Scalars['String']>;
   before?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
