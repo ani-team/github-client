@@ -4,12 +4,11 @@ import "./index.scss";
 
 // !!! FIXME: specify types
 const User = (props: any) => {
-    console.log(props);
     const { avatarUrl, login, viewerIsFollowing, bio } = props as Partial<import("models").User>;
     return (
         <div className="user flex p-3">
             <div className="user__avatar">
-                <img src={avatarUrl} alt="avatar" width={90} />
+                <img src={avatarUrl} alt="avatar" width={90} className="rounded-full" />
             </div>
             <div className="user__details ml-2 flex flex-col flex-grow">
                 <a className="user__login" href={`/${login}`}>
