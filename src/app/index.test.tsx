@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import App from ".";
 
-test("renders without crashing", () => {
-    render(<App />);
+test("renders without crashing", async () => {
+    const screen = render(<App />);
+    expect(await screen.findByText("GITHUB-CLIENT")).toBeInTheDocument();
 });

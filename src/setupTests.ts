@@ -4,6 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom/extend-expect";
 
+// https://github.com/ant-design/ant-design/issues/21096
 Object.defineProperty(window, "matchMedia", {
     writable: true,
     value: jest.fn().mockImplementation((query) => ({
