@@ -17,9 +17,8 @@ import "./index.scss";
 const AuthPage = () => {
     const { login } = useAuth();
     const authorize = () => {
-        authorizeGithub().then((result) => {
-            login(result.credential.accessToken);
-        });
+        authorizeGithub().then(login);
+        // TODO: add catch handling!
     };
 
     return (

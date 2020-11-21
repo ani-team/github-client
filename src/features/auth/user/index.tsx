@@ -4,7 +4,6 @@ import { useAuth } from "../hooks";
 
 const User = () => {
     const { isAuth, logout, viewer } = useAuth();
-    const { login } = viewer || {};
 
     /**
      * FIXME: Использовать Link?
@@ -15,10 +14,10 @@ const User = () => {
             {isAuth && (
                 <>
                     {/* FIXME: use h3 instead */}
-                    <a className="m-4 text-white" href={`/${login}`}>
-                        {login}
+                    <a className="m-4 text-white" href={`/${viewer?.username}`}>
+                        {viewer?.username}
                     </a>
-                    <Button className="m-4" onClick={logout}>
+                    <Button className="m-4" href="/" onClick={logout}>
                         Logout
                     </Button>
                 </>
