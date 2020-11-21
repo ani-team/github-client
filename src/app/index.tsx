@@ -11,7 +11,7 @@ import "./index.scss";
  */
 const App = () => {
     return (
-        <div className="gc-app">
+        <div className="gc-app" data-testid="gc-app">
             <Layout>
                 <Header />
                 <Layout.Content className="gc-app-content">

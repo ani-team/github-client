@@ -4,5 +4,5 @@ import App from ".";
 
 test("renders without crashing", async () => {
     const screen = render(<App />);
-    expect(await screen.findByText("GITHUB-CLIENT")).toBeInTheDocument();
+    expect(await screen.findByTestId("gc-app")).toBeInTheDocument();
 });
