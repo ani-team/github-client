@@ -1,9 +1,11 @@
+import { AuthContext } from "../types";
 import firebase from "./init";
 
-type CredentialWithToken = { credential: { accessToken: string } };
-
-const isResultWithToken = (result: any): result is CredentialWithToken => {
-    return typeof result?.credential?.accessToken === "string";
+const isValidAuthContext = (ctx: any): ctx is AuthContext => {
+    return (
+        typeof ctx?.credential?.accessToken === "string" &&
+        typeof ctx?.additionalUserInfo.username === "string"
+    );
 };
 
 export default function authGithub() {
@@ -12,8 +14,15 @@ export default function authGithub() {
     return firebase
         .auth()
         .signInWithPopup(provider)
-        .then((result) => {
-            if (isResultWithToken(result)) return result;
-            return Promise.reject("Access token is not present");
+        .then((ctx) => {
+            if (!isValidAuthContext(ctx)) {
+                return Promise.reject("Not enough auth context was presented");
+            }
+
+            return {
+                accessToken: ctx.credential.accessToken,
+                // FIXME: more strict types
+                username: ctx.additionalUserInfo!.username!,
+            };
         });
 }

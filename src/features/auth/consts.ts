@@ -1,4 +1,9 @@
-/** @localStorage Токен авторизации */
-export const TOKEN_KEY = "GITHUB-CLIENT__TOKEN";
+import { UserCredential } from "./types";
 
-export const getToken = () => JSON.parse(localStorage.getItem(TOKEN_KEY) || "");
+/** @localStorage Учетные данные */
+export const CREDENTIAL_KEY = "GITHUB-CLIENT__CREDENTIAL";
+
+export const getToken = () => {
+    const credential = JSON.parse(localStorage.getItem(CREDENTIAL_KEY) || "") as UserCredential;
+    return credential.accessToken;
+};

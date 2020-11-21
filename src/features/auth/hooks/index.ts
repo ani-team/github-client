@@ -1,22 +1,21 @@
 import { useLocalStorage } from "shared/hooks";
-import { TOKEN_KEY } from "../consts";
-import { useViewerQuery } from "./queries.gen";
+import { CREDENTIAL_KEY } from "../consts";
+import { UserCredential } from "../types";
 
 export const useAuth = () => {
-    const [token, setToken] = useLocalStorage(TOKEN_KEY, "");
-    const { viewer } = useViewerQuery().data || {};
-
-    const isAuth = !!token;
+    const [viewer, setViewer] = useLocalStorage<UserCredential | null>(CREDENTIAL_KEY, null);
+    const isAuth = !!viewer;
 
     // FIXME: specify redirect urls?
-    const login = (token: string) => {
-        setToken(token);
-        window.location.href = "/";
+    // FIXME: prohibit access?
+    const login = (credential: UserCredential) => {
+        setViewer(credential);
+        window.location.href = `/${credential.username}`;
     };
+    // FIXME: prohibit access?
     const logout = () => {
-        setToken("");
-        window.location.href = "/auth";
+        setViewer(null);
     };
 
-    return { isAuth, token, login, logout, viewer };
+    return { isAuth, viewer, login, logout };
 };
