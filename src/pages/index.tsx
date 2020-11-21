@@ -20,7 +20,7 @@ const Routing = () => {
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/auth" component={Auth.Page} />
-                {/* <Redirect to="/" /> */}
+                <Redirect to="/" />
             </Switch>
         );
     }
