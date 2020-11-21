@@ -1,5 +1,5 @@
-.page-search {
-    .result__item {
+.search-results {
+    &__item {
         user-select: none;
         border-radius: 10px;
         box-shadow: 0 5px 0 var(--clr-gray--900);
@@ -12,9 +12,5 @@
         &:active {
             box-shadow: 0 5px 0 var(--clr-primary--active);
         }
-    }
-
-    .filters__item {
-        text-align: left;
     }
 }
