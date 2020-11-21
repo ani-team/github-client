@@ -1,8 +1,10 @@
 import { useLocalStorage } from "shared/hooks";
-import { TOKEN_KEY } from "./consts";
+import { TOKEN_KEY } from "../consts";
+import { useViewerQuery } from "./queries.gen";
 
 export const useAuth = () => {
     const [token, setToken] = useLocalStorage(TOKEN_KEY, "");
+    const { viewer } = useViewerQuery().data || {};
 
     const isAuth = !!token;
 
@@ -16,5 +18,5 @@ export const useAuth = () => {
         window.location.href = "/auth";
     };
 
-    return { isAuth, token, login, logout };
+    return { isAuth, token, login, logout, viewer };
 };

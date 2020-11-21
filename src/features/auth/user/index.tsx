@@ -1,12 +1,10 @@
 import React from "react";
 import { Button } from "antd";
 import { useAuth } from "../hooks";
-import { useViewerQuery } from "./queries.gen";
 
 const User = () => {
-    const { isAuth, logout } = useAuth();
-    const { data } = useViewerQuery();
-    const { login } = data?.viewer || {};
+    const { isAuth, logout, viewer } = useAuth();
+    const { login } = viewer || {};
 
     /**
      * FIXME: Использовать Link?
