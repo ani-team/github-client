@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { useAuth } from "../hooks";
+import { routes } from "../consts";
 
 const User = () => {
     const { isAuth, logout, viewer } = useAuth();
@@ -17,13 +18,13 @@ const User = () => {
                     <a className="m-4 text-white" href={`/${viewer?.username}`}>
                         {viewer?.username}
                     </a>
-                    <Button className="m-4" href="/" onClick={logout}>
+                    <Button className="m-4" href={routes.logout} onClick={logout}>
                         Logout
                     </Button>
                 </>
             )}
             {!isAuth && (
-                <Button className="m-4" href="/auth">
+                <Button className="m-4" href={routes.login}>
                     Sign In
                 </Button>
             )}

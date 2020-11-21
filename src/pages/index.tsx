@@ -18,9 +18,9 @@ const Routing = () => {
     if (!isAuth) {
         return (
             <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route exact path="/auth" component={Auth.Page} />
-                <Redirect to="/" />
+                <Route exact path={Auth.routes.main} component={HomePage} />
+                <Route exact path={Auth.routes.login} component={Auth.Page} />
+                <Redirect to={Auth.routes.main} />
             </Switch>
         );
     }
