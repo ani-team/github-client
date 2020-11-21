@@ -17,7 +17,7 @@ const Header = () => {
             <div className="nav flex-grow">
                 <a className="header__logo" href="/">
                     {/* FIXME: Временная иконка, поправить позже */}
-                    <img className="header__logo" src={ImgLogo} alt="logo" width={48} height={48} />
+                    <img className="header__logo" src={ImgLogo} alt="logo" width={32} height={32} />
                     {!isAuth && <span className="gc-app__title text-white m-4">GITHUB-CLIENT</span>}
                 </a>
                 {isAuth && (

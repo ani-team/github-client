@@ -1,7 +1,7 @@
 .gc-app .header {
     display: flex;
     align-items: center;
-    height: 64px !important;
+    height: 62px !important;
     overflow: hidden;
     font-size: var(--fsz);
     background-color: var(--clr-text) !important;
@@ -9,13 +9,8 @@
     &__logo {
         transition: var(--transition);
 
-        img {
-            // FIXME: temp
-            filter: grayscale(1) contrast(100%) invert(75%) brightness(100%);
-        }
-
         &:hover {
-            opacity: 0.6;
+            opacity: 0.7;
         }
     }
 
