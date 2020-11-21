@@ -1,0 +1,21 @@
+.common-details {
+    .language-tag {
+        margin-bottom: 4px;
+    }
+}
+
+.collaborator {
+    padding: 4px 0;
+    color: white;
+    background-color: var(--clr-primary);
+
+    img {
+        border-radius: 50%;
+    }
+
+    a.name {
+        margin-left: 12px;
+        font-weight: bold;
+        color: white;
+    }
+}

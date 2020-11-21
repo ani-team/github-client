@@ -9,7 +9,7 @@ export type RepoDefaultBranchQueryVariables = Types.Exact<{
 }>;
 
 
-export type RepoDefaultBranchQuery = { readonly repository?: Types.Maybe<{ readonly defaultBranchRef?: Types.Maybe<{ readonly name: string }> }> };
+export type RepoDefaultBranchQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly defaultBranchRef?: Types.Maybe<{ readonly name: string }> }> };
 
 export type RepoBranchInfoQueryVariables = Types.Exact<{
   owner: Types.Scalars['String'];
@@ -19,12 +19,13 @@ export type RepoBranchInfoQueryVariables = Types.Exact<{
 }>;
 
 
-export type RepoBranchInfoQuery = { readonly repository?: Types.Maybe<{ readonly url: any, readonly ref?: Types.Maybe<{ readonly name: string, readonly target?: Types.Maybe<{ readonly id: string, readonly messageHeadline: string, readonly author?: Types.Maybe<{ readonly date?: Types.Maybe<any>, readonly user?: Types.Maybe<{ readonly avatarUrl: any, readonly login: string }> }> }> }>, readonly object?: Types.Maybe<{ readonly entries?: Types.Maybe<ReadonlyArray<{ readonly name: string, readonly extension?: Types.Maybe<string>, readonly type: string }>> }>, readonly refs?: Types.Maybe<{ readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly name: string, readonly prefix: string }>>> }> }> };
+export type RepoBranchInfoQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly url: any, readonly ref?: Types.Maybe<{ readonly name: string, readonly target?: Types.Maybe<{ readonly id: string, readonly messageHeadline: string, readonly author?: Types.Maybe<{ readonly date?: Types.Maybe<any>, readonly user?: Types.Maybe<{ readonly avatarUrl: any, readonly login: string }> }> }> }>, readonly object?: Types.Maybe<{ readonly entries?: Types.Maybe<ReadonlyArray<{ readonly name: string, readonly extension?: Types.Maybe<string>, readonly type: string }>> }>, readonly refs?: Types.Maybe<{ readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly name: string, readonly prefix: string }>>> }> }> };
 
 
 export const RepoDefaultBranchDocument = gql`
     query RepoDefaultBranch($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
+    id
     defaultBranchRef {
       name
     }
@@ -61,6 +62,7 @@ export type RepoDefaultBranchQueryResult = Apollo.QueryResult<RepoDefaultBranchQ
 export const RepoBranchInfoDocument = gql`
     query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $expression: String!) {
   repository(owner: $owner, name: $name) {
+    id
     url
     ref(qualifiedName: $qualifiedName) {
       name
