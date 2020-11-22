@@ -1,5 +1,6 @@
 import React from "react";
-import { Skeleton, Empty } from "antd";
+import { Skeleton, Empty, Spin } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 import { Repo, User } from "shared/components";
 import { SearchType } from "models";
 import * as Params from "../params";
@@ -30,21 +31,38 @@ const SearchResults = () => {
     const { data, loading } = useSearchQuery({ variables: searchConfig });
 
     const isEmpty = !loading && (!data || data.search.edges?.length === 0);
+    const count =
+        searchConfig.type === SearchType.User
+            ? data?.search.userCount
+            : searchConfig.type === SearchType.Repository
+            ? data?.search.repositoryCount
+            : 0;
 
     return (
         <div className="search-results">
             <h2 className="search-results__toolbar flex">
                 <span className="search-results__label flex-grow">
-                    Results by <b>{searchConfig.queryClean}</b> search:
+                    {loading && (
+                        <Skeleton
+                            className="search-results__label-placeholder"
+                            paragraph={false}
+                            active
+                        />
+                    )}
+                    {!loading && (
+                        <>
+                            {count} results by <b>{searchConfig.queryClean}</b>:
+                        </>
+                    )}
                 </span>
-                <SortSelect />
+                <SortSelect className="search-results__sort-select ml-4" />
             </h2>
             <div className="search-results__list">
                 {loading && (
                     <>
-                        <Skeleton active />
-                        <Skeleton active />
-                        <Skeleton active />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
                     </>
                 )}
                 {/* FIXME: as wrapper? */}
@@ -79,6 +97,9 @@ const SearchResults = () => {
     );
 };
 
+const ResultItemPlaceholder = () => (
+    <Skeleton.Input className="search-results__item-placeholder mb-6" size="large" active />
+);
 const ResultItem = ({ children }: PropsWithChildren) => (
     <div className="search-results__item mb-6">{children}</div>
 );

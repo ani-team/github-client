@@ -1,15 +1,16 @@
 import React from "react";
+import cn from "classnames";
 import { Select } from "antd";
 import * as Params from "../params";
 
 /**
  * Select-меню для выбора сортировки поисковых результатов
  */
-const SortSelect = () => {
+const SortSelect = ({ className }: PropsWithClassName) => {
     const { setSort, availableVariants, currentVariant } = Params.useSearchSortParams();
 
     return (
-        <div className="search-results__sort-select sort-select">
+        <div className={cn("sort-select", className)}>
             <Select
                 value={currentVariant?.label}
                 onChange={(value) => {
