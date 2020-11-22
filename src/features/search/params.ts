@@ -66,6 +66,7 @@ export const createSortVariant = (field: string, label = field): SortVariant[] =
 
 export const defaultSortVariant: SortVariant = { label: "Best Match", o: undefined, s: undefined };
 
+// FIXME: simplify generating/declaring/work with sortVariants
 export const sortVariantsTotal: Record<SearchTypeStr, SortVariant[]> = {
     repositories: [
         defaultSortVariant,

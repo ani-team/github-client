@@ -6,4 +6,9 @@
     font-size: 14px;
     background-color: var(--clr-gray--100);
     border-radius: 10px;
+
+    &__avatar img {
+        border: 2px solid var(--clr-gray--200);
+        border-radius: 50%;
+    }
 }

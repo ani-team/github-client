@@ -8,7 +8,7 @@ const User = (props: any) => {
     return (
         <div className="user flex">
             <div className="user__avatar">
-                <img src={avatarUrl} alt="avatar" width={90} className="rounded-full" />
+                <img src={avatarUrl} alt="avatar" width={90} />
             </div>
             <div className="user__details ml-4 flex flex-col flex-grow">
                 <a className="user__login text-title" href={`/${login}`}>
