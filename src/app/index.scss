@@ -7,7 +7,8 @@
 .gc-app {
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    // !!! FIXME: temp (caus #86)
+    overflow: overlay;
     background-color: var(--clr-background);
 
     &-content {
