@@ -8,5 +8,5 @@ jobs:
         steps:
             - uses: styfle/cancel-workflow-action@0.6.0
               with:
-                  workflow_id: 1543518290
-                  access_token: 'd70d97689ae25f0eb61a1f49ee49fa4b9fc3c370'
+                  workflow_id: 'dev-pr.yml'
+                  access_token: 'd2a2770d1f854d7fc450d955ba7e2caf800d18ea'
