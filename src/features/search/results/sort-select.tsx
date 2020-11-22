@@ -1,6 +1,5 @@
 import React from "react";
 import { Select } from "antd";
-import { SearchType, OrderDirection } from "models";
 import * as Params from "../params";
 
 /**
@@ -12,7 +11,7 @@ const SortSelect = () => {
     return (
         <div className="search-results__sort-select sort-select">
             <Select
-                defaultValue={currentVariant?.label}
+                value={currentVariant?.label}
                 onChange={(value) => {
                     // FIXME: validate
                     setSort(availableVariants.find(({ label }) => label === value)!);
