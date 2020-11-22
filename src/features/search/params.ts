@@ -1,7 +1,9 @@
 import { useQueryParam, StringParam, withDefault } from "use-query-params";
+import qs from "query-string";
 import { SearchType } from "models";
 
 // FIXME: split by files?
+// FIXME: more strict types
 
 //#region SearchQuery
 /**
@@ -19,7 +21,9 @@ export const useSearchQueryParam = () => {
 
 //#region SearchType
 
-export const typesMap: Record<string, SearchType> = {
+type SearchTypeStr = "repositories" | "users";
+
+export const typesMap: Record<SearchTypeStr, SearchType> = {
     repositories: SearchType.Repository,
     users: SearchType.User,
 };
@@ -32,7 +36,7 @@ export const useSearchTypeParam = () => {
         "type",
         withDefault(StringParam, "repositories"),
     );
-    const searchTypeEnum = typesMap[searchType];
+    const searchTypeEnum = typesMap[searchType as SearchTypeStr];
 
     return {
         searchType,
@@ -62,9 +66,7 @@ export const createSortVariant = (field: string, label = field): SortVariant[] =
 
 export const defaultSortVariant: SortVariant = { label: "Best Match", o: undefined, s: undefined };
 
-export const sortVariants: {
-    [key: string]: SortVariant[];
-} = {
+export const sortVariantsTotal: Record<SearchTypeStr, SortVariant[]> = {
     repositories: [
         defaultSortVariant,
         ...createSortVariant("stars"),
@@ -85,13 +87,15 @@ export const sortVariants: {
 export const useSearchSortParams = () => {
     const [sortOrder, setSortOrder] = useQueryParam("o", withDefault(StringParam, ""));
     const [sortField, setSortField] = useQueryParam("s", withDefault(StringParam, ""));
+    const { searchType } = useSearchTypeParam();
+    const sortVariants = sortVariantsTotal[searchType as SearchTypeStr] || [];
 
     const setSort = ({ s, o }: SortParams) => {
         setSortField(s);
         setSortOrder(o);
     };
 
-    return { sortOrder, sortField, setSort };
+    return { sortOrder, sortField, sortVariants, setSort };
 };
 
 //#endregion Sort
