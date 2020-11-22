@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Input } from "antd";
 import * as qs from "query-string";
 import { Auth } from "features";
-import ImgLogo from "./logo.png";
+import { ReactComponent as IcLogo } from "./logo.svg";
 import "./index.scss";
 
 const Header = () => {
@@ -14,10 +14,9 @@ const Header = () => {
 
     return (
         <Layout.Header className="header">
-            <div className="nav flex-grow">
-                <a className="header__logo" href="/">
-                    {/* FIXME: Временная иконка, поправить позже */}
-                    <img className="header__logo" src={ImgLogo} alt="logo" width={48} height={48} />
+            <div className="nav flex flex-grow items-center">
+                <a className="header__logo flex items-center" href="/">
+                    <IcLogo />
                     {!isAuth && <span className="gc-app__title text-white m-4">GITHUB-CLIENT</span>}
                 </a>
                 {isAuth && (

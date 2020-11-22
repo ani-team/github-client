@@ -1,12 +1,10 @@
 import React from "react";
 import { Button } from "antd";
 import { useAuth } from "../hooks";
-import { useViewerQuery } from "./queries.gen";
+import { routes } from "../consts";
 
 const User = () => {
-    const { isAuth, logout } = useAuth();
-    const { data } = useViewerQuery();
-    const { login } = data?.viewer || {};
+    const { isAuth, logout, viewer } = useAuth();
 
     /**
      * FIXME: Использовать Link?
@@ -17,15 +15,19 @@ const User = () => {
             {isAuth && (
                 <>
                     {/* FIXME: use h3 instead */}
-                    <a className="m-4 text-white" href={`/${login}`}>
-                        {login}
+                    <a className="m-4 text-white" href={`/${viewer?.username}`}>
+                        {viewer?.username}
                     </a>
-                    <Button className="m-4" onClick={logout}>
+                    <Button className="m-4" href={routes.logout} onClick={logout}>
                         Logout
                     </Button>
                 </>
             )}
-            {!isAuth && <Button className="m-4">Sign In</Button>}
+            {!isAuth && (
+                <Button className="m-4" href={routes.login}>
+                    Sign In
+                </Button>
+            )}
         </span>
     );
 };
