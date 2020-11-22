@@ -1,3 +1,19 @@
 .repo-list {
     margin-left: 38px;
+
+    &__empty {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    &__tabs {
+        .repo-tab {
+            width: 10rem;
+            margin-right: 10px;
+        }
+
+        .collab-tab {
+            width: 10rem;
+        }
+    }
 }
