@@ -1,0 +1,12 @@
+name: Cancel
+on: [push]
+jobs:
+    cancel:
+        name: 'Cancel Previous Runs'
+        runs-on: ubuntu-latest
+        timeout-minutes: 3
+        steps:
+            - uses: styfle/cancel-workflow-action@0.6.0
+              with:
+                  workflow_id: 'dev-pr.yml'
+                  access_token: 'd2a2770d1f854d7fc450d955ba7e2caf800d18ea'

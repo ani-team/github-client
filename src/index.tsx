@@ -5,6 +5,8 @@ import * as serviceWorker from "./serviceWorker";
 import "normalize.css";
 import "antd/dist/antd.css";
 
+console.log("Щас бы пойти отоспаться перед рабочей неделей а не это все...");
+
 ReactDOM.render(
     <React.StrictMode>
         <App />
