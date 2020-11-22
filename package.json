@@ -35,6 +35,7 @@
     "test": "npm run react:test && npm run lint:test",
     "react:test": "react-scripts test --watchAll=false",
     "react:test--watch": "react-scripts test --watchAll=true",
+    "react:test--coverage": "react-scripts test --coverage",
     "lint:test": "eslint src && stylelint **/*.scss",
     "lint:fix": "eslint src --fix && stylelint **/*.scss --fix",
     "eject": "react-scripts eject",
