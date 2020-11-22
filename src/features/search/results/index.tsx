@@ -1,6 +1,5 @@
 import React from "react";
-import { Skeleton, Empty, Spin } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import { Skeleton, Empty } from "antd";
 import { Repo, User } from "shared/components";
 import { SearchType } from "models";
 import * as Params from "../params";
