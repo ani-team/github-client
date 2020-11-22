@@ -1,8 +1,8 @@
-import { CopyOutlined } from "@ant-design/icons";
-import React, { useCallback } from "react";
-import { Button, Dropdown, Input, Popover } from "antd";
+import { Button, Dropdown, Popover } from "antd";
+import React from "react";
 import { RepoIdentity } from "models";
 import BranchesMenu from "../branches-menu";
+import CloneMenu from "./clone-menu";
 import "./index.scss";
 
 type Props = {
@@ -10,33 +10,6 @@ type Props = {
     branches: Array<{ name: string; prefix: string }>;
     activeBranch: string;
 };
-
-function CloneContent({ url }: { url: string }) {
-    const copyUrl = useCallback(() => {
-        const el = document.getElementById("clone-field") as HTMLInputElement | null;
-        if (!el) return;
-        el.focus();
-        el.select();
-        try {
-            document.execCommand("copy");
-        } finally {
-            el.blur();
-        }
-    }, []);
-
-    return (
-        <div className="clone-content">
-            <Input
-                id="clone-field"
-                value={url}
-                onClick={(e) => (e.target as HTMLInputElement).select()}
-                addonAfter={
-                    <Button onClick={copyUrl} icon={<CopyOutlined className="copy-button" />} />
-                }
-            />
-        </div>
-    );
-}
 
 function RepoToolbar({ repo, branches, activeBranch }: Props) {
     return (
@@ -53,7 +26,7 @@ function RepoToolbar({ repo, branches, activeBranch }: Props) {
                 placement="bottomRight"
                 title="Clone this repository"
                 trigger="click"
-                content={<CloneContent url={`https://github.com/${repo.owner}/${repo.name}.git`} />}
+                content={<CloneMenu url={`https://github.com/${repo.owner}/${repo.name}.git`} />}
             >
                 <Button className="clone-btn">Clone</Button>
             </Popover>
