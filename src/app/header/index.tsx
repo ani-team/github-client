@@ -35,6 +35,8 @@ const Header = () => {
                                         // @ts-ignore FIXME: specify types
                                         q: target.value,
                                         type: getParams().type,
+                                        s: getParams().s,
+                                        o: getParams().o,
                                     })}`,
                                 );
                             }
