@@ -33,3 +33,13 @@ export const useSearchTypeParam = () => {
         setSearchType,
     };
 };
+
+/**
+ * @qparam Сортировка поисковых результатов
+ */
+export const useSearchSortParams = () => {
+    const [sortOrder, setSortOrder] = useQueryParam("o", withDefault(StringParam, ""));
+    const [sortField, setSortField] = useQueryParam("s", withDefault(StringParam, ""));
+
+    return { sortOrder, setSortOrder, sortField, setSortField };
+};

@@ -2,29 +2,38 @@ import React from "react";
 import { Skeleton, Empty } from "antd";
 import { Repo, User } from "shared/components";
 import { SearchType } from "models";
-import { useSearchQueryParam, useSearchTypeParam } from "../params";
+import * as Params from "../params";
 import { useSearchQuery, RepoFieldsFragment, UserFieldsFragment } from "./queries.gen";
 import "./index.scss";
+
+/**
+ * @hook Работа с поиском, фильтрацией и сортировкой
+ */
+const useSearch = () => {
+    const { sortOrder, sortField } = Params.useSearchSortParams();
+    const { searchQuery } = Params.useSearchQueryParam();
+    const { searchTypeEnum } = Params.useSearchTypeParam();
+
+    return {
+        type: searchTypeEnum,
+        query: `${searchQuery} sort:${sortField}-${sortOrder}`,
+        queryClean: searchQuery,
+    };
+};
 
 /**
  * @feature Результаты поиска
  */
 const SearchResults = () => {
-    const { searchQuery } = useSearchQueryParam();
-    const { searchTypeEnum } = useSearchTypeParam();
-    const { data, loading } = useSearchQuery({
-        variables: {
-            type: searchTypeEnum,
-            query: searchQuery,
-        },
-    });
+    const searchConfig = useSearch();
+    const { data, loading } = useSearchQuery({ variables: searchConfig });
 
     const isEmpty = !loading && (!data || data.search.edges?.length === 0);
 
     return (
         <div className="search-results">
             <h2 className="search-results__toolbar">
-                Results by <b>{searchQuery}</b> search:
+                Results by <b>{searchConfig.queryClean}</b> search:
             </h2>
             <div className="search-results__list">
                 {loading && (
@@ -42,7 +51,7 @@ const SearchResults = () => {
                     .map((edge) => {
                         // !!! FIXME: specify types
                         // FIXME: simplify
-                        if (searchTypeEnum === SearchType.Repository) {
+                        if (searchConfig.type === SearchType.Repository) {
                             const data = edge?.node as RepoFieldsFragment;
                             return (
                                 <ResultItem key={data.id}>
@@ -50,7 +59,7 @@ const SearchResults = () => {
                                 </ResultItem>
                             );
                         }
-                        if (searchTypeEnum === SearchType.User) {
+                        if (searchConfig.type === SearchType.User) {
                             const data = edge?.node as UserFieldsFragment;
                             return (
                                 <ResultItem key={data.id}>
