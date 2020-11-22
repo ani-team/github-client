@@ -1,7 +1,9 @@
+import { Button, Dropdown, Popover } from "antd";
 import React from "react";
-import { Button, Dropdown } from "antd";
 import { RepoIdentity } from "models";
 import BranchesMenu from "../branches-menu";
+import CloneMenu from "./clone-menu";
+import "./index.scss";
 
 type Props = {
     repo: RepoIdentity;
@@ -20,7 +22,14 @@ function RepoToolbar({ repo, branches, activeBranch }: Props) {
             >
                 <Button className="branch-dropdown">{activeBranch}</Button>
             </Dropdown>
-            <Button className="clone-btn">Clone</Button>
+            <Popover
+                placement="bottomRight"
+                title="Clone this repository"
+                trigger="click"
+                content={<CloneMenu url={`https://github.com/${repo.owner}/${repo.name}.git`} />}
+            >
+                <Button className="clone-btn">Clone</Button>
+            </Popover>
         </div>
     );
 }
