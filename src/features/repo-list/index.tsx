@@ -19,28 +19,25 @@ const typesMap: Record<string, RepositoryAffiliation> = {
 
 const RepoList = ({ username }: Props) => {
     const [tab, setTab] = useQueryParam("tab", withDefault(StringParam, "repositories"));
-    const typeEnum = [typesMap[tab]];
+    const typeEnum = typesMap[tab];
 
     const { data, loading } = useReposQuery({
-        variables: { login: username, ownerAffiliations: typeEnum },
+        variables: { login: username, ownerAffiliations: [typeEnum] },
     });
     const length = data?.user?.repositories.edges?.length;
 
     return (
         <div className="repo-list">
             <Tabs className="repo-list__tabs">
-                <Tabs.Item
-                    name="Repositories"
-                    className="repo-tab"
-                    active={tab === "repositories" || tab === undefined}
-                    onClick={() => setTab("repositories")}
-                />
-                <Tabs.Item
-                    name="Collabs"
-                    className="collab-tab"
-                    active={tab === "collabs"}
-                    onClick={() => setTab("collabs")}
-                />
+                {Object.keys(typesMap).map((type) => (
+                    <Tabs.Item
+                        key={type}
+                        name={type.charAt(0).toUpperCase() + type.slice(1)}
+                        className="repo-list__tab"
+                        active={tab === type}
+                        onClick={() => setTab(type)}
+                    />
+                ))}
             </Tabs>
 
             <div className="repo-list__items">
@@ -58,7 +55,7 @@ const RepoList = ({ username }: Props) => {
                         <Repo key={index} {...edge?.node} />
                     ))
                 ) : (
-                    <h2 className="repo-list__empty">
+                    <h2 className="repo-list__placeholder">
                         {username} doesn’t have any public repositories yet.
                     </h2>
                 )}
