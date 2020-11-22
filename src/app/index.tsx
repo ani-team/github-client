@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 import Routing from "pages";
+import { setupRouter } from "./router";
 import withApollo from "./with-apollo";
 import Header from "./header";
 import "./index.scss";
@@ -22,4 +23,4 @@ const App = () => {
     );
 };
 
-export default withApollo(App);
+export default setupRouter(withApollo(App));
