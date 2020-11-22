@@ -39,7 +39,12 @@ function RepoDetails({ repo: identity }: Props) {
                 <div>{repository?.description}</div>
                 <br />
                 {repository?.homepageUrl && (
-                    <a href={repository.homepageUrl} target="_blank" rel="noopener noreferrer">
+                    <a
+                        href={repository.homepageUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="homepage-link"
+                    >
                         {repository.homepageUrl}
                     </a>
                 )}
