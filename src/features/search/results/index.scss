@@ -1,0 +1,37 @@
+.search-results {
+    &__toolbar {
+        height: 60px;
+        margin-bottom: 8px;
+    }
+
+    &__label {
+        &-placeholder {
+            max-width: 50%;
+        }
+    }
+
+    &__item {
+        user-select: none;
+        border-radius: 10px;
+        box-shadow: 0 5px 0 var(--clr-gray--900);
+        transition: var(--transition);
+
+        &:hover {
+            box-shadow: 0 5px 0 var(--clr-primary--hover);
+        }
+
+        &:active {
+            box-shadow: 0 5px 0 var(--clr-primary--active);
+        }
+
+        &-placeholder {
+            width: 100% !important;
+            height: 140px !important;
+            border-radius: 10px;
+        }
+    }
+
+    .repo {
+        margin: 0;
+    }
+}

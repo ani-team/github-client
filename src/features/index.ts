@@ -7,4 +7,5 @@ export * from "./repo-explorer";
 export { default as RepoDetails } from "./repo-details";
 export { default as UserInfo } from "./user-info";
 export { default as RepoList } from "./repo-list";
+export { default as Search } from "./search";
 export { Auth };
