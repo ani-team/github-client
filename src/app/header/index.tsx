@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <Layout.Header className="header">
             <div className="nav flex flex-grow items-center">
-                <a className="header__logo" href="/">
+                <a className="header__logo flex items-center" href="/">
                     <IcLogo />
                     {!isAuth && <span className="gc-app__title text-white m-4">GITHUB-CLIENT</span>}
                 </a>
