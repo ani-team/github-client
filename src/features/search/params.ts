@@ -1,6 +1,9 @@
 import { useQueryParam, StringParam, withDefault } from "use-query-params";
 import { SearchType } from "models";
 
+// FIXME: split by files?
+
+//#region SearchQuery
 /**
  * @qparam Поисковой запрос
  */
@@ -11,6 +14,10 @@ export const useSearchQueryParam = () => {
         setSearchQuery,
     };
 };
+
+//#endregion SearchQuery
+
+//#region SearchType
 
 export const typesMap: Record<string, SearchType> = {
     repositories: SearchType.Repository,
@@ -34,35 +41,44 @@ export const useSearchTypeParam = () => {
     };
 };
 
-type Ordering = {
-    o: string | undefined;
+//#endregion SearchType
+
+//#region Sort
+type SortOrder = "asc" | "desc";
+type SortParams = {
+    o: SortOrder | undefined;
     s: string | undefined;
 };
-
-export const orderings: {
-    [key: string]: {
-        [key: string]: Ordering;
-    };
-} = {
-    repositories: {
-        "Best Match": { o: undefined, s: undefined },
-        "Most stars": { o: "desc", s: "stars" },
-        "Fewest stars": { o: "asc", s: "stars" },
-        "Most forks": { o: "desc", s: "forks" },
-        "Fewest forks": { o: "asc", s: "forks" },
-        "Recently updated": { o: "desc", s: "updated" },
-        "Least recently updated": { o: "asc", s: "updated" },
-    },
-    users: {
-        "Best Match": { o: undefined, s: undefined },
-        "Most followers": { o: "desc", s: "followers" },
-        "Fewest followers": { o: "asc", s: "followers" },
-        "Most recently joined": { o: "desc", s: "joined" },
-        "Least recently joined": { o: "asc", s: "joined" },
-        "Most repositories": { o: "desc", s: "repositories" },
-        "Fewest repositories": { o: "asc", s: "repositories" },
-    },
+type SortVariant = SortParams & {
+    label: string;
 };
+
+export const createSortVariant = (field: string, label = field): SortVariant[] => {
+    return [
+        { label: `Most ${label}`, o: "desc", s: field },
+        { label: `Least ${label}`, o: "asc", s: field },
+    ];
+};
+
+export const defaultSortVariant: SortVariant = { label: "Best Match", o: undefined, s: undefined };
+
+export const sortVariants: {
+    [key: string]: SortVariant[];
+} = {
+    repositories: [
+        defaultSortVariant,
+        ...createSortVariant("stars"),
+        ...createSortVariant("forks"),
+        ...createSortVariant("updated", "recently updated"),
+    ],
+    users: [
+        defaultSortVariant,
+        ...createSortVariant("followers"),
+        ...createSortVariant("joined", "recently joined"),
+        ...createSortVariant("repositories"),
+    ],
+};
+
 /**
  * @qparam Сортировка поисковых результатов
  */
@@ -70,9 +86,12 @@ export const useSearchSortParams = () => {
     const [sortOrder, setSortOrder] = useQueryParam("o", withDefault(StringParam, ""));
     const [sortField, setSortField] = useQueryParam("s", withDefault(StringParam, ""));
 
-    const setSort = ({ s, o }: Ordering) => {
+    const setSort = ({ s, o }: SortParams) => {
         setSortField(s);
         setSortOrder(o);
     };
+
     return { sortOrder, sortField, setSort };
 };
+
+//#endregion Sort
