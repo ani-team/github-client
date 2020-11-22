@@ -1,0 +1,24 @@
+query RepoDetails($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    id
+    name
+    description
+    languages(first: 6, orderBy: {field: SIZE, direction: DESC}) {
+      nodes {
+        id
+        name
+        color
+      }
+      totalCount
+    }
+    collaborators(first: 10) {
+      nodes {
+        id
+        name
+        login
+        avatarUrl(size: 36)
+      }
+    }
+    homepageUrl
+  }
+}

@@ -37,7 +37,7 @@ const RepositoryPage = (props: Props) => {
                     <RepoExplorer repo={identity} />
                 </Col>
                 <Col span={5} offset={1}>
-                    <RepoDetails />
+                    <RepoDetails repo={identity} />
                 </Col>
             </Row>
         </div>
