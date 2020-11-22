@@ -4,6 +4,7 @@ import { Repo, User } from "shared/components";
 import { SearchType } from "models";
 import * as Params from "../params";
 import { useSearchQuery, RepoFieldsFragment, UserFieldsFragment } from "./queries.gen";
+import SortSelect from "./sort-select";
 import "./index.scss";
 
 /**
@@ -32,8 +33,11 @@ const SearchResults = () => {
 
     return (
         <div className="search-results">
-            <h2 className="search-results__toolbar">
-                Results by <b>{searchConfig.queryClean}</b> search:
+            <h2 className="search-results__toolbar flex">
+                <span className="search-results__label flex-grow">
+                    Results by <b>{searchConfig.queryClean}</b> search:
+                </span>
+                <SortSelect />
             </h2>
             <div className="search-results__list">
                 {loading && (

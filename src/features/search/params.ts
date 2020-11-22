@@ -34,6 +34,35 @@ export const useSearchTypeParam = () => {
     };
 };
 
+type Ordering = {
+    o: string | undefined;
+    s: string | undefined;
+};
+
+export const orderings: {
+    [key: string]: {
+        [key: string]: Ordering;
+    };
+} = {
+    repositories: {
+        "Best Match": { o: undefined, s: undefined },
+        "Most stars": { o: "desc", s: "stars" },
+        "Fewest stars": { o: "asc", s: "stars" },
+        "Most forks": { o: "desc", s: "forks" },
+        "Fewest forks": { o: "asc", s: "forks" },
+        "Recently updated": { o: "desc", s: "updated" },
+        "Least recently updated": { o: "asc", s: "updated" },
+    },
+    users: {
+        "Best Match": { o: undefined, s: undefined },
+        "Most followers": { o: "desc", s: "followers" },
+        "Fewest followers": { o: "asc", s: "followers" },
+        "Most recently joined": { o: "desc", s: "joined" },
+        "Least recently joined": { o: "asc", s: "joined" },
+        "Most repositories": { o: "desc", s: "repositories" },
+        "Fewest repositories": { o: "asc", s: "repositories" },
+    },
+};
 /**
  * @qparam Сортировка поисковых результатов
  */
@@ -41,5 +70,9 @@ export const useSearchSortParams = () => {
     const [sortOrder, setSortOrder] = useQueryParam("o", withDefault(StringParam, ""));
     const [sortField, setSortField] = useQueryParam("s", withDefault(StringParam, ""));
 
-    return { sortOrder, setSortOrder, sortField, setSortField };
+    const setSort = ({ s, o }: Ordering) => {
+        setSortField(s);
+        setSortOrder(o);
+    };
+    return { sortOrder, sortField, setSort };
 };
