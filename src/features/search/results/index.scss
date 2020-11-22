@@ -1,4 +1,9 @@
 .search-results {
+    &__toolbar {
+        height: 60px;
+        margin-bottom: 8px;
+    }
+
     &__item {
         user-select: none;
         border-radius: 10px;
@@ -12,5 +17,9 @@
         &:active {
             box-shadow: 0 5px 0 var(--clr-primary--active);
         }
+    }
+
+    .repo {
+        margin: 0;
     }
 }

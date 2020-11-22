@@ -6,7 +6,7 @@ import "./index.scss";
 const User = (props: any) => {
     const { avatarUrl, login, viewerIsFollowing, bio } = props as Partial<import("models").User>;
     return (
-        <div className="user flex p-3">
+        <div className="user flex">
             <div className="user__avatar">
                 <img src={avatarUrl} alt="avatar" width={90} className="rounded-full" />
             </div>

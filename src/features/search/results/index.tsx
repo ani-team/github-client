@@ -67,7 +67,7 @@ const SearchResults = () => {
 };
 
 const ResultItem = ({ children }: PropsWithChildren) => (
-    <div className="search-results__item mb-4">{children}</div>
+    <div className="search-results__item mb-6">{children}</div>
 );
 
 export default SearchResults;
