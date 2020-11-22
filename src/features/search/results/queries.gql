@@ -23,6 +23,8 @@ fragment UserFields on User {
 
 query Search($query: String!, $type: SearchType!) {
   search(query: $query, type: $type, first: 50) {
+    userCount
+    repositoryCount
     edges {
       node {
         ...RepoFields
