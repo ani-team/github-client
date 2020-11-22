@@ -1,5 +1,8 @@
 import React from "react";
+import { StringParam, useQueryParam, withDefault } from "use-query-params";
+import { Skeleton } from "antd";
 import { Repo, Tabs } from "shared/components";
+import { RepositoryAffiliation } from "models";
 import { useReposQuery } from "./queries.gen";
 import "./index.scss";
 
@@ -7,23 +10,55 @@ type Props = {
     username: string;
 };
 
+const typesMap: Record<string, RepositoryAffiliation> = {
+    repositories: RepositoryAffiliation.Owner,
+    collabs: RepositoryAffiliation.Collaborator,
+};
+
 // FIXME: rename to UserRepoList? (coz - user as dep)
 
 const RepoList = ({ username }: Props) => {
-    const { data } = useReposQuery({
-        variables: { login: username },
+    const [tab, setTab] = useQueryParam("tab", withDefault(StringParam, "repositories"));
+    const typeEnum = typesMap[tab];
+
+    const { data, loading } = useReposQuery({
+        variables: { login: username, ownerAffiliations: [typeEnum] },
     });
+    const length = data?.user?.repositories.edges?.length;
 
     return (
         <div className="repo-list">
             <Tabs className="repo-list__tabs">
-                <Tabs.Item name="Repositories" />
-            </Tabs>
-            <div className="repo-list__items">
-                {data?.user?.repositories.edges?.map((edge, index) => (
-                    // FIXME: destruct more elegant later
-                    <Repo key={index} {...edge?.node} />
+                {Object.keys(typesMap).map((type) => (
+                    <Tabs.Item
+                        key={type}
+                        name={type.charAt(0).toUpperCase() + type.slice(1)}
+                        className="repo-list__tab"
+                        active={tab === type}
+                        onClick={() => setTab(type)}
+                    />
                 ))}
+            </Tabs>
+
+            <div className="repo-list__items">
+                {loading && (
+                    <>
+                        <Skeleton active />
+                        <Skeleton active />
+                        <Skeleton active />
+                    </>
+                )}
+
+                {length !== 0 ? (
+                    data?.user?.repositories.edges?.map((edge, index) => (
+                        // FIXME: destruct more elegant later
+                        <Repo key={index} {...edge?.node} />
+                    ))
+                ) : (
+                    <h2 className="repo-list__placeholder">
+                        {username} doesn’t have any public repositories yet.
+                    </h2>
+                )}
             </div>
         </div>
     );

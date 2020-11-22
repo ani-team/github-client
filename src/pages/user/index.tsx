@@ -16,10 +16,10 @@ const UserPage = (props: Props) => {
 
     return (
         <Row className="page page-user">
-            <Col span={7} className="user-info">
+            <Col span={6} className="user-info">
                 <UserInfo username={username} />
             </Col>
-            <Col span={17} className="repos">
+            <Col span={18} className="repos">
                 <RepoList username={username} />
             </Col>
         </Row>
