@@ -8,7 +8,7 @@ import { Search } from "features";
 const SearchPage = () => {
     return (
         <Row className="page page-search">
-            <Col span={16}>
+            <Col span={14}>
                 <Search.Results />
             </Col>
             <Col span={7} className="ml-4">
