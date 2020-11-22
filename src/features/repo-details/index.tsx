@@ -17,11 +17,11 @@ type Collaborator = {
     avatarUrl: string;
 };
 
-function RepoDetails({ repo }: Props) {
+function RepoDetails({ repo: identity }: Props) {
     const { data } = useRepoDetailsQuery({
         variables: {
-            name: repo.name,
-            owner: repo.owner,
+            name: identity.name,
+            owner: identity.owner,
         },
         errorPolicy: "all",
     });
@@ -35,27 +35,27 @@ function RepoDetails({ repo }: Props) {
     );
     return (
         <div className="flex flex-col">
-            <DetailsCard className="common-details" title={repo.name}>
+            <DetailsCard className="common-details" title={identity.name}>
                 <div>{repository?.description}</div>
                 <br />
-                {repository?.homepageUrl != null && (
+                {repository?.homepageUrl && (
                     <a href={repository.homepageUrl} target="_blank" rel="noopener noreferrer">
                         {repository.homepageUrl}
                     </a>
                 )}
-                {languages?.map((lang) => (
-                    <Tag className="language-tag" key={lang.id} color={lang.color || "#165694"}>
-                        {lang.name}
+                {languages?.map(({ id, name, color }) => (
+                    <Tag className="language-tag" key={id} color={color || "#165694"}>
+                        {name}
                     </Tag>
                 ))}
             </DetailsCard>
-            {collaborators != null && (
+            {collaborators && (
                 <DetailsCard className="mt-4" title="Collaborators" primary>
-                    {collaborators?.map((collaborator) => (
-                        <div key={collaborator.id} className="collaborator">
-                            <img src={collaborator.avatarUrl} alt="avatar" />
-                            <Link className="name" to={`/${collaborator.login}`}>
-                                {collaborator.name}
+                    {collaborators?.map(({ id, name, login, avatarUrl }) => (
+                        <div key={id} className="collaborator">
+                            <img src={avatarUrl} alt="avatar" />
+                            <Link className="name" to={`/${login}`}>
+                                {name}
                             </Link>
                         </div>
                     ))}
