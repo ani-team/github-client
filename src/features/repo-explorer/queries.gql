@@ -1,5 +1,6 @@
 query RepoDefaultBranch($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
+    id
     defaultBranchRef {
       name
     }
@@ -9,6 +10,7 @@ query RepoDefaultBranch($owner: String!, $name: String!) {
 
 query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $expression: String!) {
   repository(owner: $owner, name: $name) {
+    id
     url
     ref(qualifiedName: $qualifiedName) {
       name

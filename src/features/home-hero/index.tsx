@@ -11,7 +11,7 @@ const HomeHero = () => {
                     Github in minimalistic design. Built for developers.
                 </h1>
                 <p className="home-hero__description">Welcome to our GithubClient!</p>
-                {/* FIXME: redirect to other page if user isAuth*/}
+                {/* FIXME: specify link from Auth.feature (but on page or another level - without hardcoding) */}
                 <a className="home-hero__button" href="/auth">
                     START NOW
                 </a>
