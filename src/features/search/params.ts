@@ -1,5 +1,4 @@
 import { useQueryParam, StringParam, withDefault } from "use-query-params";
-import qs from "query-string";
 import { SearchType } from "models";
 
 // FIXME: split by files?
@@ -88,14 +87,15 @@ export const useSearchSortParams = () => {
     const [sortOrder, setSortOrder] = useQueryParam("o", withDefault(StringParam, ""));
     const [sortField, setSortField] = useQueryParam("s", withDefault(StringParam, ""));
     const { searchType } = useSearchTypeParam();
-    const sortVariants = sortVariantsTotal[searchType as SearchTypeStr] || [];
+    const availableVariants = sortVariantsTotal[searchType as SearchTypeStr] || [];
+    const currentVariant = availableVariants.find(({ o, s }) => o === sortOrder && s === sortField);
 
     const setSort = ({ s, o }: SortParams) => {
         setSortField(s);
         setSortOrder(o);
     };
 
-    return { sortOrder, sortField, sortVariants, setSort };
+    return { sortOrder, sortField, availableVariants, currentVariant, setSort };
 };
 
 //#endregion Sort

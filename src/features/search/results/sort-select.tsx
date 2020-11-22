@@ -7,19 +7,19 @@ import * as Params from "../params";
  * Select-меню для выбора сортировки поисковых результатов
  */
 const SortSelect = () => {
-    const { setSort, sortVariants } = Params.useSearchSortParams();
+    const { setSort, availableVariants, currentVariant } = Params.useSearchSortParams();
 
     return (
         <div className="search-results__sort-select sort-select">
             <Select
-                defaultValue={Params.defaultSortVariant.label}
+                defaultValue={currentVariant?.label}
                 onChange={(value) => {
                     // FIXME: validate
-                    setSort(sortVariants.find(({ label }) => label === value)!);
+                    setSort(availableVariants.find(({ label }) => label === value)!);
                 }}
                 dropdownStyle={{ minWidth: 300 }}
             >
-                {sortVariants.map(({ label }) => (
+                {availableVariants.map(({ label }) => (
                     <Select.Option key={label} value={label}>
                         {label}
                     </Select.Option>
