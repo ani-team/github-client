@@ -10,6 +10,11 @@ export type UserInfoQueryVariables = Types.Exact<{
 
 export type UserInfoQuery = { readonly user?: Types.Maybe<{ readonly name?: Types.Maybe<string>, readonly avatarUrl: any, readonly bio?: Types.Maybe<string> }> };
 
+export type CredentialsQueryVariables = Types.Exact<{ [key: string]: never; }>;
+
+
+export type CredentialsQuery = { readonly viewer: { readonly login: string } };
+
 
 export const UserInfoDocument = gql`
     query UserInfo($login: String!) {
@@ -46,3 +51,35 @@ export function useUserInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<U
 export type UserInfoQueryHookResult = ReturnType<typeof useUserInfoQuery>;
 export type UserInfoLazyQueryHookResult = ReturnType<typeof useUserInfoLazyQuery>;
 export type UserInfoQueryResult = Apollo.QueryResult<UserInfoQuery, UserInfoQueryVariables>;
+export const CredentialsDocument = gql`
+    query Credentials {
+  viewer {
+    login
+  }
+}
+    `;
+
+/**
+ * __useCredentialsQuery__
+ *
+ * To run a query within a React component, call `useCredentialsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCredentialsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCredentialsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCredentialsQuery(baseOptions?: Apollo.QueryHookOptions<CredentialsQuery, CredentialsQueryVariables>) {
+        return Apollo.useQuery<CredentialsQuery, CredentialsQueryVariables>(CredentialsDocument, baseOptions);
+      }
+export function useCredentialsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CredentialsQuery, CredentialsQueryVariables>) {
+          return Apollo.useLazyQuery<CredentialsQuery, CredentialsQueryVariables>(CredentialsDocument, baseOptions);
+        }
+export type CredentialsQueryHookResult = ReturnType<typeof useCredentialsQuery>;
+export type CredentialsLazyQueryHookResult = ReturnType<typeof useCredentialsLazyQuery>;
+export type CredentialsQueryResult = Apollo.QueryResult<CredentialsQuery, CredentialsQueryVariables>;

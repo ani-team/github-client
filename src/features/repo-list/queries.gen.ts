@@ -5,6 +5,7 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type ReposQueryVariables = Types.Exact<{
   login: Types.Scalars['String'];
+  ownerAffiliations?: Types.Maybe<ReadonlyArray<Types.Maybe<Types.RepositoryAffiliation>>>;
 }>;
 
 
@@ -12,9 +13,9 @@ export type ReposQuery = { readonly user?: Types.Maybe<{ readonly repositories: 
 
 
 export const ReposDocument = gql`
-    query Repos($login: String!) {
+    query Repos($login: String!, $ownerAffiliations: [RepositoryAffiliation]) {
   user(login: $login) {
-    repositories(ownerAffiliations: OWNER, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
+    repositories(ownerAffiliations: $ownerAffiliations, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
       edges {
         node {
           id
@@ -46,6 +47,7 @@ export const ReposDocument = gql`
  * const { data, loading, error } = useReposQuery({
  *   variables: {
  *      login: // value for 'login'
+ *      ownerAffiliations: // value for 'ownerAffiliations'
  *   },
  * });
  */

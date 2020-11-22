@@ -5,3 +5,9 @@ query UserInfo ($login: String!) {
     bio
   }
 }
+
+query Credentials {
+  viewer {
+    login
+  }
+}
