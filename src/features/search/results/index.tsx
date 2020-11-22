@@ -1,29 +1,21 @@
 import React from "react";
-import { useQueryParam, StringParam } from "use-query-params";
 import { Skeleton, Empty } from "antd";
 import { Repo, User } from "shared/components";
 import { SearchType } from "models";
+import { useSearchQueryParam, useSearchTypeParam } from "../params";
 import { useSearchQuery, RepoFieldsFragment, UserFieldsFragment } from "./queries.gen";
 import "./index.scss";
-
-const typesMap: {
-    [key: string]: SearchType;
-} = {
-    repositories: SearchType.Repository,
-    users: SearchType.User,
-};
 
 /**
  * @feature Результаты поиска
  */
 const SearchResults = () => {
-    const [searchQuery] = useQueryParam("q", StringParam);
-    const [searchType] = useQueryParam("type", StringParam);
-    const searchTypeEnum = typesMap[searchType || "repositories"];
+    const { searchQuery } = useSearchQueryParam();
+    const { searchTypeEnum } = useSearchTypeParam();
     const { data, loading } = useSearchQuery({
         variables: {
             type: searchTypeEnum,
-            query: searchQuery || "",
+            query: searchQuery,
         },
     });
 

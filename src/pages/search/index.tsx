@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "antd";
-import { SearchFilters, SearchResults } from "features";
+import { Search } from "features";
 
 /**
  * @page Search
@@ -9,10 +9,10 @@ const SearchPage = () => {
     return (
         <Row className="page page-search">
             <Col span={16}>
-                <SearchResults />
+                <Search.Results />
             </Col>
             <Col span={7} className="ml-4">
-                <SearchFilters />
+                <Search.Filters />
             </Col>
         </Row>
     );
