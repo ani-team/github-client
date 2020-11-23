@@ -20,9 +20,11 @@ query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $
           messageHeadline
           author {
             date
+            name
             user {
               avatarUrl(size: 36)
               login
+              name
             }
           }
         }

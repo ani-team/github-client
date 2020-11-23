@@ -2,7 +2,9 @@
     .homepage-link {
         display: block;
         padding-bottom: 15px;
+        overflow: hidden;
         line-height: 20px;
+        text-overflow: ellipsis;
     }
 
     .language-tag {

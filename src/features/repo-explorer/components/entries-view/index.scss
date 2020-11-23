@@ -1,5 +1,9 @@
 .repo-git-view {
-    background-color: var(--clr-gray--100);
+    border-right: solid !important;
+    border-right-color: var(--clr-gray--100) !important;
+    border-left: solid !important;
+    border-left-color: var(--clr-gray--100) !important;
+    border-radius: 5px;
 
     & .ant-list-header {
         padding: 0 !important;
@@ -7,31 +11,35 @@
 
     &__last-commit {
         padding: 8px 12px;
+        overflow: hidden;
         color: white;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         background-color: var(--clr-primary);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
 
         img {
             max-width: 36px;
             border-radius: 50%;
         }
 
-        a.author-name {
+        a.author-name,
+        span.author-name {
             margin-left: 12px;
-            font-weight: bold;
+            font-weight: var(--fw--medium);
             color: white;
         }
 
         span.commit-message {
             margin-left: 5px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
     }
 
     &__item {
         padding: 8px 0 8px 8px !important;
-        border-bottom-color: white !important;
+        border-bottom: solid !important;
+        border-bottom-color: var(--clr-gray--100) !important;
 
         img {
             width: 24px;
