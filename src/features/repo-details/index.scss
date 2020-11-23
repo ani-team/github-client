@@ -1,6 +1,8 @@
 .common-details {
     .homepage-link {
         display: block;
+        padding-bottom: 15px;
+        line-height: 20px;
     }
 
     .language-tag {
@@ -19,7 +21,7 @@
 
     a.name {
         margin-left: 12px;
-        font-weight: bold;
+        font-weight: var(--fw--regular);
         color: white;
     }
 }

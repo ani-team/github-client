@@ -9,6 +9,7 @@
     flex-direction: column;
     // !!! FIXME: temp (caus #86)
     overflow: overlay;
+    font-family: var(--ff-primary);
     background-color: var(--clr-background);
 
     &-content {
