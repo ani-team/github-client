@@ -8,6 +8,10 @@
     .language-tag {
         margin-bottom: 4px;
     }
+
+    &__placeholder {
+        width: 100% !important;
+    }
 }
 
 .collaborator {
@@ -15,7 +19,13 @@
     color: white;
     background-color: var(--clr-primary);
 
+    &__placeholder {
+        min-width: 36px;
+        min-height: 36px;
+    }
+
     img {
+        max-width: 36px;
         border-radius: 50%;
     }
 

@@ -32,11 +32,11 @@ const RepositoryPage = (props: Props) => {
                     </h2>
                 </Col>
             </Row>
-            <Row className="page-repo__main mt-2">
-                <Col span={18}>
+            <Row className="page-repo__main mt-2" gutter={[24, 16]}>
+                <Col span={17}>
                     <RepoExplorer repo={identity} />
                 </Col>
-                <Col span={5} offset={1}>
+                <Col span={6}>
                     <RepoDetails repo={identity} />
                 </Col>
             </Row>
