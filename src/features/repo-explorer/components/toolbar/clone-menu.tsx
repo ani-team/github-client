@@ -35,7 +35,7 @@ export default function CloneMenu({ url }: Props) {
                 onClick={(e) => e.currentTarget.select()}
                 addonAfter={
                     <Tooltip
-                        title={isUrlCopied === false ? "Ошибка копирования" : "Скопировано"}
+                        title={isUrlCopied === false ? "Copy error" : "Copied"}
                         placement="bottom"
                         visible={isUrlCopied != null}
                     >

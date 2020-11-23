@@ -1,4 +1,4 @@
-import { Tag } from "antd";
+import { Skeleton, Tag } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Language, RepoIdentity } from "../../models";
@@ -18,7 +18,7 @@ type Collaborator = {
 };
 
 function RepoDetails({ repo: identity }: Props) {
-    const { data } = useRepoDetailsQuery({
+    const { data, loading } = useRepoDetailsQuery({
         variables: {
             name: identity.name,
             owner: identity.owner,
@@ -36,6 +36,13 @@ function RepoDetails({ repo: identity }: Props) {
     return (
         <div className="flex flex-col">
             <DetailsCard className="common-details" title={identity.name}>
+                {loading && (
+                    <Skeleton
+                        paragraph={{ rows: 1 }}
+                        className="common-details__placeholder"
+                        active
+                    />
+                )}
                 <div>{repository?.description}</div>
                 <br />
                 {repository?.homepageUrl && (
@@ -56,11 +63,20 @@ function RepoDetails({ repo: identity }: Props) {
             </DetailsCard>
             {collaborators && (
                 <DetailsCard className="mt-4" title="Collaborators" primary>
-                    {collaborators?.map(({ id, name, login, avatarUrl }) => (
+                    {collaborators?.map(({ id, login, avatarUrl }) => (
                         <div key={id} className="collaborator">
+                            {loading && (
+                                <>
+                                    <Skeleton.Avatar
+                                        className="collaborator__placeholder"
+                                        active
+                                        shape={"circle"}
+                                    />
+                                </>
+                            )}
                             <img src={avatarUrl} alt="avatar" />
                             <Link className="name" to={`/${login}`}>
-                                {name}
+                                {login}
                             </Link>
                         </div>
                     ))}
