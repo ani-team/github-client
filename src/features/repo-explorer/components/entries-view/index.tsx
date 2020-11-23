@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 // FIXME: import as ReactComponent
 import FileIcon from "../../assets/file.svg";
 import FolderIcon from "../../assets/folder.svg";
-import { ReactComponent as IcLogo } from "./logo.svg";
 import "./index.scss";
 
 type Props = {
