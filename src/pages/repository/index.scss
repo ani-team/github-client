@@ -3,6 +3,10 @@
         color: white;
         background-color: var(--clr-text);
     }
+
+    &__main {
+        font-family: var(--ff-secondary);
+    }
 }
 
 .ant-layout {

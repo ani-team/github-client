@@ -16,7 +16,6 @@
 
     &__description {
         margin: 25px 0;
-        font-family: var(--ff-primary);
         font-size: 2vh;
         font-weight: var(--fw--light);
         line-height: 28px;
@@ -24,7 +23,6 @@
 
     &__button {
         padding: 10px 30px;
-        font-family: var(--ff-primary);
         color: var(--clr-gray--100);
         background: var(--clr-primary);
         border: none;
