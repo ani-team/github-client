@@ -28,7 +28,7 @@ const RepositoryPage = (props: Props) => {
                         <Link to={`/${identity.owner}`} className="owner">
                             {identity.owner}
                         </Link>
-                        <span>&nbsp;/&nbsp;</span>
+                        <span>{" / "}</span>
                         <Link to={`/${identity.owner}/${identity.name}`}>{identity.name}</Link>
                     </h2>
                 </Col>

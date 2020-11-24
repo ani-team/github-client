@@ -19,7 +19,7 @@ export type RepoBranchInfoQueryVariables = Types.Exact<{
 }>;
 
 
-export type RepoBranchInfoQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly url: any, readonly ref?: Types.Maybe<{ readonly name: string, readonly target?: Types.Maybe<{ readonly id: string, readonly messageHeadline: string, readonly author?: Types.Maybe<{ readonly date?: Types.Maybe<any>, readonly name?: Types.Maybe<string>, readonly user?: Types.Maybe<{ readonly avatarUrl: any, readonly login: string, readonly name?: Types.Maybe<string> }> }> }> }>, readonly object?: Types.Maybe<{ readonly entries?: Types.Maybe<ReadonlyArray<{ readonly name: string, readonly extension?: Types.Maybe<string>, readonly type: string }>> }>, readonly refs?: Types.Maybe<{ readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly name: string, readonly prefix: string }>>> }> }> };
+export type RepoBranchInfoQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly url: any, readonly ref?: Types.Maybe<{ readonly name: string, readonly target?: Types.Maybe<{ readonly id: string, readonly messageHeadline: string, readonly author?: Types.Maybe<{ readonly date?: Types.Maybe<any>, readonly name?: Types.Maybe<string>, readonly user?: Types.Maybe<{ readonly avatarUrl: any, readonly login: string }> }> }> }>, readonly object?: Types.Maybe<{ readonly entries?: Types.Maybe<ReadonlyArray<{ readonly name: string, readonly extension?: Types.Maybe<string>, readonly type: string }>> }>, readonly refs?: Types.Maybe<{ readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly name: string, readonly prefix: string }>>> }> }> };
 
 
 export const RepoDefaultBranchDocument = gql`
@@ -76,7 +76,6 @@ export const RepoBranchInfoDocument = gql`
             user {
               avatarUrl(size: 36)
               login
-              name
             }
           }
         }

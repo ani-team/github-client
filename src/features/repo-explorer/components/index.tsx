@@ -37,6 +37,7 @@ function Explorer({ repo }: Props) {
             login: target.author?.user?.login,
             avatarUrl: target.author?.user?.avatarUrl,
             name: target.author?.name,
+            date: target.author?.date,
         }) ||
         undefined;
     return (

@@ -24,7 +24,6 @@ query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $
             user {
               avatarUrl(size: 36)
               login
-              name
             }
           }
         }

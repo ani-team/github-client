@@ -1,8 +1,11 @@
+@import "shared/mixins.scss";
+
 .repo-git-view {
-    border-right: solid !important;
-    border-right-color: var(--clr-gray--100) !important;
-    border-left: solid !important;
-    border-left-color: var(--clr-gray--100) !important;
+    background-color: #ffffff;
+    border-color: var(--clr-gray--100) !important;
+    border-style: solid;
+    border-right-width: 1px;
+    border-left-width: 1px;
     border-radius: 5px;
 
     & .ant-list-header {
@@ -10,17 +13,22 @@
     }
 
     &__last-commit {
+        /* stylelint-disable-next-line at-rule-no-unknown */
+        @include text-overflow();
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 8px 12px;
-        overflow: hidden;
         color: white;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         background-color: var(--clr-primary);
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
 
-        img {
+        img,
+        .avatar-placeholder {
             max-width: 36px;
+            max-height: 36px;
             border-radius: 50%;
         }
 
@@ -31,15 +39,15 @@
             color: white;
         }
 
-        span.commit-message {
+        span.commit-message,
+        span.commit-date {
             margin-left: 5px;
         }
     }
 
     &__item {
         padding: 8px 0 8px 8px !important;
-        border-bottom: solid !important;
-        border-bottom-color: var(--clr-gray--100) !important;
+        border-bottom: 1px solid var(--clr-gray--100) !important;
 
         img {
             width: 24px;
