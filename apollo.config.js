@@ -7,7 +7,7 @@ module.exports = {
             url: "https://api.github.com/graphql",
             headers: {
                 // !!! FIXME: hardcoded!
-                authorization: "Bearer d70d97689ae25f0eb61a1f49ee49fa4b9fc3c370",
+                authorization: "Bearer 284b8e0b1b4882b0b4a1fd6321f3136fcd309eac",
             },
         },
     },
