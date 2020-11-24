@@ -11,6 +11,9 @@ const Header = () => {
     const { isAuth } = Auth.useAuth();
     // !!! FIXME: limit scope of query-params literals
     const [search, setSearch] = useQueryParam("q", StringParam);
+    const [type] = useQueryParam("type", StringParam);
+    const [s] = useQueryParam("s", StringParam);
+    const [o] = useQueryParam("o", StringParam);
     const location = useLocation();
     const history = useHistory();
 
@@ -32,10 +35,11 @@ const Header = () => {
                                     setSearch(currentTarget.value, "replace");
                                 else
                                     history.push(
-                                        `/search?${qs.stringify({ q: currentTarget.value,
-                                            type: getParams().type,
-                                            s: getParams().s,
-                                            o: getParams().o,
+                                        `/search?${qs.stringify({
+                                            q: currentTarget.value,
+                                            type,
+                                            s,
+                                            o,
                                         })}`,
                                     );
                             }
