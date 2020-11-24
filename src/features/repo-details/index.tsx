@@ -43,7 +43,11 @@ function RepoDetails({ repo: identity }: Props) {
                         active
                     />
                 )}
-                <div>{repository?.description}</div>
+                {repository?.description !== null ? (
+                    <div>{repository?.description}</div>
+                ) : (
+                    <p>No description, website, or topics provided.</p>
+                )}
                 <br />
                 {repository?.homepageUrl && (
                     <a
@@ -51,6 +55,7 @@ function RepoDetails({ repo: identity }: Props) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="homepage-link"
+                        title={repository.homepageUrl}
                     >
                         {repository.homepageUrl}
                     </a>
@@ -65,15 +70,6 @@ function RepoDetails({ repo: identity }: Props) {
                 <DetailsCard className="mt-4" title="Collaborators" primary>
                     {collaborators?.map(({ id, login, avatarUrl }) => (
                         <div key={id} className="collaborator">
-                            {loading && (
-                                <>
-                                    <Skeleton.Avatar
-                                        className="collaborator__placeholder"
-                                        active
-                                        shape={"circle"}
-                                    />
-                                </>
-                            )}
                             <img src={avatarUrl} alt="avatar" />
                             <Link className="name" to={`/${login}`}>
                                 {login}

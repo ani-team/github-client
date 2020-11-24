@@ -17,6 +17,7 @@ const RepositoryPage = (props: Props) => {
     const identity: RepoIdentity = {
         owner: username,
         name: repository,
+
         branch: branch ? branch.replace(/^tree\//, "") : undefined,
     };
     return (
@@ -24,11 +25,11 @@ const RepositoryPage = (props: Props) => {
             <Row className="mt-2">
                 <Col span={18}>
                     <h2>
-                        <Link to={`/${identity.owner}`}>{identity.owner}</Link>
-                        <span>&nbsp;/&nbsp;</span>
-                        <Link to={`/${identity.owner}/${identity.name}`} className="font-bold">
-                            {identity.name}
+                        <Link to={`/${identity.owner}`} className="owner">
+                            {identity.owner}
                         </Link>
+                        <span>{" / "}</span>
+                        <Link to={`/${identity.owner}/${identity.name}`}>{identity.name}</Link>
                     </h2>
                 </Col>
             </Row>
