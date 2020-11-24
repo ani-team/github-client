@@ -1,10 +1,13 @@
 import React from "react";
+import dayjs from "dayjs";
 import { List } from "antd";
 import cn from "classnames";
 import { Link } from "react-router-dom";
+
 // FIXME: import as ReactComponent
 import FileIcon from "../../assets/file.svg";
 import FolderIcon from "../../assets/folder.svg";
+import logo from "./placeholder.png";
 import "./index.scss";
 
 type Props = {
@@ -15,6 +18,8 @@ type Props = {
         message: string;
         login?: string;
         avatarUrl?: string;
+        name?: string | null;
+        date: string;
     };
 };
 
@@ -22,16 +27,33 @@ function EntriesView({ loading, files, lastCommit, className }: Props) {
     return (
         <div className={cn("repo-git-view", className)}>
             <List
-                bordered
                 header={
                     lastCommit && (
                         <div className="repo-git-view__last-commit">
-                            <img src={lastCommit?.avatarUrl} alt="avatar" />
-                            <Link className="author-name" to={`/${lastCommit?.login}`}>
-                                {lastCommit?.login}
-                            </Link>
-                            &nbsp;
-                            <span className="commit-message">{lastCommit?.message}</span>
+                            <div>
+                                {lastCommit?.avatarUrl ? (
+                                    <>
+                                        <img src={lastCommit?.avatarUrl} alt="avatar" />
+                                        <Link className="author-name" to={`/${lastCommit?.login}`}>
+                                            {lastCommit?.login}
+                                        </Link>
+                                    </>
+                                ) : (
+                                    <>
+                                        <img src={logo} alt="avatar" />
+                                        <span className="author-name">{lastCommit?.name}</span>
+                                    </>
+                                )}
+                                &nbsp;
+                                <span className="commit-message" title={lastCommit?.message}>
+                                    {lastCommit?.message}
+                                </span>
+                            </div>
+                            <div>
+                                <span className="commit-date">
+                                    on {dayjs(lastCommit.date).format("D MMM YYYY")}
+                                </span>
+                            </div>
                         </div>
                     )
                 }

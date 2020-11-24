@@ -2,7 +2,9 @@
     .homepage-link {
         display: block;
         padding-bottom: 15px;
+        overflow: hidden;
         line-height: 20px;
+        text-overflow: ellipsis;
     }
 
     .language-tag {
@@ -11,6 +13,11 @@
 
     &__placeholder {
         width: 100% !important;
+    }
+
+    p {
+        margin-bottom: 0;
+        font-style: italic;
     }
 }
 
