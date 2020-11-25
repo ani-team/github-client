@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Skeleton } from "antd";
 import { Repo, Tabs, SimplePagination } from "shared/components";
 import { str, dom } from "shared/helpers";
@@ -12,15 +12,16 @@ type Props = {
 
 const PAGE_SIZE = 30;
 
-// FIXME: rename to UserRepoList? (coz - user as dep)
-
-const RepoList = ({ username }: Props) => {
+/**
+ * @hook Работа с фильтрацией по affilations, пагинацией
+ */
+const useFilters = () => {
     const { tab, setTab, tabEnum } = Params.useTabParam();
     const { after, before, setCursor } = Params.useCursorParam();
 
-    const { data, loading } = useReposQuery({
-        variables: {
-            login: username,
+    return {
+        config: {
+            tab,
             ownerAffiliations: [tabEnum],
             after,
             before,
@@ -33,7 +34,14 @@ const RepoList = ({ username }: Props) => {
             first: (!before && PAGE_SIZE) || undefined,
             last: (before && PAGE_SIZE) || undefined,
         },
-    });
+        setTab,
+        setCursor,
+    };
+};
+// FIXME: rename to UserRepoList? (coz - user as dep)
+const RepoList = ({ username }: Props) => {
+    const { setTab, setCursor, config } = useFilters();
+    const { data, loading } = useReposQuery({ variables: { login: username, ...config } });
     const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};
     const length = nodes?.length;
 
@@ -45,7 +53,7 @@ const RepoList = ({ username }: Props) => {
                         key={type}
                         name={str.capitalize(type)}
                         className="repo-list__tab"
-                        active={tab === type}
+                        active={config.tab === type}
                         onClick={() => setTab(type)}
                     />
                 ))}
