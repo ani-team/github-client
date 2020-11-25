@@ -14,7 +14,7 @@ export type SearchQueryVariables = Types.Exact<{
 }>;
 
 
-export type SearchQuery = { readonly search: { readonly userCount: number, readonly repositoryCount: number, readonly edges?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly node?: Types.Maybe<RepoFieldsFragment | UserFieldsFragment> }>>> } };
+export type SearchQuery = { readonly search: { readonly userCount: number, readonly repositoryCount: number, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<RepoFieldsFragment | UserFieldsFragment>>> } };
 
 export const RepoFieldsFragmentDoc = gql`
     fragment RepoFields on Repository {
@@ -46,11 +46,9 @@ export const SearchDocument = gql`
   search(query: $query, type: $type, first: 10, after: $after) {
     userCount
     repositoryCount
-    edges {
-      node {
-        ...RepoFields
-        ...UserFields
-      }
+    nodes {
+      ...RepoFields
+      ...UserFields
     }
   }
 }

@@ -20,7 +20,7 @@ const SearchPage = () => {
                 <Alert
                     showIcon
                     message="Limiting results"
-                    description="For a while, only the first 50 results of all are displayed. It will be fixed after adding pagination."
+                    description="For a while, 'organizations' are hidden from search results by 'users' type"
                 />
             </Col>
         </Row>

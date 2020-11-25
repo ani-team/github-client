@@ -48,7 +48,7 @@ const SearchResults = () => {
 
     const { data, loading } = useSearchQuery({ variables: searchConfig });
 
-    const isEmpty = !loading && (!data || data.search.edges?.length === 0);
+    const isEmpty = !loading && (!data || data.search.nodes?.length === 0);
     // prettier-ignore
     const count = (
         Number(isUserSearch) * Number(data?.search.userCount) ||
@@ -87,13 +87,13 @@ const SearchResults = () => {
                 )}
                 {/* FIXME: as wrapper? */}
                 {/* FIXME: Пока что фильтруем Организации, т.к. под них нужна отдельная страница и логика */}
-                {data?.search.edges
+                {data?.search.nodes
                     // @ts-ignore FIXME: specify types
-                    ?.filter((edge) => edge?.node?.__typename !== "Organization")
-                    .map((edge) => (
-                        <ResultItem key={edge?.node?.id}>
-                            {isRepoSearch && <Repo {...edge?.node} />}
-                            {isUserSearch && <User {...edge?.node} />}
+                    ?.filter(({ __typename }) => __typename !== "Organization")
+                    .map((node) => (
+                        <ResultItem key={node?.id}>
+                            {isRepoSearch && <Repo {...node} />}
+                            {isUserSearch && <User {...node} />}
                         </ResultItem>
                     ))}
                 {isEmpty && <Empty className="p-8" description="No results found" />}
