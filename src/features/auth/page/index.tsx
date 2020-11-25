@@ -28,6 +28,7 @@ const AuthPage = () => {
                     <Alert type="info" message="While available only GitHub OAuth authorization" />
                 </div>
                 <button
+                    type="button"
                     className="page-auth__link github"
                     onClick={authorize}
                     title="Authentication through Github OAuth"
