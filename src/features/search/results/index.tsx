@@ -78,6 +78,12 @@ const SearchResults = () => {
             <div className="search-results__list">
                 {loading && (
                     <>
+                        {/* FIXME: simplify */}
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
                         <ResultItemPlaceholder />
                         <ResultItemPlaceholder />
                         <ResultItemPlaceholder />
@@ -99,21 +105,23 @@ const SearchResults = () => {
                 {isEmpty && <Empty className="p-8" description="No results found" />}
             </div>
             <div className="search-results__pagination text-center mt-6">
-                <Pagination
-                    current={page}
-                    /**
-                     * Отображаем минимальное
-                     * - либо по кол-ву результатов,
-                     * - либо с ограничением в 100 страниц
-                     * (как на github)
-                     * @remark Да и их API не возвращает результаты после 1000
-                     */
-                    total={Math.min(count, 100 * 10)}
-                    onChange={handlePageChange}
-                    pageSize={10}
-                    showSizeChanger={false}
-                    responsive
-                />
+                {count > 10 && (
+                    <Pagination
+                        current={page}
+                        /**
+                         * Отображаем минимальное
+                         * - либо по кол-ву результатов,
+                         * - либо с ограничением в 100 страниц
+                         * (как на github)
+                         * @remark Да и их API не возвращает результаты после 1000
+                         */
+                        total={Math.min(count, 100 * 10)}
+                        onChange={handlePageChange}
+                        pageSize={10}
+                        showSizeChanger={false}
+                        responsive
+                    />
+                )}
             </div>
         </div>
     );
