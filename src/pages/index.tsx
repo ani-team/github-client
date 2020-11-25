@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 import { Spin } from "antd";
-import { Auth } from "features";
+import { Auth, Origin } from "features";
 
 const HomePage = lazy(() => import("./home"));
 const RepositoryPage = lazy(() => import("./repository"));
@@ -25,15 +25,19 @@ const Routing = () => {
         );
     }
     return (
-        <Switch>
-            <Route exact path="/search" component={SearchPage} />
-            <Route exact path="/:username" component={UserPage} />
-            <Route
-                path="/:username/:repository/:branch(tree/[\w\d-_.]+)?"
-                component={RepositoryPage}
-            />
-            <Redirect to={`/${viewer?.username}`} />
-        </Switch>
+        <>
+            {/* Для авторизованного пользователя добавляем кнопку с редиректом на исходный ресурс на GitHub */}
+            <Origin />
+            <Switch>
+                <Route exact path="/search" component={SearchPage} />
+                <Route exact path="/:username" component={UserPage} />
+                <Route
+                    path="/:username/:repository/:branch(tree/[\w\d-_.]+)?"
+                    component={RepositoryPage}
+                />
+                <Redirect to={`/${viewer?.username}`} />
+            </Switch>
+        </>
     );
 };
 

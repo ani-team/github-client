@@ -6,6 +6,7 @@ on: pull_request
 jobs:
   build_and_preview:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2

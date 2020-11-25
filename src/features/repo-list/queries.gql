@@ -1,5 +1,6 @@
 query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation]) { 
   user(login: $login) {
+    id
     repositories(ownerAffiliations: $ownerAffiliations, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
       edges {
         node {

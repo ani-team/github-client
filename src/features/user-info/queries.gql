@@ -1,5 +1,6 @@
 query UserInfo ($login: String!) { 
   user(login: $login) {
+    id
     name
     avatarUrl
     bio
