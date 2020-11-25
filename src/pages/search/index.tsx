@@ -8,10 +8,10 @@ import { Search } from "features";
 const SearchPage = () => {
     return (
         <Row className="page page-search">
-            <Col span={14}>
+            <Col span={14} offset={2}>
                 <Search.Results />
             </Col>
-            <Col span={7} className="ml-4">
+            <Col span={6} className="ml-4" offset={1}>
                 <Search.Filters />
                 <Alert
                     showIcon
