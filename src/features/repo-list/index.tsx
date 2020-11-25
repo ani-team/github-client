@@ -1,28 +1,38 @@
 import React from "react";
 import { Skeleton } from "antd";
-import { Repo, Tabs } from "shared/components";
+import { Repo, Tabs, SimplePagination } from "shared/components";
 import { str } from "shared/helpers";
 import { useReposQuery } from "./queries.gen";
-import { useTabParam, tabsMap } from "./params";
+import * as Params from "./params";
 import "./index.scss";
 
 type Props = {
     username: string;
 };
 
+const PAGE_SIZE = 30;
+
 // FIXME: rename to UserRepoList? (coz - user as dep)
 
 const RepoList = ({ username }: Props) => {
-    const { tab, setTab, tabEnum } = useTabParam();
+    const { tab, setTab, tabEnum } = Params.useTabParam();
+    const { after, before, setCursor } = Params.useCursorParam();
+
     const { data, loading } = useReposQuery({
-        variables: { login: username, ownerAffiliations: [tabEnum] },
+        variables: {
+            login: username,
+            ownerAffiliations: [tabEnum],
+            after,
+            before,
+        },
     });
-    const length = data?.user?.repositories.nodes?.length;
+    const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};
+    const length = nodes?.length;
 
     return (
         <div className="repo-list">
             <Tabs className="repo-list__tabs">
-                {Object.keys(tabsMap).map((type) => (
+                {Object.keys(Params.tabsMap).map((type) => (
                     <Tabs.Item
                         key={type}
                         name={str.capitalize(type)}
@@ -48,6 +58,17 @@ const RepoList = ({ username }: Props) => {
                     <h2 className="repo-list__placeholder">
                         {username} doesn’t have any public repositories yet.
                     </h2>
+                )}
+            </div>
+            <div className="repo-list__pagination mt-6">
+                {totalCount > PAGE_SIZE && pageInfo && (
+                    <SimplePagination
+                        onPrev={() => setCursor({ before: pageInfo.startCursor })}
+                        onNext={() => setCursor({ after: pageInfo.endCursor })}
+                        hasNextPage={pageInfo.hasNextPage}
+                        hasPrevPage={pageInfo.hasPreviousPage}
+                        center
+                    />
                 )}
             </div>
         </div>

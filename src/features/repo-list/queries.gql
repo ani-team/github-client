@@ -1,7 +1,14 @@
-query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation]) { 
+query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String) { 
   user(login: $login) {
     id
-    repositories(ownerAffiliations: $ownerAffiliations, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
+    repositories(ownerAffiliations: $ownerAffiliations, first: 30, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before) {
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
       nodes {
         id
         name

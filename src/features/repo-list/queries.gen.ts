@@ -6,17 +6,26 @@ import * as Apollo from '@apollo/client';
 export type ReposQueryVariables = Types.Exact<{
   login: Types.Scalars['String'];
   ownerAffiliations?: Types.Maybe<ReadonlyArray<Types.Maybe<Types.RepositoryAffiliation>>>;
+  after?: Types.Maybe<Types.Scalars['String']>;
+  before?: Types.Maybe<Types.Scalars['String']>;
 }>;
 
 
-export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly url: any, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }> }>>> } }> };
+export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly totalCount: number, readonly pageInfo: { readonly endCursor?: Types.Maybe<string>, readonly startCursor?: Types.Maybe<string>, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean }, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly url: any, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }> }>>> } }> };
 
 
 export const ReposDocument = gql`
-    query Repos($login: String!, $ownerAffiliations: [RepositoryAffiliation]) {
+    query Repos($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String) {
   user(login: $login) {
     id
-    repositories(ownerAffiliations: $ownerAffiliations, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
+    repositories(ownerAffiliations: $ownerAffiliations, first: 30, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before) {
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
       nodes {
         id
         name
@@ -47,6 +56,8 @@ export const ReposDocument = gql`
  *   variables: {
  *      login: // value for 'login'
  *      ownerAffiliations: // value for 'ownerAffiliations'
+ *      after: // value for 'after'
+ *      before: // value for 'before'
  *   },
  * });
  */

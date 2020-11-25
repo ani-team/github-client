@@ -28,16 +28,15 @@ export const useCursorParam = () => {
     const [after, setAfter] = useQueryParam("after", StringParam);
     const [before, setBefore] = useQueryParam("before", StringParam);
 
-    const cursor = after || before;
-
     const setCursor = ({ after, before }: SetCursorArgs) => {
         // setValue(value || undefined);
-        setAfter(after);
-        setBefore(before);
+        setAfter(after || undefined);
+        setBefore(before || undefined);
     };
 
     return {
-        cursor,
+        after,
+        before,
         setCursor,
     };
 };
