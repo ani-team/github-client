@@ -2,14 +2,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    // FIXME: temp, resolve by flex later
+    height: calc(100% - 62px);
     text-align: center;
 
     &__form {
-        width: 50%;
+        width: 30%;
+        border-radius: 5px !important;
 
-        .ant-card-head {
-            color: var(--clr-foreground);
-            background-color: var(--clr-primary);
+        .ant-card {
+            &-head {
+                color: var(--clr-foreground);
+                background-color: var(--clr-primary);
+                border-top-left-radius: 5px !important;
+                border-top-right-radius: 5px !important;
+            }
         }
     }
 
