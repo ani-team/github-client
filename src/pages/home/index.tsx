@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "react-router";
 import HomeHero from "features/home-hero";
 import { useTitle } from "../helpers";
-import "./index.scss";
 
 /**
  * @page Home
