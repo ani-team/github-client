@@ -34,7 +34,7 @@ const client = new ApolloClient({
 /**
  * Обертка для подключения и работы с API
  */
-const withApollo = (component: () => React.ReactNode) => () => (
+const withApollo = (component: Component) => () => (
     <ApolloProvider client={client}>{component()}</ApolloProvider>
 );
 

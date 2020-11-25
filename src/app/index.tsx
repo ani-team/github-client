@@ -2,10 +2,9 @@ import React, { lazy } from "react";
 import { Layout } from "antd";
 import Routing from "pages";
 import { ErrorCatcher } from "./error-handling";
-import { setupRouter } from "./router";
-import withApollo from "./with-apollo";
 import Header from "./header";
 import "./index.scss";
+import { withHocs } from "./hocs";
 
 const ErrorPage = lazy(() => import("pages/error"));
 /**
@@ -27,4 +26,4 @@ const App = () => {
     );
 };
 
-export default setupRouter(withApollo(App));
+export default withHocs(App);
