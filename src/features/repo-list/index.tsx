@@ -23,9 +23,18 @@ const useFilters = () => {
      * Обработчик выбора вкладки
      * @remark Реактивно сбрасываем пагинацию, при смене вкладки
      */
-    const handleTabClick = (type: string) => {
+    const handleTabClick: typeof setTab = (type) => {
         setTab(type);
         setCursor({});
+    };
+
+    /**
+     * Обработчик пагинации
+     * @remark Явно определяем вкладку, чтобы она точно была задана (для соответствия ссылок features/origin)
+     */
+    const handlePaginationClick: typeof setCursor = (pageInfo) => {
+        setTab(tab);
+        setCursor(pageInfo);
     };
 
     return {
@@ -44,12 +53,12 @@ const useFilters = () => {
             last: (before && PAGE_SIZE) || undefined,
         },
         handleTabClick,
-        setCursor,
+        handlePaginationClick,
     };
 };
 // FIXME: rename to UserRepoList? (coz - user as dep)
 const RepoList = ({ username }: Props) => {
-    const { handleTabClick, setCursor, config } = useFilters();
+    const { handleTabClick, handlePaginationClick, config } = useFilters();
     const { data, loading } = useReposQuery({ variables: { login: username, ...config } });
     const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};
     const length = nodes?.length;
@@ -89,11 +98,11 @@ const RepoList = ({ username }: Props) => {
                 {totalCount > PAGE_SIZE && pageInfo && (
                     <SimplePagination
                         onPrev={() => {
-                            setCursor({ before: pageInfo.startCursor });
+                            handlePaginationClick({ before: pageInfo.startCursor });
                             dom.scrollToTop();
                         }}
                         onNext={() => {
-                            setCursor({ after: pageInfo.endCursor });
+                            handlePaginationClick({ after: pageInfo.endCursor });
                             dom.scrollToTop();
                         }}
                         hasNextPage={pageInfo.hasNextPage}
