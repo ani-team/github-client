@@ -8,17 +8,28 @@ import SortSelect from "./sort-select";
 import "./index.scss";
 
 /**
- * @hook Работа с поиском, фильтрацией и сортировкой
+ * @hook Работа с поиском, фильтрацией, сортировкой и пагинацией
  */
 const useSearch = () => {
     const { sortOrder, sortField } = Params.useSearchSortParams();
     const { searchQuery } = Params.useSearchQueryParam();
     const { searchTypeEnum } = Params.useSearchTypeParam();
+    const { page, setPage } = Params.usePageParam();
+
+    const handlePageChange = (page: number) => {
+        setPage(page);
+        // !!! FIXME: temp, resolve better later (by anchors / overflow / ref / scrollHandler / window patching / ...)
+        document.querySelector(".gc-app")?.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     return {
         type: searchTypeEnum,
         query: `${searchQuery} sort:${sortField}-${sortOrder}`,
         queryClean: searchQuery,
+        // Супер пагинация от Нияза (niyazm524)
+        after: btoa(`cursor:${(page - 1) * 10}`),
+        page,
+        handlePageChange,
     };
 };
 
@@ -26,8 +37,7 @@ const useSearch = () => {
  * @feature Результаты поиска
  */
 const SearchResults = () => {
-    const searchConfig = useSearch();
-    const { page, setPage } = Params.usePageParam();
+    const { handlePageChange, page, ...searchConfig } = useSearch();
 
     const { data, loading } = useSearchQuery({ variables: searchConfig });
 
@@ -100,11 +110,7 @@ const SearchResults = () => {
                 <Pagination
                     current={page}
                     total={1000}
-                    onChange={(page) => {
-                        setPage(page);
-                        // !!! FIXME: temp, resolve better later (by anchors / overflow / ref / scrollHandler / window patching / ...)
-                        document.querySelector(".gc-app")?.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
+                    onChange={handlePageChange}
                     pageSize={10}
                     showSizeChanger={false}
                     responsive

@@ -21,8 +21,8 @@ fragment UserFields on User {
   viewerIsFollowing
 }
 
-query Search($query: String!, $type: SearchType!) {
-  search(query: $query, type: $type, first: 10) {
+query Search($query: String!, $type: SearchType!, $after: String!) {
+  search(query: $query, type: $type, first: 10, after: $after) {
     userCount
     repositoryCount
     edges {
