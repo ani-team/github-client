@@ -99,6 +99,7 @@ export const useSearchSortParams = () => {
      * То сбрасываем параметры сортировки и задаем дефолтный вариант
      * !!! FIXME: specify
      * !!! FIXME: double calling
+     * !!! FIXME: move to featre using level (by setType wrapping)
      */
     useEffect(() => {
         if (!currentVariant) {

@@ -1,19 +1,24 @@
-query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation]) { 
+query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String, $first: Int, $last: Int) { 
   user(login: $login) {
     id
-    repositories(ownerAffiliations: $ownerAffiliations, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
-      edges {
-        node {
-          id
+    repositories(ownerAffiliations: $ownerAffiliations, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before, first: $first, last: $last) {
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+      nodes {
+        id
+        name
+        primaryLanguage {
+          color
           name
-          primaryLanguage {
-            color
-            name
-          }
-          updatedAt
-          viewerHasStarred
-          url
         }
+        updatedAt
+        viewerHasStarred
+        url
       }
     } 
   }

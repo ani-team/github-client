@@ -6,29 +6,38 @@ import * as Apollo from '@apollo/client';
 export type ReposQueryVariables = Types.Exact<{
   login: Types.Scalars['String'];
   ownerAffiliations?: Types.Maybe<ReadonlyArray<Types.Maybe<Types.RepositoryAffiliation>>>;
+  after?: Types.Maybe<Types.Scalars['String']>;
+  before?: Types.Maybe<Types.Scalars['String']>;
+  first?: Types.Maybe<Types.Scalars['Int']>;
+  last?: Types.Maybe<Types.Scalars['Int']>;
 }>;
 
 
-export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly edges?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly node?: Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly url: any, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }> }> }>>> } }> };
+export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly totalCount: number, readonly pageInfo: { readonly endCursor?: Types.Maybe<string>, readonly startCursor?: Types.Maybe<string>, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean }, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly url: any, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }> }>>> } }> };
 
 
 export const ReposDocument = gql`
-    query Repos($login: String!, $ownerAffiliations: [RepositoryAffiliation]) {
+    query Repos($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String, $first: Int, $last: Int) {
   user(login: $login) {
     id
-    repositories(ownerAffiliations: $ownerAffiliations, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
-      edges {
-        node {
-          id
+    repositories(ownerAffiliations: $ownerAffiliations, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before, first: $first, last: $last) {
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+      nodes {
+        id
+        name
+        primaryLanguage {
+          color
           name
-          primaryLanguage {
-            color
-            name
-          }
-          updatedAt
-          viewerHasStarred
-          url
         }
+        updatedAt
+        viewerHasStarred
+        url
       }
     }
   }
@@ -49,6 +58,10 @@ export const ReposDocument = gql`
  *   variables: {
  *      login: // value for 'login'
  *      ownerAffiliations: // value for 'ownerAffiliations'
+ *      after: // value for 'after'
+ *      before: // value for 'before'
+ *      first: // value for 'first'
+ *      last: // value for 'last'
  *   },
  * });
  */
