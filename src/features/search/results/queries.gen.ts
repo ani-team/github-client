@@ -10,10 +10,12 @@ export type UserFieldsFragment = { readonly id: string, readonly login: string, 
 export type SearchQueryVariables = Types.Exact<{
   query: Types.Scalars['String'];
   type: Types.SearchType;
+  first: Types.Scalars['Int'];
+  after: Types.Scalars['String'];
 }>;
 
 
-export type SearchQuery = { readonly search: { readonly userCount: number, readonly repositoryCount: number, readonly edges?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly node?: Types.Maybe<RepoFieldsFragment | UserFieldsFragment> }>>> } };
+export type SearchQuery = { readonly search: { readonly userCount: number, readonly repositoryCount: number, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<RepoFieldsFragment | UserFieldsFragment>>> } };
 
 export const RepoFieldsFragmentDoc = gql`
     fragment RepoFields on Repository {
@@ -41,15 +43,13 @@ export const UserFieldsFragmentDoc = gql`
 }
     `;
 export const SearchDocument = gql`
-    query Search($query: String!, $type: SearchType!) {
-  search(query: $query, type: $type, first: 50) {
+    query Search($query: String!, $type: SearchType!, $first: Int!, $after: String!) {
+  search(query: $query, type: $type, first: $first, after: $after) {
     userCount
     repositoryCount
-    edges {
-      node {
-        ...RepoFields
-        ...UserFields
-      }
+    nodes {
+      ...RepoFields
+      ...UserFields
     }
   }
 }
@@ -70,6 +70,8 @@ ${UserFieldsFragmentDoc}`;
  *   variables: {
  *      query: // value for 'query'
  *      type: // value for 'type'
+ *      first: // value for 'first'
+ *      after: // value for 'after'
  *   },
  * });
  */

@@ -11,7 +11,7 @@ const SearchPage = () => {
     useTitle(`Search · ${searchQuery}`);
 
     return (
-        <Row className="page page-search">
+        <Row className="page page-search pb-12">
             <Col span={14} offset={2}>
                 <Search.Results />
             </Col>
@@ -20,7 +20,7 @@ const SearchPage = () => {
                 <Alert
                     showIcon
                     message="Limiting results"
-                    description="For a while, only the first 50 results of all are displayed. It will be fixed after adding pagination."
+                    description="For a while, 'organizations' are hidden from search results by 'users' type"
                 />
             </Col>
         </Row>

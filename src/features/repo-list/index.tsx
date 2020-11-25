@@ -1,6 +1,7 @@
 import React from "react";
 import { Skeleton } from "antd";
 import { Repo, Tabs } from "shared/components";
+import { str } from "shared/helpers";
 import { useReposQuery } from "./queries.gen";
 import { useTabParam, tabsMap } from "./params";
 import "./index.scss";
@@ -24,7 +25,7 @@ const RepoList = ({ username }: Props) => {
                 {Object.keys(tabsMap).map((type) => (
                     <Tabs.Item
                         key={type}
-                        name={type.charAt(0).toUpperCase() + type.slice(1)}
+                        name={str.capitalize(type)}
                         className="repo-list__tab"
                         active={tab === type}
                         onClick={() => setTab(type)}
