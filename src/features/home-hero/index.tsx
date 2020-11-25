@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
 import React from "react";
-import { ReactComponent as Icon } from "./github-icon.svg";
-import { ReactComponent as SadIcon } from "./github-icon-sad.svg";
+import { ReactComponent as Icon } from "./assets/github-icon.svg";
+import { ReactComponent as SadIcon } from "./assets/github-icon-sad.svg";
 import "./index.scss";
 
 type Props = {
@@ -13,22 +13,24 @@ type Props = {
 
 const HomeHero = ({ title, description, action, useSadHero = false }: Props) => {
     return (
-        <Row className="home-hero">
-            <Col span={16}>
-                <h1 className="home-hero__title">{title}</h1>
-                <p className="home-hero__description">{description}</p>
-                <button className="home-hero__button" onClick={() => action.to()}>
-                    {action.text}
-                </button>
-            </Col>
-            <Col span={8}>
-                {useSadHero ? (
-                    <SadIcon className="home-hero__icon" />
-                ) : (
-                    <Icon className="home-hero__icon" />
-                )}
-            </Col>
-        </Row>
+        <div className="page page-background">
+            <Row className="home-hero">
+                <Col span={16}>
+                    <h1 className="home-hero__title">{title}</h1>
+                    <p className="home-hero__description">{description}</p>
+                    <button className="home-hero__button" onClick={() => action.to()}>
+                        {action.text}
+                    </button>
+                </Col>
+                <Col span={8}>
+                    {useSadHero ? (
+                        <SadIcon className="home-hero__icon" />
+                    ) : (
+                        <Icon className="home-hero__icon" />
+                    )}
+                </Col>
+            </Row>
+        </div>
     );
 };
 

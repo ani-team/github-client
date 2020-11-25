@@ -9,16 +9,14 @@ export default function ErrorPage({ error }: Props) {
     const history = useHistory();
 
     return (
-        <div className="page page-background">
-            <HomeHero
-                title={error.message}
-                description={error.description}
-                useSadHero
-                action={{
-                    text: "Back",
-                    to: () => (history.length > 1 ? history.goBack() : history.push("/")),
-                }}
-            />
-        </div>
+        <HomeHero
+            title={error.message}
+            description={error.description}
+            useSadHero
+            action={{
+                text: "Back",
+                to: () => (history.length > 1 ? history.goBack() : history.push("/")),
+            }}
+        />
     );
 }

@@ -7,15 +7,13 @@ import HomeHero from "features/home-hero";
  */
 const HomePage = () => {
     const history = useHistory();
+    /* FIXME: specify link from Auth.feature */
     return (
-        <div className="page page-background">
-            {/* FIXME: specify link from Auth.feature */}
-            <HomeHero
-                title="Github in minimalistic design. Built for developers."
-                description="Welcome to our GithubClient!"
-                action={{ text: "START NOW", to: () => history.push("/auth") }}
-            />
-        </div>
+        <HomeHero
+            title="Github in minimalistic design. Built for developers."
+            description="Welcome to our GithubClient!"
+            action={{ text: "START NOW", to: () => history.push("/auth") }}
+        />
     );
 };
 
