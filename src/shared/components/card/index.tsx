@@ -4,11 +4,11 @@ import "./index.scss";
 
 type Props = {
     /** Заголовок */
-    title?: string;
+    title?: React.ReactNode;
     /** Ссылка на сущность (в заголовке) */
     titleHref?: string;
     /** Описание */
-    description?: string;
+    description?: React.ReactNode;
     /** Ссылка на превью */
     previewUrl?: string;
     /** Секция действий */
@@ -27,11 +27,11 @@ const Card = (props: Props) => {
     return (
         <div className={cn("card", "flex", className)}>
             {previewUrl && (
-                <div className="card__preview">
+                <div className="card__preview mr-4">
                     <img src={previewUrl} alt="preview" width={90} height={90} />
                 </div>
             )}
-            <div className="card__details ml-4 flex flex-col flex-grow">
+            <div className="card__details flex flex-col flex-grow">
                 {title && (
                     <a className="card__title text-title" href={titleHref}>
                         {title}

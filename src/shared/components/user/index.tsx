@@ -11,7 +11,7 @@ const User = (props: any) => {
             previewUrl={avatarUrl}
             titleHref={`/${login}`}
             title={login}
-            description={bio || undefined}
+            description={bio}
             actions={
                 <Button
                     className="user__action follow"
