@@ -3,9 +3,11 @@ import { Skeleton, Empty, Pagination } from "antd";
 import { Repo, User } from "shared/components";
 import { SearchType } from "models";
 import * as Params from "../params";
-import { useSearchQuery, RepoFieldsFragment, UserFieldsFragment } from "./queries.gen";
+import { useSearchQuery } from "./queries.gen";
 import SortSelect from "./sort-select";
 import "./index.scss";
+
+// FIXME: decompose
 
 /**
  * @hook Работа с поиском, фильтрацией, сортировкой и пагинацией
@@ -22,6 +24,9 @@ const useSearch = () => {
         document.querySelector(".gc-app")?.scrollTo({ top: 0, behavior: "smooth" });
     };
 
+    const isUserSearch = searchTypeEnum === SearchType.User;
+    const isRepoSearch = searchTypeEnum === SearchType.Repository;
+
     return {
         type: searchTypeEnum,
         query: `${searchQuery} sort:${sortField}-${sortOrder}`,
@@ -30,6 +35,8 @@ const useSearch = () => {
         after: btoa(`cursor:${(page - 1) * 10}`),
         page,
         handlePageChange,
+        isUserSearch,
+        isRepoSearch,
     };
 };
 
@@ -37,17 +44,17 @@ const useSearch = () => {
  * @feature Результаты поиска
  */
 const SearchResults = () => {
-    const { handlePageChange, page, ...searchConfig } = useSearch();
+    const { handlePageChange, page, isUserSearch, isRepoSearch, ...searchConfig } = useSearch();
 
     const { data, loading } = useSearchQuery({ variables: searchConfig });
 
     const isEmpty = !loading && (!data || data.search.edges?.length === 0);
-    const count =
-        searchConfig.type === SearchType.User
-            ? data?.search.userCount
-            : searchConfig.type === SearchType.Repository
-            ? data?.search.repositoryCount
-            : 0;
+    // prettier-ignore
+    const count = (
+        Number(isUserSearch) * Number(data?.search.userCount) ||
+        Number(isRepoSearch) * Number(data?.search.repositoryCount) ||
+        0
+    )
 
     return (
         <div className="search-results">
@@ -83,33 +90,25 @@ const SearchResults = () => {
                 {data?.search.edges
                     // @ts-ignore FIXME: specify types
                     ?.filter((edge) => edge?.node?.__typename !== "Organization")
-                    .map((edge) => {
-                        // !!! FIXME: specify types
-                        // FIXME: simplify
-                        if (searchConfig.type === SearchType.Repository) {
-                            const data = edge?.node as RepoFieldsFragment;
-                            return (
-                                <ResultItem key={data.id}>
-                                    <Repo {...data} />
-                                </ResultItem>
-                            );
-                        }
-                        if (searchConfig.type === SearchType.User) {
-                            const data = edge?.node as UserFieldsFragment;
-                            return (
-                                <ResultItem key={data.id}>
-                                    <User {...data} />
-                                </ResultItem>
-                            );
-                        }
-                        return null;
-                    })}
+                    .map((edge) => (
+                        <ResultItem key={edge?.node?.id}>
+                            {isRepoSearch && <Repo {...edge?.node} />}
+                            {isUserSearch && <User {...edge?.node} />}
+                        </ResultItem>
+                    ))}
                 {isEmpty && <Empty className="p-8" description="No results found" />}
             </div>
             <div className="search-results__pagination text-center mt-6">
                 <Pagination
                     current={page}
-                    total={1000}
+                    /**
+                     * Отображаем минимальное
+                     * - либо по кол-ву результатов,
+                     * - либо с ограничением в 100 страниц
+                     * (как на github)
+                     * @remark Да и их API не возвращает результаты после 1000
+                     */
+                    total={Math.min(count, 100 * 10)}
                     onChange={handlePageChange}
                     pageSize={10}
                     showSizeChanger={false}
