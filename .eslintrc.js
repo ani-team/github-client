@@ -34,6 +34,7 @@ module.exports = {
                     "shared",
                     "shared/**",
                     "pages",
+                    "pages/**",
                     "features",
                     "features/**",
                     "models",
