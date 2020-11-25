@@ -6,6 +6,7 @@
     user-select: none;
 
     &__title {
+        white-space: pre-line;
         max-width: 90%;
         margin: 0;
         font-family: var(--ff-secondary);

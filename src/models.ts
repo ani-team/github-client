@@ -5,3 +5,9 @@ export type RepoIdentity = {
     name: string;
     branch?: string;
 };
+
+export type AppError = {
+    code: number;
+    message: string;
+    description: string;
+};
