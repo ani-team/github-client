@@ -118,10 +118,10 @@ export const useSearchSortParams = () => {
 //#endregion Sort
 
 //#region Page
+
 /**
  * @qparam Номер страницы результаотв
  */
-
 export const usePageParam = () => {
     const [page, setPage] = useQueryParam("p", withDefault(NumberParam, 1));
     return {
