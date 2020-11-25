@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout, Input } from "antd";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { StringParam, useQueryParam } from "use-query-params";
+import { StringParam, useQueryParams } from "use-query-params";
 import * as qs from "query-string";
 import { Auth } from "features";
 import { ReactComponent as IcLogo } from "./logo.svg";
@@ -10,10 +10,12 @@ import "./index.scss";
 const Header = () => {
     const { isAuth } = Auth.useAuth();
     // !!! FIXME: limit scope of query-params literals
-    const [search, setSearch] = useQueryParam("q", StringParam);
-    const [type] = useQueryParam("type", StringParam);
-    const [s] = useQueryParam("s", StringParam);
-    const [o] = useQueryParam("o", StringParam);
+    const [query] = useQueryParams({
+        q: StringParam,
+        type: StringParam,
+        s: StringParam,
+        o: StringParam,
+    });
     const location = useLocation();
     const history = useHistory();
 
@@ -28,20 +30,17 @@ const Header = () => {
                     <Input
                         className="header__search"
                         placeholder="Search..."
-                        defaultValue={location.pathname === "/search" ? search ?? "" : ""}
+                        defaultValue={location.pathname === "/search" ? query.q ?? "" : ""}
                         onKeyDown={({ key, currentTarget }) => {
                             if (key === "Enter" && currentTarget.value) {
-                                if (location.pathname === "/search")
-                                    setSearch(currentTarget.value, "replace");
-                                else
-                                    history.push(
-                                        `/search?${qs.stringify({
-                                            q: currentTarget.value,
-                                            type,
-                                            s,
-                                            o,
-                                        })}`,
-                                    );
+                                history.push(
+                                    `/search?${qs.stringify({
+                                        q: currentTarget.value,
+                                        type: query.type,
+                                        s: query.s,
+                                        o: query.o,
+                                    })}`,
+                                );
                             }
                         }}
                     />
