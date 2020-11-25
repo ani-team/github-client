@@ -12,9 +12,6 @@
     }
 
     &__last-commit {
-        /* stylelint-disable-next-line at-rule-no-unknown */
-        @include text-overflow();
-
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -23,6 +20,8 @@
         background-color: var(--clr-primary);
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+
+        @include text-overflow();
 
         img,
         .avatar-placeholder {

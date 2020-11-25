@@ -8,4 +8,5 @@ export { default as RepoDetails } from "./repo-details";
 export { default as UserInfo } from "./user-info";
 export { default as RepoList } from "./repo-list";
 export { default as Search } from "./search";
+export { default as Origin } from "./origin";
 export { Auth };

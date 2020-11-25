@@ -4,6 +4,7 @@ import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import { RepoDetails, RepoExplorer } from "features";
 import { RepoIdentity } from "models";
+import { useTitle } from "../helpers";
 import "./index.scss";
 
 type Props = RouteComponentProps<{
@@ -20,6 +21,9 @@ const RepositoryPage = (props: Props) => {
 
         branch: branch ? branch.replace(/^tree\//, "") : undefined,
     };
+
+    useTitle(`Repository · ${username}/${repository}`);
+
     return (
         <div className="page page-repo">
             <Row className="mt-2">

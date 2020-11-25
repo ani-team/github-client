@@ -21,15 +21,13 @@ fragment UserFields on User {
   viewerIsFollowing
 }
 
-query Search($query: String!, $type: SearchType!) {
-  search(query: $query, type: $type, first: 50) {
+query Search($query: String!, $type: SearchType!, $first: Int!, $after: String!) {
+  search(query: $query, type: $type, first: $first, after: $after) {
     userCount
     repositoryCount
-    edges {
-      node {
+    nodes {
         ...RepoFields
         ...UserFields
-      }
     }
   }
 }

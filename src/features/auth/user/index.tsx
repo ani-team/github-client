@@ -11,7 +11,7 @@ const User = () => {
      * (но для этого нужна будет обертка Auth.Router на уровне App)
      */
     return (
-        <span className="auth-user">
+        <span className="auth-user select-none">
             {isAuth && (
                 <>
                     {/* FIXME: use h3 instead */}
