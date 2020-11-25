@@ -94,17 +94,12 @@ const SearchResults = () => {
                         <ResultItemPlaceholder />
                     </>
                 )}
-                {/* FIXME: as wrapper? */}
-                {/* FIXME: Пока что фильтруем Организации, т.к. под них нужна отдельная страница и логика */}
-                {data?.search.nodes
-                    // @ts-ignore FIXME: specify types
-                    ?.filter(({ __typename }) => __typename !== "Organization")
-                    .map((node) => (
-                        <ResultItem key={node?.id}>
-                            {isRepoSearch && <Repo {...node} />}
-                            {isUserSearch && <User {...node} />}
-                        </ResultItem>
-                    ))}
+                {data?.search.nodes?.map((node) => (
+                    <ResultItem key={node?.id}>
+                        {isRepoSearch && <Repo {...node} />}
+                        {isUserSearch && <User {...node} />}
+                    </ResultItem>
+                ))}
                 {isEmpty && <Empty className="p-8" description="No results found" />}
             </div>
             <div className="search-results__pagination text-center mt-6">

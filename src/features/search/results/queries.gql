@@ -21,6 +21,13 @@ fragment UserFields on User {
   viewerIsFollowing
 }
 
+fragment OrgFields on Organization {
+  id
+  login
+  avatarUrl
+  description
+}
+
 query Search($query: String!, $type: SearchType!, $first: Int!, $after: String!) {
   search(query: $query, type: $type, first: $first, after: $after) {
     userCount
@@ -28,6 +35,7 @@ query Search($query: String!, $type: SearchType!, $first: Int!, $after: String!)
     nodes {
         ...RepoFields
         ...UserFields
+        ...OrgFields
     }
   }
 }
