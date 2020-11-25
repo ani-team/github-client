@@ -1,4 +1,5 @@
 import React from "react";
+import cn from "classnames";
 import { Skeleton, Empty, Pagination } from "antd";
 import { Repo, User, Org } from "shared/components";
 import { dom } from "shared/helpers";
@@ -95,7 +96,7 @@ const SearchResults = () => {
                     </>
                 )}
                 {data?.search.nodes?.map((node) => (
-                    <ResultItem key={node?.id}>
+                    <ResultItem key={node?.id} className={(node as any).__typename}>
                         {isRepoSearch && <Repo {...node} format="owner-repo" />}
                         {/* !!! FIXME: simplify */}
                         {isUserSearch &&
@@ -134,8 +135,8 @@ const SearchResults = () => {
 const ResultItemPlaceholder = () => (
     <Skeleton.Input className="search-results__item-placeholder mb-6" size="large" active />
 );
-const ResultItem = ({ children }: PropsWithChildren) => (
-    <div className="search-results__item mb-6">{children}</div>
+const ResultItem = ({ children, className }: PropsWithChildren & PropsWithClassName) => (
+    <div className={cn("search-results__item", "mb-6", className)}>{children}</div>
 );
 
 export default SearchResults;

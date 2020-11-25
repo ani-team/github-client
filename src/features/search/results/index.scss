@@ -29,5 +29,15 @@
             height: 140px !important;
             border-radius: 10px;
         }
+
+        &.Organization {
+            pointer-events: none;
+            box-shadow: 0 5px 0 var(--clr-danger);
+            opacity: 0.5;
+
+            .card__actions {
+                pointer-events: all;
+            }
+        }
     }
 }

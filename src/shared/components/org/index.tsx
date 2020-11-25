@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "antd";
+import { BankOutlined } from "@ant-design/icons";
 import Card from "../card";
 
 // !!! FIXME: specify types
@@ -9,7 +10,11 @@ const Org = (props: any) => {
         <Card
             className="org"
             previewUrl={avatarUrl}
-            title={login}
+            title={
+                <span title="Organization">
+                    <BankOutlined /> {login}
+                </span>
+            }
             description={description}
             actions={
                 <Button
@@ -18,6 +23,7 @@ const Org = (props: any) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     type="dashed"
+                    title="Click to view full information about organization (from github)"
                 >
                     View (GitHub)
                 </Button>
