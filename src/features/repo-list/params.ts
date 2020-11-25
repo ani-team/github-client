@@ -15,3 +15,28 @@ export const useTabParam = () => {
 
     return { tab, tabEnum, setTab };
 };
+
+type SetCursorArgs = {
+    after?: string | null;
+    before?: string | null;
+};
+
+/**
+ * @qparam Текущий курсор в пагинации репозиториев
+ */
+export const useCursorParam = () => {
+    const [after, setAfter] = useQueryParam("after", StringParam);
+    const [before, setBefore] = useQueryParam("before", StringParam);
+
+    const setCursor = ({ after, before }: SetCursorArgs) => {
+        // setValue(value || undefined);
+        setAfter(after || undefined);
+        setBefore(before || undefined);
+    };
+
+    return {
+        after,
+        before,
+        setCursor,
+    };
+};

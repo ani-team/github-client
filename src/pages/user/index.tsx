@@ -17,7 +17,7 @@ const UserPage = (props: Props) => {
     useTitle(`User · ${username}`);
 
     return (
-        <Row className="page page-user">
+        <Row className="page page-user pb-12">
             <Col span={6} className="user-info">
                 <UserInfo username={username} />
             </Col>
