@@ -73,6 +73,7 @@ const RepoList = ({ username }: Props) => {
                         className="repo-list__tab"
                         active={config.tab === type}
                         onClick={() => handleTabClick(type)}
+                        label={config.tab === type && !loading ? String(totalCount) : undefined}
                     />
                 ))}
             </Tabs>
