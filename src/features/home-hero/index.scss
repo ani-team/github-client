@@ -6,13 +6,13 @@
     user-select: none;
 
     &__title {
-        white-space: pre-line;
         max-width: 90%;
         margin: 0;
         font-family: var(--ff-secondary);
         font-size: 5vh;
         font-weight: var(--fw--medium);
         line-height: 7vh;
+        white-space: pre-line;
     }
 
     &__description {
