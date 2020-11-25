@@ -7,14 +7,23 @@ import FavBtn from "./fav-btn";
 import "./index.scss";
 
 // !!! FIXME: specify types
-type Props = any;
+type Props = any & {
+    format?: "owner-repo" | "repo";
+};
 
 // FIXME: refactor
 const Repo = (props: Props) => {
+    const { format = "repo" } = props;
     const { name, primaryLanguage, updatedAt, viewerHasStarred, owner } = props as Partial<
         Repository
     >;
-    const indentity = owner?.login ? `${owner.login}/${name}` : "";
+
+    // prettier-ignore
+    const indentity = (
+        (format === "owner-repo" && `${owner?.login}/${name}`) || 
+        (format === "repo" && name) ||
+        ""
+    );
 
     return (
         <Card

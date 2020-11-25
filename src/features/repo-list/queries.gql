@@ -16,9 +16,11 @@ query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation], $afte
           color
           name
         }
+        owner {
+          login
+        }
         updatedAt
         viewerHasStarred
-        url
       }
     } 
   }

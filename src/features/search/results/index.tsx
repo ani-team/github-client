@@ -96,7 +96,7 @@ const SearchResults = () => {
                 )}
                 {data?.search.nodes?.map((node) => (
                     <ResultItem key={node?.id}>
-                        {isRepoSearch && <Repo {...node} />}
+                        {isRepoSearch && <Repo {...node} format="owner-repo" />}
                         {isUserSearch && <User {...node} />}
                     </ResultItem>
                 ))}

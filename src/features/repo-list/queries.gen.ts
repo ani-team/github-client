@@ -13,7 +13,7 @@ export type ReposQueryVariables = Types.Exact<{
 }>;
 
 
-export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly totalCount: number, readonly pageInfo: { readonly endCursor?: Types.Maybe<string>, readonly startCursor?: Types.Maybe<string>, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean }, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly url: any, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }> }>>> } }> };
+export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly totalCount: number, readonly pageInfo: { readonly endCursor?: Types.Maybe<string>, readonly startCursor?: Types.Maybe<string>, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean }, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } }> };
 
 
 export const ReposDocument = gql`
@@ -35,9 +35,11 @@ export const ReposDocument = gql`
           color
           name
         }
+        owner {
+          login
+        }
         updatedAt
         viewerHasStarred
-        url
       }
     }
   }
