@@ -17,7 +17,7 @@ const RepoList = ({ username }: Props) => {
     const { data, loading } = useReposQuery({
         variables: { login: username, ownerAffiliations: [tabEnum] },
     });
-    const length = data?.user?.repositories.edges?.length;
+    const length = data?.user?.repositories.nodes?.length;
 
     return (
         <div className="repo-list">
@@ -43,10 +43,7 @@ const RepoList = ({ username }: Props) => {
                 )}
 
                 {length !== 0 ? (
-                    data?.user?.repositories.edges?.map((edge, index) => (
-                        // FIXME: destruct more elegant later
-                        <Repo key={index} {...edge?.node} />
-                    ))
+                    data?.user?.repositories.nodes?.map((node) => <Repo key={node?.id} {...node} />)
                 ) : (
                     <h2 className="repo-list__placeholder">
                         {username} doesn’t have any public repositories yet.

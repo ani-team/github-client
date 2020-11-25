@@ -9,7 +9,7 @@ export type ReposQueryVariables = Types.Exact<{
 }>;
 
 
-export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly edges?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly node?: Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly url: any, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }> }> }>>> } }> };
+export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly url: any, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }> }>>> } }> };
 
 
 export const ReposDocument = gql`
@@ -17,18 +17,16 @@ export const ReposDocument = gql`
   user(login: $login) {
     id
     repositories(ownerAffiliations: $ownerAffiliations, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
-      edges {
-        node {
-          id
+      nodes {
+        id
+        name
+        primaryLanguage {
+          color
           name
-          primaryLanguage {
-            color
-            name
-          }
-          updatedAt
-          viewerHasStarred
-          url
         }
+        updatedAt
+        viewerHasStarred
+        url
       }
     }
   }
