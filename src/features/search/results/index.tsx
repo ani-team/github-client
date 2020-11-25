@@ -9,6 +9,8 @@ import "./index.scss";
 
 // FIXME: decompose
 
+const PAGE_SIZE = 10;
+
 /**
  * @hook Работа с поиском, фильтрацией, сортировкой и пагинацией
  */
@@ -32,7 +34,7 @@ const useSearch = () => {
         query: `${searchQuery} sort:${sortField}-${sortOrder}`,
         queryClean: searchQuery,
         // Супер пагинация от Нияза (niyazm524)
-        after: btoa(`cursor:${(page - 1) * 10}`),
+        after: btoa(`cursor:${(page - 1) * PAGE_SIZE}`),
         page,
         handlePageChange,
         isUserSearch,
@@ -105,7 +107,7 @@ const SearchResults = () => {
                 {isEmpty && <Empty className="p-8" description="No results found" />}
             </div>
             <div className="search-results__pagination text-center mt-6">
-                {count > 10 && (
+                {count > PAGE_SIZE && (
                     <Pagination
                         current={page}
                         /**
@@ -115,9 +117,9 @@ const SearchResults = () => {
                          * (как на github)
                          * @remark Да и их API не возвращает результаты после 1000
                          */
-                        total={Math.min(count, 100 * 10)}
+                        total={Math.min(count, 100 * PAGE_SIZE)}
                         onChange={handlePageChange}
-                        pageSize={10}
+                        pageSize={PAGE_SIZE}
                         showSizeChanger={false}
                         responsive
                     />
