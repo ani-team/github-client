@@ -62,6 +62,8 @@ const SearchResults = () => {
                         <ResultItemPlaceholder />
                         <ResultItemPlaceholder />
                         <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
                     </>
                 )}
                 {/* FIXME: as wrapper? */}

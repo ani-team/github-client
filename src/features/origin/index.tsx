@@ -16,7 +16,7 @@ const Origin = () => {
 
     return (
         <button type="button" className="origin" onClick={handleClick} title={originLink}>
-            <GithubFilled style={{ fontSize: 64, color: "unset" }} />
+            <GithubFilled style={{ fontSize: 48 }} />
         </button>
     );
 };
