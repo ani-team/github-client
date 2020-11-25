@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useQueryParam, StringParam, withDefault } from "use-query-params";
+import { useQueryParam, StringParam, NumberParam, withDefault } from "use-query-params";
 import { SearchType } from "models";
 
 // FIXME: split by files?
@@ -116,3 +116,16 @@ export const useSearchSortParams = () => {
 };
 
 //#endregion Sort
+
+//#region Page
+/**
+ * @qparam Номер страницы результаотв
+ */
+
+export const usePageParam = () => {
+    const [page, setPage] = useQueryParam("p", withDefault(NumberParam, 1));
+    return {
+        page,
+        setPage,
+    };
+};

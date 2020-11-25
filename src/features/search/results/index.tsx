@@ -1,5 +1,5 @@
 import React from "react";
-import { Skeleton, Empty } from "antd";
+import { Skeleton, Empty, Pagination } from "antd";
 import { Repo, User } from "shared/components";
 import { SearchType } from "models";
 import * as Params from "../params";
@@ -27,6 +27,8 @@ const useSearch = () => {
  */
 const SearchResults = () => {
     const searchConfig = useSearch();
+    const { page, setPage } = Params.usePageParam();
+
     const { data, loading } = useSearchQuery({ variables: searchConfig });
 
     const isEmpty = !loading && (!data || data.search.edges?.length === 0);
@@ -93,6 +95,16 @@ const SearchResults = () => {
                         return null;
                     })}
                 {isEmpty && <Empty className="p-8" description="No results found" />}
+            </div>
+            <div className="search-results__pagination text-center mt-6">
+                <Pagination
+                    current={page}
+                    total={1000}
+                    onChange={(page) => setPage(page)}
+                    pageSize={10}
+                    showSizeChanger={false}
+                    responsive
+                />
             </div>
         </div>
     );

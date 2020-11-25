@@ -42,7 +42,7 @@ export const UserFieldsFragmentDoc = gql`
     `;
 export const SearchDocument = gql`
     query Search($query: String!, $type: SearchType!) {
-  search(query: $query, type: $type, first: 50) {
+  search(query: $query, type: $type, first: 10) {
     userCount
     repositoryCount
     edges {

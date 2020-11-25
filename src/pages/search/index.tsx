@@ -11,7 +11,7 @@ const SearchPage = () => {
     useTitle(`Search · ${searchQuery}`);
 
     return (
-        <Row className="page page-search">
+        <Row className="page page-search pb-12">
             <Col span={14} offset={2}>
                 <Search.Results />
             </Col>
