@@ -1,7 +1,5 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { QueryParamProvider } from "use-query-params";
-import { Spin } from "antd";
+import React, { lazy } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { Auth, Origin } from "features";
 
 const HomePage = lazy(() => import("./home"));
@@ -41,12 +39,4 @@ const Routing = () => {
     );
 };
 
-const withHocs = (component: () => JSX.Element) => () => (
-    <BrowserRouter>
-        <Suspense fallback={<Spin />}>
-            <QueryParamProvider ReactRouterRoute={Route}>{component()}</QueryParamProvider>
-        </Suspense>
-    </BrowserRouter>
-);
-
-export default withHocs(Routing);
+export default Routing;
