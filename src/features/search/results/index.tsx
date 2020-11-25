@@ -36,6 +36,7 @@ const useSearch = () => {
         // Супер пагинация от Нияза (niyazm524)
         after: btoa(`cursor:${(page - 1) * PAGE_SIZE}`),
         page,
+        first: PAGE_SIZE,
         handlePageChange,
         isUserSearch,
         isRepoSearch,
