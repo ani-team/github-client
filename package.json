@@ -78,6 +78,7 @@
     "stylelint": "^13.7.2",
     "stylelint-config-recess-order": "^2.3.0",
     "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-standard": "^20.0.0"
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.18.0"
   }
 }

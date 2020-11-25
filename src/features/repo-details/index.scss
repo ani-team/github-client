@@ -1,10 +1,12 @@
+@import "shared/mixins.scss";
+
 .common-details {
     .homepage-link {
         display: block;
         padding-bottom: 15px;
-        overflow: hidden;
         line-height: 20px;
-        text-overflow: ellipsis;
+
+        @include text-overflow();
     }
 
     .language-tag {
