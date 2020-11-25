@@ -1,11 +1,15 @@
 import React from "react";
 import { Row, Col, Alert } from "antd";
 import { Search } from "features";
+import { useTitle } from "../helpers";
 
 /**
  * @page Search
  */
 const SearchPage = () => {
+    const { searchQuery } = Search.params.useSearchQueryParam();
+    useTitle(`Search · ${searchQuery}`);
+
     return (
         <Row className="page page-search">
             <Col span={14} offset={2}>
