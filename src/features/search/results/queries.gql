@@ -26,6 +26,7 @@ fragment OrgFields on Organization {
   login
   avatarUrl
   description
+  url
 }
 
 query Search($query: String!, $type: SearchType!, $first: Int!, $after: String!) {

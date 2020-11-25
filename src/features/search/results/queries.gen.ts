@@ -7,7 +7,7 @@ export type RepoFieldsFragment = { readonly id: string, readonly name: string, r
 
 export type UserFieldsFragment = { readonly id: string, readonly login: string, readonly bio?: Types.Maybe<string>, readonly avatarUrl: any, readonly viewerIsFollowing: boolean };
 
-export type OrgFieldsFragment = { readonly id: string, readonly login: string, readonly avatarUrl: any, readonly description?: Types.Maybe<string> };
+export type OrgFieldsFragment = { readonly id: string, readonly login: string, readonly avatarUrl: any, readonly description?: Types.Maybe<string>, readonly url: any };
 
 export type SearchQueryVariables = Types.Exact<{
   query: Types.Scalars['String'];
@@ -50,6 +50,7 @@ export const OrgFieldsFragmentDoc = gql`
   login
   avatarUrl
   description
+  url
 }
     `;
 export const SearchDocument = gql`
