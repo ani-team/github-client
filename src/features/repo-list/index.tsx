@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Skeleton } from "antd";
 import { Repo, Tabs, SimplePagination } from "shared/components";
 import { str, dom } from "shared/helpers";
@@ -19,6 +19,15 @@ const useFilters = () => {
     const { tab, setTab, tabEnum } = Params.useTabParam();
     const { after, before, setCursor } = Params.useCursorParam();
 
+    /**
+     * Обработчик выбора вкладки
+     * @remark Реактивно сбрасываем пагинацию, при смене вкладки
+     */
+    const handleTabClick = (type: string) => {
+        setTab(type);
+        setCursor({});
+    };
+
     return {
         config: {
             tab,
@@ -34,13 +43,13 @@ const useFilters = () => {
             first: (!before && PAGE_SIZE) || undefined,
             last: (before && PAGE_SIZE) || undefined,
         },
-        setTab,
+        handleTabClick,
         setCursor,
     };
 };
 // FIXME: rename to UserRepoList? (coz - user as dep)
 const RepoList = ({ username }: Props) => {
-    const { setTab, setCursor, config } = useFilters();
+    const { handleTabClick, setCursor, config } = useFilters();
     const { data, loading } = useReposQuery({ variables: { login: username, ...config } });
     const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};
     const length = nodes?.length;
@@ -54,7 +63,7 @@ const RepoList = ({ username }: Props) => {
                         name={str.capitalize(type)}
                         className="repo-list__tab"
                         active={config.tab === type}
-                        onClick={() => setTab(type)}
+                        onClick={() => handleTabClick(type)}
                     />
                 ))}
             </Tabs>
