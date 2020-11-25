@@ -1,6 +1,7 @@
 import React from "react";
 import { Skeleton, Empty, Pagination } from "antd";
 import { Repo, User } from "shared/components";
+import { dom } from "shared/helpers";
 import { SearchType } from "models";
 import * as Params from "../params";
 import { useSearchQuery } from "./queries.gen";
@@ -22,8 +23,7 @@ const useSearch = () => {
 
     const handlePageChange = (page: number) => {
         setPage(page);
-        // !!! FIXME: temp, resolve better later (by anchors / overflow / ref / scrollHandler / window patching / ...)
-        document.querySelector(".gc-app")?.scrollTo({ top: 0, behavior: "smooth" });
+        dom.scrollToTop();
     };
 
     const isUserSearch = searchTypeEnum === SearchType.User;

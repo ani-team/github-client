@@ -1,7 +1,7 @@
 import React from "react";
 import { Skeleton } from "antd";
 import { Repo, Tabs, SimplePagination } from "shared/components";
-import { str } from "shared/helpers";
+import { str, dom } from "shared/helpers";
 import { useReposQuery } from "./queries.gen";
 import * as Params from "./params";
 import "./index.scss";
@@ -71,8 +71,14 @@ const RepoList = ({ username }: Props) => {
             <div className="repo-list__pagination mt-6">
                 {totalCount > PAGE_SIZE && pageInfo && (
                     <SimplePagination
-                        onPrev={() => setCursor({ before: pageInfo.startCursor })}
-                        onNext={() => setCursor({ after: pageInfo.endCursor })}
+                        onPrev={() => {
+                            setCursor({ before: pageInfo.startCursor });
+                            dom.scrollToTop();
+                        }}
+                        onNext={() => {
+                            setCursor({ after: pageInfo.endCursor });
+                            dom.scrollToTop();
+                        }}
                         hasNextPage={pageInfo.hasNextPage}
                         hasPrevPage={pageInfo.hasPreviousPage}
                         center
