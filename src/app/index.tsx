@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
 import { Layout } from "antd";
 import Routing from "pages";
-import ErrorCatcher from "./error-handling/error-catcher";
+import { ErrorCatcher } from "./error-handling";
 import { setupRouter } from "./router";
 import withApollo from "./with-apollo";
 import Header from "./header";
