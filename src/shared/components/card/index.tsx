@@ -1,4 +1,5 @@
 import React from "react";
+import cn from "classnames";
 import "./index.scss";
 
 type Props = {
@@ -12,6 +13,8 @@ type Props = {
     previewUrl?: string;
     /** Секция действий */
     actions?: React.ReactNode;
+    /** Класс */
+    className?: string;
 };
 
 /**
@@ -19,10 +22,10 @@ type Props = {
  * @remark Используется для отображения базовых сущностей: Repo, User, Org
  */
 const Card = (props: Props) => {
-    const { actions, previewUrl, description, title, titleHref } = props;
+    const { actions, previewUrl, description, title, titleHref, className } = props;
 
     return (
-        <div className="card flex">
+        <div className={cn("card", "flex", className)}>
             {previewUrl && (
                 <div className="card__preview">
                     <img src={previewUrl} alt="preview" width={90} height={90} />
@@ -30,7 +33,7 @@ const Card = (props: Props) => {
             )}
             <div className="card__details ml-4 flex flex-col flex-grow">
                 {title && (
-                    <a className="card__title text-title" href={`/${titleHref}`}>
+                    <a className="card__title text-title" href={titleHref}>
                         {title}
                     </a>
                 )}
