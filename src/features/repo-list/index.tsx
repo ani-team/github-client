@@ -1,35 +1,27 @@
 import React from "react";
-import { StringParam, useQueryParam, withDefault } from "use-query-params";
 import { Skeleton } from "antd";
 import { Repo, Tabs } from "shared/components";
-import { RepositoryAffiliation } from "models";
 import { useReposQuery } from "./queries.gen";
+import { useTabParam, tabsMap } from "./params";
 import "./index.scss";
 
 type Props = {
     username: string;
 };
 
-const typesMap: Record<string, RepositoryAffiliation> = {
-    repositories: RepositoryAffiliation.Owner,
-    collabs: RepositoryAffiliation.Collaborator,
-};
-
 // FIXME: rename to UserRepoList? (coz - user as dep)
 
 const RepoList = ({ username }: Props) => {
-    const [tab, setTab] = useQueryParam("tab", withDefault(StringParam, "repositories"));
-    const typeEnum = typesMap[tab];
-
+    const { tab, setTab, tabEnum } = useTabParam();
     const { data, loading } = useReposQuery({
-        variables: { login: username, ownerAffiliations: [typeEnum] },
+        variables: { login: username, ownerAffiliations: [tabEnum] },
     });
     const length = data?.user?.repositories.edges?.length;
 
     return (
         <div className="repo-list">
             <Tabs className="repo-list__tabs">
-                {Object.keys(typesMap).map((type) => (
+                {Object.keys(tabsMap).map((type) => (
                     <Tabs.Item
                         key={type}
                         name={type.charAt(0).toUpperCase() + type.slice(1)}
