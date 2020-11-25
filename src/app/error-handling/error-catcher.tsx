@@ -13,12 +13,13 @@ const isGithubError = (error: any): error is { type: string } => {
 function mapError(error: GraphQLError | Error | undefined): AppError | null {
     if (!error) return null;
     if (isGithubError(error)) {
-        if (error.type in ErrorDefinitions) {
+        // FIXME: handle 403 and 500 errors as well w/o side effects
+        if (error.type === "NOT_FOUND") {
             return ErrorDefinitions[error.type];
         }
     }
     // TODO: handle network errors and whatever can be broken
-    return ErrorDefinitions.INTERNAL_ERROR;
+    return null;
 }
 
 type Props = PropsWithChildren<{
