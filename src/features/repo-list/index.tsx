@@ -24,6 +24,14 @@ const RepoList = ({ username }: Props) => {
             ownerAffiliations: [tabEnum],
             after,
             before,
+            /**
+             * @variant (!before, !after) => Первый вход, фетчим первые {PAGE_SIZE}
+             * @variant (after, !before) => След. страница, фетчим след. первые {PAGE_SIZE}
+             * @variant (!after, before) => Пред. страница, фетчим пред. последние {PAGE_SIZE}
+             * @variant (after, before) => (невозможна из-за реализации)
+             */
+            first: (!before && PAGE_SIZE) || undefined,
+            last: (before && PAGE_SIZE) || undefined,
         },
     });
     const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};

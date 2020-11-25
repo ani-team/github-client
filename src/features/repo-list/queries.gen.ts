@@ -8,6 +8,8 @@ export type ReposQueryVariables = Types.Exact<{
   ownerAffiliations?: Types.Maybe<ReadonlyArray<Types.Maybe<Types.RepositoryAffiliation>>>;
   after?: Types.Maybe<Types.Scalars['String']>;
   before?: Types.Maybe<Types.Scalars['String']>;
+  first?: Types.Maybe<Types.Scalars['Int']>;
+  last?: Types.Maybe<Types.Scalars['Int']>;
 }>;
 
 
@@ -15,10 +17,10 @@ export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, re
 
 
 export const ReposDocument = gql`
-    query Repos($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String) {
+    query Repos($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String, $first: Int, $last: Int) {
   user(login: $login) {
     id
-    repositories(ownerAffiliations: $ownerAffiliations, first: 30, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before) {
+    repositories(ownerAffiliations: $ownerAffiliations, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before, first: $first, last: $last) {
       pageInfo {
         endCursor
         startCursor
@@ -58,6 +60,8 @@ export const ReposDocument = gql`
  *      ownerAffiliations: // value for 'ownerAffiliations'
  *      after: // value for 'after'
  *      before: // value for 'before'
+ *      first: // value for 'first'
+ *      last: // value for 'last'
  *   },
  * });
  */
