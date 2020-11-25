@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Skeleton } from "antd";
-import { useCredentialsQuery, useUserInfoQuery } from "./queries.gen";
+import { useCredentialsQuery, useFollowUserMutation, useUserInfoQuery } from "./queries.gen";
+
 import "./index.scss";
 
 type Props = {
@@ -11,9 +12,20 @@ const UserInfo = ({ username }: Props) => {
     const { data, loading } = useUserInfoQuery({
         variables: { login: username },
     });
-    const { login } = useCredentialsQuery().data?.viewer || {};
+    // FIXME: Потом надо бы брать из LocalStorage,а не запросом
+    const { viewer } = useCredentialsQuery().data || {};
 
-    const { name, avatarUrl, bio } = data?.user || {};
+    const { name, avatarUrl, bio, id } = data?.user || {};
+
+    const [followUser] = useFollowUserMutation();
+
+    const handleFollow = () => {
+        if (!id) {
+            console.error("[follow] not enough user data provided", data?.user);
+            return;
+        }
+        followUser({ variables: { id: id, clientMutationId: viewer?.id } });
+    };
 
     return (
         <div className="user-info">
@@ -30,8 +42,10 @@ const UserInfo = ({ username }: Props) => {
             <h1 className="user-info__name">{name}</h1>
             <h4 className="user-info__username">{username}</h4>
             <span className="user-info__bio">{bio}</span>
-            {login !== username ? (
-                <Button className="user-info__btn follow">Follow</Button>
+            {viewer?.login !== username ? (
+                <Button className="user-info__btn follow" onClick={handleFollow}>
+                    Follow
+                </Button>
             ) : (
                 <Button className="user-info__btn edit">Edit profile</Button>
             )}
