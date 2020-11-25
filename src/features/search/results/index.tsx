@@ -1,6 +1,6 @@
 import React from "react";
 import { Skeleton, Empty, Pagination } from "antd";
-import { Repo, User } from "shared/components";
+import { Repo, User, Org } from "shared/components";
 import { dom } from "shared/helpers";
 import { SearchType } from "models";
 import * as Params from "../params";
@@ -97,7 +97,13 @@ const SearchResults = () => {
                 {data?.search.nodes?.map((node) => (
                     <ResultItem key={node?.id}>
                         {isRepoSearch && <Repo {...node} format="owner-repo" />}
-                        {isUserSearch && <User {...node} />}
+                        {/* !!! FIXME: simplify */}
+                        {isUserSearch &&
+                            ((node as any)?.__typename === "Organization" ? (
+                                <Org {...node} />
+                            ) : (
+                                <User {...node} />
+                            ))}
                     </ResultItem>
                 ))}
                 {isEmpty && <Empty className="p-8" description="No results found" />}

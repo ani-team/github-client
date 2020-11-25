@@ -12,7 +12,13 @@ const Org = (props: any) => {
             title={login}
             description={description}
             actions={
-                <Button className="user__action follow" href={url}>
+                <Button
+                    className="user__action follow"
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    type="dashed"
+                >
                     View (GitHub)
                 </Button>
             }
