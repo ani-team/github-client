@@ -100,7 +100,11 @@ const SearchResults = () => {
                 <Pagination
                     current={page}
                     total={1000}
-                    onChange={(page) => setPage(page)}
+                    onChange={(page) => {
+                        setPage(page);
+                        // !!! FIXME: temp, resolve better later (by anchors / overflow / ref / scrollHandler / window patching / ...)
+                        document.querySelector(".gc-app")?.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                     pageSize={10}
                     showSizeChanger={false}
                     responsive
