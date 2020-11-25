@@ -10,6 +10,7 @@ export type UserFieldsFragment = { readonly id: string, readonly login: string, 
 export type SearchQueryVariables = Types.Exact<{
   query: Types.Scalars['String'];
   type: Types.SearchType;
+  first: Types.Scalars['Int'];
   after: Types.Scalars['String'];
 }>;
 
@@ -42,8 +43,8 @@ export const UserFieldsFragmentDoc = gql`
 }
     `;
 export const SearchDocument = gql`
-    query Search($query: String!, $type: SearchType!, $after: String!) {
-  search(query: $query, type: $type, first: 10, after: $after) {
+    query Search($query: String!, $type: SearchType!, $first: Int!, $after: String!) {
+  search(query: $query, type: $type, first: $first, after: $after) {
     userCount
     repositoryCount
     nodes {
@@ -69,6 +70,7 @@ ${UserFieldsFragmentDoc}`;
  *   variables: {
  *      query: // value for 'query'
  *      type: // value for 'type'
+ *      first: // value for 'first'
  *      after: // value for 'after'
  *   },
  * });
