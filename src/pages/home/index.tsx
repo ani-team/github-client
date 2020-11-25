@@ -1,13 +1,17 @@
 import React from "react";
 import { useHistory } from "react-router";
 import HomeHero from "features/home-hero";
+import { useTitle } from "../helpers";
+import "./index.scss";
 
 /**
  * @page Home
  */
 const HomePage = () => {
+    useTitle("Github Client - Welcome!");
     const history = useHistory();
     /* FIXME: specify link from Auth.feature */
+
     return (
         <HomeHero
             title="Github in minimalistic design. Built for developers."
