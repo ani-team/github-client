@@ -11,6 +11,9 @@ const isValidAuthContext = (ctx: any): ctx is AuthContext => {
 export default function authGithub() {
     const provider = new firebase.auth.GithubAuthProvider();
     provider.addScope("repo");
+    provider.addScope("user:follow");
+    provider.addScope("read:org");
+
     return firebase
         .auth()
         .signInWithPopup(provider)
