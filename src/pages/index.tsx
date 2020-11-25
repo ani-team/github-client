@@ -29,7 +29,7 @@ const Routing = () => {
             <Route exact path="/search" component={SearchPage} />
             <Route exact path="/:username" component={UserPage} />
             <Route
-                path="/:username/:repository/:branch(tree/[\w\d-_.]+)?"
+                path="/:username/:repository/:branch(tree/[\w\d-_./]+)?"
                 component={RepositoryPage}
             />
             <Redirect to={`/${viewer?.username}`} />
