@@ -8,19 +8,22 @@ GitHub client within the *React Akvelon 2020* course.
 [requirements]: https://github.com/niyazm524/github-client/wiki/%5BRU%5D-Requirements
 [codestyle]: https://github.com/niyazm524/github-client/wiki/CodeStyle
 [structure]: https://github.com/niyazm524/github-client/wiki/Project-Structure
+[dev-guide]: https://github.com/niyazm524/github-client/wiki/Dev-Guide
 
 - [Project WIKI][wiki]
    - [Requirements (RU)][requirements]
    - [Design](https://www.figma.com/file/HxOqIdmTNtLcFLcQZzAYJC/github-client "Super design from @AdeliyaG")
-   - [CodeStyle][codestyle]
+   - [Dev Guide][dev-guide]
    - [Structure][structure]
+   - [CodeStyle][codestyle]
 - [Contributing guide](CONTRIBUTING.md)
 
 ## Overview
 - See repo/collabs list and details of [any user](https://github-client.gq/gaearon)
 - See base info of [any repository](https://github-client.gq/facebook/react)
-- Use search by [repo](https://dev.github-client.gq/search?o=desc&q=react&s=stars)/[users](https://dev.github-client.gq/search?o=desc&q=google&s=repositories&type=users)
+- Use search by [repo](https://github-client.gq/search?o=desc&q=react&s=stars)/[users](https://github-client.gq/search?o=desc&q=google&s=repositories&type=users)
 - View corresponding page on <b title="Our routing is identical with github">github through origin button!</b>
+- [**Try github-client right now =)**](https://github-client.gq)
 
 <img alt="screen" src="docs/search.png" />
 
@@ -47,43 +50,3 @@ GitHub client within the *React Akvelon 2020* course.
 <img title="github-actions" alt="github-actions" height=48 src="https://avatars0.githubusercontent.com/u/44036562?s=200&v=4" />
 <img title="firebase" alt="firebase" height=48 src="https://www.gstatic.com/devrel-devsite/prod/v73fbca10ce7899da426d451b3f74ee09bc6846fcf427552c7e8e85261505ef2c/firebase/images/touchicon-180.png" />
 </div>
-
-## Usage
-
-### Launch dev-stand
-```sh
-$ npm i                   # install dependencies
-$ npm run start           # launch stand
-```
-
-### Launch tests
-```sh
-$ npm run test            # launch all tests
-```
-
-```sh
-$ npm run react:test      # unit tests
-$ npm run lint:test       # linters tests
-$ npm run lint:fix        # linters tests + autofix
-```
-
-### Work with dependencies
-```sh
-$ npm run deps:clean      # removing redundant created files, node_modules
-$ npm run deps:reinstall  # reinstall dependencies
-```
-
-### API Codegen
-```sh
-$ npm run api:gen         # generate types and hooks for work with API - once
-$ npm run api:gen--watch  # generate types and hooks for work with API - watch-mode
-```
-
-## VSCode
-
-Plugins list for better <b title="Developer Experience">DX</b>
-> There is a required base config for all of these
-
-- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - Autocomplete for Tailwind classes in components
-- [Apollo GraphQL](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) - IntelliSense with autocomplete (but with freezes, possible)
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) - Autofix on save, testing from linters
