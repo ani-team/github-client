@@ -1,4 +1,4 @@
-.user {
+.card {
     height: 140px;
     padding: 22px;
     font-family: var(--ff-secondary);
@@ -6,10 +6,14 @@
     background-color: var(--clr-gray--100);
     border-radius: 10px;
 
-    &__avatar img {
+    &__preview img {
         min-width: 90px;
         min-height: 90px;
         border: 2px solid var(--clr-gray--200);
         border-radius: 50%;
+    }
+
+    &__title {
+        color: var(--clr-text);
     }
 }

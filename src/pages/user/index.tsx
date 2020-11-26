@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col } from "antd";
 import { RouteComponentProps } from "react-router-dom";
 import { UserInfo, RepoList } from "features";
+import { useTitle } from "../helpers";
 import "./index.scss";
 
 type Props = RouteComponentProps<{
@@ -13,9 +14,10 @@ type Props = RouteComponentProps<{
  */
 const UserPage = (props: Props) => {
     const { username } = props.match.params;
+    useTitle(`User · ${username}`);
 
     return (
-        <Row className="page page-user">
+        <Row className="page page-user pb-12">
             <Col span={6} className="user-info">
                 <UserInfo username={username} />
             </Col>

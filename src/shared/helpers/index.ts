@@ -1,3 +1,4 @@
 import * as str from "./string";
+import * as dom from "./dom";
 
-export { str };
+export { str, dom };

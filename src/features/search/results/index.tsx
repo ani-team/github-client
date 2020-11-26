@@ -1,24 +1,46 @@
 import React from "react";
-import { Skeleton, Empty } from "antd";
-import { Repo, User } from "shared/components";
+import cn from "classnames";
+import { Skeleton, Empty, Pagination } from "antd";
+import { Repo, User, Org } from "shared/components";
+import { dom } from "shared/helpers";
 import { SearchType } from "models";
 import * as Params from "../params";
-import { useSearchQuery, RepoFieldsFragment, UserFieldsFragment } from "./queries.gen";
+import { useSearchQuery } from "./queries.gen";
 import SortSelect from "./sort-select";
 import "./index.scss";
 
+// FIXME: decompose
+
+const PAGE_SIZE = 10;
+
 /**
- * @hook Работа с поиском, фильтрацией и сортировкой
+ * @hook Работа с поиском, фильтрацией, сортировкой и пагинацией
  */
 const useSearch = () => {
     const { sortOrder, sortField } = Params.useSearchSortParams();
     const { searchQuery } = Params.useSearchQueryParam();
     const { searchTypeEnum } = Params.useSearchTypeParam();
+    const { page, setPage } = Params.usePageParam();
+
+    const handlePageChange = (page: number) => {
+        setPage(page);
+        dom.scrollToTop();
+    };
+
+    const isUserSearch = searchTypeEnum === SearchType.User;
+    const isRepoSearch = searchTypeEnum === SearchType.Repository;
 
     return {
         type: searchTypeEnum,
         query: `${searchQuery} sort:${sortField}-${sortOrder}`,
         queryClean: searchQuery,
+        // Супер пагинация от Нияза (niyazm524)
+        after: btoa(`cursor:${(page - 1) * PAGE_SIZE}`),
+        page,
+        first: PAGE_SIZE,
+        handlePageChange,
+        isUserSearch,
+        isRepoSearch,
     };
 };
 
@@ -26,16 +48,17 @@ const useSearch = () => {
  * @feature Результаты поиска
  */
 const SearchResults = () => {
-    const searchConfig = useSearch();
+    const { handlePageChange, page, isUserSearch, isRepoSearch, ...searchConfig } = useSearch();
+
     const { data, loading } = useSearchQuery({ variables: searchConfig });
 
-    const isEmpty = !loading && (!data || data.search.edges?.length === 0);
-    const count =
-        searchConfig.type === SearchType.User
-            ? data?.search.userCount
-            : searchConfig.type === SearchType.Repository
-            ? data?.search.repositoryCount
-            : 0;
+    const isEmpty = !loading && (!data || data.search.nodes?.length === 0);
+    // prettier-ignore
+    const count = (
+        Number(isUserSearch) * Number(data?.search.userCount) ||
+        Number(isRepoSearch) * Number(data?.search.repositoryCount) ||
+        0
+    )
 
     return (
         <div className="search-results">
@@ -59,38 +82,51 @@ const SearchResults = () => {
             <div className="search-results__list">
                 {loading && (
                     <>
+                        {/* FIXME: simplify */}
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
+                        <ResultItemPlaceholder />
                         <ResultItemPlaceholder />
                         <ResultItemPlaceholder />
                         <ResultItemPlaceholder />
                     </>
                 )}
-                {/* FIXME: as wrapper? */}
-                {/* FIXME: Пока что фильтруем Организации, т.к. под них нужна отдельная страница и логика */}
-                {data?.search.edges
-                    // @ts-ignore FIXME: specify types
-                    ?.filter((edge) => edge?.node?.__typename !== "Organization")
-                    .map((edge) => {
-                        // !!! FIXME: specify types
-                        // FIXME: simplify
-                        if (searchConfig.type === SearchType.Repository) {
-                            const data = edge?.node as RepoFieldsFragment;
-                            return (
-                                <ResultItem key={data.id}>
-                                    <Repo {...data} />
-                                </ResultItem>
-                            );
-                        }
-                        if (searchConfig.type === SearchType.User) {
-                            const data = edge?.node as UserFieldsFragment;
-                            return (
-                                <ResultItem key={data.id}>
-                                    <User {...data} />
-                                </ResultItem>
-                            );
-                        }
-                        return null;
-                    })}
+                {data?.search.nodes?.map((node) => (
+                    <ResultItem key={node?.id} className={(node as any).__typename}>
+                        {isRepoSearch && <Repo {...node} format="owner-repo" />}
+                        {/* !!! FIXME: simplify */}
+                        {isUserSearch &&
+                            ((node as any)?.__typename === "Organization" ? (
+                                <Org {...node} />
+                            ) : (
+                                <User {...node} />
+                            ))}
+                    </ResultItem>
+                ))}
                 {isEmpty && <Empty className="p-8" description="No results found" />}
+            </div>
+            <div className="search-results__pagination text-center mt-6">
+                {count > PAGE_SIZE && (
+                    <Pagination
+                        current={page}
+                        /**
+                         * Отображаем минимальное
+                         * - либо по кол-ву результатов,
+                         * - либо с ограничением в 100 страниц
+                         * (как на github)
+                         * @remark Да и их API не возвращает результаты после 1000
+                         */
+                        total={Math.min(count, 100 * PAGE_SIZE)}
+                        onChange={handlePageChange}
+                        pageSize={PAGE_SIZE}
+                        showSizeChanger={false}
+                        responsive
+                    />
+                )}
             </div>
         </div>
     );
@@ -99,8 +135,8 @@ const SearchResults = () => {
 const ResultItemPlaceholder = () => (
     <Skeleton.Input className="search-results__item-placeholder mb-6" size="large" active />
 );
-const ResultItem = ({ children }: PropsWithChildren) => (
-    <div className="search-results__item mb-6">{children}</div>
+const ResultItem = ({ children, className }: PropsWithChildren & PropsWithClassName) => (
+    <div className={cn("search-results__item", "mb-6", className)}>{children}</div>
 );
 
 export default SearchResults;

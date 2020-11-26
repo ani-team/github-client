@@ -5,7 +5,7 @@
     bottom: 20px;
     // stylesheets
     // FIXME: DRY with Auth.page
-    color: var(--clr-gray--800);
+    color: var(--clr-gray--400);
     cursor: pointer;
     background: none;
     border: none;
@@ -13,10 +13,10 @@
     transition: color 0.25s linear;
 
     &:hover {
-        color: var(--clr-gray--500);
+        color: var(--clr-gray--800);
     }
 
     &:active {
-        color: var(--clr-gray--700);
+        color: var(--clr-primary);
     }
 }

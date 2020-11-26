@@ -10,4 +10,4 @@ declare type Callback = () => void;
 
 declare type Nullable<T> = T | null;
 
-declare type Component = () => JSX.Element;
+declare type Component<P = any> = (props: P) => JSX.Element;

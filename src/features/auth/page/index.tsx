@@ -1,9 +1,13 @@
 import React from "react";
 import { Alert, Card } from "antd";
 import { GithubFilled } from "@ant-design/icons";
+// !!! FIXME: loop imports
+import { useTitle } from "pages/helpers";
 import { authorizeGithub } from "../firebase";
 import { useAuth } from "../hooks";
 import "./index.scss";
+
+// FIXME: move to pages level?
 
 /**
  * @page Auth
@@ -15,6 +19,7 @@ import "./index.scss";
  * 3. Получение токена на основании OAuth данных и полученного кода
  */
 const AuthPage = () => {
+    useTitle("Sign in to Github Client");
     const { login } = useAuth();
     const authorize = () => {
         authorizeGithub().then(login);
