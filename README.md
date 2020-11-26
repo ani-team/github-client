@@ -1,19 +1,13 @@
 # github-client
+
+<img alt="favicon" src="https://avatars2.githubusercontent.com/oa/1406180?s=140&u=b44629cbec5079f99a61e6f1b6297bc4797f796b&v=4" height=120 align="right" />
+
 Github клиент в рамках курса *React Akvelon 2020*.
-
-<div style="display: flex;">
-<img title="github" alt="github" width="64" src="https://image.flaticon.com/icons/png/512/25/25231.png"/>
-<img title="react" alt="react" width="64" src="https://cdn.auth0.com/blog/react-js/react.png"/>
-<img title="antdesign" alt="antdesign" width="64" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"/>
-<img title="graphql" alt="graphql" width="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1200px-GraphQL_Logo.svg.png"/>
-<img title="apollo" alt="apollo" width="64" src="https://miro.medium.com/max/300/0*xdVGlEH7f9cRVaR-"/>
-</div>
-
-## Ресурсы
 
 - [Структура проекта](STRUCTURE.md)
 - [Рекомендации по разработке](RECOMMENDATIONS.md)
 - [Project WIKI](https://github.com/martis-git/github-client/wiki)
+
 
 ## Технический стек
 - **UI**: `react`, `antd`, `classnames`, `tailwindcss`
@@ -22,6 +16,21 @@ Github клиент в рамках курса *React Akvelon 2020*.
    - **API Codegen**: `graphql-codegen`
 - **Routing**: `react-router`
 - **Tests**: `eslint`, `prettier`, `graphql-eslint`, `stylelint`
+- **Auth**: `GitHub OAuth`, `firebase`
+- **CI/CD**: `github-actions`, `firebase`
+
+<div align="center">
+<img title="react" alt="react" height=48 src="https://cdn.auth0.com/blog/react-js/react.png"/>
+<img title="typescript" alt="typescript" height=48 src="https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png"/>
+<img title="antdesign" alt="antdesign" height=48 src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"/>
+<img title="graphql" alt="graphql" height=48 src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1200px-GraphQL_Logo.svg.png"/>
+<img title="apollo" alt="apollo" height=48 src="https://miro.medium.com/max/300/0*xdVGlEH7f9cRVaR-"/>
+<img title="eslint" alt="eslint" height=48 src="https://d33wubrfki0l68.cloudfront.net/204482ca413433c80cd14fe369e2181dd97a2a40/092e2/assets/img/logo.svg"/>
+<img title="prettier" alt="prettier" height=48 src="https://prettier.io/icon.png"/>
+<img title="stylelint" alt="stylelint" height=48 src="https://camo.githubusercontent.com/aa04feafbd080140cd834905cf171ccf7b06fc5f1f1ae07ce9879218165312d1/68747470733a2f2f63646e2e776f726c64766563746f726c6f676f2e636f6d2f6c6f676f732f7374796c656c696e742e737667"/>
+<img title="github" alt="github" height=48 src="https://image.flaticon.com/icons/png/512/25/25231.png" />
+<img title="firebase" alt="firebase" height=48 src="https://www.gstatic.com/devrel-devsite/prod/v73fbca10ce7899da426d451b3f74ee09bc6846fcf427552c7e8e85261505ef2c/firebase/images/touchicon-180.png" />
+</div>
 
 ## Использование
 
