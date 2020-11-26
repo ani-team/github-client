@@ -20,10 +20,10 @@ First of all, thanks for taking the time to contribute! :+1:
    > And be tolerant of our CI...
 
 ## Code Style
-1. Please, learn and follow our [accepted codestyle](https://github.com/niyazm524/github-client/wiki/CodeStyle)
+1. Please, learn and follow our [accepted codestyle](https://github.com/niyazm524/github-client/wiki/CodeStyle), [dev-guide](https://github.com/niyazm524/github-client/wiki/Dev-Guide) and [project structure](https://github.com/niyazm524/github-client/wiki/Project-Structure)
 2. We're using few code linters && formatters:
     - ESLint (react + ts + graphql)
     - Prettier
     - Stylelint
     
-   Use [IDE plugins](https://github.com/niyazm524/github-client#vscode) or [scripts with autofix before PR](https://github.com/niyazm524/github-client#launch-tests)
+   Use [IDE plugins](https://github.com/niyazm524/github-client/wiki/Dev-Guide#vscode) or [scripts with autofix before PR](https://github.com/niyazm524/github-client/wiki/Dev-Guide#launch-tests)
