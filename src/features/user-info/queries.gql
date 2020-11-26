@@ -4,6 +4,8 @@ query UserInfo ($login: String!) {
     name
     avatarUrl
     bio
+    viewerIsFollowing
+    isViewer
   }
 }
 

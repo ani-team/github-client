@@ -8,7 +8,7 @@ export type UserInfoQueryVariables = Types.Exact<{
 }>;
 
 
-export type UserInfoQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly name?: Types.Maybe<string>, readonly avatarUrl: any, readonly bio?: Types.Maybe<string> }> };
+export type UserInfoQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly name?: Types.Maybe<string>, readonly avatarUrl: any, readonly bio?: Types.Maybe<string>, readonly viewerIsFollowing: boolean, readonly isViewer: boolean }> };
 
 export type CredentialsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
@@ -39,6 +39,8 @@ export const UserInfoDocument = gql`
     name
     avatarUrl
     bio
+    viewerIsFollowing
+    isViewer
   }
 }
     `;
