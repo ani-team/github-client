@@ -7,6 +7,8 @@ Github клиент в рамках курса *React Akvelon 2020*.
 - [Структура проекта](STRUCTURE.md)
 - [Рекомендации по разработке](RECOMMENDATIONS.md)
 - [Project WIKI](https://github.com/martis-git/github-client/wiki)
+- [Требования](https://github.com/niyazm524/github-client/wiki/%D0%A1%D0%B4%D0%B0%D1%87%D0%B0-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0)
+- [Дизайн](https://www.figma.com/file/HxOqIdmTNtLcFLcQZzAYJC/github-client "Супер дизайн от @AdeliyaG")
 
 
 ## Технический стек
@@ -29,6 +31,7 @@ Github клиент в рамках курса *React Akvelon 2020*.
 <img title="prettier" alt="prettier" height=48 src="https://prettier.io/icon.png"/>
 <img title="stylelint" alt="stylelint" height=48 src="https://camo.githubusercontent.com/aa04feafbd080140cd834905cf171ccf7b06fc5f1f1ae07ce9879218165312d1/68747470733a2f2f63646e2e776f726c64766563746f726c6f676f2e636f6d2f6c6f676f732f7374796c656c696e742e737667"/>
 <img title="github" alt="github" height=48 src="https://image.flaticon.com/icons/png/512/25/25231.png" />
+<img title="Супер CI/CD от @niyazm524" alt="github-actions" height=48 src="https://avatars0.githubusercontent.com/u/44036562?s=200&v=4" />
 <img title="firebase" alt="firebase" height=48 src="https://www.gstatic.com/devrel-devsite/prod/v73fbca10ce7899da426d451b3f74ee09bc6846fcf427552c7e8e85261505ef2c/firebase/images/touchicon-180.png" />
 </div>
 
