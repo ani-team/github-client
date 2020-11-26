@@ -35,7 +35,8 @@ GitHub client within the *React Akvelon 2020* course.
 - **Fetching**: `graphql`, `apollo-client (3+)`
    - **API Codegen**: `graphql-codegen`
 - **Routing**: `react-router`
-- **Tests**: `eslint`, `prettier`, `graphql-eslint`, `stylelint`
+<!-- Себя не похвалишь - никто не похвалит :DDD -->
+- <b title="Super linting from @martis-git">Tests</b>: `eslint`, `prettier`, `graphql-eslint`, `stylelint`
 - **Auth**: `GitHub OAuth`, `firebase`
 - <b title="Super CI/CD from @niyazm524">CI/CD</b>: `github-actions`, `firebase`
 
