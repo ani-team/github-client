@@ -16,6 +16,14 @@ GitHub client within the *React Akvelon 2020* course.
    - [Structure][structure]
 - [Contributing guide](CONTRIBUTING.md)
 
+## Overview
+- See repo/collabs list and details of [any user](https://github-client.gq/gaearon)
+- See base info of [any repository](https://github-client.gq/facebook/react)
+- Use search by [repo](https://dev.github-client.gq/search?o=desc&q=react&s=stars)/[users](https://dev.github-client.gq/search?o=desc&q=google&s=repositories&type=users)
+- View corresponding page on <b title="Our routing is identical with github">github through origin button!</b>
+
+<img alt="screen" src="docs/search.png" />
+
 ## Technology stack
 - **UI**: `react`, `antd`, `classnames`, `tailwindcss`
 - **Lang**: `typescript (3.7+)`
