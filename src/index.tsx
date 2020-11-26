@@ -4,13 +4,18 @@ import App from "./app";
 import * as serviceWorker from "./serviceWorker";
 import "normalize.css";
 import "antd/dist/antd.css";
+import { loadLocalStorageFromDevIfNeeded } from "./shared/helpers/temp-stand";
 
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById("root"),
-);
+function init() {
+    ReactDOM.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>,
+        document.getElementById("root"),
+    );
+}
+
+loadLocalStorageFromDevIfNeeded().then(init);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
