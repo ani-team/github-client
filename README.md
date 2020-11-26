@@ -5,11 +5,11 @@
 Github клиент в рамках курса *React Akvelon 2020*.
 
 - [Структура проекта](STRUCTURE.md)
-- [Рекомендации по разработке](RECOMMENDATIONS.md)
+- [Рекомендации по разработке](https://github.com/niyazm524/github-client/wiki/CodeStyle)
 - [Project WIKI](https://github.com/martis-git/github-client/wiki)
-- [Требования](https://github.com/niyazm524/github-client/wiki/%D0%A1%D0%B4%D0%B0%D1%87%D0%B0-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0)
+- [Требования](https://github.com/niyazm524/github-client/wiki/%D0%A2%D0%97)
 - [Дизайн](https://www.figma.com/file/HxOqIdmTNtLcFLcQZzAYJC/github-client "Супер дизайн от @AdeliyaG")
-
+- [Contributing guide](CONTRIBUTING.md)
 
 ## Технический стек
 - **UI**: `react`, `antd`, `classnames`, `tailwindcss`
