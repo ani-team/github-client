@@ -19,7 +19,7 @@ export default (function () {
     function postData(id: string, data: any) {
         var mergedData = XdUtils.extend(data, defaultData);
         mergedData.id = id;
-        parent.postMessage(JSON.stringify(mergedData), "*");
+        window.parent.postMessage(JSON.stringify(mergedData), "*");
     }
 
     function getData(id: string, key: string) {
@@ -103,7 +103,7 @@ export default (function () {
             namespace: MESSAGE_NAMESPACE,
             id: "iframe-ready",
         };
-        parent.postMessage(JSON.stringify(data), "*");
+        window.parent.postMessage(JSON.stringify(data), "*");
     }
     //on creation
     sendOnLoad();
