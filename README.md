@@ -48,7 +48,7 @@ $ npm i                   # install dependencies
 $ npm run start           # launch stand
 ```
 
-### Launch test
+### Launch tests
 ```sh
 $ npm run test            # launch all tests
 ```

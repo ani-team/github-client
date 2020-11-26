@@ -26,4 +26,4 @@ First of all, thanks for taking the time to contribute! :+1:
     - Prettier
     - Stylelint
     
-   Use [IDE plugins](https://github.com/niyazm524/github-client#vscode) or [scripts with autofix before PR](https://github.com/niyazm524/github-client#%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2)
+   Use [IDE plugins](https://github.com/niyazm524/github-client#vscode) or [scripts with autofix before PR](https://github.com/niyazm524/github-client#launch-tests)
