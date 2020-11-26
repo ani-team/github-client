@@ -8,9 +8,8 @@ interface xdLocalStorageAPI {
     getItem: (key: string, callback: (value: string) => void) => void;
 }
 
-/* global XdUtils */
 export default (function () {
-    var MESSAGE_NAMESPACE = "cross-domain-local-message";
+    const MESSAGE_NAMESPACE = "cross-domain-local-message";
 
     var defaultData = {
         namespace: MESSAGE_NAMESPACE,
