@@ -73,7 +73,7 @@ $ npm run api:gen--watch  # generate types and hooks for work with API - watch-m
 
 ## VSCode
 
-Plugins list for better DX<a title="Developer Experience">*</a>
+Plugins list for better <b title="Developer Experience">DX</b>
 > There is a required base config for all of these
 
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) - Autocomplete for Tailwind classes in components
