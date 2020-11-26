@@ -1,34 +1,45 @@
 import React from "react";
 import dayjs from "dayjs";
 import { Repository, Language } from "models";
+import Card from "../card";
 // FIXME: replace to ant.design icons
 import FavBtn from "./fav-btn";
 import "./index.scss";
 
 // !!! FIXME: specify types
-type Props = any;
+type Props = any & {
+    format?: "owner-repo" | "repo";
+};
 
 // FIXME: refactor
 const Repo = (props: Props) => {
-    const { name, primaryLanguage, updatedAt, url, viewerHasStarred, owner } = props as Partial<
+    const { format = "repo" } = props;
+    const { name, primaryLanguage, updatedAt, viewerHasStarred, owner } = props as Partial<
         Repository
     >;
 
+    // prettier-ignore
+    const indentity = (
+        (format === "owner-repo" && `${owner?.login}/${name}`) || 
+        (format === "repo" && name) ||
+        ""
+    );
+
     return (
-        <div className="repo">
-            <div className="repo__info">
-                {/* FIXME: hardcoded, replace to generation by {username}/{reponame} */}
-                <a className="text-title" href={url?.replace("https://github.com/", "/")}>
-                    {owner?.login && `${owner.login}/`}
-                    {name}
-                </a>
-                <div className="repo__other-info">
+        <Card
+            className="repo"
+            title={indentity}
+            titleHref={`/${indentity}`}
+            description={
+                <div className="repo__extra">
                     <Lang {...primaryLanguage} />
-                    <span>Updated on {dayjs(updatedAt).format("D MMM YYYY")}</span>
+                    <span className="repo__date">
+                        Updated on {dayjs(updatedAt).format("D MMM YYYY")}
+                    </span>
                 </div>
-            </div>
-            {viewerHasStarred !== undefined && <FavBtn isFav={viewerHasStarred} />}
-        </div>
+            }
+            actions={<>{viewerHasStarred !== undefined && <FavBtn isFav={viewerHasStarred} />}</>}
+        />
     );
 };
 

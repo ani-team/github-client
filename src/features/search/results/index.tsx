@@ -1,6 +1,7 @@
 import React from "react";
+import cn from "classnames";
 import { Skeleton, Empty, Pagination } from "antd";
-import { Repo, User } from "shared/components";
+import { Repo, User, Org } from "shared/components";
 import { dom } from "shared/helpers";
 import { SearchType } from "models";
 import * as Params from "../params";
@@ -94,17 +95,18 @@ const SearchResults = () => {
                         <ResultItemPlaceholder />
                     </>
                 )}
-                {/* FIXME: as wrapper? */}
-                {/* FIXME: Пока что фильтруем Организации, т.к. под них нужна отдельная страница и логика */}
-                {data?.search.nodes
-                    // @ts-ignore FIXME: specify types
-                    ?.filter(({ __typename }) => __typename !== "Organization")
-                    .map((node) => (
-                        <ResultItem key={node?.id}>
-                            {isRepoSearch && <Repo {...node} />}
-                            {isUserSearch && <User {...node} />}
-                        </ResultItem>
-                    ))}
+                {data?.search.nodes?.map((node) => (
+                    <ResultItem key={node?.id} className={(node as any).__typename}>
+                        {isRepoSearch && <Repo {...node} format="owner-repo" />}
+                        {/* !!! FIXME: simplify */}
+                        {isUserSearch &&
+                            ((node as any)?.__typename === "Organization" ? (
+                                <Org {...node} />
+                            ) : (
+                                <User {...node} />
+                            ))}
+                    </ResultItem>
+                ))}
                 {isEmpty && <Empty className="p-8" description="No results found" />}
             </div>
             <div className="search-results__pagination text-center mt-6">
@@ -133,8 +135,8 @@ const SearchResults = () => {
 const ResultItemPlaceholder = () => (
     <Skeleton.Input className="search-results__item-placeholder mb-6" size="large" active />
 );
-const ResultItem = ({ children }: PropsWithChildren) => (
-    <div className="search-results__item mb-6">{children}</div>
+const ResultItem = ({ children, className }: PropsWithChildren & PropsWithClassName) => (
+    <div className={cn("search-results__item", "mb-6", className)}>{children}</div>
 );
 
 export default SearchResults;

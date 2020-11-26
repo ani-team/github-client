@@ -18,9 +18,10 @@ const SearchPage = () => {
             <Col span={6} className="ml-4" offset={1}>
                 <Search.Filters />
                 <Alert
+                    style={{ borderRadius: 6, marginTop: 10 }}
                     showIcon
-                    message="Limiting results"
-                    description="For a while, 'organizations' are hidden from search results by 'users' type"
+                    message="Organizations access"
+                    description="For a while, `organizations` are presented in search results, but not accessible on service pages"
                 />
             </Col>
         </Row>

@@ -7,6 +7,8 @@ export type RepoFieldsFragment = { readonly id: string, readonly name: string, r
 
 export type UserFieldsFragment = { readonly id: string, readonly login: string, readonly bio?: Types.Maybe<string>, readonly avatarUrl: any, readonly viewerIsFollowing: boolean };
 
+export type OrgFieldsFragment = { readonly id: string, readonly login: string, readonly avatarUrl: any, readonly description?: Types.Maybe<string>, readonly url: any };
+
 export type SearchQueryVariables = Types.Exact<{
   query: Types.Scalars['String'];
   type: Types.SearchType;
@@ -15,7 +17,7 @@ export type SearchQueryVariables = Types.Exact<{
 }>;
 
 
-export type SearchQuery = { readonly search: { readonly userCount: number, readonly repositoryCount: number, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<RepoFieldsFragment | UserFieldsFragment>>> } };
+export type SearchQuery = { readonly search: { readonly userCount: number, readonly repositoryCount: number, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<OrgFieldsFragment | RepoFieldsFragment | UserFieldsFragment>>> } };
 
 export const RepoFieldsFragmentDoc = gql`
     fragment RepoFields on Repository {
@@ -42,6 +44,15 @@ export const UserFieldsFragmentDoc = gql`
   viewerIsFollowing
 }
     `;
+export const OrgFieldsFragmentDoc = gql`
+    fragment OrgFields on Organization {
+  id
+  login
+  avatarUrl
+  description
+  url
+}
+    `;
 export const SearchDocument = gql`
     query Search($query: String!, $type: SearchType!, $first: Int!, $after: String!) {
   search(query: $query, type: $type, first: $first, after: $after) {
@@ -50,11 +61,13 @@ export const SearchDocument = gql`
     nodes {
       ...RepoFields
       ...UserFields
+      ...OrgFields
     }
   }
 }
     ${RepoFieldsFragmentDoc}
-${UserFieldsFragmentDoc}`;
+${UserFieldsFragmentDoc}
+${OrgFieldsFragmentDoc}`;
 
 /**
  * __useSearchQuery__
