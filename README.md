@@ -20,10 +20,12 @@ GitHub client within the *React Akvelon 2020* course.
 
 ## Overview
 - See repo/collabs list and details of [any user](https://github-client.gq/gaearon)
-- See base info of [any repository](https://github-client.gq/facebook/react)
-- Use search by [repo](https://github-client.gq/search?o=desc&q=react&s=stars)/[users](https://github-client.gq/search?o=desc&q=google&s=repositories&type=users)
+- See base info of [any public repository](https://github-client.gq/facebook/react)
+- Use search by [repositories](https://github-client.gq/search?o=desc&q=react&s=stars)/[users](https://github-client.gq/search?o=desc&q=google&s=repositories&type=users) with sorting
 - View corresponding page on <b title="Our routing is identical with github">github through origin button!</b>
-- [**Try github-client right now =)**](https://github-client.gq)
+- Connect with your account safely - [by Github OAuth](https://github-client.gq/auth)
+- [Get feedback](https://github-client.gq/some-unexisting-route-but-we-have-error-parking-page) if some errors occurred
+- Try  [**github-client right now =)**](https://github-client.gq) or [last dev version (but unstable)](https://github-client.gq)
 
 <img alt="screen" src="docs/search.png" />
 
