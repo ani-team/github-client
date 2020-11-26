@@ -19,8 +19,10 @@ GitHub client within the *React Akvelon 2020* course.
 - [Contributing guide](CONTRIBUTING.md)
 
 ## Overview
+<!-- Указаны ссылки на "prod"-стенд как на основной и более стабильный -->
+
 - See repo/collabs list and details of [any user](https://github-client.gq/gaearon)
-- See base info of [any public repository](https://github-client.gq/facebook/react)
+- See base info of [any public repository](https://github-client.gq/facebook/react) with [branches base manipulating](https://github-client.gq/facebook/react/tree/17.0.0-dev)
 - Use search by [repositories](https://github-client.gq/search?o=desc&q=react&s=stars)/[users](https://github-client.gq/search?o=desc&q=google&s=repositories&type=users) with sorting
 - View corresponding page on github <b title="Our routing is identical with github">through origin button!</b>
 - Connect with your account safely - [by Github OAuth](https://github-client.gq/auth)
