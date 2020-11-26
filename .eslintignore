@@ -3,4 +3,4 @@ dist/**
 build/**
 *.gen.ts
 .github
-src/shared/helpers/xd-local-storage
+src/shared/helpers/xd-local-storage/**/*
