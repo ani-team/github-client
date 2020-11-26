@@ -7,6 +7,9 @@ import { Auth } from "features";
 import { ReactComponent as IcLogo } from "./logo.svg";
 import "./index.scss";
 
+const FEEDBACK_URL = "https://github.com/niyazm524/github-client/issues/new";
+const GITHUB_URL = "https://github.com/niyazm524/github-client";
+
 const Header = () => {
     const { isAuth } = Auth.useAuth();
     // !!! FIXME: limit scope of query-params literals
@@ -45,6 +48,12 @@ const Header = () => {
                         }}
                     />
                 )}
+                <a className="m-4 text-gray-600" href={GITHUB_URL}>
+                    GitHub
+                </a>
+                <a className="m-4 text-gray-600" href={FEEDBACK_URL}>
+                    Feedback
+                </a>
             </div>
             <Auth.User />
         </Layout.Header>
