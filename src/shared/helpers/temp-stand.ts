@@ -9,9 +9,19 @@ export const loadLocalStorageFromDevIfNeeded = async () => {
         return;
     }
     // Сделал бы через DefinePlugin, но ради этого делать eject не хочется
-    const { default: xdLocalStorage } = await import("./xd-local-storage");
-    const userCredentialRaw = await new Promise<string>((resolve) =>
-        xdLocalStorage.getItem(CREDENTIAL_KEY, resolve),
+    // @ts-ignore
+    const { default: createGuest } = await import("cross-domain-storage/guest");
+    const storage = createGuest("https://dev.github-client.gq/dev/temp-stands.html");
+    const userCredentialRaw = await new Promise<string | undefined>((resolve, reject) =>
+        storage.get(CREDENTIAL_KEY, (error: any, data: string | undefined) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+            resolve(data);
+        }),
     );
-    localStorage.setItem(CREDENTIAL_KEY, userCredentialRaw);
+    if (userCredentialRaw) {
+        localStorage.setItem(CREDENTIAL_KEY, userCredentialRaw);
+    }
 };
