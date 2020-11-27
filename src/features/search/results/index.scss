@@ -24,12 +24,6 @@
             box-shadow: 0 5px 0 var(--clr-primary--active);
         }
 
-        &-placeholder {
-            width: 100% !important;
-            height: 140px !important;
-            border-radius: 10px;
-        }
-
         &.Organization {
             pointer-events: none;
             box-shadow: 0 5px 0 var(--clr-danger);

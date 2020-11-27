@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import Skeleton from "./skeleton";
 import "./index.scss";
 
 type Props = {
@@ -43,5 +44,7 @@ const Card = (props: Props) => {
         </div>
     );
 };
+
+Card.Skeleton = Skeleton;
 
 export default Card;
