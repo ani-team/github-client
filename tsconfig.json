@@ -22,8 +22,5 @@
   },
   "include": [
     "src"
-  ],
-  "exclude": [
-    "src/shared/helpers/xd-local-storage/index.ts"
   ]
 }

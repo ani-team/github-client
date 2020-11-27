@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./app";
 import * as serviceWorker from "./serviceWorker";
+import { loadLocalStorageFromDevIfNeeded } from ".deploy";
 import "normalize.css";
 import "antd/dist/antd.css";
-import { loadLocalStorageFromDevIfNeeded } from "./shared/helpers/temp-stand";
 
-function init() {
+function renderApp() {
     ReactDOM.render(
         <React.StrictMode>
             <App />
@@ -15,7 +15,7 @@ function init() {
     );
 }
 
-loadLocalStorageFromDevIfNeeded().then(init);
+loadLocalStorageFromDevIfNeeded().then(renderApp);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
