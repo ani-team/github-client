@@ -1,51 +1,22 @@
 import React from "react";
 import { Button, Skeleton } from "antd";
-import {
-    useCredentialsQuery,
-    useFollowUserMutation,
-    useUnfollowUserMutation,
-    useUserInfoQuery,
-} from "./queries.gen";
+import * as Queries from "./queries.gen";
 
 import "./index.scss";
+import useFollow from "./hook";
 
 type Props = {
     username: string;
 };
 
 const UserInfo = ({ username }: Props) => {
-    const { data, loading, refetch } = useUserInfoQuery({
+    const { data, loading, refetch } = Queries.useUserInfoQuery({
         variables: { login: username },
     });
-    // FIXME: Потом надо бы брать из LocalStorage,а не запросом
-    const { viewer } = useCredentialsQuery().data || {};
 
     const { name, avatarUrl, bio, id, isViewer, viewerIsFollowing } = data?.user || {};
 
-    const [followUser] = useFollowUserMutation();
-    const [unfollowUser] = useUnfollowUserMutation();
-
-    const handleFollow = () => {
-        if (!id) {
-            console.error("[follow] not enough user data provided", data?.user);
-            return;
-        }
-        followUser({
-            variables: { id: id, clientMutationId: viewer?.id },
-        });
-        refetch();
-    };
-
-    const handleUnfollow = () => {
-        if (!id) {
-            console.error("[unfollow] not enough user data provided", data?.user);
-            return;
-        }
-        unfollowUser({
-            variables: { id: id, clientMutationId: viewer?.id },
-        });
-        refetch();
-    };
+    const { label, handler, loadingStatus } = useFollow(id, viewerIsFollowing, refetch);
 
     return (
         <div className="user-info">
@@ -62,14 +33,24 @@ const UserInfo = ({ username }: Props) => {
             <h1 className="user-info__name">{name}</h1>
             <h4 className="user-info__username">{username}</h4>
             <span className="user-info__bio">{bio}</span>
+            <br></br>
             {!isViewer ? (
                 viewerIsFollowing ? (
-                    <Button className="user-info__btn follow" onClick={handleUnfollow}>
-                        unfollow
+                    <Button
+                        type="primary"
+                        className="user-info__btn unfollow"
+                        loading={loadingStatus}
+                        onClick={handler}
+                    >
+                        {label}
                     </Button>
                 ) : (
-                    <Button className="user-info__btn follow" onClick={handleFollow}>
-                        follow
+                    <Button
+                        className="user-info__btn follow"
+                        loading={loadingStatus}
+                        onClick={handler}
+                    >
+                        {label}
                     </Button>
                 )
             ) : (

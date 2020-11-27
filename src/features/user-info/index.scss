@@ -35,23 +35,14 @@
 
     // !!! FIXME: styles (enhance colors)
     &__btn.follow,
+    &__btn.unfollow,
     &__btn.edit {
-        display: block;
-        width: 100px;
-        height: 100%;
-        margin: 20px 0;
-        line-height: 26px;
-        text-align: center;
-        background: var(--clr-gray--100);
-        border: 1px solid var(--clr-primary);
-        border-radius: 10px;
-        outline: none;
+        margin-top: 10px;
+        border-radius: 9px;
         transition: 0.4s;
 
         &:hover {
             cursor: pointer;
-            background: var(--clr-foreground);
-            border: 1px solid;
         }
     }
 }
