@@ -124,6 +124,7 @@ const SearchResults = () => {
                         onChange={handlePageChange}
                         pageSize={PAGE_SIZE}
                         showSizeChanger={false}
+                        showQuickJumper
                         responsive
                     />
                 )}
