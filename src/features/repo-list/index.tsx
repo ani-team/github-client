@@ -1,6 +1,5 @@
 import React from "react";
-import { Skeleton } from "antd";
-import { Repo, Tabs, SimplePagination } from "shared/components";
+import { Repo, Tabs, SimplePagination, Card } from "shared/components";
 import { str, dom } from "shared/helpers";
 import { useReposQuery } from "./queries.gen";
 import * as Params from "./params";
@@ -78,15 +77,9 @@ const RepoList = ({ username }: Props) => {
                 ))}
             </Tabs>
 
-            <div className="repo-list__items">
-                {loading && (
-                    <>
-                        <Skeleton active />
-                        <Skeleton active />
-                        <Skeleton active />
-                    </>
-                )}
-
+            <div className="repo-list__items mt-6">
+                {/* NOTE: А то все {PAGE_SIZE} плейсхолдеров слишком много */}
+                {loading && <Card.SkeletonGroup amount={10} />}
                 {length !== 0 ? (
                     data?.user?.repositories.nodes?.map((node) => <Repo key={node?.id} {...node} />)
                 ) : (

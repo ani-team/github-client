@@ -19,7 +19,7 @@ const Repo = (props: Props) => {
     >;
 
     // prettier-ignore
-    const indentity = (
+    const title = (
         (format === "owner-repo" && `${owner?.login}/${name}`) || 
         (format === "repo" && name) ||
         ""
@@ -28,8 +28,8 @@ const Repo = (props: Props) => {
     return (
         <Card
             className="repo"
-            title={indentity}
-            titleHref={`/${indentity}`}
+            title={title}
+            titleHref={`/${owner?.login}/${name}`}
             description={
                 <div className="repo__extra">
                     <Lang {...primaryLanguage} />
