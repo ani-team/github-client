@@ -5,7 +5,7 @@ import { QueryParamProvider } from "use-query-params";
 
 const withRouter = (component: () => JSX.Element) => () => (
     <BrowserRouter>
-        <Suspense fallback={<Spin />}>
+        <Suspense fallback={<Spin delay={300} className="overlay" size="large" />}>
             <QueryParamProvider ReactRouterRoute={Route}>{component()}</QueryParamProvider>
         </Suspense>
     </BrowserRouter>
