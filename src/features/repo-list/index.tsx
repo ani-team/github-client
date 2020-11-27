@@ -1,6 +1,6 @@
 import React from "react";
 import { Skeleton } from "antd";
-import { Repo, Tabs, SimplePagination } from "shared/components";
+import { Repo, Tabs, SimplePagination, Card } from "shared/components";
 import { str, dom } from "shared/helpers";
 import { useReposQuery } from "./queries.gen";
 import * as Params from "./params";
@@ -78,14 +78,11 @@ const RepoList = ({ username }: Props) => {
                 ))}
             </Tabs>
 
-            <div className="repo-list__items">
-                {loading && (
-                    <>
-                        <Skeleton active />
-                        <Skeleton active />
-                        <Skeleton active />
-                    </>
-                )}
+            <div className="repo-list__items mt-6">
+                {loading &&
+                    Array(PAGE_SIZE)
+                        .fill(null)
+                        .map((_, index) => <Card.Skeleton key={index} className="mb-6" />)}
 
                 {length !== 0 ? (
                     data?.user?.repositories.nodes?.map((node) => <Repo key={node?.id} {...node} />)

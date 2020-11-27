@@ -82,7 +82,7 @@ const SearchResults = () => {
             <div className="search-results__list">
                 {loading &&
                     Array(PAGE_SIZE)
-                        .fill(1)
+                        .fill(null)
                         .map((_, index) => <Card.Skeleton key={index} className="mb-6" />)}
                 {data?.search.nodes?.map((node) => (
                     <ResultItem key={node?.id} className={(node as any).__typename}>
