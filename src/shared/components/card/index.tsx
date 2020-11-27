@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import Skeleton from "./skeleton";
+import SkeletonGroup from "./skeleton-group";
 import "./index.scss";
 
 type Props = {
@@ -46,5 +47,6 @@ const Card = (props: Props) => {
 };
 
 Card.Skeleton = Skeleton;
+Card.SkeletonGroup = SkeletonGroup;
 
 export default Card;

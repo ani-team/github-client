@@ -80,10 +80,7 @@ const SearchResults = () => {
                 <SortSelect className="search-results__sort-select ml-4" />
             </h2>
             <div className="search-results__list">
-                {loading &&
-                    Array(PAGE_SIZE)
-                        .fill(null)
-                        .map((_, index) => <Card.Skeleton key={index} className="mb-6" />)}
+                {loading && <Card.SkeletonGroup amount={PAGE_SIZE} />}
                 {data?.search.nodes?.map((node) => (
                     <ResultItem key={node?.id} className={(node as any).__typename}>
                         {isRepoSearch && <Repo {...node} format="owner-repo" />}
