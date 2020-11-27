@@ -1,9 +1,11 @@
 import React from "react";
-import { Statistic, Skeleton, Col } from "antd";
-import { ForkOutlined, EyeOutlined, StarOutlined } from "@ant-design/icons";
+import { Statistic, Skeleton } from "antd";
 import { RepoIdentity } from "models";
 import { useRepoStatQuery } from "./queries.gen";
+import { stats, prettyValue, StatName } from "./fixtures";
 import "./index.scss";
+
+// NOTE: Я просто хотел отобразить статистику без нагромождений...
 
 type Props = {
     repo: RepoIdentity;
@@ -14,7 +16,6 @@ type Props = {
  */
 const RepoStat = ({ repo }: Props) => {
     const { data, loading } = useRepoStatQuery({ variables: repo });
-    const { forks, stargazers, watchers } = data?.repository || {};
     const baseUrl = `https://github.com/${repo.owner}/${repo.name}`;
 
     return (
@@ -22,21 +23,14 @@ const RepoStat = ({ repo }: Props) => {
             {loading && <Skeleton.Input className="repo-state__skeleton" active />}
             {!loading && (
                 <div className="repo-stat__items flex justify-between">
-                    <Statistic
-                        title={<a href={`${baseUrl}/watchers`}>Watchers</a>}
-                        value={watchers?.totalCount}
-                        prefix={<EyeOutlined />}
-                    />
-                    <Statistic
-                        title={<a href={`${baseUrl}/stargazers`}>Stars</a>}
-                        value={stargazers?.totalCount}
-                        prefix={<StarOutlined />}
-                    />
-                    <Statistic
-                        title={<a href={`${baseUrl}/network/members`}>Forks</a>}
-                        value={forks?.totalCount}
-                        prefix={<ForkOutlined />}
-                    />
+                    {stats.map(({ icon, link, name }) => (
+                        <Statistic
+                            key={name}
+                            // prettier-ignore
+                            title={<a href={`${baseUrl}/${link}`} title={`View ${name} on GitHub`}>{icon}</a>}
+                            value={prettyValue(data?.repository?.[name as StatName].totalCount)}
+                        />
+                    ))}
                 </div>
             )}
         </div>

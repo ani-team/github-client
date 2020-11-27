@@ -13,19 +13,23 @@
         border: 1px solid var(--clr-gray--200);
         border-radius: var(--radius);
 
-        a {
-            line-height: var(--fsz);
-            color: var(--clr-gray--500);
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-
         &-title {
-            padding: var(--padding);
             margin: 0;
             font-size: var(--fsz);
+
+            a {
+                padding: var(--padding);
+                line-height: var(--fsz);
+
+                svg {
+                    fill: var(--clr-gray--800);
+                    transition: var(--transition);
+                }
+
+                &:hover svg {
+                    fill: var(--clr-primary);
+                }
+            }
         }
 
         &-content {
@@ -34,7 +38,6 @@
             background-color: #ffffff;
             border-top-right-radius: var(--radius);
             border-bottom-right-radius: var(--radius);
-            transition: var(--transition);
         }
     }
 }
