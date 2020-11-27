@@ -33,8 +33,10 @@
         }
 
         &-content {
+            min-width: 32px;
             padding: var(--padding);
             font-size: var(--fsz);
+            text-align: center;
             background-color: #ffffff;
             border-top-right-radius: var(--radius);
             border-bottom-right-radius: var(--radius);
