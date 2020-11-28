@@ -51,7 +51,7 @@ function Explorer({ repo }: Props) {
                 loading={loading}
                 className="mt-3"
             />
-            <RepoReadme text={repoData?.repository?.content?.text || ""} />
+            <RepoReadme text={repoData?.repository?.content?.text || ""} loading={loading} />
         </div>
     );
 }

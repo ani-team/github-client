@@ -8,4 +8,13 @@
         background: var(--clr-gray--100);
         border-radius: 6px;
     }
+
+    .ant-skeleton {
+        width: 100%;
+        opacity: 0.4;
+
+        &-input {
+            min-height: 400px;
+        }
+    }
 }
