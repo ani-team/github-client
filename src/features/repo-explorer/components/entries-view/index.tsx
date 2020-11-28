@@ -1,8 +1,9 @@
 import React from "react";
 import dayjs from "dayjs";
-import { List, Skeleton } from "antd";
+import { List } from "antd";
 import cn from "classnames";
 import { Link } from "react-router-dom";
+import SkeletonArea from "../skeleton-area";
 
 // FIXME: import as ReactComponent
 import FileIcon from "../../assets/file.svg";
@@ -27,7 +28,7 @@ type Props = {
 function EntriesView({ loading, files, lastCommit, className }: Props) {
     return (
         <div className={cn("repo-git-view", className)}>
-            {loading && <Skeleton.Input active />}
+            {loading && <SkeletonArea />}
             {!loading && (
                 <List
                     header={lastCommit && <LastCommitHeader lastCommit={lastCommit} />}

@@ -1,6 +1,6 @@
 import React from "react";
 import Markdown from "react-markdown";
-import { Skeleton } from "antd";
+import SkeletonArea from "../skeleton-area";
 import CodeRenderer from "./code-renderer";
 import "./index.scss";
 
@@ -12,7 +12,7 @@ type Props = {
 const RepoReadme = ({ text, loading }: Props) => {
     return (
         <div className="repo-readme mt-6">
-            {loading && <Skeleton.Input active />}
+            {loading && <SkeletonArea />}
             {text && (
                 <Markdown className="p-6" allowDangerousHtml renderers={{ code: CodeRenderer }}>
                     {text}
