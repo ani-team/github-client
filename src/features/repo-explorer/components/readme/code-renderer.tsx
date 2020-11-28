@@ -1,6 +1,6 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { okaidia as theme } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { okaidia as theme } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 type Props = {
     language: string;
