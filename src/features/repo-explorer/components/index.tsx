@@ -3,6 +3,7 @@ import { RepoIdentity } from "models";
 import { useRepoBranchInfoQuery, useRepoDefaultBranchQuery } from "../queries.gen";
 import RepoToolbar from "./toolbar";
 import EntriesView from "./entries-view";
+import RepoReadme from "./readme";
 
 type Props = {
     repo: RepoIdentity;
@@ -21,6 +22,7 @@ function Explorer({ repo }: Props) {
             name: repo.name,
             owner: repo.owner,
             expression: `${branch}:`,
+            expressionReadme: `${branch}:README.md`,
             qualifiedName: `refs/heads/${branch}`,
         },
     });
@@ -49,6 +51,7 @@ function Explorer({ repo }: Props) {
                 loading={loading}
                 className="mt-3"
             />
+            <RepoReadme text={repoData?.repository?.content?.text || ""} />
         </div>
     );
 }
