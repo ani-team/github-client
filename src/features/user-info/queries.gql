@@ -4,11 +4,26 @@ query UserInfo ($login: String!) {
     name
     avatarUrl
     bio
+    viewerIsFollowing
+    isViewer
   }
 }
 
 query Credentials {
   viewer {
+    id
     login
+  }
+}
+
+mutation FollowUser($id: ID!, $clientMutationId: String) {
+  followUser(input: {userId: $id, clientMutationId: $clientMutationId}) {
+    clientMutationId
+  }
+}
+
+mutation UnfollowUser($id: ID!, $clientMutationId: String) {
+  unfollowUser(input: {userId: $id, clientMutationId: $clientMutationId}) {
+    clientMutationId
   }
 }

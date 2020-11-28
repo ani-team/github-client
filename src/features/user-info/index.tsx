@@ -1,19 +1,22 @@
 import React from "react";
 import { Button, Skeleton } from "antd";
-import { useCredentialsQuery, useUserInfoQuery } from "./queries.gen";
+import * as Queries from "./queries.gen";
+
 import "./index.scss";
+import useFollow from "./hook";
 
 type Props = {
     username: string;
 };
 
 const UserInfo = ({ username }: Props) => {
-    const { data, loading } = useUserInfoQuery({
+    const { data, loading, refetch } = Queries.useUserInfoQuery({
         variables: { login: username },
     });
-    const { login } = useCredentialsQuery().data?.viewer || {};
 
-    const { name, avatarUrl, bio } = data?.user || {};
+    const { name, avatarUrl, bio, id, isViewer, viewerIsFollowing } = data?.user || {};
+
+    const { label, handler, loadingStatus } = useFollow(id, viewerIsFollowing, refetch);
 
     return (
         <div className="user-info">
@@ -26,8 +29,26 @@ const UserInfo = ({ username }: Props) => {
             <h1 className="user-info__name">{name}</h1>
             <h4 className="user-info__username">{username}</h4>
             <span className="user-info__bio">{bio}</span>
-            {login !== username ? (
-                <Button className="user-info__btn follow">Follow</Button>
+            <br></br>
+            {!isViewer ? (
+                viewerIsFollowing ? (
+                    <Button
+                        type="primary"
+                        className="user-info__btn unfollow"
+                        loading={loadingStatus}
+                        onClick={handler}
+                    >
+                        {label}
+                    </Button>
+                ) : (
+                    <Button
+                        className="user-info__btn follow"
+                        loading={loadingStatus}
+                        onClick={handler}
+                    >
+                        {label}
+                    </Button>
+                )
             ) : (
                 <Button className="user-info__btn edit">Edit profile</Button>
             )}
