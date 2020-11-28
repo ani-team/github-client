@@ -7,6 +7,7 @@
 
     .ant-statistic {
         display: flex;
+        flex-basis: 28%;
         align-items: center;
         justify-content: center;
         background-color: var(--clr-gray--100);
@@ -14,8 +15,10 @@
         border-radius: var(--radius);
 
         &-title {
+            flex-grow: 1;
             margin: 0;
             font-size: var(--fsz);
+            text-align: center;
 
             a {
                 padding: var(--padding);
@@ -33,7 +36,7 @@
         }
 
         &-content {
-            min-width: 32px;
+            flex-grow: 1;
             padding: var(--padding);
             font-size: var(--fsz);
             text-align: center;
