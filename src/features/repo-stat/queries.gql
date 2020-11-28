@@ -1,0 +1,14 @@
+query RepoStat($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    # Чего не сделаешь ради единого API...
+    forks {
+      totalCount
+    }
+    stargazers {
+      totalCount
+    }
+    watchers {
+      totalCount
+    }
+  }
+}
