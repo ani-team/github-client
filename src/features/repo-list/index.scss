@@ -11,7 +11,7 @@
         margin-right: 10px;
     }
 
-    .repo {
-        margin-top: 22px;
+    .repo:not(:last-child) {
+        margin-bottom: 1.5rem;
     }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import { Skeleton, Empty, Pagination } from "antd";
-import { Repo, User, Org } from "shared/components";
+import { Repo, User, Org, Card } from "shared/components";
 import { dom } from "shared/helpers";
 import { SearchType } from "models";
 import * as Params from "../params";
@@ -80,21 +80,7 @@ const SearchResults = () => {
                 <SortSelect className="search-results__sort-select ml-4" />
             </h2>
             <div className="search-results__list">
-                {loading && (
-                    <>
-                        {/* FIXME: simplify */}
-                        <ResultItemPlaceholder />
-                        <ResultItemPlaceholder />
-                        <ResultItemPlaceholder />
-                        <ResultItemPlaceholder />
-                        <ResultItemPlaceholder />
-                        <ResultItemPlaceholder />
-                        <ResultItemPlaceholder />
-                        <ResultItemPlaceholder />
-                        <ResultItemPlaceholder />
-                        <ResultItemPlaceholder />
-                    </>
-                )}
+                {loading && <Card.SkeletonGroup amount={PAGE_SIZE} />}
                 {data?.search.nodes?.map((node) => (
                     <ResultItem key={node?.id} className={(node as any).__typename}>
                         {isRepoSearch && <Repo {...node} format="owner-repo" />}
@@ -133,9 +119,6 @@ const SearchResults = () => {
     );
 };
 
-const ResultItemPlaceholder = () => (
-    <Skeleton.Input className="search-results__item-placeholder mb-6" size="large" active />
-);
 const ResultItem = ({ children, className }: PropsWithChildren & PropsWithClassName) => (
     <div className={cn("search-results__item", "mb-6", className)}>{children}</div>
 );

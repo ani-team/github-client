@@ -1,10 +1,12 @@
-import { Skeleton, Tag } from "antd";
+import { Skeleton, Tag, Alert } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Language, RepoIdentity } from "../../models";
 import DetailsCard from "./details-card";
 import { useRepoDetailsQuery } from "./queries.gen";
 import "./index.scss";
+
+// !!! FIXME: decompose
 
 type Props = {
     repo: RepoIdentity;
@@ -78,6 +80,12 @@ function RepoDetails({ repo: identity }: Props) {
                     ))}
                 </DetailsCard>
             )}
+            <Alert
+                style={{ borderRadius: 6, marginTop: 10 }}
+                showIcon
+                message="Files access"
+                description="For a while, you can't navigate thorugh file tree of repo - only view the main README"
+            />
         </div>
     );
 }

@@ -22,11 +22,7 @@ const UserInfo = ({ username }: Props) => {
         <div className="user-info">
             <div className="user-info__img">
                 {loading && (
-                    <Skeleton.Avatar
-                        className="user-info__img-placeholder"
-                        active
-                        shape={"square"}
-                    />
+                    <Skeleton.Avatar className="user-info__img-placeholder" active shape="square" />
                 )}
                 <img className="user-info__img-ava" src={avatarUrl} alt=""></img>
             </div>
