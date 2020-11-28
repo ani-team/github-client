@@ -8,7 +8,7 @@ query RepoDefaultBranch($owner: String!, $name: String!) {
 }
 
 
-query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $expression: String!, $expressionReadme: String!) {
+query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $expression: String!, $readmeLower: String!, $readmeUpper: String!) {
   repository(owner: $owner, name: $name) {
     id
     url
@@ -38,7 +38,12 @@ query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $
         }
       }
     }
-    content: object(expression: $expressionReadme) {
+    contentLower: object(expression: $readmeLower) {
+      ... on Blob {
+        text
+      }
+    }
+    contentUpper: object(expression: $readmeUpper) {
       ... on Blob {
         text
       }

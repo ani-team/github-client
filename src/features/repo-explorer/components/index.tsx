@@ -22,17 +22,20 @@ function Explorer({ repo }: Props) {
             name: repo.name,
             owner: repo.owner,
             expression: `${branch}:`,
-            expressionReadme: `${branch}:README.md`,
+            // Приходится фетчить файл по двум вариантам наименования, т.к. GitHub не умеет в insensitive case =(
+            readmeLower: `${branch}:readme.md`,
+            readmeUpper: `${branch}:README.md`,
             qualifiedName: `refs/heads/${branch}`,
         },
     });
-    const branches = (repoData?.repository?.refs?.nodes || []).filter(
+    const { repository } = repoData || {};
+    const branches = (repository?.refs?.nodes || []).filter(
         (branch): branch is { name: string; prefix: string } => branch != null,
     );
-    const entries = Array.from(repoData?.repository?.object?.entries ?? []).sort((a, b) =>
+    const entries = Array.from(repository?.object?.entries ?? []).sort((a, b) =>
         b.type.localeCompare(a.type),
     );
-    const target = repoData?.repository?.ref?.target;
+    const target = repository?.ref?.target;
     const lastCommit =
         (target && {
             message: target.messageHeadline,
@@ -42,6 +45,9 @@ function Explorer({ repo }: Props) {
             date: target.author?.date,
         }) ||
         undefined;
+
+    // Приходится фетчить файл по двум вариантам наименования, т.к. GitHub не умеет в insensitive case =(
+    const readme = repository?.contentLower?.text || repository?.contentUpper?.text || "";
     return (
         <div>
             <RepoToolbar repo={repo} branches={branches} activeBranch={branch} />
@@ -51,7 +57,7 @@ function Explorer({ repo }: Props) {
                 loading={loading}
                 className="mt-3"
             />
-            <RepoReadme text={repoData?.repository?.content?.text || ""} loading={loading} />
+            <RepoReadme text={readme} loading={loading} />
         </div>
     );
 }

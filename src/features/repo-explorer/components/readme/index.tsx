@@ -13,7 +13,7 @@ const RepoReadme = ({ text, loading }: Props) => {
     return (
         <div className="repo-readme mt-6">
             {loading && <Skeleton.Input active />}
-            {!loading && (
+            {text && (
                 <Markdown className="p-6" allowDangerousHtml renderers={{ code: CodeRenderer }}>
                     {text}
                 </Markdown>
