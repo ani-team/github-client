@@ -1,12 +1,12 @@
 import React from "react";
-import { useAuthFlow } from "features/auth";
+import { Auth } from "features";
 import HomeHero from "features/home-hero";
 import { AppError } from "models";
 
 type Props = { error: AppError };
 
 export default function ErrorPage({ error }: Props) {
-    const { authorize } = useAuthFlow();
+    const { authorize } = Auth.useAuthFlow();
 
     const action =
         error.code === 401
