@@ -1,6 +1,7 @@
 # github-client
 
 ![CI](https://github.com/niyazm524/github-client/workflows/CI/badge.svg?branch=master)
+![GitHub top language](https://img.shields.io/github/languages/top/niyazm524/github-client)
 
 <img alt="favicon" src="https://avatars2.githubusercontent.com/oa/1406180?s=140&u=b44629cbec5079f99a61e6f1b6297bc4797f796b&v=4" height=120 align="right" />
 
