@@ -1,7 +1,6 @@
 import React from "react";
 import { ErrorDefinitions } from "app/error-handling";
-import { Auth } from "features";
-import HomeHero from "features/home-hero";
+import { Auth, HeroSheet } from "features";
 import { AppError } from "models";
 
 type Props = { error: AppError };
@@ -21,7 +20,7 @@ export default function ErrorPage({ error }: Props) {
             : undefined;
 
     return (
-        <HomeHero
+        <HeroSheet
             title={error.message}
             description={error.description}
             useSadHero
