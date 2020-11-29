@@ -13,7 +13,10 @@ export default function ErrorPage({ error }: Props) {
         error.code === ErrorDefinitions.UNAUTHORIZED.code
             ? {
                   text: "Authorize",
-                  to: logout,
+                  to: () => {
+                      logout();
+                      window.location.href = "/auth";
+                  },
               }
             : undefined;
 
