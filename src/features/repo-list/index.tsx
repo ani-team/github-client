@@ -3,8 +3,8 @@ import { Repo, Tabs, SimplePagination, Card } from "shared/components";
 import { str, dom } from "shared/helpers";
 import { useReposQuery } from "./queries.gen";
 import * as Params from "./params";
-import "./index.scss";
 import useStarred from "./hooks";
+import "./index.scss";
 
 type Props = {
     username: string;
@@ -63,9 +63,10 @@ const RepoList = ({ username }: Props) => {
     const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};
     const length = nodes?.length;
 
-    // const handleClick = (id: string | undefined, viewerHasStarred: boolean | undefined) => {
-    //     const { handler } = useStarred(id, viewerHasStarred, refetch);
-    // };
+    const handleClick = (id: string | undefined, viewerHasStarred: boolean | undefined) => {
+        // TODO: transmit id and viewerHasStarred of nodes to handler func
+        const { handler } = useStarred(id, viewerHasStarred, refetch);
+    };
 
     return (
         <div className="repo-list">
@@ -88,8 +89,7 @@ const RepoList = ({ username }: Props) => {
                 {length !== 0 ? (
                     data?.user?.repositories.nodes?.map((node) => (
                         <Repo
-                            onClick={() => useStarred(node?.id, node?.viewerHasStarred, refetch)}
-                            // onClick={() => handleClick(node?.id, node?.viewerHasStarred)}
+                            onClick={() => handleClick(node?.id, node?.viewerHasStarred)}
                             key={node?.id}
                             {...node}
                         />

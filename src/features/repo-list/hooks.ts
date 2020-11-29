@@ -1,4 +1,3 @@
-import React from "react";
 import { useCredentialsQuery, useStarRepoMutation, useUnstarRepoMutation } from "./queries.gen";
 
 const useStarred = (
