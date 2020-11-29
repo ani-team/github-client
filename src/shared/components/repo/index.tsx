@@ -11,7 +11,7 @@ import "./index.scss";
 type Props = {
     data: any;
     format?: "owner-repo" | "repo";
-    onClick?: Callback;
+    onStarring?: Callback;
     loading?: boolean;
 };
 
@@ -19,17 +19,21 @@ type Props = {
  * Карточка репозитория
  */
 const Repo = (props: Props) => {
-    const { format = "repo", onClick } = props;
-    const { name, primaryLanguage, updatedAt, viewerHasStarred, owner } = props.data as Partial<
-        Repository
-    >;
+    const { format = "repo", onStarring } = props;
+    const {
+        name,
+        primaryLanguage,
+        updatedAt,
+        viewerHasStarred: starred,
+        owner,
+    } = props.data as Partial<Repository>;
     // prettier-ignore
     const title = (
         (format === "owner-repo" && `${owner?.login}/${name}`) || 
         (format === "repo" && name) ||
         ""
     );
-    const FavBtn = viewerHasStarred ? HeartFilled : HeartOutlined;
+    const FavBtn = starred ? HeartFilled : HeartOutlined;
 
     return (
         <Card
@@ -45,10 +49,10 @@ const Repo = (props: Props) => {
                 </div>
             }
             actions={
-                <FavBtn
-                    className={cn("repo__fav", { starred: viewerHasStarred })}
-                    onClick={onClick}
-                />
+                // TODO: impl later for search page
+                onStarring && (
+                    <FavBtn className={cn("repo__fav", { starred })} onClick={onStarring} />
+                )
             }
         />
     );

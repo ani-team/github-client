@@ -5,12 +5,12 @@ import Card from "../card";
 // !!! FIXME: specify types
 type Props = {
     data: any;
+    onFollowing?: Callback;
 };
 
 const User = (props: Props) => {
-    const { avatarUrl, login, viewerIsFollowing, bio } = props.data as Partial<
-        import("models").User
-    >;
+    const { data, onFollowing } = props;
+    const { avatarUrl, login, viewerIsFollowing, bio } = data as Partial<import("models").User>;
     return (
         <Card
             className="user"
@@ -19,12 +19,15 @@ const User = (props: Props) => {
             title={login}
             description={bio}
             actions={
-                <Button
-                    className="user__action follow"
-                    type={viewerIsFollowing ? "primary" : "default"}
-                >
-                    {viewerIsFollowing ? "unfollow" : "follow"}
-                </Button>
+                // TODO: impl later for search page
+                onFollowing && (
+                    <Button
+                        className="user__action follow"
+                        type={viewerIsFollowing ? "primary" : "default"}
+                    >
+                        {viewerIsFollowing ? "unfollow" : "follow"}
+                    </Button>
+                )
             }
         />
     );
