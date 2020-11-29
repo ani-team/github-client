@@ -1,6 +1,11 @@
-import { useCredentialsQuery, useStarRepoMutation, useUnstarRepoMutation } from "./queries.gen";
+import {
+    useCredentialsQuery,
+    useStarRepoMutation,
+    useUnstarRepoMutation,
+    ReposDocument,
+} from "./queries.gen";
 
-const useStarred = (refetch: any) => {
+const useStarred = (variables: any) => {
     const [starRepo] = useStarRepoMutation();
     const [unstarRepo] = useUnstarRepoMutation();
 
@@ -16,8 +21,8 @@ const useStarred = (refetch: any) => {
         const starAction = viewerHasStarred ? unstarRepo : starRepo;
         starAction({
             variables: { id, clientMutationId: viewer?.id },
+            refetchQueries: [{ query: ReposDocument, variables }],
         });
-        refetch();
     };
 
     return {

@@ -59,9 +59,11 @@ const useFilters = () => {
 // FIXME: rename to UserRepoList? (coz - user as dep)
 const RepoList = ({ username }: Props) => {
     const { handleTabClick, handlePaginationClick, config } = useFilters();
-    const { data, loading, refetch } = useReposQuery({ variables: { login: username, ...config } });
+    const { data, loading, variables } = useReposQuery({
+        variables: { login: username, ...config },
+    });
     // TODO: transmit id and viewerHasStarred of nodes to handler func
-    const { handleStarring } = useStarred(refetch);
+    const { handleStarring } = useStarred(variables);
     const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};
     const length = nodes?.length;
 
