@@ -12,8 +12,8 @@ export const useStarring = (variables?: Queries.ReposQueryVariables) => {
     const [addStar] = Queries.useAddStarMutation();
     const [removeStar] = Queries.useRemoveStarMutation();
 
-    const handleStarring = (id?: string | null, viewerHasStarred?: boolean) => {
-        if (!id) {
+    const handleStarring = (repoId?: string | null, viewerHasStarred?: boolean) => {
+        if (!repoId) {
             const actionType = viewerHasStarred ? "unstar" : "star";
             alert.error(`Failed to ${actionType} repo, try later`);
             return;
@@ -21,7 +21,7 @@ export const useStarring = (variables?: Queries.ReposQueryVariables) => {
 
         const action = viewerHasStarred ? removeStar : addStar;
         action({
-            variables: { starrableId: id },
+            variables: { starrableId: repoId },
             refetchQueries: [{ variables, query: Queries.ReposDocument }],
         });
     };

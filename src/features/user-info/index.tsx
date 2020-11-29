@@ -1,22 +1,25 @@
 import React from "react";
 import { Button, Skeleton } from "antd";
 import * as Queries from "./queries.gen";
-
+import { useFollowing } from "./hooks";
 import "./index.scss";
-import useFollow from "./hooks";
 
 type Props = {
     username: string;
 };
 
+/**
+ * @feature Карточка пользователя
+ * FIXME: rename to UserDetails
+ */
 const UserInfo = ({ username }: Props) => {
-    const { data, loading, refetch } = Queries.useUserInfoQuery({
+    const { data, loading, variables } = Queries.useUserInfoQuery({
         variables: { login: username },
     });
-
-    const { name, avatarUrl, bio, id, isViewer, viewerIsFollowing } = data?.user || {};
-
-    const { label, handler, loadingStatus } = useFollow(id, viewerIsFollowing, refetch);
+    const followMutation = useFollowing(variables);
+    const { name, avatarUrl, bio, isViewer, viewerIsFollowing, id } = data?.user || {};
+    // FIXME: temp
+    const label = viewerIsFollowing ? "unfollow" : "follow";
 
     return (
         <div className="user-info">
@@ -30,17 +33,17 @@ const UserInfo = ({ username }: Props) => {
             <h4 className="user-info__username">{username}</h4>
             <span className="user-info__bio">{bio}</span>
             <br></br>
-            {!isViewer ? (
+            {isViewer ? (
+                <Button className="user-info__btn edit">Edit profile</Button>
+            ) : (
                 <Button
                     type={viewerIsFollowing ? "primary" : "default"}
                     className={`user-info__btn ${label}`}
-                    loading={loadingStatus}
-                    onClick={handler}
+                    loading={followMutation.loading}
+                    onClick={() => followMutation.handleFollowing(id, viewerIsFollowing)}
                 >
                     {label}
                 </Button>
-            ) : (
-                <Button className="user-info__btn edit">Edit profile</Button>
             )}
         </div>
     );
