@@ -1,4 +1,12 @@
 .repo {
+    box-shadow: 0 5px 0 var(--clr-gray--900);
+    transition: var(--transition);
+
+    &:hover,
+    &:active {
+        box-shadow: 0 5px 0 var(--clr-primary--hover);
+    }
+
     &__extra {
         display: grid;
     }
