@@ -43,7 +43,8 @@ export default function ErrorCatcher({ handler, children }: Props) {
             setError(mapError(graphQLErrors?.[0] || networkError));
         });
         apolloClient.setLink(errorLink.concat(apolloClient.link));
-    }, [apolloClient]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => setError(null), [location]);
 
