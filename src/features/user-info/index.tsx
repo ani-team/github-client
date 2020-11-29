@@ -34,7 +34,9 @@ const UserInfo = ({ username }: Props) => {
             <span className="user-info__bio">{bio}</span>
             <br></br>
             {isViewer ? (
-                <Button className="user-info__btn edit">Edit profile</Button>
+                <Button className="user-info__btn edit" disabled title="While not available">
+                    Edit profile
+                </Button>
             ) : (
                 <Button
                     type={viewerIsFollowing ? "primary" : "default"}
