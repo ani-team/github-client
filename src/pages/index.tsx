@@ -18,7 +18,7 @@ const Routing = () => {
             <Switch>
                 <Route exact path={Auth.routes.main} component={HomePage} />
                 <Route exact path={Auth.routes.login} component={Auth.Page} />
-                <Redirect to={Auth.routes.main} />
+                <Redirect to={Auth.routes.login} />
             </Switch>
         );
     }

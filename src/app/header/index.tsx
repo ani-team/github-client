@@ -7,8 +7,8 @@ import { Auth } from "features";
 import { ReactComponent as IcLogo } from "./logo.svg";
 import "./index.scss";
 
-const FEEDBACK_URL = "https://github.com/niyazm524/github-client/issues/new";
-const GITHUB_URL = "https://github.com/niyazm524/github-client";
+const FEEDBACK_URL = "https://github.com/ani-team/github-client/issues/new";
+const GITHUB_URL = "https://github.com/ani-team/github-client";
 
 const Header = () => {
     const { isAuth } = Auth.useAuth();

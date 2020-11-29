@@ -1,6 +1,11 @@
 import { AppError } from "models";
 
 export const ErrorDefinitions: Record<string, AppError> = {
+    UNAUTHORIZED: {
+        code: 401,
+        message: "You shall not pass!",
+        description: "Occurred problems with your credential. Re-sign in, please",
+    },
     FORBIDDEN: {
         code: 403,
         message: "Yo, access Forbidden\nYou shouldn’t be here",
