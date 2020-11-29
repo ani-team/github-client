@@ -60,13 +60,10 @@ const useFilters = () => {
 const RepoList = ({ username }: Props) => {
     const { handleTabClick, handlePaginationClick, config } = useFilters();
     const { data, loading, refetch } = useReposQuery({ variables: { login: username, ...config } });
+    // TODO: transmit id and viewerHasStarred of nodes to handler func
+    const { handleStarring } = useStarred(refetch);
     const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};
     const length = nodes?.length;
-
-    const handleClick = (id: string | undefined, viewerHasStarred: boolean | undefined) => {
-        // TODO: transmit id and viewerHasStarred of nodes to handler func
-        const { handler } = useStarred(id, viewerHasStarred, refetch);
-    };
 
     return (
         <div className="repo-list">
@@ -89,7 +86,7 @@ const RepoList = ({ username }: Props) => {
                 {length !== 0 ? (
                     data?.user?.repositories.nodes?.map((node) => (
                         <Repo
-                            onClick={() => handleClick(node?.id, node?.viewerHasStarred)}
+                            onClick={() => handleStarring(node?.id, node?.viewerHasStarred)}
                             key={node?.id}
                             {...node}
                         />
