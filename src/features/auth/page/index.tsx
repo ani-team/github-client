@@ -1,7 +1,7 @@
+import React from "react";
 import { GithubFilled } from "@ant-design/icons";
 import { Alert, Card } from "antd";
 // !!! FIXME: loop imports
-import React from "react";
 import { useTitle } from "pages/helpers";
 import { useAuthFlow } from "../hooks";
 import "./index.scss";
