@@ -1,4 +1,5 @@
 import { alert } from "shared/helpers";
+import { useDebounce } from "shared/hooks";
 import * as Queries from "./queries.gen";
 
 /**
@@ -7,8 +8,10 @@ import * as Queries from "./queries.gen";
  * TODO: add errors catching
  */
 export const useFollowing = (variables?: Queries.UserInfoQueryVariables) => {
-    const [follow] = Queries.useFollowUserMutation();
-    const [unfollow] = Queries.useUnfollowUserMutation();
+    const [follow, followResult] = Queries.useFollowUserMutation();
+    const [unfollow, unfollowResult] = Queries.useUnfollowUserMutation();
+    const loading = followResult.loading || unfollowResult.loading;
+    const debouncedLodaing = useDebounce(loading);
 
     const handleFollowing = async (userId?: string | null, viewerIsFollowing?: boolean) => {
         const actionType = viewerIsFollowing ? "unfollow" : "follow";
@@ -16,15 +19,15 @@ export const useFollowing = (variables?: Queries.UserInfoQueryVariables) => {
             alert.error(`Failed to ${actionType} user, try later`);
             return;
         }
-
+        // request
         const action = viewerIsFollowing ? unfollow : follow;
         await action({
             variables: { userId },
             refetchQueries: [{ variables, query: Queries.UserInfoDocument }],
         });
-
+        // fulfilled
         alert.success(`Successfully ${actionType}ed!`);
     };
 
-    return { handleFollowing };
+    return { handleFollowing, loading, debouncedLodaing };
 };

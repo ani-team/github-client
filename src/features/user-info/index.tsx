@@ -16,7 +16,7 @@ const UserInfo = ({ username }: Props) => {
     const { data, loading, variables } = Queries.useUserInfoQuery({
         variables: { login: username },
     });
-    const { handleFollowing } = useFollowing(variables);
+    const following = useFollowing(variables);
     const { name, avatarUrl, bio, isViewer, viewerIsFollowing, id } = data?.user || {};
     // FIXME: temp
     const label = viewerIsFollowing ? "unfollow" : "follow";
@@ -39,7 +39,8 @@ const UserInfo = ({ username }: Props) => {
                 <Button
                     type={viewerIsFollowing ? "primary" : "default"}
                     className={`user-info__btn ${label}`}
-                    onClick={() => handleFollowing(id, viewerIsFollowing)}
+                    onClick={() => following.handleFollowing(id, viewerIsFollowing)}
+                    loading={following.debouncedLodaing}
                 >
                     {label}
                 </Button>

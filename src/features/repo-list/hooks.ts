@@ -1,4 +1,4 @@
-import { alert } from "shared/helpers";
+import { alert, str } from "shared/helpers";
 import * as Queries from "./queries.gen";
 import * as Params from "./params";
 
@@ -21,13 +21,15 @@ export const useStarring = (variables?: Queries.ReposQueryVariables) => {
             alert.error(`Failed to ${actionType} repo, try later`);
             return;
         }
-
+        // pending // FIXME: temp logic
+        alert.info(`${str.capitalize(actionType)}ring...`);
+        // request
         const action = viewerHasStarred ? removeStar : addStar;
         await action({
             variables: { starrableId: repoId },
             refetchQueries: [{ variables, query: Queries.ReposDocument }],
         });
-
+        // fulfilled
         alert.success(`Successfully ${actionType}red!`);
     };
 
