@@ -4,7 +4,7 @@ export const ErrorDefinitions: Record<string, AppError> = {
     UNAUTHORIZED: {
         code: 401,
         message: "You shall not pass!",
-        description: "(authorize first)",
+        description: "Occurred problems with your credential. Re-sign in, please",
     },
     FORBIDDEN: {
         code: 403,
