@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Card } from "antd";
+import { Alert, Card, notification } from "antd";
 import { GithubFilled } from "@ant-design/icons";
 // !!! FIXME: loop imports
 import { useTitle } from "pages/helpers";
@@ -21,9 +21,12 @@ import "./index.scss";
 const AuthPage = () => {
     useTitle("Sign in to Github Client");
     const { login } = useAuth();
+    const showError = (message: string) =>
+        notification.error({ message: "Authorization error", description: message, top: 72 });
     const authorize = () => {
-        authorizeGithub().then(login);
-        // TODO: add catch handling!
+        authorizeGithub()
+            .then(login)
+            .catch((err: Error) => showError(err.message));
     };
 
     return (
