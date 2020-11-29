@@ -6,29 +6,32 @@ export const PAGE_SIZE = 30;
 
 /**
  * @hook star/unstar логика
+ * TODO: add debounced loading/disabled logic
+ * TODO: add errors catching
  */
 export const useStarring = (variables?: Queries.ReposQueryVariables) => {
     // FIXME: simplify?
     const [addStar] = Queries.useAddStarMutation();
     const [removeStar] = Queries.useRemoveStarMutation();
 
-    const handleStarring = (repoId?: string | null, viewerHasStarred?: boolean) => {
+    // FIXME: more strict
+    const handleStarring = async (repoId?: string | null, viewerHasStarred?: boolean) => {
+        const actionType = viewerHasStarred ? "unstar" : "star";
         if (!repoId) {
-            const actionType = viewerHasStarred ? "unstar" : "star";
             alert.error(`Failed to ${actionType} repo, try later`);
             return;
         }
 
         const action = viewerHasStarred ? removeStar : addStar;
-        action({
+        await action({
             variables: { starrableId: repoId },
             refetchQueries: [{ variables, query: Queries.ReposDocument }],
         });
+
+        alert.success(`Successfully ${actionType}red!`);
     };
 
-    return {
-        handleStarring,
-    };
+    return { handleStarring };
 };
 
 /**
