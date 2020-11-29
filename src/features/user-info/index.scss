@@ -6,14 +6,14 @@
 
         &-ava {
             width: 100%;
-            border-radius: 10px;
+            border-radius: var(--radius);
         }
 
         &-placeholder {
             min-width: 100%;
             height: 0;
             padding-bottom: 100%;
-            border-radius: 10px;
+            border-radius: var(--radius);
         }
     }
 
@@ -33,12 +33,10 @@
         line-height: 28px;
     }
 
-    // !!! FIXME: styles (enhance colors)
     &__btn.follow,
     &__btn.unfollow,
     &__btn.edit {
         margin-top: 10px;
-        border-radius: 9px;
         transition: 0.4s;
 
         &:hover {
