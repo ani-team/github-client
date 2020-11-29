@@ -1,9 +1,10 @@
 import React from "react";
 import { GithubFilled } from "@ant-design/icons";
-import { Alert, Card } from "antd";
+import { Alert, Card, notification } from "antd";
 // !!! FIXME: loop imports
 import { useTitle } from "pages/helpers";
-import { useAuthFlow } from "../hooks";
+import { authorizeGithub } from "../firebase";
+import { useAuth } from "../hooks";
 import "./index.scss";
 
 // FIXME: move to pages level?
@@ -19,7 +20,16 @@ import "./index.scss";
  */
 const AuthPage = () => {
     useTitle("Sign in to Github Client");
-    const { authorize } = useAuthFlow();
+    const { login } = useAuth();
+    const showError = (message: string) =>
+        notification.error({ message: "Authorization error", description: message, top: 72 });
+
+    // TODO: add ability to specify redirect url
+    const authorize = () => {
+        authorizeGithub()
+            .then(login)
+            .catch((err: Error) => showError(err.message));
+    };
 
     return (
         <div className="page page-auth">

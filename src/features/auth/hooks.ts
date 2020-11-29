@@ -1,7 +1,5 @@
-import { notification } from "antd";
 import { useLocalStorage } from "shared/hooks";
 import { CREDENTIAL_KEY } from "./consts";
-import { authorizeGithub } from "./firebase";
 import { UserCredential } from "./types";
 
 export const useAuth = () => {
@@ -20,18 +18,4 @@ export const useAuth = () => {
     };
 
     return { isAuth, viewer, login, logout };
-};
-
-export const useAuthFlow = () => {
-    const { login } = useAuth();
-    const showError = (message: string) =>
-        notification.error({ message: "Authorization error", description: message, top: 72 });
-
-    // TODO: add ability to specify redirect url
-    const authorize = () => {
-        authorizeGithub()
-            .then(login)
-            .catch((err: Error) => showError(err.message));
-    };
-    return { authorize };
 };
