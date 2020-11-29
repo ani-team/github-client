@@ -6,15 +6,13 @@ import { AppError } from "models";
 type Props = { error: AppError };
 
 export default function ErrorPage({ error }: Props) {
-    const { authorize } = Auth.useAuthFlow();
+    const { logout } = Auth.useAuth();
 
     const action =
         error.code === 401
             ? {
                   text: "Authorize",
-                  to: () => {
-                      authorize();
-                  },
+                  to: logout,
               }
             : undefined;
 
