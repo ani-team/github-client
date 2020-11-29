@@ -8,16 +8,19 @@ import Lang from "./lang";
 import "./index.scss";
 
 // !!! FIXME: specify types
-type Props = any & {
+type Props = {
+    data: any;
     format?: "owner-repo" | "repo";
     onClick?: Callback;
+    loading?: boolean;
 };
 
-// FIXME: refactor
+/**
+ * Карточка репозитория
+ */
 const Repo = (props: Props) => {
-    const { format = "repo" } = props;
-    const { onClick } = props;
-    const { name, primaryLanguage, updatedAt, viewerHasStarred, owner } = props as Partial<
+    const { format = "repo", onClick } = props;
+    const { name, primaryLanguage, updatedAt, viewerHasStarred, owner } = props.data as Partial<
         Repository
     >;
     // prettier-ignore

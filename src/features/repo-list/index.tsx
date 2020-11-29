@@ -47,7 +47,7 @@ const RepoList = ({ username }: Props) => {
                         <Repo
                             onClick={() => handleStarring(node?.id, node?.viewerHasStarred)}
                             key={node?.id}
-                            {...node}
+                            data={node}
                         />
                     ))
                 ) : (

@@ -3,8 +3,14 @@ import { Button } from "antd";
 import Card from "../card";
 
 // !!! FIXME: specify types
-const User = (props: any) => {
-    const { avatarUrl, login, viewerIsFollowing, bio } = props as Partial<import("models").User>;
+type Props = {
+    data: any;
+};
+
+const User = (props: Props) => {
+    const { avatarUrl, login, viewerIsFollowing, bio } = props.data as Partial<
+        import("models").User
+    >;
     return (
         <Card
             className="user"
