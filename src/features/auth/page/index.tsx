@@ -1,10 +1,9 @@
-import React from "react";
-import { Alert, Card, notification } from "antd";
 import { GithubFilled } from "@ant-design/icons";
+import { Alert, Card } from "antd";
 // !!! FIXME: loop imports
+import React from "react";
 import { useTitle } from "pages/helpers";
-import { authorizeGithub } from "../firebase";
-import { useAuth } from "../hooks";
+import { useAuthFlow } from "../hooks";
 import "./index.scss";
 
 // FIXME: move to pages level?
@@ -20,14 +19,7 @@ import "./index.scss";
  */
 const AuthPage = () => {
     useTitle("Sign in to Github Client");
-    const { login } = useAuth();
-    const showError = (message: string) =>
-        notification.error({ message: "Authorization error", description: message, top: 72 });
-    const authorize = () => {
-        authorizeGithub()
-            .then(login)
-            .catch((err: Error) => showError(err.message));
-    };
+    const { authorize } = useAuthFlow();
 
     return (
         <div className="page page-auth">
