@@ -1,4 +1,5 @@
 import React from "react";
+import { ErrorDefinitions } from "app/error-handling";
 import { Auth } from "features";
 import HomeHero from "features/home-hero";
 import { AppError } from "models";
@@ -9,7 +10,7 @@ export default function ErrorPage({ error }: Props) {
     const { logout } = Auth.useAuth();
 
     const action =
-        error.code === 401
+        error.code === ErrorDefinitions.UNAUTHORIZED.code
             ? {
                   text: "Authorize",
                   to: logout,
