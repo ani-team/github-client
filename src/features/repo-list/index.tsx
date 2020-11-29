@@ -84,7 +84,7 @@ const RepoList = ({ username }: Props) => {
                     data?.user?.repositories.nodes?.map((node) => <Repo key={node?.id} {...node} />)
                 ) : (
                     <h2 className="repo-list__placeholder">
-                        {username} doesn’t have any public repositories yet.
+                        {username} doesn’t have any repositories yet.
                     </h2>
                 )}
             </div>

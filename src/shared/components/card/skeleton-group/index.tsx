@@ -14,7 +14,7 @@ const CardSkeletonGroup = ({ amount }: Props) => (
         {Array(amount)
             .fill(null)
             .map((_, index) => (
-                <Skeleton key={index} className="mb-6" />
+                <Skeleton key={index} className="mb-5" />
             ))}
     </>
 );
