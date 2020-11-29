@@ -5,6 +5,12 @@
     font-size: 14px;
     background-color: var(--clr-gray--100);
     border-radius: 10px;
+    box-shadow: 0 5px 0 var(--clr-gray--900);
+    transition: var(--transition);
+
+    &:hover {
+        box-shadow: 0 5px 0 var(--clr-primary--hover);
+    }
 
     &__preview img {
         min-width: 90px;
