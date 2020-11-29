@@ -39,7 +39,7 @@ const UserInfo = ({ username }: Props) => {
                 <Button
                     type={viewerIsFollowing ? "primary" : "default"}
                     className={`user-info__btn ${label}`}
-                    onClick={() => following.handleFollowing(id, viewerIsFollowing)}
+                    onClick={() => following.handle(id, viewerIsFollowing)}
                     loading={following.debouncedLodaing}
                 >
                     {label}

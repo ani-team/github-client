@@ -20,7 +20,7 @@ const RepoList = ({ username }: Props) => {
         variables: { login: username, ...config },
     });
     // TODO: transmit id and viewerHasStarred of nodes to handler func
-    const { handleStarring } = useStarring(variables);
+    const starring = useStarring(variables);
     const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};
     const length = nodes?.length;
 
@@ -45,9 +45,10 @@ const RepoList = ({ username }: Props) => {
                 {length !== 0 ? (
                     data?.user?.repositories.nodes?.map((node) => (
                         <Repo
-                            onStarring={() => handleStarring(node?.id, node?.viewerHasStarred)}
+                            onStarring={() => starring.handle(node?.id, node?.viewerHasStarred)}
                             key={node?.id}
                             data={node}
+                            loading={starring.debouncedLoadingId === node?.id}
                         />
                     ))
                 ) : (

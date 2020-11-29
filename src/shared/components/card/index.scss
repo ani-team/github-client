@@ -12,6 +12,10 @@
         box-shadow: 0 5px 0 var(--clr-primary--hover);
     }
 
+    &.loading {
+        opacity: 0.5;
+    }
+
     &__preview img {
         min-width: 90px;
         min-height: 90px;

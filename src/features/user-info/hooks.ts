@@ -13,7 +13,7 @@ export const useFollowing = (variables?: Queries.UserInfoQueryVariables) => {
     const loading = followResult.loading || unfollowResult.loading;
     const debouncedLodaing = useDebounce(loading);
 
-    const handleFollowing = async (userId?: string | null, viewerIsFollowing?: boolean) => {
+    const handle = async (userId?: string | null, viewerIsFollowing?: boolean) => {
         const actionType = viewerIsFollowing ? "unfollow" : "follow";
         if (!userId) {
             alert.error(`Failed to ${actionType} user, try later`);
@@ -29,5 +29,5 @@ export const useFollowing = (variables?: Queries.UserInfoQueryVariables) => {
         alert.success(`Successfully ${actionType}ed!`);
     };
 
-    return { handleFollowing, loading, debouncedLodaing };
+    return { handle, loading, debouncedLodaing };
 };

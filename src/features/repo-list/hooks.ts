@@ -1,4 +1,6 @@
-import { alert, str } from "shared/helpers";
+import { useState } from "react";
+import { useDebounce } from "shared/hooks";
+import { alert } from "shared/helpers";
 import * as Queries from "./queries.gen";
 import * as Params from "./params";
 
@@ -13,16 +15,18 @@ export const useStarring = (variables?: Queries.ReposQueryVariables) => {
     // FIXME: simplify?
     const [addStar] = Queries.useAddStarMutation();
     const [removeStar] = Queries.useRemoveStarMutation();
+    // FIXME: temp, impl better later
+    const [loadingId, setLoadingId] = useState<string | null>(null);
+    const debouncedLoadingId = useDebounce(loadingId);
 
     // FIXME: more strict
-    const handleStarring = async (repoId?: string | null, viewerHasStarred?: boolean) => {
+    const handle = async (repoId?: string | null, viewerHasStarred?: boolean) => {
         const actionType = viewerHasStarred ? "unstar" : "star";
         if (!repoId) {
             alert.error(`Failed to ${actionType} repo, try later`);
             return;
         }
-        // pending // FIXME: temp logic
-        alert.info(`${str.capitalize(actionType)}ring...`);
+        setLoadingId(repoId);
         // request
         const action = viewerHasStarred ? removeStar : addStar;
         await action({
@@ -31,9 +35,10 @@ export const useStarring = (variables?: Queries.ReposQueryVariables) => {
         });
         // fulfilled
         alert.success(`Successfully ${actionType}red!`);
+        setLoadingId(null);
     };
 
-    return { handleStarring };
+    return { handle, loadingId, debouncedLoadingId };
 };
 
 /**

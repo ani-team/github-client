@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
  * @hook Debounce логика для переданного назначения
  * @see https://usehooks.com/useDebounce/
  */
-function useDebounce(value: any, delay = 300) {
+function useDebounce<T = any>(value: T, delay = 300) {
     // State and setters for debounced value
     const [debouncedValue, setDebouncedValue] = useState(value);
 

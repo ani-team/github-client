@@ -19,7 +19,7 @@ type Props = {
  * Карточка репозитория
  */
 const Repo = (props: Props) => {
-    const { format = "repo", onStarring } = props;
+    const { format = "repo", onStarring, loading } = props;
     const {
         name,
         primaryLanguage,
@@ -38,6 +38,7 @@ const Repo = (props: Props) => {
     return (
         <Card
             className="repo"
+            loading={loading}
             title={title}
             titleHref={`/${owner?.login}/${name}`}
             description={
