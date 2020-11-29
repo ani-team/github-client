@@ -4,10 +4,21 @@ import { ReactComponent as IcHeartDefault } from "./heart_default.svg";
 
 type Props = {
     isFav: boolean;
+    onClick?: Callback;
+    className: string;
 };
 
-const FavBtn = ({ isFav }: Props) => {
-    return <>{isFav ? <IcHeartActive /> : <IcHeartDefault />}</>;
+const FavBtn = (props: Props) => {
+    const { isFav, onClick, className } = props;
+    return (
+        <>
+            {isFav ? (
+                <IcHeartActive className={className} onClick={onClick} />
+            ) : (
+                <IcHeartDefault className={className} onClick={onClick} />
+            )}
+        </>
+    );
 };
 
 export default FavBtn;

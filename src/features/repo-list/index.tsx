@@ -4,6 +4,7 @@ import { str, dom } from "shared/helpers";
 import { useReposQuery } from "./queries.gen";
 import * as Params from "./params";
 import "./index.scss";
+import useStarred from "./hooks";
 
 type Props = {
     username: string;
@@ -58,9 +59,13 @@ const useFilters = () => {
 // FIXME: rename to UserRepoList? (coz - user as dep)
 const RepoList = ({ username }: Props) => {
     const { handleTabClick, handlePaginationClick, config } = useFilters();
-    const { data, loading } = useReposQuery({ variables: { login: username, ...config } });
+    const { data, loading, refetch } = useReposQuery({ variables: { login: username, ...config } });
     const { pageInfo, totalCount = 0, nodes } = data?.user?.repositories || {};
     const length = nodes?.length;
+
+    // const handleClick = (id: string | undefined, viewerHasStarred: boolean | undefined) => {
+    //     const { handler } = useStarred(id, viewerHasStarred, refetch);
+    // };
 
     return (
         <div className="repo-list">
@@ -81,7 +86,14 @@ const RepoList = ({ username }: Props) => {
                 {/* NOTE: А то все {PAGE_SIZE} плейсхолдеров слишком много */}
                 {loading && <Card.SkeletonGroup amount={10} />}
                 {length !== 0 ? (
-                    data?.user?.repositories.nodes?.map((node) => <Repo key={node?.id} {...node} />)
+                    data?.user?.repositories.nodes?.map((node) => (
+                        <Repo
+                            onClick={() => useStarred(node?.id, node?.viewerHasStarred, refetch)}
+                            // onClick={() => handleClick(node?.id, node?.viewerHasStarred)}
+                            key={node?.id}
+                            {...node}
+                        />
+                    ))
                 ) : (
                     <h2 className="repo-list__placeholder">
                         {username} doesn’t have any public repositories yet.

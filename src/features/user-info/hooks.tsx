@@ -70,9 +70,9 @@ const useFollow = (
         }
     };
 
-    const label = viewerIsFollowing === true ? "unfollow" : "follow";
-    const handler = viewerIsFollowing === true ? handleUnfollow : handleFollow;
-    const loadingStatus = handler === handleFollow ? followLoading : unfollowLoading;
+    const label = viewerIsFollowing ? "unfollow" : "follow";
+    const handler = viewerIsFollowing ? handleUnfollow : handleFollow;
+    const loadingStatus = viewerIsFollowing ? unfollowLoading : followLoading;
     return { label, handler, loadingStatus };
 };
 

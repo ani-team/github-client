@@ -3,7 +3,7 @@ import { Button, Skeleton } from "antd";
 import * as Queries from "./queries.gen";
 
 import "./index.scss";
-import useFollow from "./hook";
+import useFollow from "./hooks";
 
 type Props = {
     username: string;
@@ -31,24 +31,14 @@ const UserInfo = ({ username }: Props) => {
             <span className="user-info__bio">{bio}</span>
             <br></br>
             {!isViewer ? (
-                viewerIsFollowing ? (
-                    <Button
-                        type="primary"
-                        className="user-info__btn unfollow"
-                        loading={loadingStatus}
-                        onClick={handler}
-                    >
-                        {label}
-                    </Button>
-                ) : (
-                    <Button
-                        className="user-info__btn follow"
-                        loading={loadingStatus}
-                        onClick={handler}
-                    >
-                        {label}
-                    </Button>
-                )
+                <Button
+                    type={viewerIsFollowing ? "primary" : "default"}
+                    className={`user-info__btn ${label}`}
+                    loading={loadingStatus}
+                    onClick={handler}
+                >
+                    {label}
+                </Button>
             ) : (
                 <Button className="user-info__btn edit">Edit profile</Button>
             )}

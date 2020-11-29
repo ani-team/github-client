@@ -9,11 +9,13 @@ import "./index.scss";
 // !!! FIXME: specify types
 type Props = any & {
     format?: "owner-repo" | "repo";
+    onClick?: Callback;
 };
 
 // FIXME: refactor
 const Repo = (props: Props) => {
     const { format = "repo" } = props;
+    const { onClick } = props;
     const { name, primaryLanguage, updatedAt, viewerHasStarred, owner } = props as Partial<
         Repository
     >;
@@ -38,7 +40,13 @@ const Repo = (props: Props) => {
                     </span>
                 </div>
             }
-            actions={<>{viewerHasStarred !== undefined && <FavBtn isFav={viewerHasStarred} />}</>}
+            actions={
+                <>
+                    {viewerHasStarred !== undefined && (
+                        <FavBtn className="repo__fav" isFav={viewerHasStarred} onClick={onClick} />
+                    )}
+                </>
+            }
         />
     );
 };
