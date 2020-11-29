@@ -1,27 +1,24 @@
-import {
-    useCredentialsQuery,
-    useStarRepoMutation,
-    useUnstarRepoMutation,
-    ReposDocument,
-} from "./queries.gen";
+import { notification } from "antd";
+import * as Queries from "./queries.gen";
 
-const useStarred = (variables: any) => {
-    const [starRepo] = useStarRepoMutation();
-    const [unstarRepo] = useUnstarRepoMutation();
-
-    // FIXME: Потом надо бы брать из LocalStorage,а не запросом
-    const { viewer } = useCredentialsQuery().data || {};
+const useStarred = (variables?: Queries.ReposQueryVariables) => {
+    // FIXME: simplify?
+    const [addStar] = Queries.useAddStarMutation();
+    const [removeStar] = Queries.useRemoveStarMutation();
 
     const handleStarring = (id?: string | null, viewerHasStarred?: boolean) => {
         if (!id) {
-            console.error("[useStarred] repo id not provied");
+            notification.error({
+                message: "Starring error",
+                description: "Failed to star/unstar repo",
+            });
             return;
         }
 
-        const starAction = viewerHasStarred ? unstarRepo : starRepo;
+        const starAction = viewerHasStarred ? removeStar : addStar;
         starAction({
-            variables: { id, clientMutationId: viewer?.id },
-            refetchQueries: [{ query: ReposDocument, variables }],
+            variables: { starrableId: id },
+            refetchQueries: [{ variables, query: Queries.ReposDocument }],
         });
     };
 

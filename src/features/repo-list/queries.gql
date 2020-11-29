@@ -26,21 +26,20 @@ query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation], $afte
   }
 }
 
-query Credentials {
-  viewer {
-    id
-    login
+# FIXME: simplify
+
+mutation AddStar($starrableId: ID!) {
+  addStar(input: {starrableId: $starrableId }) {
+    starrable {
+      id
+    }
   }
 }
 
-mutation StarRepo($id: ID!, $clientMutationId: String) {
-  addStar(input: {starrableId: $id, clientMutationId: $clientMutationId}) {
-    clientMutationId
-  }
-}
-
-mutation UnstarRepo($id: ID!, $clientMutationId: String) {
-  removeStar(input: {starrableId: $id, clientMutationId: $clientMutationId}) {
-    clientMutationId
+mutation RemoveStar($starrableId: ID!) {
+  removeStar(input: {starrableId: $starrableId }) {
+    starrable {
+      id
+    }
   }
 }
