@@ -1,9 +1,10 @@
 import React from "react";
+import cn from "classnames";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { Repository, Language } from "models";
+import { Repository } from "models";
 import Card from "../card";
-// FIXME: replace to ant.design icons
-import FavBtn from "./fav-btn";
+import Lang from "./lang";
 import "./index.scss";
 
 // !!! FIXME: specify types
@@ -19,13 +20,13 @@ const Repo = (props: Props) => {
     const { name, primaryLanguage, updatedAt, viewerHasStarred, owner } = props as Partial<
         Repository
     >;
-
     // prettier-ignore
     const title = (
         (format === "owner-repo" && `${owner?.login}/${name}`) || 
         (format === "repo" && name) ||
         ""
     );
+    const FavBtn = viewerHasStarred ? HeartFilled : HeartOutlined;
 
     return (
         <Card
@@ -41,33 +42,12 @@ const Repo = (props: Props) => {
                 </div>
             }
             actions={
-                <>
-                    {viewerHasStarred !== undefined && (
-                        <FavBtn className="repo__fav" isFav={viewerHasStarred} onClick={onClick} />
-                    )}
-                </>
+                <FavBtn
+                    className={cn("repo__fav", { starred: viewerHasStarred })}
+                    onClick={onClick}
+                />
             }
         />
-    );
-};
-
-// FIXME: specify types
-// FIXME: move to shared? (ждем пока появится еще хотя бы 1 место использования)
-const Lang = ({ color, name }: Partial<Language>) => {
-    if (!color || !name) return null;
-    return (
-        <div className="repo__lang flex items-center">
-            <span
-                className="repo__lang-marker"
-                style={{
-                    backgroundColor: color,
-                    width: 12,
-                    height: 12,
-                    borderRadius: "50%",
-                }}
-            />
-            <span className="repo__lang-label ml-2">{name}</span>
-        </div>
     );
 };
 

@@ -45,7 +45,7 @@ const RepoList = ({ username }: Props) => {
                 {length !== 0 ? (
                     data?.user?.repositories.nodes?.map((node) => (
                         <Repo
-                            onClick={() => handleStarring(null, node?.viewerHasStarred)}
+                            onClick={() => handleStarring(node?.id, node?.viewerHasStarred)}
                             key={node?.id}
                             {...node}
                         />
