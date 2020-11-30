@@ -3,6 +3,7 @@
 ![Version](https://img.shields.io/github/package-json/v/ani-team/github-client)
 ![CI](https://github.com/niyazm524/github-client/workflows/CI/badge.svg?branch=master)
 ![Website](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fgithub-client.gq)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fani-team%2Fgithub-client&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 ![GitHub top language](https://img.shields.io/github/languages/top/niyazm524/github-client)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/ani-team/github-client)
 
