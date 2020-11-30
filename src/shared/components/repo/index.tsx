@@ -1,33 +1,44 @@
 import React from "react";
+import cn from "classnames";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { Repository, Language } from "models";
+import { Repository } from "models";
 import Card from "../card";
-// FIXME: replace to ant.design icons
-import FavBtn from "./fav-btn";
+import Lang from "./lang";
 import "./index.scss";
 
 // !!! FIXME: specify types
-type Props = any & {
+type Props = {
+    data: any;
     format?: "owner-repo" | "repo";
+    onStarring?: Callback;
+    loading?: boolean;
 };
 
-// FIXME: refactor
+/**
+ * Карточка репозитория
+ */
 const Repo = (props: Props) => {
-    const { format = "repo" } = props;
-    const { name, primaryLanguage, updatedAt, viewerHasStarred, owner } = props as Partial<
-        Repository
-    >;
-
+    const { format = "repo", onStarring, loading } = props;
+    const {
+        name,
+        primaryLanguage,
+        updatedAt,
+        viewerHasStarred: starred,
+        owner,
+    } = props.data as Partial<Repository>;
     // prettier-ignore
     const title = (
         (format === "owner-repo" && `${owner?.login}/${name}`) || 
         (format === "repo" && name) ||
         ""
     );
+    const FavBtn = starred ? HeartFilled : HeartOutlined;
 
     return (
         <Card
             className="repo"
+            loading={loading}
             title={title}
             titleHref={`/${owner?.login}/${name}`}
             description={
@@ -38,28 +49,13 @@ const Repo = (props: Props) => {
                     </span>
                 </div>
             }
-            actions={<>{viewerHasStarred !== undefined && <FavBtn isFav={viewerHasStarred} />}</>}
+            actions={
+                // TODO: impl later for search page
+                onStarring && (
+                    <FavBtn className={cn("repo__fav", { starred })} onClick={onStarring} />
+                )
+            }
         />
-    );
-};
-
-// FIXME: specify types
-// FIXME: move to shared? (ждем пока появится еще хотя бы 1 место использования)
-const Lang = ({ color, name }: Partial<Language>) => {
-    if (!color || !name) return null;
-    return (
-        <div className="repo__lang flex items-center">
-            <span
-                className="repo__lang-marker"
-                style={{
-                    backgroundColor: color,
-                    width: 12,
-                    height: 12,
-                    borderRadius: "50%",
-                }}
-            />
-            <span className="repo__lang-label ml-2">{name}</span>
-        </div>
     );
 };
 
