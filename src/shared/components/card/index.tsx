@@ -17,6 +17,8 @@ type Props = {
     actions?: React.ReactNode;
     /** Класс */
     className?: string;
+    /** Флаг загрузки */
+    loading?: boolean;
 };
 
 /**
@@ -24,10 +26,10 @@ type Props = {
  * @remark Используется для отображения базовых сущностей: Repo, User, Org
  */
 const Card = (props: Props) => {
-    const { actions, previewUrl, description, title, titleHref, className } = props;
+    const { actions, previewUrl, description, title, titleHref, className, loading } = props;
 
     return (
-        <div className={cn("card", "flex", className)}>
+        <div className={cn("card", "flex", { loading }, className)}>
             {previewUrl && (
                 <div className="card__preview mr-4">
                     <img src={previewUrl} alt="preview" width={90} height={90} />

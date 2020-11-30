@@ -1,22 +1,25 @@
 import React from "react";
 import { Button, Skeleton } from "antd";
 import * as Queries from "./queries.gen";
-
+import { useFollowing } from "./hooks";
 import "./index.scss";
-import useFollow from "./hook";
 
 type Props = {
     username: string;
 };
 
+/**
+ * @feature Карточка пользователя
+ * FIXME: rename to UserDetails
+ */
 const UserInfo = ({ username }: Props) => {
-    const { data, loading, refetch } = Queries.useUserInfoQuery({
+    const { data, loading, variables } = Queries.useUserInfoQuery({
         variables: { login: username },
     });
-
-    const { name, avatarUrl, bio, id, isViewer, viewerIsFollowing } = data?.user || {};
-
-    const { label, handler, loadingStatus } = useFollow(id, viewerIsFollowing, refetch);
+    const following = useFollowing(variables);
+    const { name, avatarUrl, bio, isViewer, viewerIsFollowing, id } = data?.user || {};
+    // FIXME: temp
+    const label = viewerIsFollowing ? "unfollow" : "follow";
 
     return (
         <div className="user-info">
@@ -30,27 +33,19 @@ const UserInfo = ({ username }: Props) => {
             <h4 className="user-info__username">{username}</h4>
             <span className="user-info__bio">{bio}</span>
             <br></br>
-            {!isViewer ? (
-                viewerIsFollowing ? (
-                    <Button
-                        type="primary"
-                        className="user-info__btn unfollow"
-                        loading={loadingStatus}
-                        onClick={handler}
-                    >
-                        {label}
-                    </Button>
-                ) : (
-                    <Button
-                        className="user-info__btn follow"
-                        loading={loadingStatus}
-                        onClick={handler}
-                    >
-                        {label}
-                    </Button>
-                )
+            {isViewer ? (
+                <Button className="user-info__btn edit" disabled title="While not available">
+                    Edit profile
+                </Button>
             ) : (
-                <Button className="user-info__btn edit">Edit profile</Button>
+                <Button
+                    type={viewerIsFollowing ? "primary" : "default"}
+                    className={`user-info__btn ${label}`}
+                    onClick={() => following.handle(id, viewerIsFollowing)}
+                    loading={following.debouncedLodaing}
+                >
+                    {label}
+                </Button>
             )}
         </div>
     );

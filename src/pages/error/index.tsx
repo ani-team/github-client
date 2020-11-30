@@ -1,4 +1,6 @@
 import React from "react";
+// !!! FIXME: это плохо(
+// eslint-disable-next-line import/order
 import { ErrorDefinitions } from "app/error-handling";
 import { Auth, HeroSheet } from "features";
 import { AppError } from "models";
