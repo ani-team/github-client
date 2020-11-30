@@ -18,6 +18,7 @@ const HeroSheet = ({ title, description, action, useSadHero = false }: Props) =>
         text: "Back",
         to: () => (history.length > 1 ? history.goBack() : history.push("/")),
     };
+    const HeroIcon = useSadHero ? SadIcon : Icon;
 
     return (
         <div className="page page-background">
@@ -30,11 +31,7 @@ const HeroSheet = ({ title, description, action, useSadHero = false }: Props) =>
                     </button>
                 </Col>
                 <Col span={8}>
-                    {useSadHero ? (
-                        <SadIcon className="hero-sheet__icon" />
-                    ) : (
-                        <Icon className="hero-sheet__icon" />
-                    )}
+                    <HeroIcon className="hero-sheet__icon" />
                 </Col>
             </Row>
         </div>
