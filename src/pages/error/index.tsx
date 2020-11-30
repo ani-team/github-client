@@ -1,22 +1,32 @@
 import React from "react";
-import { useHistory } from "react-router";
-import HomeHero from "../../features/home-hero";
-import { AppError } from "../../models";
+// !!! FIXME: это плохо(
+// eslint-disable-next-line import/order
+import { ErrorDefinitions } from "app/error-handling";
+import { Auth, HeroSheet } from "features";
+import { AppError } from "models";
 
 type Props = { error: AppError };
 
 export default function ErrorPage({ error }: Props) {
-    const history = useHistory();
+    const { logout } = Auth.useAuth();
+
+    const action =
+        error.code === ErrorDefinitions.UNAUTHORIZED.code
+            ? {
+                  text: "Authorize",
+                  to: () => {
+                      logout();
+                      window.location.href = "/auth";
+                  },
+              }
+            : undefined;
 
     return (
-        <HomeHero
+        <HeroSheet
             title={error.message}
             description={error.description}
             useSadHero
-            action={{
-                text: "Back",
-                to: () => (history.length > 1 ? history.goBack() : history.push("/")),
-            }}
+            action={action}
         />
     );
 }

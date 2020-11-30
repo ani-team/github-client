@@ -8,10 +8,10 @@
 GitHub client within the *React Akvelon 2020* course.
 
 [wiki]: https://github.com/martis-git/github-client/wiki
-[requirements]: https://github.com/niyazm524/github-client/wiki/%5BRU%5D-Requirements
-[codestyle]: https://github.com/niyazm524/github-client/wiki/CodeStyle
-[structure]: https://github.com/niyazm524/github-client/wiki/Project-Structure
-[dev-guide]: https://github.com/niyazm524/github-client/wiki/Dev-Guide
+[requirements]: https://github.com/ani-team/github-client/wiki/%5BRU%5D-Requirements
+[codestyle]: https://github.com/ani-team/github-client/wiki/CodeStyle
+[structure]: https://github.com/ani-team/github-client/wiki/Project-Structure
+[dev-guide]: https://github.com/ani-team/github-client/wiki/Dev-Guide
 
 - [Project WIKI][wiki]
    - [Requirements (RU)][requirements]
@@ -32,7 +32,7 @@ GitHub client within the *React Akvelon 2020* course.
 - [Get feedback](https://github-client.gq/some-unexisting-route-but-we-have-error-parking-page) if some errors occurred
 - Try  [**github-client right now**](https://github-client.gq) or [last dev version (but unstable)](https://dev.github-client.gq) =}
 
-> If you found issues or have ideas for service - please, [share with us](https://github.com/niyazm524/github-client/issues/new) 🔥
+> If you found issues or have ideas for service - please, [share with us](https://github.com/ani-team/github-client/issues/new) 🔥
 
 <img alt="screen" src="docs/search.png" />
 

@@ -83,13 +83,13 @@ const SearchResults = () => {
                 {loading && <Card.SkeletonGroup amount={PAGE_SIZE} />}
                 {data?.search.nodes?.map((node) => (
                     <ResultItem key={node?.id} className={(node as any).__typename}>
-                        {isRepoSearch && <Repo {...node} format="owner-repo" />}
+                        {isRepoSearch && <Repo data={node} format="owner-repo" />}
                         {/* !!! FIXME: simplify */}
                         {isUserSearch &&
                             ((node as any)?.__typename === "Organization" ? (
-                                <Org {...node} />
+                                <Org data={node} />
                             ) : (
-                                <User {...node} />
+                                <User data={node} />
                             ))}
                     </ResultItem>
                 ))}

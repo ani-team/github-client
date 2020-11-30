@@ -3,9 +3,10 @@ import { Layout } from "antd";
 import Routing from "pages";
 import { ErrorCatcher } from "./error-handling";
 import Header from "./header";
-import "./index.scss";
 import { withHocs } from "./hocs";
+import "./index.scss";
 
+// !!! FIXME: manage access
 const ErrorPage = lazy(() => import("pages/error"));
 /**
  * Entry-point приложения

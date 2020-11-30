@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
-import HomeHero from "features/home-hero";
+import { HeroSheet } from "features";
 import { useTitle } from "../helpers";
 
 /**
@@ -12,7 +12,7 @@ const HomePage = () => {
     /* FIXME: specify link from Auth.feature */
 
     return (
-        <HomeHero
+        <HeroSheet
             title="Github in minimalistic design. Built for developers."
             description="Welcome to our GithubClient!"
             action={{ text: "START NOW", to: () => history.push("/auth") }}
