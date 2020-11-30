@@ -1,7 +1,10 @@
 # github-client
 
+![Version](https://img.shields.io/github/package-json/v/ani-team/github-client)
 ![CI](https://github.com/niyazm524/github-client/workflows/CI/badge.svg?branch=master)
+![Website](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fgithub-client.gq)
 ![GitHub top language](https://img.shields.io/github/languages/top/niyazm524/github-client)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/ani-team/github-client)
 
 <img alt="favicon" src="https://avatars2.githubusercontent.com/oa/1406180?s=140&u=b44629cbec5079f99a61e6f1b6297bc4797f796b&v=4" height=120 align="right" />
 
