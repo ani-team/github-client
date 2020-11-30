@@ -10,4 +10,5 @@ export { default as RepoList } from "./repo-list";
 export { default as RepoStat } from "./repo-stat";
 export { default as Search } from "./search";
 export { default as Origin } from "./origin";
+export { default as HeroSheet } from "./hero-sheet";
 export { Auth };

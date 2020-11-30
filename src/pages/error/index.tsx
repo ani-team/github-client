@@ -2,8 +2,7 @@ import React from "react";
 // !!! FIXME: это плохо(
 // eslint-disable-next-line import/order
 import { ErrorDefinitions } from "app/error-handling";
-import { Auth } from "features";
-import HomeHero from "features/home-hero";
+import { Auth, HeroSheet } from "features";
 import { AppError } from "models";
 
 type Props = { error: AppError };
@@ -23,7 +22,7 @@ export default function ErrorPage({ error }: Props) {
             : undefined;
 
     return (
-        <HomeHero
+        <HeroSheet
             title={error.message}
             description={error.description}
             useSadHero

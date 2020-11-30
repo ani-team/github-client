@@ -12,33 +12,30 @@ type Props = {
     useSadHero?: boolean;
 };
 
-const HomeHero = ({ title, description, action, useSadHero = false }: Props) => {
+const HeroSheet = ({ title, description, action, useSadHero = false }: Props) => {
     const history = useHistory();
     const preferredAction = action ?? {
         text: "Back",
         to: () => (history.length > 1 ? history.goBack() : history.push("/")),
     };
+    const HeroIcon = useSadHero ? SadIcon : Icon;
 
     return (
         <div className="page page-background">
-            <Row className="home-hero">
+            <Row className="hero-sheet">
                 <Col span={16}>
-                    <h1 className="home-hero__title">{title}</h1>
-                    <p className="home-hero__description">{description}</p>
-                    <button className="home-hero__button" onClick={() => preferredAction.to()}>
+                    <h1 className="hero-sheet__title">{title}</h1>
+                    <p className="hero-sheet__description">{description}</p>
+                    <button className="hero-sheet__button" onClick={() => preferredAction.to()}>
                         {preferredAction.text}
                     </button>
                 </Col>
                 <Col span={8}>
-                    {useSadHero ? (
-                        <SadIcon className="home-hero__icon" />
-                    ) : (
-                        <Icon className="home-hero__icon" />
-                    )}
+                    <HeroIcon className="hero-sheet__icon" />
                 </Col>
             </Row>
         </div>
     );
 };
 
-export default HomeHero;
+export default HeroSheet;
