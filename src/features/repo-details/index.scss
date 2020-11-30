@@ -1,0 +1,46 @@
+@import "shared/mixins.scss";
+
+.common-details {
+    .homepage-link {
+        display: block;
+        padding-bottom: 15px;
+        line-height: 20px;
+
+        @include text-overflow();
+    }
+
+    .language-tag {
+        margin-bottom: 4px;
+    }
+
+    &__placeholder {
+        width: 100% !important;
+    }
+
+    p {
+        margin-bottom: 0;
+        font-style: italic;
+    }
+}
+
+.collaborator {
+    padding: 4px 0;
+    color: white;
+    background-color: var(--clr-primary);
+
+    &__placeholder {
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    img {
+        max-width: 36px;
+        border-radius: 50%;
+    }
+
+    a.name {
+        margin-left: 12px;
+        font-weight: var(--fw--regular);
+        color: white;
+    }
+}

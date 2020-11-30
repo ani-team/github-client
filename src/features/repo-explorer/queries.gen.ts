@@ -9,22 +9,25 @@ export type RepoDefaultBranchQueryVariables = Types.Exact<{
 }>;
 
 
-export type RepoDefaultBranchQuery = { readonly repository?: Types.Maybe<{ readonly defaultBranchRef?: Types.Maybe<{ readonly name: string }> }> };
+export type RepoDefaultBranchQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly defaultBranchRef?: Types.Maybe<{ readonly name: string }> }> };
 
 export type RepoBranchInfoQueryVariables = Types.Exact<{
   owner: Types.Scalars['String'];
   name: Types.Scalars['String'];
   qualifiedName: Types.Scalars['String'];
   expression: Types.Scalars['String'];
+  readmeLower: Types.Scalars['String'];
+  readmeUpper: Types.Scalars['String'];
 }>;
 
 
-export type RepoBranchInfoQuery = { readonly repository?: Types.Maybe<{ readonly url: any, readonly ref?: Types.Maybe<{ readonly name: string, readonly target?: Types.Maybe<{ readonly id: string, readonly messageHeadline: string, readonly author?: Types.Maybe<{ readonly date?: Types.Maybe<any>, readonly user?: Types.Maybe<{ readonly avatarUrl: any, readonly login: string }> }> }> }>, readonly object?: Types.Maybe<{ readonly entries?: Types.Maybe<ReadonlyArray<{ readonly name: string, readonly extension?: Types.Maybe<string>, readonly type: string }>> }>, readonly refs?: Types.Maybe<{ readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly name: string, readonly prefix: string }>>> }> }> };
+export type RepoBranchInfoQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly url: any, readonly ref?: Types.Maybe<{ readonly name: string, readonly target?: Types.Maybe<{ readonly id: string, readonly messageHeadline: string, readonly author?: Types.Maybe<{ readonly date?: Types.Maybe<any>, readonly name?: Types.Maybe<string>, readonly user?: Types.Maybe<{ readonly avatarUrl: any, readonly login: string }> }> }> }>, readonly object?: Types.Maybe<{ readonly entries?: Types.Maybe<ReadonlyArray<{ readonly name: string, readonly extension?: Types.Maybe<string>, readonly type: string }>> }>, readonly contentLower?: Types.Maybe<{ readonly text?: Types.Maybe<string> }>, readonly contentUpper?: Types.Maybe<{ readonly text?: Types.Maybe<string> }>, readonly refs?: Types.Maybe<{ readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly name: string, readonly prefix: string }>>> }> }> };
 
 
 export const RepoDefaultBranchDocument = gql`
     query RepoDefaultBranch($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
+    id
     defaultBranchRef {
       name
     }
@@ -59,8 +62,9 @@ export type RepoDefaultBranchQueryHookResult = ReturnType<typeof useRepoDefaultB
 export type RepoDefaultBranchLazyQueryHookResult = ReturnType<typeof useRepoDefaultBranchLazyQuery>;
 export type RepoDefaultBranchQueryResult = Apollo.QueryResult<RepoDefaultBranchQuery, RepoDefaultBranchQueryVariables>;
 export const RepoBranchInfoDocument = gql`
-    query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $expression: String!) {
+    query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $expression: String!, $readmeLower: String!, $readmeUpper: String!) {
   repository(owner: $owner, name: $name) {
+    id
     url
     ref(qualifiedName: $qualifiedName) {
       name
@@ -70,6 +74,7 @@ export const RepoBranchInfoDocument = gql`
           messageHeadline
           author {
             date
+            name
             user {
               avatarUrl(size: 36)
               login
@@ -85,6 +90,16 @@ export const RepoBranchInfoDocument = gql`
           extension
           type
         }
+      }
+    }
+    contentLower: object(expression: $readmeLower) {
+      ... on Blob {
+        text
+      }
+    }
+    contentUpper: object(expression: $readmeUpper) {
+      ... on Blob {
+        text
       }
     }
     refs(first: 20, refPrefix: "refs/heads/", orderBy: {field: ALPHABETICAL, direction: ASC}) {
@@ -113,6 +128,8 @@ export const RepoBranchInfoDocument = gql`
  *      name: // value for 'name'
  *      qualifiedName: // value for 'qualifiedName'
  *      expression: // value for 'expression'
+ *      readmeLower: // value for 'readmeLower'
+ *      readmeUpper: // value for 'readmeUpper'
  *   },
  * });
  */

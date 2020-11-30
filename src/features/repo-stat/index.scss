@@ -1,0 +1,48 @@
+.repo-stat {
+    --fsz: 12px;
+    --radius: 6px;
+    --padding: 6px 8px;
+
+    user-select: none;
+
+    .ant-statistic {
+        display: flex;
+        flex-basis: 28%;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--clr-gray--100);
+        border: 1px solid var(--clr-gray--200);
+        border-radius: var(--radius);
+
+        &-title {
+            flex-grow: 1;
+            margin: 0;
+            font-size: var(--fsz);
+            text-align: center;
+
+            a {
+                padding: var(--padding);
+                line-height: var(--fsz);
+
+                svg {
+                    fill: var(--clr-gray--800);
+                    transition: var(--transition);
+                }
+
+                &:hover svg {
+                    fill: var(--clr-primary);
+                }
+            }
+        }
+
+        &-content {
+            flex-grow: 1;
+            padding: var(--padding);
+            font-size: var(--fsz);
+            text-align: center;
+            background-color: #ffffff;
+            border-top-right-radius: var(--radius);
+            border-bottom-right-radius: var(--radius);
+        }
+    }
+}

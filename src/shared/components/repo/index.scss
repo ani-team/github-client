@@ -1,30 +1,30 @@
 .repo {
-    display: inline-flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 140px;
-    padding: 22px;
-    margin-top: 22px;
-    // FIXME: define on app level
-    font-family: var(--ff-secondary);
-    font-size: 14px;
-    background-color: var(--clr-gray--100);
-    border-radius: 10px;
-
-    &__info {
+    &__extra {
         display: grid;
-        align-content: space-between;
-
-        a {
-            color: var(--clr-text);
-        }
-
-        span {
-            line-height: 24px;
-        }
     }
 
-    &__other-info {
-        display: grid;
+    .card__description {
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
+    }
+
+    &__date,
+    &__lang {
+        line-height: 24px;
+    }
+
+    &__fav {
+        font-size: 28px;
+        cursor: pointer;
+        transition: var(--transition);
+
+        &.starred svg {
+            fill: var(--clr-primary);
+        }
+
+        &:hover {
+            opacity: 0.6;
+        }
     }
 }

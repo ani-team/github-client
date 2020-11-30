@@ -1,5 +1,6 @@
 query RepoDefaultBranch($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
+    id
     defaultBranchRef {
       name
     }
@@ -7,8 +8,9 @@ query RepoDefaultBranch($owner: String!, $name: String!) {
 }
 
 
-query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $expression: String!) {
+query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $expression: String!, $readmeLower: String!, $readmeUpper: String!) {
   repository(owner: $owner, name: $name) {
+    id
     url
     ref(qualifiedName: $qualifiedName) {
       name
@@ -18,6 +20,7 @@ query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $
           messageHeadline
           author {
             date
+            name
             user {
               avatarUrl(size: 36)
               login
@@ -33,6 +36,16 @@ query RepoBranchInfo($owner: String!, $name: String!, $qualifiedName: String!, $
           extension
           type
         }
+      }
+    }
+    contentLower: object(expression: $readmeLower) {
+      ... on Blob {
+        text
+      }
+    }
+    contentUpper: object(expression: $readmeUpper) {
+      ... on Blob {
+        text
       }
     }
     refs(first: 20, refPrefix: "refs/heads/", orderBy: {field: ALPHABETICAL, direction: ASC}) {

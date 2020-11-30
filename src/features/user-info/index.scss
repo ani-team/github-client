@@ -2,37 +2,45 @@
     color: var(--clr-text);
 
     &__img {
-        width: 100%;
-        border-radius: 10px;
+        min-width: 100%;
+
+        &-ava {
+            width: 100%;
+            border-radius: var(--radius);
+        }
+
+        &-placeholder {
+            min-width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            border-radius: var(--radius);
+        }
     }
 
     &__name {
-        margin: 15px 0;
+        margin-top: 15px;
+        margin-bottom: 5px;
     }
 
-    &__bio {
-        font-size: 20px;
+    &__username {
+        font-size: 18px;
+        font-weight: var(--fw--light);
         line-height: 28px;
     }
 
-    // !!! FIXME: styles (enhance colors)
-    &__btn.follow {
-        display: block;
-        width: 100px;
-        height: 100%;
-        margin: 20px 0;
-        line-height: 26px;
-        text-align: center;
-        background: var(--clr-gray--100);
-        border: 1px solid var(--clr-primary);
-        border-radius: 10px;
-        outline: none;
+    &__bio {
+        font-size: 15px;
+        line-height: 28px;
+    }
+
+    &__btn.follow,
+    &__btn.unfollow,
+    &__btn.edit {
+        margin-top: 10px;
         transition: 0.4s;
 
         &:hover {
             cursor: pointer;
-            background: var(--clr-foreground);
-            border: 1px solid;
         }
     }
 }

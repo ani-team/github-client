@@ -1,54 +1,61 @@
 import React from "react";
+import cn from "classnames";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { Repository, Language } from "models";
-// FIXME: replace to ant.design icons
-import FavBtn from "./fav-btn";
+import { Repository } from "models";
+import Card from "../card";
+import Lang from "./lang";
 import "./index.scss";
 
 // !!! FIXME: specify types
-type Props = any;
-
-// FIXME: refactor
-const Repo = (props: Props) => {
-    const { name, primaryLanguage, updatedAt, url, viewerHasStarred, owner } = props as Partial<
-        Repository
-    >;
-
-    return (
-        <div className="repo">
-            <div className="repo__info">
-                {/* FIXME: hardcoded, replace to generation by {username}/{reponame} */}
-                <a className="text-title" href={url?.replace("https://github.com/", "/")}>
-                    {owner?.login && `${owner.login}/`}
-                    {name}
-                </a>
-                <div className="repo__other-info">
-                    <Lang {...primaryLanguage} />
-                    <span>Updated on {dayjs(updatedAt).format("D MMM YYYY")}</span>
-                </div>
-            </div>
-            {viewerHasStarred !== undefined && <FavBtn isFav={viewerHasStarred} />}
-        </div>
-    );
+type Props = {
+    data: any;
+    format?: "owner-repo" | "repo";
+    onStarring?: Callback;
+    loading?: boolean;
 };
 
-// FIXME: specify types
-// FIXME: move to shared? (ждем пока появится еще хотя бы 1 место использования)
-const Lang = ({ color, name }: Partial<Language>) => {
-    if (!color || !name) return null;
+/**
+ * Карточка репозитория
+ */
+const Repo = (props: Props) => {
+    const { format = "repo", onStarring, loading } = props;
+    const {
+        name,
+        primaryLanguage,
+        updatedAt,
+        viewerHasStarred: starred,
+        owner,
+    } = props.data as Partial<Repository>;
+    // prettier-ignore
+    const title = (
+        (format === "owner-repo" && `${owner?.login}/${name}`) || 
+        (format === "repo" && name) ||
+        ""
+    );
+    const FavBtn = starred ? HeartFilled : HeartOutlined;
+
     return (
-        <div className="repo__lang flex items-center">
-            <span
-                className="repo__lang-marker"
-                style={{
-                    backgroundColor: color,
-                    width: 12,
-                    height: 12,
-                    borderRadius: "50%",
-                }}
-            />
-            <span className="repo__lang-label ml-2">{name}</span>
-        </div>
+        <Card
+            className="repo"
+            loading={loading}
+            title={title}
+            titleHref={`/${owner?.login}/${name}`}
+            description={
+                <div className="repo__extra">
+                    <Lang {...primaryLanguage} />
+                    <span className="repo__date">
+                        Updated on {dayjs(updatedAt).format("D MMM YYYY")}
+                    </span>
+                </div>
+            }
+            actions={
+                // TODO: impl later for search page
+                onStarring && (
+                    <FavBtn className={cn("repo__fav", { starred })} onClick={onStarring} />
+                )
+            }
+        />
     );
 };
 

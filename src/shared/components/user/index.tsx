@@ -1,30 +1,35 @@
 import React from "react";
 import { Button } from "antd";
-import "./index.scss";
+import Card from "../card";
 
 // !!! FIXME: specify types
-const User = (props: any) => {
-    const { avatarUrl, login, viewerIsFollowing, bio } = props as Partial<import("models").User>;
+type Props = {
+    data: any;
+    onFollowing?: Callback;
+};
+
+const User = (props: Props) => {
+    const { data, onFollowing } = props;
+    const { avatarUrl, login, viewerIsFollowing, bio } = data as Partial<import("models").User>;
     return (
-        <div className="user flex p-3">
-            <div className="user__avatar">
-                <img src={avatarUrl} alt="avatar" width={90} className="rounded-full" />
-            </div>
-            <div className="user__details ml-4 flex flex-col flex-grow">
-                <a className="user__login text-title" href={`/${login}`}>
-                    {login}
-                </a>
-                <span className="user__bio">{bio}</span>
-            </div>
-            <div className="user__actions ml-4">
-                <Button
-                    className="user__action follow"
-                    type={viewerIsFollowing ? "primary" : "default"}
-                >
-                    {viewerIsFollowing ? "unfollow" : "follow"}
-                </Button>
-            </div>
-        </div>
+        <Card
+            className="user"
+            previewUrl={avatarUrl}
+            titleHref={`/${login}`}
+            title={login}
+            description={bio}
+            actions={
+                // TODO: impl later for search page
+                onFollowing && (
+                    <Button
+                        className="user__action follow"
+                        type={viewerIsFollowing ? "primary" : "default"}
+                    >
+                        {viewerIsFollowing ? "unfollow" : "follow"}
+                    </Button>
+                )
+            }
+        />
     );
 };
 

@@ -1,25 +1,30 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Layout } from "antd";
 import Routing from "pages";
-import withApollo from "./with-apollo";
+import { ErrorCatcher } from "./error-handling";
 import Header from "./header";
+import { withHocs } from "./hocs";
 import "./index.scss";
 
+// !!! FIXME: manage access
+const ErrorPage = lazy(() => import("pages/error"));
 /**
  * Entry-point приложения
  * @remark Содержит в HOC-обертке логику подключения к API (apollo)
  */
 const App = () => {
     return (
-        <div className="gc-app">
+        <div className="gc-app" data-testid="gc-app">
             <Layout>
                 <Header />
                 <Layout.Content className="gc-app-content">
-                    <Routing />
+                    <ErrorCatcher handler={({ error }) => <ErrorPage error={error} />}>
+                        <Routing />
+                    </ErrorCatcher>
                 </Layout.Content>
             </Layout>
         </div>
     );
 };
 
-export default withApollo(App);
+export default withHocs(App);

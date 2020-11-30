@@ -1,9 +1,13 @@
 import React from "react";
-import { Alert, Card } from "antd";
 import { GithubFilled } from "@ant-design/icons";
+import { Alert, Card, notification } from "antd";
+// !!! FIXME: loop imports
+import { useTitle } from "pages/helpers";
 import { authorizeGithub } from "../firebase";
 import { useAuth } from "../hooks";
 import "./index.scss";
+
+// FIXME: move to pages level?
 
 /**
  * @page Auth
@@ -15,11 +19,16 @@ import "./index.scss";
  * 3. Получение токена на основании OAuth данных и полученного кода
  */
 const AuthPage = () => {
+    useTitle("Sign in to Github Client");
     const { login } = useAuth();
+    const showError = (message: string) =>
+        notification.error({ message: "Authorization error", description: message, top: 72 });
+
+    // TODO: add ability to specify redirect url
     const authorize = () => {
-        authorizeGithub().then((result) => {
-            login(result.credential.accessToken);
-        });
+        authorizeGithub()
+            .then(login)
+            .catch((err: Error) => showError(err.message));
     };
 
     return (
@@ -29,6 +38,7 @@ const AuthPage = () => {
                     <Alert type="info" message="While available only GitHub OAuth authorization" />
                 </div>
                 <button
+                    type="button"
                     className="page-auth__link github"
                     onClick={authorize}
                     title="Authentication through Github OAuth"

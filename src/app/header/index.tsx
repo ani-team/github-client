@@ -1,39 +1,59 @@
 import React from "react";
 import { Layout, Input } from "antd";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { StringParam, useQueryParams } from "use-query-params";
 import * as qs from "query-string";
 import { Auth } from "features";
-import ImgLogo from "./logo.png";
+import { ReactComponent as IcLogo } from "./logo.svg";
 import "./index.scss";
+
+const FEEDBACK_URL = "https://github.com/ani-team/github-client/issues/new";
+const GITHUB_URL = "https://github.com/ani-team/github-client";
 
 const Header = () => {
     const { isAuth } = Auth.useAuth();
     // !!! FIXME: limit scope of query-params literals
-    // TODO: (wrap in QueryParamProvider) - wrap app with header instead of only content?
-    // const [search] = useQueryParam("q", StringParam);
-    const search = (qs.parse(window.location.search).q as string) || "";
+    const [query] = useQueryParams({
+        q: StringParam,
+        type: StringParam,
+        s: StringParam,
+        o: StringParam,
+    });
+    const location = useLocation();
+    const history = useHistory();
 
     return (
         <Layout.Header className="header">
-            <div className="nav flex-grow">
-                <a className="header__logo" href="/">
-                    {/* FIXME: Временная иконка, поправить позже */}
-                    <img className="header__logo" src={ImgLogo} alt="logo" width={48} height={48} />
+            <div className="nav flex flex-grow items-center">
+                <Link className="header__logo flex items-center" to="/">
+                    <IcLogo />
                     {!isAuth && <span className="gc-app__title text-white m-4">GITHUB-CLIENT</span>}
-                </a>
+                </Link>
                 {isAuth && (
                     <Input
                         className="header__search"
                         placeholder="Search..."
-                        defaultValue={search}
-                        onKeyDown={({ key, target }) => {
-                            // @ts-ignore FIXME: specify types
-                            if (key === "Enter" && target.value) {
-                                // @ts-ignore FIXME: specify types
-                                window.location.replace(`/search?q=${target.value}`);
+                        defaultValue={location.pathname === "/search" ? query.q ?? "" : ""}
+                        onKeyDown={({ key, currentTarget }) => {
+                            if (key === "Enter" && currentTarget.value) {
+                                history.push(
+                                    `/search?${qs.stringify({
+                                        q: currentTarget.value,
+                                        type: query.type,
+                                        s: query.s,
+                                        o: query.o,
+                                    })}`,
+                                );
                             }
                         }}
                     />
                 )}
+                <a className="m-4 text-gray-600" href={GITHUB_URL}>
+                    GitHub
+                </a>
+                <a className="m-4 text-gray-600" href={FEEDBACK_URL}>
+                    Feedback
+                </a>
             </div>
             <Auth.User />
         </Layout.Header>

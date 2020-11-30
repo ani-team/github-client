@@ -1,3 +1,17 @@
 .repo-list {
     margin-left: 38px;
+
+    &__placeholder {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    &__tab {
+        width: 10rem;
+        margin-right: 10px;
+    }
+
+    .repo:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
 }

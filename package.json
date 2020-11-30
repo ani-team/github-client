@@ -12,8 +12,9 @@
     "@types/node": "^12.12.67",
     "@types/react": "^16.9.52",
     "@types/react-dom": "^16.9.8",
-    "antd": "^4.7.2",
+    "antd": "^4.8.5",
     "classnames": "^2.2.6",
+    "cross-domain-storage": "^2.0.7",
     "dayjs": "^1.9.6",
     "firebase": "^8.0.1",
     "graphql": "^15.3.0",
@@ -22,9 +23,11 @@
     "query-string": "^6.13.7",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-markdown": "^5.0.3",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-syntax-highlighter": "^15.3.1",
     "tailwindcss": "^1.9.5",
     "typescript": "^3.7.5",
     "use-query-params": "^1.1.9"
@@ -35,6 +38,7 @@
     "test": "npm run react:test && npm run lint:test",
     "react:test": "react-scripts test --watchAll=false",
     "react:test--watch": "react-scripts test --watchAll=true",
+    "react:test--coverage": "react-scripts test --coverage",
     "lint:test": "eslint src && stylelint **/*.scss",
     "lint:fix": "eslint src --fix && stylelint **/*.scss --fix",
     "eject": "react-scripts eject",
@@ -68,6 +72,7 @@
     "@graphql-eslint/eslint-plugin": "^0.4.2",
     "@types/classnames": "^2.2.10",
     "@types/react-router-dom": "^5.1.6",
+    "@types/react-syntax-highlighter": "^13.5.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -77,6 +82,7 @@
     "stylelint": "^13.7.2",
     "stylelint-config-recess-order": "^2.3.0",
     "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-standard": "^20.0.0"
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.18.0"
   }
 }

@@ -1,9 +1,11 @@
 .tab {
-    padding: 13px 21px;
-    font-family: var(--ff-primary);
+    position: relative;
+    height: 60px;
+    padding: 0 21px;
     font-size: 19px;
     line-height: 33px;
     color: #000000;
+    text-align: left;
     background: linear-gradient(270deg, rgba(238, 238, 238, 0.24) 35.11%, var(--clr-gray--100) 100%);
     border: none;
     border-radius: 5px;
@@ -16,5 +18,15 @@
 
     &.active {
         background: linear-gradient(270deg, rgba(51, 153, 255, 0) 8.76%, rgba(51, 153, 255, 0.33) 100%);
+    }
+
+    &__label {
+        position: absolute;
+        top: 8px;
+        width: 20px;
+        height: 20px;
+        margin-left: 4px;
+        font-size: 14px;
+        color: rgba(51, 153, 255, 0.66);
     }
 }

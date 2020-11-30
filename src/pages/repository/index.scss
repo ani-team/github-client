@@ -1,10 +1,20 @@
 .page-repo {
+    margin: 20px 15% !important;
+
     .clone-btn {
         color: white;
         background-color: var(--clr-text);
+    }
+
+    &__main {
+        font-family: var(--ff-secondary);
     }
 }
 
 .ant-layout {
     background-color: white;
+}
+
+.owner {
+    font-weight: var(--fw--regular);
 }

@@ -1,0 +1,17 @@
+.search-results {
+    &__toolbar {
+        height: 60px;
+        margin-bottom: 8px;
+    }
+
+    &__label {
+        &-placeholder {
+            max-width: 50%;
+        }
+    }
+
+    &__item {
+        user-select: none;
+        border-radius: 10px;
+    }
+}

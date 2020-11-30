@@ -1,0 +1,49 @@
+.page-background {
+    height: 100%;
+    margin: 0 !important;
+    background: #e9ffff url("./assets/bg.png") no-repeat center/cover;
+}
+
+.hero-sheet {
+    display: flex;
+    align-items: center;
+    height: inherit;
+    margin: 0 12%;
+    user-select: none;
+
+    &__title {
+        max-width: 90%;
+        margin: 0;
+        font-family: var(--ff-secondary);
+        font-size: 5vh;
+        font-weight: var(--fw--medium);
+        line-height: 7vh;
+        white-space: pre-line;
+    }
+
+    &__description {
+        margin: 25px 0;
+        font-size: 2vh;
+        font-weight: var(--fw--light);
+        line-height: 28px;
+    }
+
+    &__button {
+        padding: 10px 30px;
+        color: var(--clr-gray--100);
+        background: var(--clr-primary);
+        border: none;
+        border-radius: var(--radius);
+        outline: none;
+        transition: 0.4s;
+
+        &:hover {
+            cursor: pointer;
+            background: var(--clr-primary--active);
+        }
+    }
+
+    &__icon {
+        max-width: 100%;
+    }
+}

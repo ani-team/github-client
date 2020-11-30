@@ -1,19 +1,45 @@
-query Repos ($login: String!) { 
+query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String, $first: Int, $last: Int) { 
   user(login: $login) {
-    repositories(ownerAffiliations: OWNER, first: 50, orderBy: {field: PUSHED_AT, direction: DESC}) {
-      edges {
-        node {
-          id
+    id
+    repositories(ownerAffiliations: $ownerAffiliations, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before, first: $first, last: $last) {
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+      nodes {
+        id
+        name
+        primaryLanguage {
+          color
           name
-          primaryLanguage {
-            color
-            name
-          }
-          updatedAt
-          viewerHasStarred
-          url
         }
+        owner {
+          login
+        }
+        updatedAt
+        viewerHasStarred
       }
     } 
+  }
+}
+
+# FIXME: simplify
+
+mutation AddStar($starrableId: ID!) {
+  addStar(input: {starrableId: $starrableId }) {
+    starrable {
+      id
+    }
+  }
+}
+
+mutation RemoveStar($starrableId: ID!) {
+  removeStar(input: {starrableId: $starrableId }) {
+    starrable {
+      id
+    }
   }
 }

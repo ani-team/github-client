@@ -1,0 +1,42 @@
+fragment RepoFields on Repository {
+  id
+  name
+  url
+  owner {
+    login
+  }
+  updatedAt
+  primaryLanguage {
+    name
+    color
+  }
+  viewerHasStarred
+}
+
+fragment UserFields on User {
+  id
+  login
+  bio
+  avatarUrl
+  viewerIsFollowing
+}
+
+fragment OrgFields on Organization {
+  id
+  login
+  avatarUrl
+  description
+  url
+}
+
+query Search($query: String!, $type: SearchType!, $first: Int!, $after: String!) {
+  search(query: $query, type: $type, first: $first, after: $after) {
+    userCount
+    repositoryCount
+    nodes {
+        ...RepoFields
+        ...UserFields
+        ...OrgFields
+    }
+  }
+}

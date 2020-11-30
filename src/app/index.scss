@@ -2,12 +2,15 @@
 @import "~tailwindcss/dist/utilities.css";
 @import "./vars.scss";
 @import "./normalize.scss";
+@import "./normalize-antd.scss";
 @import "./utils.scss";
 
 .gc-app {
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    // !!! FIXME: temp (caus #86)
+    overflow: overlay;
+    font-family: var(--ff-primary);
     background-color: var(--clr-background);
 
     &-content {
@@ -15,7 +18,7 @@
     }
 
     .page {
-        margin: 10px 10%;
+        margin: 20px 10%;
     }
 
     .ant-layout {

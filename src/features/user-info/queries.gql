@@ -1,7 +1,28 @@
 query UserInfo ($login: String!) { 
   user(login: $login) {
+    id
     name
     avatarUrl
     bio
+    viewerIsFollowing
+    isViewer
+  }
+}
+
+# FIXME: simplify with grouping?
+
+mutation FollowUser($userId: ID!) {
+  followUser(input: {userId: $userId}) {
+    user {
+      id
+    }
+  }
+}
+
+mutation UnfollowUser($userId: ID!) {
+  unfollowUser(input: {userId: $userId}) {
+    user {
+      id
+    }
   }
 }
