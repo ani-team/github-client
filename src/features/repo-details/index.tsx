@@ -19,7 +19,7 @@ type Collaborator = {
     avatarUrl: string;
 };
 
-function RepoDetails({ repo: identity }: Props) {
+const RepoDetails = ({ repo: identity }: Props) => {
     const { data, loading } = useRepoDetailsQuery({
         variables: {
             name: identity.name,
@@ -88,6 +88,6 @@ function RepoDetails({ repo: identity }: Props) {
             />
         </div>
     );
-}
+};
 
 export default RepoDetails;

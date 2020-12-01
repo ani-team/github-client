@@ -11,7 +11,7 @@ type Props = {
     activeBranch: string;
 };
 
-function RepoToolbar({ repo, branches, activeBranch }: Props) {
+const RepoToolbar = ({ repo, branches, activeBranch }: Props) => {
     return (
         <div className="flex justify-between">
             <Dropdown
@@ -32,6 +32,6 @@ function RepoToolbar({ repo, branches, activeBranch }: Props) {
             </Popover>
         </div>
     );
-}
+};
 
 export default RepoToolbar;

@@ -59,7 +59,7 @@ const useRepoDetails = (repoInfo: RepoBranchInfoQuery | undefined) => {
     };
 };
 
-function Explorer({ repo }: Props) {
+const Explorer = ({ repo }: Props) => {
     const { branch } = useBranch(repo);
     const { loading, data } = useRepoBranchInfoQuery({
         variables: {
@@ -81,6 +81,6 @@ function Explorer({ repo }: Props) {
             <RepoReadme text={readme} loading={loading} />
         </div>
     );
-}
+};
 
 export default Explorer;

@@ -4,7 +4,7 @@ import { Button, Input, Tooltip } from "antd";
 
 type Props = { url: string };
 
-export default function CloneMenu({ url }: Props) {
+const CloneMenu = ({ url }: Props) => {
     const cloneField = useRef<Input>(null);
     const [isUrlCopied, setUrlCopied] = useState<boolean | null>(null);
     useEffect(() => {
@@ -45,4 +45,6 @@ export default function CloneMenu({ url }: Props) {
             />
         </div>
     );
-}
+};
+
+export default CloneMenu;

@@ -33,7 +33,7 @@ type Props = PropsWithChildren<{
     handler: (props: { error: AppError }) => ReactNode;
 }>;
 
-export default function ErrorCatcher({ handler, children }: Props) {
+const ErrorCatcher = ({ handler, children }: Props) => {
     const apolloClient = useApolloClient();
     const location = useLocation();
     const [error, setError] = useState<AppError | null>(null);
@@ -52,4 +52,6 @@ export default function ErrorCatcher({ handler, children }: Props) {
         return <>{handler({ error })}</>;
     }
     return <>{children}</>;
-}
+};
+
+export default ErrorCatcher;

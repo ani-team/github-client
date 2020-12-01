@@ -7,7 +7,7 @@ import { AppError } from "models";
 
 type Props = { error: AppError };
 
-export default function ErrorPage({ error }: Props) {
+const ErrorPage = ({ error }: Props) => {
     const { logout } = Auth.useAuth();
 
     const action =
@@ -29,4 +29,6 @@ export default function ErrorPage({ error }: Props) {
             action={action}
         />
     );
-}
+};
+
+export default ErrorPage;
