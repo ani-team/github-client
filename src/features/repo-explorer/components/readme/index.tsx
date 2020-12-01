@@ -45,9 +45,20 @@ const useLocalUri = ({ repoUrl, branch }: Props) => {
         return `https://github.com/${repoUrl}/blob/${branch}/${blobUrl}`;
     };
 
-    return {
-        transformLinkUri,
+    /**
+     * Получение исходника локального изображения
+     * @example
+     * transformImageUri("docs/search.png")
+     * // => https://raw.githubusercontent.com/${repo}/${branch}/docs/search.png
+     */
+    const transformImageUri = (uri: string) => {
+        if (uri.startsWith("http")) return uri;
+        // Если sibling-link - нормализуем
+        const blobUrl = uri.replace("./", "");
+        return `https://raw.githubusercontent.com/${repoUrl}/${branch}/${blobUrl}`;
     };
+
+    return { transformLinkUri, transformImageUri };
 };
 
 /**
