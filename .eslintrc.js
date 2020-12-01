@@ -49,6 +49,7 @@ module.exports = {
             },
         ],
         "@graphql-eslint/no-anonymous-operations": 2,
+        "max-lines-per-function": [1, 48],
     },
     overrides: [
         {
