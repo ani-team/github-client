@@ -5,24 +5,26 @@ import CodeRenderer from "./code-renderer";
 import "./index.scss";
 
 type Props = {
+    /** Текст README файла */
     text: string;
+    /** Флаг загрузки */
     loading: boolean;
     /**
+     * Ссылка-идентификатор репозитория
      * @remark Для обработки локальных ссылок
      */
     repoUrl: string;
     /**
+     * Текущая ветка
      * @remark Для обработки локальных ссылок
      */
     branch: string;
 };
 
-const renderers = {
-    code: CodeRenderer,
-};
-
-const RepoReadme = (props: Props) => {
-    const { text, loading, repoUrl, branch } = props;
+/**
+ * @hook Обработка внутренних ссылок
+ */
+const useLocalUri = ({ repoUrl, branch }: Props) => {
     /**
      * Нормализация внутренних ссылок
      * @example
@@ -35,13 +37,25 @@ const RepoReadme = (props: Props) => {
      * transformLocalUri("docs/ANOTHER.md")
      * // => "https://github.com/${repo}/blobk/${branch}/docs/ANOTHER.md"
      */
-    const transformLocalUri = (uri: string) => {
+    const transformLinkUri = (uri: string) => {
         if (uri.startsWith("http")) return uri;
         if (uri.startsWith("#")) return `https://github.com/${repoUrl}${uri}`;
         // Если sibling-link - нормализуем
         const blobUrl = uri.replace("./", "");
         return `https://github.com/${repoUrl}/blob/${branch}/${blobUrl}`;
     };
+
+    return {
+        transformLinkUri,
+    };
+};
+
+/**
+ * README репозитория
+ */
+const RepoReadme = (props: Props) => {
+    const { text, loading } = props;
+    const uriTransformers = useLocalUri(props);
 
     return (
         <div className="repo-readme mt-6">
@@ -53,8 +67,8 @@ const RepoReadme = (props: Props) => {
                     <Markdown
                         className="repo-readme__markdown p-8 pt-4"
                         allowDangerousHtml
-                        renderers={renderers}
-                        transformLinkUri={transformLocalUri}
+                        renderers={{ code: CodeRenderer }}
+                        {...uriTransformers}
                     >
                         {text}
                     </Markdown>
