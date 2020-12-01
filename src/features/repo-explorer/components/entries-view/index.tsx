@@ -25,7 +25,7 @@ type Props = {
     };
 };
 
-function EntriesView({ loading, files, lastCommit, className }: Props) {
+const EntriesView = ({ loading, files, lastCommit, className }: Props) => {
     return (
         <div className={cn("repo-git-view", className)}>
             {loading && <SkeletonArea />}
@@ -38,7 +38,7 @@ function EntriesView({ loading, files, lastCommit, className }: Props) {
             )}
         </div>
     );
-}
+};
 
 const GitFileView = ({ name, type }: GitFile) => (
     <List.Item className="repo-git-view__item">

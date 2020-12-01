@@ -9,7 +9,7 @@ type Props = {
     branches?: Array<{ name: string; prefix: string }>;
 };
 
-function BranchesMenu({ repo, branches }: Props) {
+const BranchesMenu = ({ repo, branches }: Props) => {
     return (
         <Menu className="branches-menu" onClick={() => {}}>
             {branches?.map((branch, index) => (
@@ -21,6 +21,6 @@ function BranchesMenu({ repo, branches }: Props) {
             ))}
         </Menu>
     );
-}
+};
 
 export default BranchesMenu;
