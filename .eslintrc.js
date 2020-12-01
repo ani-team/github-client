@@ -23,7 +23,7 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    plugins: ["react", "@typescript-eslint", "@graphql-eslint"],
+    plugins: ["react", "@typescript-eslint", "@graphql-eslint", "unicorn"],
     extends: [
         "react-app",
         "eslint:recommended",
@@ -69,7 +69,16 @@ module.exports = {
         "max-params": [1, 2],
         "max-lines-per-function": [1, 48],
         "arrow-parens": [2, "always"],
-        // graphql
+        // plugin:unicorn
+        "unicorn/no-for-loop": 2,
+        "unicorn/no-abusive-eslint-disable": 2,
+        "unicorn/no-array-instanceof": 2,
+        "unicorn/no-zero-fractions": 2,
+        "unicorn/prefer-includes": 2,
+        "unicorn/prefer-text-content": 2,
+        "unicorn/import-index": 2,
+        "unicorn/throw-new-error": 2,
+        // plugin:graphql
         "@graphql-eslint/no-anonymous-operations": 2,
     },
     overrides: [
