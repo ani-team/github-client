@@ -1,5 +1,6 @@
 import React from "react";
 import Markdown from "react-markdown";
+import gfm from "remark-gfm";
 import SkeletonArea from "../skeleton-area";
 import CodeRenderer from "./code-renderer";
 import "./index.scss";
@@ -65,6 +66,7 @@ const useLocalUri = ({ repoUrl, branch }: Props) => {
 /**
  * README репозитория
  * TODO: Плохо обрабатываются сочетания markdown и html - возможно позже надо завезти отдельный htmlParser
+ * @see https://github.com/remarkjs/react-markdown
  */
 const RepoReadme = (props: Props) => {
     const { text, loading } = props;
@@ -81,6 +83,11 @@ const RepoReadme = (props: Props) => {
                         className="repo-readme__markdown p-8 pt-4"
                         allowDangerousHtml
                         renderers={{ code: CodeRenderer }}
+                        /**
+                         * Github Flavored Markdown
+                         * @see https://github.com/remarkjs/react-markdown#use
+                         */
+                        plugins={[gfm]}
                         {...uriTransformers}
                     >
                         {text}
