@@ -38,7 +38,7 @@ GitHub client within the *React Akvelon 2020* course.
 
 > If you found issues or have ideas for service - please, [share with us](https://github.com/ani-team/github-client/issues/new) 🔥
 
-<img alt="screen" src="docs/search.png" />
+![screen](docs/search.png)
 
 ## Technology stack
 - **UI**: `react`, `antd`, `classnames`, `tailwindcss`
