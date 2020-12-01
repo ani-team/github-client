@@ -47,6 +47,7 @@ const useLocalUri = ({ repoUrl, branch }: Props) => {
 
     /**
      * Получение исходника локального изображения
+     * FIXME: Работает только с markodwn-изображениями, потом переделать бы на общий случай
      * @example
      * transformImageUri("docs/search.png")
      * // => https://raw.githubusercontent.com/${repo}/${branch}/docs/search.png
@@ -63,6 +64,7 @@ const useLocalUri = ({ repoUrl, branch }: Props) => {
 
 /**
  * README репозитория
+ * TODO: Плохо обрабатываются сочетания markdown и html - возможно позже надо завезти отдельный htmlParser
  */
 const RepoReadme = (props: Props) => {
     const { text, loading } = props;
