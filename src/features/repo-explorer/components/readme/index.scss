@@ -8,6 +8,10 @@
     }
 
     &__markdown {
+        > :first-child {
+            margin-top: 0 !important;
+        }
+
         code {
             padding: 1px 4px;
             background: var(--clr-gray--100);
@@ -26,6 +30,16 @@
 
         h4 {
             font-size: 16px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
         }
 
         blockquote {
