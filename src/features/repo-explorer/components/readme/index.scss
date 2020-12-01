@@ -33,5 +33,9 @@
             color: var(--clr-gray--800);
             border-left: 0.25em solid var(--clr-gray--200);
         }
+
+        img {
+            max-width: 100%;
+        }
     }
 }
