@@ -1,3 +1,14 @@
+/** Разрешенные импорты (с публичными API) */
+const ALLOWED_PATH_GROUPS = ["shared", "shared/**", "pages", "features", "models"].map(
+    (pattern) => ({
+        pattern,
+        group: "internal",
+        position: "after",
+    }),
+);
+/** Для запрета приватных путей */
+const DENIED_PATH_GROUPS = ["app/**", "pages/**", "features/**", "shared/*/**"];
+
 module.exports = {
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -30,13 +41,7 @@ module.exports = {
         "import/order": [
             2,
             {
-                pathGroups: ["shared", "shared/**", "pages", "features", "models"].map(
-                    (pattern) => ({
-                        pattern,
-                        group: "internal",
-                        position: "after",
-                    }),
-                ),
+                pathGroups: DENIED_PATH_GROUPS,
                 // TODO: Добавить сортировку `import "./index.scss";` (располагать внизу)
                 pathGroupsExcludedImportTypes: ["builtin"],
                 groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
@@ -45,10 +50,7 @@ module.exports = {
         "@graphql-eslint/no-anonymous-operations": 2,
         "max-lines-per-function": [1, 48],
         // TODO: specify message: ("Please use allowed public API (not private imports!)")
-        "no-restricted-imports": [
-            1,
-            { patterns: ["app/**", "pages/**", "features/**", "shared/*/**"] },
-        ],
+        "no-restricted-imports": [1, { patterns: DENIED_PATH_GROUPS }],
     },
     overrides: [
         {
