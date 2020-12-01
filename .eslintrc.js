@@ -50,6 +50,11 @@ module.exports = {
         ],
         "@graphql-eslint/no-anonymous-operations": 2,
         "max-lines-per-function": [1, 48],
+        // TODO: specify message: ("Please use allowed public API (not private imports!)")
+        "no-restricted-imports": [
+            1,
+            { patterns: ["app/**", "pages/**", "features/**", "shared/*/**"] },
+        ],
     },
     overrides: [
         {
