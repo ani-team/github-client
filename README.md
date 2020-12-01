@@ -48,7 +48,7 @@ GitHub client within the *React Akvelon 2020* course.
 - **Routing**: `react-router`
 - <b title="Super linting from @martis-git">Tests</b>: `eslint`, `prettier`, `graphql-eslint`, `stylelint`
 - **Auth**: `GitHub OAuth`, `firebase`
-- <b title="Super CI/CD from @niyazm524">CI/CD</b>: `github-actions`, `firebase`
+- <strong title="Super CI/CD from @niyazm524">CI/CD</strong>: `github-actions`, `firebase`
 
 <div align="center">
 <img title="react" alt="react" height=48 src="https://cdn.auth0.com/blog/react-js/react.png"/>
