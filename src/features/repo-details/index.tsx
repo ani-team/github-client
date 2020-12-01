@@ -30,10 +30,10 @@ const RepoDetails = ({ repo: identity }: Props) => {
     const repository = data?.repository;
 
     const languages = repository?.languages?.nodes?.filter(
-        (lang): lang is Language => lang != null,
+        (lang): lang is Language => lang !== null,
     );
     const collaborators = repository?.collaborators?.nodes?.filter(
-        (collaborator): collaborator is Collaborator => collaborator != null,
+        (collaborator): collaborator is Collaborator => collaborator !== null,
     );
     return (
         <div className="flex flex-col">

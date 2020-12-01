@@ -33,7 +33,7 @@ const useBranch = (repo: Props["repo"]) => {
 const useRepoDetails = (repoInfo: RepoBranchInfoQuery | undefined) => {
     const { repository } = repoInfo || {};
     const branches = (repository?.refs?.nodes || []).filter(
-        (branch): branch is { name: string; prefix: string } => branch != null,
+        (branch): branch is { name: string; prefix: string } => branch !== null,
     );
     const files = Array.from(repository?.object?.entries ?? []).sort((a, b) =>
         b.type.localeCompare(a.type),
