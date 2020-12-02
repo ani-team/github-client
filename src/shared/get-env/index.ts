@@ -16,7 +16,7 @@ const getEnvVar = (key: string) => {
     return process.env[key] || "";
 };
 
-/** API entrypoint */
+/** @github API entrypoint */
 export const API_URL = getEnvVar("REACT_APP_API_URL");
 /** @github Domain link */
 export const GITHUB_DOMAIN = getEnvVar("REACT_APP_GITHUB_DOMAIN");
