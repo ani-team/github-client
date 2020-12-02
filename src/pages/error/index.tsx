@@ -5,21 +5,38 @@ import { ErrorDefinitions } from "app/error-handling";
 import { Auth, HeroSheet } from "features";
 import { AppError } from "models";
 
-type Props = { error: AppError };
+type Props = {
+    /** Приходящая ошибка от обработчика */
+    error: AppError;
+};
 
-const ErrorPage = ({ error }: Props) => {
+/**
+ * @hook Обработка приходящих ошибок приложения
+ * @remark
+ * - Генерирует предлагаемые пользователю действия, в зависимости от ошибки
+ * - На данный момент - уникально только для `401 - UNAUTHORIZED`
+ */
+const useAppErrors = (error: AppError) => {
     const { logout } = Auth.useAuth();
+    const unauthorizedAction = {
+        text: "Authorize",
+        to: () => {
+            logout();
+            window.location.href = "/auth";
+        },
+    };
 
     const action =
-        error.code === ErrorDefinitions.UNAUTHORIZED.code
-            ? {
-                  text: "Authorize",
-                  to: () => {
-                      logout();
-                      window.location.href = "/auth";
-                  },
-              }
-            : undefined;
+        error.code === ErrorDefinitions.UNAUTHORIZED.code ? unauthorizedAction : undefined;
+    return { action };
+};
+
+/**
+ * @page Страница ошибки
+ * @remark Отображается при возникающих ошибках в приложении
+ */
+const ErrorPage = ({ error }: Props) => {
+    const { action } = useAppErrors(error);
 
     return (
         <HeroSheet

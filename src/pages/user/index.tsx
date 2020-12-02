@@ -6,6 +6,7 @@ import { useTitle } from "../helpers";
 import "./index.scss";
 
 type Props = RouteComponentProps<{
+    /** @routeParam Логин пользователя */
     username: string;
 }>;
 
