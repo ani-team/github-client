@@ -5,10 +5,15 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import "./index.scss";
 
 type Props = {
+    /** @handler NextPage */
     onNext: Callback;
+    /** @handler PrevPage */
     onPrev: Callback;
+    /** @flag Доступ к следующей странице */
     hasNextPage: boolean;
+    /** @flag Доступ к предыдущей странице */
     hasPrevPage: boolean;
+    /** @flag Центрировать компонент */
     center?: boolean;
 };
 
