@@ -1,5 +1,8 @@
 import { AppError } from "models";
 
+/**
+ * Обрабатываемые ошибки приложения
+ */
 export const ErrorDefinitions: Record<string, AppError> = {
     UNAUTHORIZED: {
         code: 401,
