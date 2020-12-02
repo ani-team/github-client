@@ -1,6 +1,10 @@
 import { AuthContext } from "../types";
 import firebase from "./init";
 
+/**
+ * Проверка респонса от сервиса во время авторизации
+ * @remark Минимально нужные поля для продолжения работы в системе
+ */
 const isValidAuthContext = (ctx: any): ctx is AuthContext => {
     return (
         typeof ctx?.credential?.accessToken === "string" &&
@@ -8,7 +12,10 @@ const isValidAuthContext = (ctx: any): ctx is AuthContext => {
     );
 };
 
-export default function authGithub() {
+/**
+ * Авторизация Github OAuth через firebase
+ */
+function authGithub() {
     const provider = new firebase.auth.GithubAuthProvider();
     provider.addScope("repo");
     provider.addScope("user:follow");
@@ -29,3 +36,5 @@ export default function authGithub() {
             };
         });
 }
+
+export default authGithub;

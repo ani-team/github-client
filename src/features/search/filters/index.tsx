@@ -6,6 +6,8 @@ import "./index.scss";
 
 /**
  * @feature Фильтры для поиска
+ * @remark Допустимые типы: `Users`, `Repositories`
+ * @see typesMap
  */
 const SearchFilters = () => {
     const { searchType, setSearchType } = useSearchTypeParam();

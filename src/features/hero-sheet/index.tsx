@@ -5,19 +5,35 @@ import { ReactComponent as Icon } from "./assets/github-icon.svg";
 import { ReactComponent as SadIcon } from "./assets/github-icon-sad.svg";
 import "./index.scss";
 
+type UserAction = {
+    /** Текст действия */
+    text: string;
+    /** Обработчик действия */
+    to: () => void;
+};
+
 type Props = {
+    /** Основной заголовок */
     title: string;
+    /** Описание/примечание */
     description: string;
-    action?: { text: string; to: () => void };
+    /** Предлагаемое действие */
+    action?: UserAction;
+    /** Использовать `sad` аватар */
     useSadHero?: boolean;
 };
 
+/**
+ * Hero секция
+ * @remark Используется как базовое отображение информации для HomePage, ErrorPage
+ */
 const HeroSheet = ({ title, description, action, useSadHero = false }: Props) => {
     const history = useHistory();
-    const preferredAction = action ?? {
+    const backAction: UserAction = {
         text: "Back",
         to: () => (history.length > 1 ? history.goBack() : history.push("/")),
     };
+    const preferredAction = action ?? backAction;
     const HeroIcon = useSadHero ? SadIcon : Icon;
 
     return (

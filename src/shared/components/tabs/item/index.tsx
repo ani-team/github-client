@@ -3,13 +3,24 @@ import cn from "classnames";
 import "./index.scss";
 
 type Props = {
+    /** Название */
     name: string;
+    /** className */
     className?: string;
+    /** @flag Активный */
     active?: boolean;
+    /** @handler По клику */
     onClick?: Callback;
+    /**
+     * Доп. лейбл
+     * @remark Обычно используется для отображения счетчика
+     */
     label?: string;
 };
 
+/**
+ * @UIKit Вкладка
+ */
 const Tab = (props: Props) => {
     const { name, className, active, onClick, label } = props;
     return (

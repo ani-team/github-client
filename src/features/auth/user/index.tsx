@@ -3,6 +3,9 @@ import { Button } from "antd";
 import { useAuth } from "../hooks";
 import { routes } from "../consts";
 
+/**
+ * Плашка пользователя с базовой информацией
+ */
 const User = () => {
     const { isAuth, logout, viewer } = useAuth();
 
