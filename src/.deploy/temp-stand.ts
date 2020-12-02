@@ -7,6 +7,9 @@ const isTempStand = () => tempStandRegex.test(window.location.host);
 const STAND_URL_ENV = "REACT_APP_DEV_STORAGE_URL";
 const devStorageUrl = process.env[STAND_URL_ENV];
 
+/**
+ * Инициализация гостевого режима с псевдо-авторизацией
+ */
 export const loadLocalStorageFromDevIfNeeded = async () => {
     if (!isTempStand() || !devStorageUrl) {
         if(!devStorageUrl) {
