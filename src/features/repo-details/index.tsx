@@ -29,11 +29,9 @@ const RepoDetails = ({ repo: identity }: Props) => {
     });
     const repository = data?.repository;
 
-    const languages = repository?.languages?.nodes?.filter(
-        (lang): lang is Language => lang !== null,
-    );
+    const languages = repository?.languages?.nodes?.filter((lang): lang is Language => !!lang);
     const collaborators = repository?.collaborators?.nodes?.filter(
-        (collaborator): collaborator is Collaborator => collaborator !== null,
+        (collaborator): collaborator is Collaborator => !!collaborator,
     );
     return (
         <div className="flex flex-col">
