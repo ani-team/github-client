@@ -8,9 +8,12 @@ import "./index.scss";
 
 // !!! FIXME: manage access
 const ErrorPage = lazy(() => import("pages/error"));
+
 /**
  * Entry-point приложения
- * @remark Содержит в HOC-обертке логику подключения к API (apollo)
+ * @remark Содержит в HOC-обертке
+ * - логику подключения к API (withApollo)
+ * - логику инициализации роутера (withRouter)
  */
 const App = () => {
     return (
