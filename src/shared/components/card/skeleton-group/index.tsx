@@ -2,6 +2,7 @@ import React from "react";
 import Skeleton from "../skeleton";
 
 type Props = {
+    /** Отображаемое количество плейсхолдеров */
     amount: number;
 };
 

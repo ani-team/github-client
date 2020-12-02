@@ -8,8 +8,11 @@ import { useTitle } from "../helpers";
 import "./index.scss";
 
 type Props = RouteComponentProps<{
+    /** @routeParam Логин пользователя */
     username: string;
+    /** @routeParam Имя репозитория */
     repository: string;
+    /** @routeParam Текущая ветка */
     branch?: string;
 }>;
 

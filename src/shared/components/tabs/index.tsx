@@ -5,9 +5,14 @@ import Item from "./item";
 type Props = PropsWithChildren<{
     className?: string;
 }>;
+
+/**
+ * @UIKit Группа вкладок
+ */
 const Tabs = ({ children, className }: Props) => {
     return <div className={cn("tabs", className)}>{children}</div>;
 };
 
 Tabs.Item = Item;
+
 export default Tabs;

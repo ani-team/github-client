@@ -4,9 +4,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 
 /**
- * Инициализация роутера с провайдером для работы с get-параметрами
+ * @hoc Инициализация роутера с провайдером для работы с get-параметрами
  */
-const withRouter = (component: () => JSX.Element) => () => (
+const withRouter = (component: Component) => () => (
     <BrowserRouter>
         <Suspense fallback={<Spin delay={300} className="overlay" size="large" />}>
             <QueryParamProvider ReactRouterRoute={Route}>{component()}</QueryParamProvider>

@@ -5,6 +5,7 @@ import * as Params from "../params";
 
 /**
  * Select-меню для выбора сортировки поисковых результатов
+ * @see availableVariants
  */
 const SortSelect = ({ className }: PropsWithClassName) => {
     const { setSort, availableVariants, currentVariant } = Params.useSearchSortParams();

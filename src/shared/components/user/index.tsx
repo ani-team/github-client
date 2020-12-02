@@ -4,10 +4,15 @@ import Card from "../card";
 
 // !!! FIXME: specify types
 type Props = {
+    /** Данные по пользователю */
     data: any;
+    /** @handler follow/unfollow */
     onFollowing?: Callback;
 };
 
+/**
+ * @ItemEntity Карточка пользователя
+ */
 const User = (props: Props) => {
     const { data, onFollowing } = props;
     const { avatarUrl, login, viewerIsFollowing, bio } = data as Partial<import("models").User>;

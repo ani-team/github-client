@@ -4,12 +4,17 @@ import { setContext } from "@apollo/client/link/context";
 import { API_URL } from "shared/get-env";
 import { Auth } from "features";
 
-// TODO: Уточнить, нужно ли дополнительно задавать контекст
-
+/**
+ * Инициализация API.baseUrl
+ */
 const httpLink = createHttpLink({
     uri: API_URL,
 });
 
+/**
+ * Логика авторизации
+ * FIXME: вынести в features/auth?
+ */
 const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
     const token = Auth.getToken();
@@ -23,6 +28,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 /**
+ * Инициализация инстанса клиента
  * @see https://www.apollographql.com/docs/react/networking/authentication/
  */
 const client = new ApolloClient({
@@ -32,9 +38,9 @@ const client = new ApolloClient({
 });
 
 /**
- * Обертка для подключения и работы с API
+ * @hoc Инициализация подключения apollo для работы с API
  */
-const withApollo = (component: () => JSX.Element) => () => (
+const withApollo = (component: Component) => () => (
     <ApolloProvider client={client}>{component()}</ApolloProvider>
 );
 

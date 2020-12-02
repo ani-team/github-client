@@ -46,6 +46,7 @@ const useSearch = () => {
 
 /**
  * @feature Результаты поиска
+ * @remark Отображение результатов поиска на основании запроса и конфига
  */
 const SearchResults = () => {
     const { handlePageChange, page, isUserSearch, isRepoSearch, ...searchConfig } = useSearch();

@@ -9,14 +9,18 @@ import "./index.scss";
 
 // !!! FIXME: specify types
 type Props = {
+    /** Данные по репозиторию */
     data: any;
+    /** Формат отображения заголовка */
     format?: "owner-repo" | "repo";
+    /** @handler star/unstar */
     onStarring?: Callback;
+    /** Флаг загрузки */
     loading?: boolean;
 };
 
 /**
- * Карточка репозитория
+ * @ItemEntity Карточка репозитория
  */
 const Repo = (props: Props) => {
     const { format = "repo", onStarring, loading } = props;
