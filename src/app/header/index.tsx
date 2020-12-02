@@ -3,7 +3,7 @@ import { Layout, Input } from "antd";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { StringParam, useQueryParams } from "use-query-params";
 import * as qs from "query-string";
-import { GITHUB_DOMAIN, GITHUB_FEEDBACK } from "shared/get-env";
+import { GITHUB_MAIN, GITHUB_FEEDBACK } from "shared/get-env";
 import { Auth } from "features";
 import { ReactComponent as IcLogo } from "./logo.svg";
 import "./index.scss";
@@ -66,7 +66,7 @@ const Header = () => {
                         onKeyDown={handleKeyDown}
                     />
                 )}
-                <a className="m-4 text-gray-600" href={GITHUB_DOMAIN}>
+                <a className="m-4 text-gray-600" href={GITHUB_MAIN}>
                     GitHub
                 </a>
                 <a className="m-4 text-gray-600" href={GITHUB_FEEDBACK}>
