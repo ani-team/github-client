@@ -21,7 +21,16 @@
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
 
-        @include text-overflow();
+        .commit-info {
+            @include text-overflow();
+
+            flex: 1 0;
+        }
+
+        span.commit-date {
+            flex: 0 1;
+            margin-left: 12px;
+        }
 
         img,
         .avatar-placeholder {
@@ -37,8 +46,7 @@
             color: white;
         }
 
-        span.commit-message,
-        span.commit-date {
+        span.commit-message {
             margin-left: 5px;
         }
     }

@@ -63,7 +63,7 @@ const GitFileView = ({ name, type, repo, branch }: GitFileViewProps) => {
 
 const LastCommitHeader = ({ lastCommit }: { lastCommit: Props["lastCommit"] }) => (
     <div className="repo-git-view__last-commit">
-        <div>
+        <div className="commit-info">
             {lastCommit?.avatarUrl ? (
                 <>
                     <img src={lastCommit?.avatarUrl} alt="avatar" />
