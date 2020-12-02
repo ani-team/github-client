@@ -1,12 +1,12 @@
 import React from "react";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
-import { RepoIdentity } from "models";
+import { RepoIdentity, BranchIdentity } from "models";
 import "./index.scss";
 
 type Props = {
     repo: RepoIdentity;
-    branches?: Array<{ name: string; prefix: string }>;
+    branches?: Array<BranchIdentity>;
 };
 
 const BranchesMenu = ({ repo, branches }: Props) => {

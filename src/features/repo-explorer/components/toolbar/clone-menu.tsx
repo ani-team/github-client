@@ -8,7 +8,7 @@ const CloneMenu = ({ url }: Props) => {
     const cloneField = useRef<Input>(null);
     const [isUrlCopied, setUrlCopied] = useState<boolean | null>(null);
     useEffect(() => {
-        if (isUrlCopied == null) return;
+        if (isUrlCopied === null) return;
         setTimeout(() => setUrlCopied(null), 1000);
     }, [isUrlCopied]);
 
@@ -37,7 +37,7 @@ const CloneMenu = ({ url }: Props) => {
                     <Tooltip
                         title={isUrlCopied === false ? "Copy error" : "Copied"}
                         placement="bottom"
-                        visible={isUrlCopied != null}
+                        visible={isUrlCopied !== null}
                     >
                         <Button onClick={copyUrl} icon={<CopyOutlined className="copy-button" />} />
                     </Tooltip>

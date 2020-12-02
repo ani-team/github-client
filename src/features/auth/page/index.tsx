@@ -2,7 +2,8 @@ import React from "react";
 import { GithubFilled } from "@ant-design/icons";
 import { Alert, Card } from "antd";
 import { alert } from "shared/helpers";
-// !!! FIXME: loop imports
+// !!! FIXME: это плохо( + loop imports
+// eslint-disable-next-line import/order
 import { useTitle } from "pages/helpers";
 import { authorizeGithub } from "../firebase";
 import { useAuth } from "../hooks";
