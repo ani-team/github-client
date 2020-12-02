@@ -8,6 +8,7 @@ import { SearchType } from "models";
 //#region SearchQuery
 /**
  * @qparam Поисковой запрос
+ * @searchQuery
  */
 export const useSearchQueryParam = () => {
     const [searchQuery, setSearchQuery] = useQueryParam("q", withDefault(StringParam, ""));
@@ -23,6 +24,10 @@ export const useSearchQueryParam = () => {
 
 type SearchTypeStr = "repositories" | "users";
 
+/**
+ * Общие доступные типы сущностей для фильтрации
+ * @filterType
+ */
 export const typesMap: Record<SearchTypeStr, SearchType> = {
     repositories: SearchType.Repository,
     users: SearchType.User,
@@ -30,6 +35,7 @@ export const typesMap: Record<SearchTypeStr, SearchType> = {
 
 /**
  * @qparam Тип результатов поиска
+ * @filterType
  */
 export const useSearchTypeParam = () => {
     const [searchType, setSearchType] = useQueryParam(
@@ -50,13 +56,19 @@ export const useSearchTypeParam = () => {
 //#region Sort
 type SortOrder = "asc" | "desc";
 type SortParams = {
+    /** Направление сортировки */
     o: SortOrder | undefined;
+    /** Сортируемое поле */
     s: string | undefined;
 };
 type SortVariant = SortParams & {
     label: string;
 };
 
+/**
+ * Фабрика по генерации вариантов сортировки
+ * @sort
+ */
 export const createSortVariant = (field: string, label = field): SortVariant[] => {
     return [
         { label: `Most ${label}`, o: "desc", s: field },
@@ -64,9 +76,18 @@ export const createSortVariant = (field: string, label = field): SortVariant[] =
     ];
 };
 
+/**
+ * Вариант сортировки по-умолчанию
+ * @sort
+ */
 export const defaultSortVariant: SortVariant = { label: "Best Match", o: undefined, s: undefined };
 
-// FIXME: simplify generating/declaring/work with sortVariants
+/**
+ * Общие доступные варианты сортировки
+ * @sort
+ * @see https://github.com/search
+ * FIXME: simplify generating/declaring/work with sortVariants
+ */
 export const sortVariantsTotal: Record<SearchTypeStr, SortVariant[]> = {
     repositories: [
         defaultSortVariant,
@@ -84,6 +105,7 @@ export const sortVariantsTotal: Record<SearchTypeStr, SortVariant[]> = {
 
 /**
  * @qparam Сортировка поисковых результатов
+ * @sort
  * FIXME: Перенести часть логики в использующий компонент
  * FIXME: Попробовать убрать явную зависимость параметров
  */

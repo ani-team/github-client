@@ -6,10 +6,14 @@ import "./index.scss";
 
 // !!! FIXME: specify types
 type Props = {
+    /** Данные по организции */
     data: any;
 };
 
-const Org = (props: any) => {
+/**
+ * @ItemEntity Карточка организации
+ */
+const Org = (props: Props) => {
     const { avatarUrl, login, description, url } = props.data as Partial<
         import("models").Organization
     >;
