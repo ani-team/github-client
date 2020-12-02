@@ -2,6 +2,7 @@ import React from "react";
 import Results from "./results";
 import Filters from "./filters";
 import * as params from "./params";
+
 // FIXME: split later by features with common cluster?
 
 /**
