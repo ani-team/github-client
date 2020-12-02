@@ -13,8 +13,8 @@ const GitFileView = ({ name, type, repo, branch }: GitFileViewProps) => {
     const EntryIcon = type === "tree" ? FolderIcon : FileIcon;
     return (
         <List.Item className="repo-git-view__item">
-            <div>
-                <EntryIcon />
+            <div className="wrapper">
+                <EntryIcon className="icon" />
                 <a href={link} target="_blank" rel="noopener noreferrer" className="origin-link">
                     {name}
                 </a>

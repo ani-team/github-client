@@ -55,7 +55,12 @@
         padding: 8px 0 8px 8px !important;
         border-bottom: 1px solid var(--clr-gray--100) !important;
 
-        img {
+        & > .wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
             width: 24px;
             height: auto;
             padding: 4px;
