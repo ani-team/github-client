@@ -7,16 +7,15 @@ import { authorizeGithub } from "../firebase";
 import { useAuth } from "../hooks";
 import "./index.scss";
 
-// FIXME: move to pages level?
-
 /**
  * @page Auth
- * @remark Авторизация проходит через firebase
- * (чтобы работало на всех стендах)
+ * @remark
+ * - Авторизация проходит через firebase (чтобы работало на всех стендах)
  * Этапы авторизации:
  * 1. Авторизация через Github (/authorize)
  * 2. Получение временного кода доступа
  * 3. Получение токена на основании OAuth данных и полученного кода
+ * !!! FIXME: move to pages level?
  */
 const AuthPage = () => {
     useTitle("Sign in to Github Client");
