@@ -1,17 +1,20 @@
-import React from "react";
+import React, { KeyboardEventHandler } from "react";
 import { Layout, Input } from "antd";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { StringParam, useQueryParams } from "use-query-params";
 import * as qs from "query-string";
+import { GITHUB_DOMAIN, GITHUB_FEEDBACK } from "shared/get-env";
 import { Auth } from "features";
 import { ReactComponent as IcLogo } from "./logo.svg";
 import "./index.scss";
 
-const FEEDBACK_URL = "https://github.com/ani-team/github-client/issues/new";
-const GITHUB_URL = "https://github.com/ani-team/github-client";
+// FIXME: get from `pages`?
+const SEARCH_URL = "/search";
 
-const Header = () => {
-    const { isAuth } = Auth.useAuth();
+/**
+ * @hook Логика обработки инпута поиска
+ */
+const useSearchInput = () => {
     // !!! FIXME: limit scope of query-params literals
     const [query] = useQueryParams({
         q: StringParam,
@@ -21,6 +24,32 @@ const Header = () => {
     });
     const location = useLocation();
     const history = useHistory();
+
+    /**
+     * Обработка инпута поиска
+     */
+    const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = ({ key, currentTarget }) => {
+        if (key === "Enter" && currentTarget.value) {
+            const q = currentTarget.value;
+            history.push(`${SEARCH_URL}?${qs.stringify({ ...query, q })}`);
+        }
+    };
+    /**
+     * Поисковой запрос
+     * @remark Если не страница поиска - обнуляем инпут
+     */
+    const searchValue = location.pathname === SEARCH_URL ? query.q ?? "" : "";
+
+    return { handleKeyDown, searchValue };
+};
+
+/**
+ * Хедер приложения
+ * @remark Содержит поисковой инпут с базовой логикой
+ */
+const Header = () => {
+    const { isAuth } = Auth.useAuth();
+    const { handleKeyDown, searchValue } = useSearchInput();
 
     return (
         <Layout.Header className="header">
@@ -33,25 +62,14 @@ const Header = () => {
                     <Input
                         className="header__search"
                         placeholder="Search..."
-                        defaultValue={location.pathname === "/search" ? query.q ?? "" : ""}
-                        onKeyDown={({ key, currentTarget }) => {
-                            if (key === "Enter" && currentTarget.value) {
-                                history.push(
-                                    `/search?${qs.stringify({
-                                        q: currentTarget.value,
-                                        type: query.type,
-                                        s: query.s,
-                                        o: query.o,
-                                    })}`,
-                                );
-                            }
-                        }}
+                        defaultValue={searchValue}
+                        onKeyDown={handleKeyDown}
                     />
                 )}
-                <a className="m-4 text-gray-600" href={GITHUB_URL}>
+                <a className="m-4 text-gray-600" href={GITHUB_DOMAIN}>
                     GitHub
                 </a>
-                <a className="m-4 text-gray-600" href={FEEDBACK_URL}>
+                <a className="m-4 text-gray-600" href={GITHUB_FEEDBACK}>
                     Feedback
                 </a>
             </div>
