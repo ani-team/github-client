@@ -24,3 +24,13 @@ export type AppError = {
     /** Описание */
     description: string;
 };
+
+/**
+ * Идентификационные данные ветки
+ */
+export type BranchIdentity = {
+    /** Имя */
+    name: string;
+    /** Префикс ветки */
+    prefix: string;
+};

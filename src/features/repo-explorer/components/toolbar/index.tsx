@@ -1,13 +1,13 @@
 import { Button, Dropdown, Popover } from "antd";
 import React from "react";
-import { RepoIdentity } from "models";
+import { RepoIdentity, BranchIdentity } from "models";
 import BranchesMenu from "../branches-menu";
 import CloneMenu from "./clone-menu";
 import "./index.scss";
 
 type Props = {
     repo: RepoIdentity;
-    branches: Array<{ name: string; prefix: string }>;
+    branches: Array<BranchIdentity>;
     activeBranch: string;
 };
 
