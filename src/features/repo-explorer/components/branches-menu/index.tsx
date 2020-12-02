@@ -7,13 +7,14 @@ import "./index.scss";
 type Props = {
     repo: RepoIdentity;
     branches?: Array<BranchIdentity>;
+    onVisibleChange?: (flag: boolean) => void;
 };
 
-const BranchesMenu = ({ repo, branches }: Props) => {
+const BranchesMenu = ({ repo, branches, onVisibleChange }: Props) => {
     return (
-        <Menu className="branches-menu" onClick={() => {}}>
+        <Menu className="branches-menu">
             {branches?.map((branch, index) => (
-                <Menu.Item key={index}>
+                <Menu.Item key={index} onClick={() => onVisibleChange?.(false)}>
                     <Link to={`/${repo.owner}/${repo.name}/tree/${branch.name}`}>
                         {branch.name}
                     </Link>
