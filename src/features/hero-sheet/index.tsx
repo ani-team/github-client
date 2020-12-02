@@ -6,7 +6,9 @@ import { ReactComponent as SadIcon } from "./assets/github-icon-sad.svg";
 import "./index.scss";
 
 type UserAction = {
+    /** Текст действия */
     text: string;
+    /** Обработчик действия */
     to: () => void;
 };
 
