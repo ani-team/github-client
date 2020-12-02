@@ -1,6 +1,7 @@
 import React from "react";
 import { GithubFilled } from "@ant-design/icons";
-import { Alert, Card, notification } from "antd";
+import { Alert, Card } from "antd";
+import { alert } from "shared/helpers";
 // !!! FIXME: loop imports
 import { useTitle } from "pages/helpers";
 import { authorizeGithub } from "../firebase";
@@ -20,14 +21,12 @@ import "./index.scss";
 const AuthPage = () => {
     useTitle("Sign in to Github Client");
     const { login } = useAuth();
-    const showError = (message: string) =>
-        notification.error({ message: "Authorization error", description: message, top: 72 });
 
     // TODO: add ability to specify redirect url
     const authorize = () => {
         authorizeGithub()
             .then(login)
-            .catch((err: Error) => showError(err.message));
+            .catch((err: Error) => alert.error("Authorization error", err.message));
     };
 
     return (
