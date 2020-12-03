@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
 import { alert } from "shared/helpers";
 import { Error } from "features";
-import { AppError } from "../../models";
+import { AppError } from "models";
 
 const ErrorPage = lazy(() => import("pages/error"));
 
