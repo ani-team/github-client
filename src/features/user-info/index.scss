@@ -36,11 +36,8 @@
     &__btn.follow,
     &__btn.unfollow,
     &__btn.edit {
+        display: block;
         margin-top: 10px;
         transition: 0.4s;
-
-        &:hover {
-            cursor: pointer;
-        }
     }
 }

@@ -32,7 +32,6 @@ const UserInfo = ({ username }: Props) => {
             <h1 className="user-info__name">{name}</h1>
             <h4 className="user-info__username">{username}</h4>
             <span className="user-info__bio">{bio}</span>
-            <br></br>
             {isViewer ? (
                 <Button className="user-info__btn edit" disabled title="While not available">
                     Edit profile

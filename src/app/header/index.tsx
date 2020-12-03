@@ -66,10 +66,20 @@ const Header = () => {
                         onKeyDown={handleKeyDown}
                     />
                 )}
-                <a className="m-4 text-gray-600" href={GITHUB_MAIN}>
+                <a
+                    className="m-4 text-gray-600"
+                    href={GITHUB_MAIN}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     GitHub
                 </a>
-                <a className="m-4 text-gray-600" href={GITHUB_FEEDBACK}>
+                <a
+                    className="m-4 text-gray-600"
+                    href={GITHUB_FEEDBACK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Feedback
                 </a>
             </div>
