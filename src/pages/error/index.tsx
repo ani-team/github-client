@@ -34,7 +34,7 @@ const useAppErrors = (error: AppError) => {
  * @remark Отображается при возникающих ошибках в приложении
  */
 const ErrorPage = ({ error }: Props) => {
-    useTitle(`Error occured · ${error.code || "Unknown"}`);
+    useTitle(`Error occurred · ${error.code || "Unknown"}`);
     const { action } = useAppErrors(error);
 
     return (
