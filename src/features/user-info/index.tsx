@@ -33,13 +33,13 @@ const UserInfo = ({ username }: Props) => {
             <h4 className="user-info__username">{username}</h4>
             <span className="user-info__bio">{bio}</span>
             {isViewer ? (
-                <Button className="user-info__btn edit" disabled title="While not available">
+                <Button className="user-info__btn" disabled title="While not available">
                     Edit profile
                 </Button>
             ) : (
                 <Button
                     type={viewerIsFollowing ? "primary" : "default"}
-                    className={`user-info__btn ${label}`}
+                    className="user-info__btn"
                     onClick={() => following.handle(id, viewerIsFollowing)}
                     loading={following.debouncedLodaing}
                 >

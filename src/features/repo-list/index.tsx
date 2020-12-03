@@ -53,10 +53,10 @@ const RepoList = ({ username }: Props) => {
                         />
                     ))
                 ) : (
-                    <h2 className="repo-list__placeholder">
-                        <Empty description={false} />
-                        {username} doesn’t have any repositories yet.
-                    </h2>
+                    <Empty
+                        className="repo-list__placeholder"
+                        description={<h2>{username} doesn’t have any repositories yet.</h2>}
+                    />
                 )}
             </div>
             <div className="repo-list__pagination mt-6">
