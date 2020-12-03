@@ -37,7 +37,7 @@ const useAppErrors = (error: AppError) => {
  * @remark Отображается при возникающих ошибках в приложении
  */
 const ErrorPage = ({ error }: Props) => {
-    useTitle("Github Client · Some error happened");
+    useTitle(`Error occured · ${error.code || "Unknown"}`);
     const { action } = useAppErrors(error);
 
     return (
