@@ -8,6 +8,7 @@ import "./index.scss";
 // NOTE: Я просто хотел отобразить статистику без нагромождений...
 
 type Props = {
+    /** repo identity */
     repo: RepoIdentity;
 };
 

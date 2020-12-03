@@ -11,6 +11,9 @@ type Props = {
     activeBranch: string;
 };
 
+/**
+ * Тулбар репозитория
+ */
 const RepoToolbar = ({ repo, branches, activeBranch }: Props) => {
     const [isBranchDropdownVisible, setBranchDropdownVisible] = useState(false);
     return (

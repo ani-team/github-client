@@ -9,16 +9,25 @@ import "./index.scss";
 // !!! FIXME: decompose
 
 type Props = {
+    /** repo identity */
     repo: RepoIdentity;
 };
 
+// FIXME: move to models
 type Collaborator = {
+    /** id */
     id: string;
+    /** Имя пользователя */
     name: string;
+    /** Логин пользователя */
     login: string;
+    /** Аватар */
     avatarUrl: string;
 };
 
+/**
+ * @feature Информация по репозиторию
+ */
 const RepoDetails = ({ repo: identity }: Props) => {
     const { data, loading } = useRepoDetailsQuery({
         variables: {

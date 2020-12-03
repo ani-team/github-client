@@ -16,6 +16,9 @@ type Props = {
     lastCommit?: GitCommit;
 };
 
+/**
+ * Файлы репозитория
+ */
 const EntriesView = ({ loading, files, lastCommit, className, repo }: Props) => {
     const { branch } = useBranch(repo);
     return (

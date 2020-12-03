@@ -7,9 +7,13 @@ import RepoReadme from "./readme";
 import { useBranch, useRepoDetails } from "./hooks";
 
 type Props = {
+    /** repo identity */
     repo: RepoIdentity;
 };
 
+/**
+ * @feature FileExplorer репозитория
+ */
 const Explorer = ({ repo }: Props) => {
     const { branch } = useBranch(repo);
     const { loading, data } = useRepoBranchInfoQuery({

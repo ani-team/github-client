@@ -16,10 +16,14 @@ type Props = RouteComponentProps<{
     branch?: string;
 }>;
 
+/** Стили */
 const COL_MAIN = 17;
 const COL_SIDEBAR = 6;
 const ROW_GUTTER = [24, 16] as [number, number];
 
+/**
+ * @page Страница репозитория
+ */
 const RepositoryPage = (props: Props) => {
     const { username, repository, branch } = props.match.params;
     const identity: RepoIdentity = {
