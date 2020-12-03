@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "antd";
+import { VeryMaybe, User } from "models";
 import Card from "../card";
 
-// !!! FIXME: specify types
 type Props = {
     /** Данные по пользователю */
-    data: any;
+    data: VeryMaybe<User>;
     /** @handler follow/unfollow */
     onFollowing?: Callback;
 };
@@ -13,9 +13,9 @@ type Props = {
 /**
  * @ItemEntity Карточка пользователя
  */
-const User = (props: Props) => {
+const UserCard = (props: Props) => {
     const { data, onFollowing } = props;
-    const { avatarUrl, login, viewerIsFollowing, bio } = data as Partial<import("models").User>;
+    const { avatarUrl, login, viewerIsFollowing, bio } = data || {};
     return (
         <Card
             className="user"
@@ -38,4 +38,4 @@ const User = (props: Props) => {
     );
 };
 
-export default User;
+export default UserCard;

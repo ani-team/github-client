@@ -1,6 +1,7 @@
 import React from "react";
 import { Empty } from "antd";
 import { Repo, Card } from "shared/components";
+import { VeryMaybe, Repository } from "models";
 import { RepositoriesDetailsFragment } from "../queries.gen";
 import { useStarring } from "../hooks";
 
@@ -31,7 +32,7 @@ const RepoListItems = (props: Props) => {
                     <Repo
                         onStarring={() => starring.handle(node?.id, node?.viewerHasStarred)}
                         key={node?.id}
-                        data={node}
+                        data={node as VeryMaybe<Repository>}
                         loading={starring.debouncedLoadingId === node?.id}
                     />
                 ))

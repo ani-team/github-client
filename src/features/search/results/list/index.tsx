@@ -2,6 +2,7 @@ import React from "react";
 import cn from "classnames";
 import { Empty } from "antd";
 import { Repo, User, Org, Card } from "shared/components";
+import { VeryMaybe, Repository } from "models";
 import { SearchQuery } from "../queries.gen";
 import "./index.scss";
 
@@ -35,7 +36,9 @@ const ResultsList = (props: Props) => {
                     className={cn("search-results__item", "mb-6", (node as any).__typename)}
                 >
                     {/* !!! FIXME: simplify */}
-                    {isRepoSearch && <Repo data={node} format="owner-repo" />}
+                    {isRepoSearch && (
+                        <Repo data={node as VeryMaybe<Repository>} format="owner-repo" />
+                    )}
                     {isUserSearch &&
                         ((node as any)?.__typename === "Organization" ? (
                             <Org data={node} />
