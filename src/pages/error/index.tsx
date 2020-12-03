@@ -4,6 +4,7 @@ import React from "react";
 import { ErrorDefinitions } from "app/error-handling";
 import { Auth, HeroSheet } from "features";
 import { AppError } from "models";
+import { useTitle } from "../helpers";
 
 type Props = {
     /** Приходящая ошибка от обработчика */
@@ -36,6 +37,7 @@ const useAppErrors = (error: AppError) => {
  * @remark Отображается при возникающих ошибках в приложении
  */
 const ErrorPage = ({ error }: Props) => {
+    useTitle("Github Client · Some error happened");
     const { action } = useAppErrors(error);
 
     return (

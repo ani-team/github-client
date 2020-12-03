@@ -20,14 +20,28 @@ const RepoStat = ({ repo }: Props) => {
 
     return (
         <div className="repo-stat">
-            {loading && <Skeleton.Input className="repo-state__skeleton" active />}
+            {loading && (
+                <div className="flex justify-between">
+                    <Skeleton.Button className="repo-stat__skeleton" active />
+                    <Skeleton.Button className="repo-stat__skeleton" active />
+                    <Skeleton.Button className="repo-stat__skeleton" active />
+                </div>
+            )}
             {!loading && (
                 <div className="repo-stat__items flex justify-between">
                     {stats.map(({ icon, link, name }) => (
                         <Statistic
                             key={name}
-                            // prettier-ignore
-                            title={<a href={`${baseUrl}/${link}`} title={`View ${name} on GitHub`}>{icon}</a>}
+                            title={
+                                <a
+                                    href={`${baseUrl}/${link}`}
+                                    title={`View ${name} on GitHub`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {icon}
+                                </a>
+                            }
                             value={prettyValue(data?.repository?.[name as StatName].totalCount)}
                         />
                     ))}

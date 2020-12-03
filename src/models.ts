@@ -34,3 +34,19 @@ export type BranchIdentity = {
     /** Префикс ветки */
     prefix: string;
 };
+
+/**
+ * Объект, описывающий файл или директорию
+ */
+export type GitFile = { type: string; name: string };
+
+/**
+ * Основная информация о коммите
+ */
+export type GitCommit = {
+    message: string;
+    login?: string;
+    avatarUrl?: string;
+    name?: string | null;
+    date: string;
+};

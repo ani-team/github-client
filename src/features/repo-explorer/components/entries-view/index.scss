@@ -21,7 +21,16 @@
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
 
-        @include text-overflow();
+        .commit-info {
+            @include text-overflow();
+
+            flex: 1 0;
+        }
+
+        span.commit-date {
+            flex: 0 1;
+            margin-left: 12px;
+        }
 
         img,
         .avatar-placeholder {
@@ -37,8 +46,7 @@
             color: white;
         }
 
-        span.commit-message,
-        span.commit-date {
+        span.commit-message {
             margin-left: 5px;
         }
     }
@@ -47,14 +55,25 @@
         padding: 8px 0 8px 8px !important;
         border-bottom: 1px solid var(--clr-gray--100) !important;
 
-        img {
+        & > .wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
             width: 24px;
             height: auto;
             padding: 4px;
         }
 
-        span {
+        .origin-link {
             margin-left: 12px;
+            color: var(--clr-text);
+
+            &:hover {
+                color: #0366d6;
+                text-decoration: underline;
+            }
         }
     }
 }
