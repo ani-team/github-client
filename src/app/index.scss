@@ -12,8 +12,6 @@
 .gc-app {
     display: flex;
     flex-direction: column;
-    // FIXME: deprecated (find better solution)
-    overflow: overlay;
     font-family: var(--ff-primary);
     background-color: var(--clr-background);
 
@@ -27,5 +25,10 @@
 
     .ant-layout {
         background-color: unset;
+
+        &-content {
+            // FIXME: deprecated (find better solution)
+            overflow: overlay;
+        }
     }
 }
