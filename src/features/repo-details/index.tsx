@@ -1,7 +1,7 @@
 import { Skeleton, Tag, Alert, Spin } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Language, RepoIdentity } from "../../models";
+import { Language, RepoIdentity } from "models";
 import DetailsCard from "./details-card";
 import { useRepoDetailsQuery } from "./queries.gen";
 import "./index.scss";
