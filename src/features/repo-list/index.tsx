@@ -8,6 +8,7 @@ import { tabsMap } from "./params";
 import "./index.scss";
 
 type Props = {
+    /** @routeParam Логин пользователя текущей страницы */
     username: string;
 };
 

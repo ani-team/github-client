@@ -1,9 +1,9 @@
 // NOTE: Временно используем вспомогательные utilities-классы, на время разработки прототипа приложения
 @import "~tailwindcss/dist/utilities.css";
-@import "./vars.scss";
-@import "./normalize.scss";
-@import "./normalize-antd.scss";
-@import "./utils.scss";
+@import "./styles/vars.scss";
+@import "./styles/normalize.scss";
+@import "./styles/normalize-antd.scss";
+@import "./styles/utils.scss";
 
 .gc-app {
     display: flex;
