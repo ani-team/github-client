@@ -1,10 +1,10 @@
 import React from "react";
 import { RepoIdentity } from "models";
-import { useBranch, useRepoDetails } from "../hooks";
 import { useRepoBranchInfoQuery } from "../queries.gen";
 import RepoToolbar from "./toolbar";
 import EntriesView from "./entries-view";
 import RepoReadme from "./readme";
+import { useBranch, useRepoDetails } from "./hooks";
 
 type Props = {
     repo: RepoIdentity;

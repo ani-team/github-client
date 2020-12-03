@@ -2,4 +2,14 @@
     &.center {
         text-align: center;
     }
+
+    .prev-btn {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+
+    .next-btn {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
 }

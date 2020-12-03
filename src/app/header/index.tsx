@@ -1,47 +1,11 @@
-import React, { KeyboardEventHandler } from "react";
+import React from "react";
 import { Layout, Input } from "antd";
-import { Link, useHistory, useLocation } from "react-router-dom";
-import { StringParam, useQueryParams } from "use-query-params";
-import * as qs from "query-string";
+import { Link } from "react-router-dom";
 import { GITHUB_MAIN, GITHUB_FEEDBACK } from "shared/get-env";
 import { Auth } from "features";
 import { ReactComponent as IcLogo } from "./logo.svg";
+import { useSearchInput } from "./hooks";
 import "./index.scss";
-
-// FIXME: get from `pages`?
-const SEARCH_URL = "/search";
-
-/**
- * @hook Логика обработки инпута поиска
- */
-const useSearchInput = () => {
-    // !!! FIXME: limit scope of query-params literals
-    const [query] = useQueryParams({
-        q: StringParam,
-        type: StringParam,
-        s: StringParam,
-        o: StringParam,
-    });
-    const location = useLocation();
-    const history = useHistory();
-
-    /**
-     * Обработка инпута поиска
-     */
-    const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = ({ key, currentTarget }) => {
-        if (key === "Enter" && currentTarget.value) {
-            const q = currentTarget.value;
-            history.push(`${SEARCH_URL}?${qs.stringify({ ...query, q })}`);
-        }
-    };
-    /**
-     * Поисковой запрос
-     * @remark Если не страница поиска - обнуляем инпут
-     */
-    const searchValue = location.pathname === SEARCH_URL ? query.q ?? "" : "";
-
-    return { handleKeyDown, searchValue };
-};
 
 /**
  * Хедер приложения
@@ -66,10 +30,20 @@ const Header = () => {
                         onKeyDown={handleKeyDown}
                     />
                 )}
-                <a className="m-4 text-gray-600" href={GITHUB_MAIN}>
+                <a
+                    className="m-4 text-gray-600"
+                    href={GITHUB_MAIN}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     GitHub
                 </a>
-                <a className="m-4 text-gray-600" href={GITHUB_FEEDBACK}>
+                <a
+                    className="m-4 text-gray-600"
+                    href={GITHUB_FEEDBACK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Feedback
                 </a>
             </div>

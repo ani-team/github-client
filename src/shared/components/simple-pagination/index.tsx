@@ -26,10 +26,10 @@ const SimplePagination = (props: Props) => {
     return (
         <div className={cn("simple-pagination", { center })}>
             <Button.Group>
-                <Button disabled={!hasPrevPage} onClick={onPrev}>
+                <Button className="prev-btn" disabled={!hasPrevPage} onClick={onPrev}>
                     <LeftOutlined /> Prev
                 </Button>
-                <Button disabled={!hasNextPage} onClick={onNext}>
+                <Button className="next-btn" disabled={!hasNextPage} onClick={onNext}>
                     Next <RightOutlined />
                 </Button>
             </Button.Group>

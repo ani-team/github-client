@@ -2,9 +2,7 @@ import React from "react";
 import cn from "classnames";
 import { Skeleton, Empty, Pagination } from "antd";
 import { Repo, User, Org, Card } from "shared/components";
-import { dom } from "shared/helpers";
-import { SearchType } from "models";
-import * as Params from "../params";
+import { useSearch } from "./hooks";
 import { useSearchQuery } from "./queries.gen";
 import SortSelect from "./sort-select";
 import "./index.scss";
@@ -14,42 +12,13 @@ import "./index.scss";
 const PAGE_SIZE = 10;
 
 /**
- * @hook Работа с поиском, фильтрацией, сортировкой и пагинацией
- */
-const useSearch = () => {
-    const { sortOrder, sortField } = Params.useSearchSortParams();
-    const { searchQuery } = Params.useSearchQueryParam();
-    const { searchTypeEnum } = Params.useSearchTypeParam();
-    const { page, setPage } = Params.usePageParam();
-
-    const handlePageChange = (page: number) => {
-        setPage(page);
-        dom.scrollToTop();
-    };
-
-    const isUserSearch = searchTypeEnum === SearchType.User;
-    const isRepoSearch = searchTypeEnum === SearchType.Repository;
-
-    return {
-        type: searchTypeEnum,
-        query: `${searchQuery} sort:${sortField}-${sortOrder}`,
-        queryClean: searchQuery,
-        // Супер пагинация от Нияза (niyazm524)
-        after: btoa(`cursor:${(page - 1) * PAGE_SIZE}`),
-        page,
-        first: PAGE_SIZE,
-        handlePageChange,
-        isUserSearch,
-        isRepoSearch,
-    };
-};
-
-/**
  * @feature Результаты поиска
  * @remark Отображение результатов поиска на основании запроса и конфига
  */
 const SearchResults = () => {
-    const { handlePageChange, page, isUserSearch, isRepoSearch, ...searchConfig } = useSearch();
+    const { handlePageChange, page, isUserSearch, isRepoSearch, ...searchConfig } = useSearch(
+        PAGE_SIZE,
+    );
 
     const { data, loading } = useSearchQuery({ variables: searchConfig });
 
