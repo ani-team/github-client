@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "antd";
+import { Link } from "react-router-dom";
 import { useAuth } from "../hooks";
 import { routes } from "../consts";
 
@@ -18,9 +19,9 @@ const User = () => {
             {isAuth && (
                 <>
                     {/* FIXME: use h3 instead */}
-                    <a className="m-4 text-white" href={`/${viewer?.username}`}>
+                    <Link className="m-4 text-white" to={`/${viewer?.username}`}>
                         {viewer?.username}
-                    </a>
+                    </Link>
                     <Button className="m-4" href={routes.logout} onClick={logout}>
                         Logout
                     </Button>

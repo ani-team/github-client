@@ -5,6 +5,7 @@ import { useFollowing } from "./hooks";
 import "./index.scss";
 
 type Props = {
+    /** @routeParam Логин пользователя текущей страницы */
     username: string;
 };
 
