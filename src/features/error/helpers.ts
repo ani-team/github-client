@@ -1,7 +1,7 @@
 import { ServerError } from "@apollo/client";
 import { GraphQLError } from "graphql";
 import { AppError } from "models";
-import { ErrorDefinitions } from "./error-definitions";
+import { Definitions } from "./definitions";
 
 /**
  * Проверка: является ли ошибка GitHub Error
@@ -26,11 +26,11 @@ export function mapError(error?: GraphQLError | Error | ServerError): AppError |
     if (isGithubError(error)) {
         // FIXME: handle 403 and 500 errors as well w/o side effects
         if (error.type === "NOT_FOUND") {
-            return ErrorDefinitions[error.type];
+            return Definitions[error.type];
         }
     }
     if (isServerError(error)) {
-        if (error.statusCode === 401) return ErrorDefinitions.UNAUTHORIZED;
+        if (error.statusCode === 401) return Definitions.UNAUTHORIZED;
     }
     // TODO: handle network errors and whatever can be broken
     return null;

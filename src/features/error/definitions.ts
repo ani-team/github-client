@@ -3,7 +3,7 @@ import { AppError } from "models";
 /**
  * Обрабатываемые ошибки приложения
  */
-export const ErrorDefinitions: Record<string, AppError> = {
+export const Definitions: Record<string, AppError> = {
     UNAUTHORIZED: {
         code: 401,
         message: "You shall not pass!",

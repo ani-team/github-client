@@ -32,7 +32,7 @@ const useAppError = () => {
  * Обертка для обработки ошибок
  * FIXME: add ErrorBoundaries
  */
-const ErrorCatcher = ({ handler, children }: Props) => {
+const Catcher = ({ handler, children }: Props) => {
     const location = useLocation();
     const { error, setError } = useAppError();
 
@@ -44,4 +44,4 @@ const ErrorCatcher = ({ handler, children }: Props) => {
     return <>{children}</>;
 };
 
-export default ErrorCatcher;
+export default Catcher;

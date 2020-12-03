@@ -1,8 +1,5 @@
 import React from "react";
-// !!! FIXME: это плохо(
-// eslint-disable-next-line import/order
-import { ErrorDefinitions } from "app/error-handling";
-import { Auth, HeroSheet } from "features";
+import { Auth, Error, HeroSheet } from "features";
 import { AppError } from "models";
 import { useTitle } from "../helpers";
 
@@ -28,7 +25,7 @@ const useAppErrors = (error: AppError) => {
     };
 
     const action =
-        error.code === ErrorDefinitions.UNAUTHORIZED.code ? unauthorizedAction : undefined;
+        error.code === Error.Definitions.UNAUTHORIZED.code ? unauthorizedAction : undefined;
     return { action };
 };
 
