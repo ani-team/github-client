@@ -30,7 +30,11 @@ const RepoListTabs = (props: Props) => {
                     className="repo-list__tab"
                     active={config.tab === type}
                     onClick={() => handleTabClick(type)}
-                    label={config.tab === type && !loading ? String(totalCount || 0) : undefined}
+                    label={
+                        config.tab === type && !loading && totalCount
+                            ? String(totalCount)
+                            : undefined
+                    }
                 />
             ))}
         </Tabs>
