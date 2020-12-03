@@ -63,7 +63,7 @@ module.exports = {
             },
         ],
         // TODO: specify message: ("Please use allowed public API (not private imports!)")
-        "no-restricted-imports": [1, { patterns: DENIED_PATH_GROUPS }],
+        "no-restricted-imports": [2, { patterns: DENIED_PATH_GROUPS }],
         // variables
         "prefer-const": 2,
         "no-var": 2,
