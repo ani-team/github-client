@@ -44,6 +44,7 @@ module.exports = {
             {
                 pathGroups: ALLOWED_PATH_GROUPS,
                 // TODO: Добавить сортировку `import "./index.scss";` (располагать внизу)
+                // TODO: Добавить сортировку `import *** from "react"` (располагать вверху)
                 pathGroupsExcludedImportTypes: ["builtin"],
                 groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
             },
