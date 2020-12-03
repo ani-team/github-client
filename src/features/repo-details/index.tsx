@@ -1,4 +1,4 @@
-import { Skeleton, Tag, Alert } from "antd";
+import { Skeleton, Tag, Alert, Spin } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Language, RepoIdentity } from "../../models";
@@ -33,6 +33,9 @@ const RepoDetails = ({ repo: identity }: Props) => {
     const collaborators = repository?.collaborators?.nodes?.filter(
         (collaborator): collaborator is Collaborator => !!collaborator,
     );
+    const alertDescription =
+        "For a while, you can't navigate through file" +
+        " tree of repo - only view the main README";
     return (
         <div className="flex flex-col">
             <DetailsCard className="common-details" title={identity.name}>
@@ -78,12 +81,14 @@ const RepoDetails = ({ repo: identity }: Props) => {
                     ))}
                 </DetailsCard>
             )}
-            <Alert
-                style={{ borderRadius: 6, marginTop: 10 }}
-                showIcon
-                message="Files access"
-                description="For a while, you can't navigate thorugh file tree of repo - only view the main README"
-            />
+            <Spin spinning={loading}>
+                <Alert
+                    style={{ borderRadius: 6, marginTop: 10 }}
+                    showIcon
+                    message="Files access"
+                    description={alertDescription}
+                />
+            </Spin>
         </div>
     );
 };
