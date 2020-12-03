@@ -1,4 +1,5 @@
 import React from "react";
+import { Empty } from "antd";
 import { Repo, Tabs, SimplePagination, Card } from "shared/components";
 import { str, dom } from "shared/helpers";
 import { useReposQuery } from "./queries.gen";
@@ -52,9 +53,10 @@ const RepoList = ({ username }: Props) => {
                         />
                     ))
                 ) : (
-                    <h2 className="repo-list__placeholder">
-                        {username} doesn’t have any repositories yet.
-                    </h2>
+                    <Empty
+                        className="repo-list__placeholder"
+                        description={<h2>{username} doesn’t have any repositories yet.</h2>}
+                    />
                 )}
             </div>
             <div className="repo-list__pagination mt-6">

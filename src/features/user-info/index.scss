@@ -33,14 +33,9 @@
         line-height: 28px;
     }
 
-    &__btn.follow,
-    &__btn.unfollow,
-    &__btn.edit {
+    &__btn {
+        display: block !important;
         margin-top: 10px;
         transition: 0.4s;
-
-        &:hover {
-            cursor: pointer;
-        }
     }
 }
