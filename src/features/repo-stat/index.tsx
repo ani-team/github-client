@@ -20,7 +20,13 @@ const RepoStat = ({ repo }: Props) => {
 
     return (
         <div className="repo-stat">
-            {loading && <Skeleton.Input className="repo-state__skeleton" active />}
+            {loading && (
+                <div className="flex justify-between">
+                    <Skeleton.Button className="repo-stat__skeleton" active />
+                    <Skeleton.Button className="repo-stat__skeleton" active />
+                    <Skeleton.Button className="repo-stat__skeleton" active />
+                </div>
+            )}
             {!loading && (
                 <div className="repo-stat__items flex justify-between">
                     {stats.map(({ icon, link, name }) => (
