@@ -1,5 +1,6 @@
 // Импортим отдельно, т.к. фича экспортит из себя много подмодулей
 import * as Auth from "./auth";
+import * as Error from "./error";
 
 // FIXME: Нормализовать экспорты к единому виду
 
@@ -12,3 +13,4 @@ export { default as Search } from "./search";
 export { default as Origin } from "./origin";
 export { default as HeroSheet } from "./hero-sheet";
 export { Auth };
+export { Error };
