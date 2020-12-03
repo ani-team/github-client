@@ -6026,6 +6026,8 @@ export type MarketplaceListing = Node & {
   readonly hasPublishedFreeTrialPlans: Scalars['Boolean'];
   /** Does this listing have a terms of service link? */
   readonly hasTermsOfService: Scalars['Boolean'];
+  /** Whether the creator of the app is a verified org */
+  readonly hasVerifiedOwner: Scalars['Boolean'];
   /** A technical description of how this app works with GitHub. */
   readonly howItWorks?: Maybe<Scalars['String']>;
   /** The listing's technical description rendered to HTML. */
