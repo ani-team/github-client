@@ -1,13 +1,9 @@
-import React, { lazy } from "react";
+import React from "react";
 import { Layout } from "antd";
 import Routing from "pages";
-import { ErrorCatcher } from "./error-handling";
 import Header from "./header";
-import { withHocs } from "./hocs";
+import { withHocs, ErrorHandlingProvider } from "./hocs";
 import "./index.scss";
-
-// !!! FIXME: manage access
-const ErrorPage = lazy(() => import("pages/error"));
 
 /**
  * Entry-point приложения
@@ -20,9 +16,9 @@ const App = () => {
             <Layout>
                 <Header />
                 <Layout.Content className="gc-app-content">
-                    <ErrorCatcher handler={({ error }) => <ErrorPage error={error} />}>
+                    <ErrorHandlingProvider>
                         <Routing />
-                    </ErrorCatcher>
+                    </ErrorHandlingProvider>
                 </Layout.Content>
             </Layout>
         </div>

@@ -11,3 +11,5 @@ import withAntd from "./with-antd";
  * - логику инициализации роутера (withRouter)
  */
 export const withHocs = compose(withAntd, withRouter, withApollo);
+
+export { ErrorHandlingProvider } from "./with-error-handling";

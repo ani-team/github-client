@@ -3,7 +3,7 @@ import { AppError } from "models";
 /**
  * Обрабатываемые ошибки приложения
  */
-export const ErrorDefinitions: Record<string, AppError> = {
+export const Definitions: Record<string, AppError> = {
     UNAUTHORIZED: {
         code: 401,
         message: "You shall not pass!",
@@ -23,5 +23,10 @@ export const ErrorDefinitions: Record<string, AppError> = {
         code: 500,
         message: "500 Server Error\nSomething’s wrong!",
         description: "we’re doing smth",
+    },
+    NETWORK_ERROR: {
+        code: -1,
+        message: "Check your connection",
+        description: "Failed to make a request",
     },
 };
