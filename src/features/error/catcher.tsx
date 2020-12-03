@@ -9,7 +9,7 @@ import { mapError } from "./helpers";
 type Props = PropsWithChildren<{
     /** Отрисовщик-обработчик ошибки */
     handler: (props: { error: AppError }) => ReactNode;
-    onNetworkError?: () => void;
+    onNetworkError?: (error: AppError) => void;
 }>;
 
 /**
@@ -42,7 +42,7 @@ const Catcher = ({ handler, children, onNetworkError }: Props) => {
     useEffect(() => setError(null), [location, setError]);
     useEffect(() => {
         if (error?.code !== Definitions.NETWORK_ERROR.code) return;
-        onNetworkError?.();
+        onNetworkError?.(error);
     }, [error, onNetworkError]);
 
     if (error && error.code !== Definitions.NETWORK_ERROR.code) {

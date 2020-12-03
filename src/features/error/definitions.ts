@@ -26,7 +26,7 @@ export const Definitions: Record<string, AppError> = {
     },
     NETWORK_ERROR: {
         code: -1,
-        message: "Network problems",
-        description: "Failed to fetch",
+        message: "Check your connection",
+        description: "Failed to make a request",
     },
 };
