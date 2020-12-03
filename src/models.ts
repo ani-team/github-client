@@ -1,4 +1,5 @@
-export * from "./models.gen";
+// Ему можно так импортить :D (он же прослойка)
+export * from "./models.gen"; // eslint-disable-line no-restricted-imports
 
 /**
  * Идентификационные данные для репозитория и его состояния
