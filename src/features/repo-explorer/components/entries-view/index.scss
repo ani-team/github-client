@@ -69,9 +69,10 @@
         .origin-link {
             margin-left: 12px;
             color: var(--clr-text);
+
             &:hover {
-                text-decoration: underline;
                 color: #0366d6;
+                text-decoration: underline;
             }
         }
     }
