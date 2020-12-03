@@ -33,9 +33,7 @@ const RepoDetails = ({ repo: identity }: Props) => {
     const collaborators = repository?.collaborators?.nodes?.filter(
         (collaborator): collaborator is Collaborator => !!collaborator,
     );
-    const alertDescription =
-        "For a while, you can't navigate through file" +
-        " tree of repo - only view the main README";
+
     return (
         <div className="flex flex-col">
             <DetailsCard className="common-details" title={identity.name}>
@@ -86,7 +84,7 @@ const RepoDetails = ({ repo: identity }: Props) => {
                     style={{ borderRadius: 6, marginTop: 10 }}
                     showIcon
                     message="Files access"
-                    description={alertDescription}
+                    description="For a while, you can navigate through file tree only after auto-redirecting to github"
                 />
             </Spin>
         </div>
