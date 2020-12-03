@@ -14,7 +14,7 @@ export const prettyValue = (amount: number | undefined) => {
     if (!amount) return "";
     if (amount < THOUSAND) return `${amount}`;
     if (amount < MILLION) return `${(amount / THOUSAND).toFixed(1)}K`;
-    return `${(amount / MILLION).toFixed(1)}K`;
+    return `${(amount / MILLION).toFixed(1)}M`;
 };
 
 export type StatName = "watchers" | "stargazers" | "forks";
