@@ -60,7 +60,7 @@ const RepoList = ({ username }: Props) => {
                     />
                 )}
             </div>
-            <div className="repo-list__pagination mt-6">
+            <div className="repo-list__pagination my-6">
                 {totalCount > PAGE_SIZE && pageInfo && (
                     <SimplePagination
                         onPrev={() => {
