@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import { Skeleton, Empty, Pagination } from "antd";
 import { Repo, User, Org, Card } from "shared/components";
-import { useSearch } from "../hooks";
+import { useSearch } from "./hooks";
 import { useSearchQuery } from "./queries.gen";
 import SortSelect from "./sort-select";
 import "./index.scss";
@@ -16,7 +16,9 @@ const PAGE_SIZE = 10;
  * @remark Отображение результатов поиска на основании запроса и конфига
  */
 const SearchResults = () => {
-    const { handlePageChange, page, isUserSearch, isRepoSearch, ...searchConfig } = useSearch();
+    const { handlePageChange, page, isUserSearch, isRepoSearch, ...searchConfig } = useSearch(
+        PAGE_SIZE,
+    );
 
     const { data, loading } = useSearchQuery({ variables: searchConfig });
 

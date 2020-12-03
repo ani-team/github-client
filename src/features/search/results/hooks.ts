@@ -1,13 +1,11 @@
 import { dom } from "shared/helpers";
 import { SearchType } from "models";
-import * as Params from "./params";
-
-const PAGE_SIZE = 10;
+import * as Params from "../params";
 
 /**
  * @hook Работа с поиском, фильтрацией, сортировкой и пагинацией
  */
-export const useSearch = () => {
+export const useSearch = (PAGE_SIZE: number) => {
     const { sortOrder, sortField } = Params.useSearchSortParams();
     const { searchQuery } = Params.useSearchQueryParam();
     const { searchTypeEnum } = Params.useSearchTypeParam();
