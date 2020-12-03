@@ -1,15 +1,8 @@
 import React from "react";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import { GitCommit } from "models";
 import logo from "./placeholder.png";
-
-export type GitCommit = {
-    message: string;
-    login?: string;
-    avatarUrl?: string;
-    name?: string | null;
-    date: string;
-};
 
 type Props = {
     lastCommit: GitCommit;

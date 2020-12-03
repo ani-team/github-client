@@ -1,11 +1,11 @@
 import React from "react";
 import { List } from "antd";
 import cn from "classnames";
-import { RepoIdentity, GitFile } from "models";
+import { RepoIdentity, GitFile, GitCommit } from "models";
 import { useBranch } from "../../hooks";
 import SkeletonArea from "../skeleton-area";
 import GitFileView from "./git-file-view";
-import LastCommitHeader, { GitCommit } from "./last-commit-header";
+import LastCommitHeader from "./last-commit-header";
 import "./index.scss";
 
 type Props = {
