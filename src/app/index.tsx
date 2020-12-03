@@ -11,9 +11,8 @@ const ErrorPage = lazy(() => import("pages/error"));
 
 /**
  * Entry-point приложения
- * @remark Содержит в HOC-обертке
- * - логику подключения к API (withApollo)
- * - логику инициализации роутера (withRouter)
+ * @remark Содержит в HOC-обертке инициализирующую логику приложения
+ * @see withHocs
  */
 const App = () => {
     return (
