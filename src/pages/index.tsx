@@ -6,6 +6,7 @@ const HomePage = lazy(() => import("./home"));
 const RepositoryPage = lazy(() => import("./repository"));
 const UserPage = lazy(() => import("./user"));
 const SearchPage = lazy(() => import("./search"));
+const AuthPage = lazy(() => import("./auth"));
 
 /**
  * Роутинг приложения
@@ -17,7 +18,7 @@ const Routing = () => {
         return (
             <Switch>
                 <Route exact path={Auth.routes.main} component={HomePage} />
-                <Route exact path={Auth.routes.login} component={Auth.Page} />
+                <Route exact path={Auth.routes.login} component={AuthPage} />
                 <Redirect to={Auth.routes.login} />
             </Switch>
         );

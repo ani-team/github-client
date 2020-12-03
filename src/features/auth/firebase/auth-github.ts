@@ -14,6 +14,7 @@ const isValidAuthContext = (ctx: any): ctx is AuthContext => {
 
 /**
  * Авторизация Github OAuth через firebase
+ * @remark Стоит использовать только на странице Авторизации!!!
  */
 function authGithub() {
     const provider = new firebase.auth.GithubAuthProvider();
