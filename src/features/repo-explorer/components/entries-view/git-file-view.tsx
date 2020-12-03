@@ -2,8 +2,8 @@ import React from "react";
 import { List } from "antd";
 import { GITHUB_DOMAIN } from "shared/get-env";
 import { RepoIdentity, GitFile } from "models";
-import { ReactComponent as FileIcon } from "../../assets/file.svg";
-import { ReactComponent as FolderIcon } from "../../assets/folder.svg";
+import { ReactComponent as FileIcon } from "./file.svg";
+import { ReactComponent as FolderIcon } from "./folder.svg";
 
 type GitFileViewProps = GitFile & { repo: RepoIdentity; branch: string };
 

@@ -12,7 +12,7 @@
 .gc-app {
     display: flex;
     flex-direction: column;
-    // !!! FIXME: temp (caus #86)
+    // FIXME: deprecated (find better solution)
     overflow: overlay;
     font-family: var(--ff-primary);
     background-color: var(--clr-background);

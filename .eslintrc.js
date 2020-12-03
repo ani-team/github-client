@@ -7,7 +7,20 @@ const ALLOWED_PATH_GROUPS = ["shared", "shared/**", "pages", "features", "models
     }),
 );
 /** Для запрета приватных путей */
-const DENIED_PATH_GROUPS = ["app/**", "pages/**", "features/**", "shared/*/**"];
+const DENIED_PATH_GROUPS = [
+    // Private imports are prohibited, use public imports instead
+    "app/**",
+    "pages/**",
+    "features/**",
+    "shared/*/**",
+    "models.gen",
+    // Prefer absolute imports instead of relatives (for root modules)
+    "../**/app",
+    "../**/pages",
+    "../**/features",
+    "../**/shared",
+    "../**/models",
+];
 
 module.exports = {
     parser: "@typescript-eslint/parser",
