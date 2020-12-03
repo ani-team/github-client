@@ -24,4 +24,9 @@ export const Definitions: Record<string, AppError> = {
         message: "500 Server Error\nSomething’s wrong!",
         description: "we’re doing smth",
     },
+    NETWORK_ERROR: {
+        code: -1,
+        message: "Network problems",
+        description: "Failed to fetch",
+    },
 };

@@ -32,6 +32,9 @@ export function mapError(error?: GraphQLError | Error | ServerError): AppError |
     if (isServerError(error)) {
         if (error.statusCode === 401) return Definitions.UNAUTHORIZED;
     }
-    // TODO: handle network errors and whatever can be broken
+    if (error instanceof TypeError && error.message === "Failed to fetch") {
+        return Definitions.NETWORK_ERROR;
+    }
+    // TODO: handle other errors and whatever can be broken
     return null;
 }
