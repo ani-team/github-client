@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useQueryParam, StringParam, NumberParam, withDefault } from "use-query-params";
 import { SearchType } from "models";
 
@@ -115,20 +114,6 @@ export const useSearchSortParams = () => {
     const { searchType } = useSearchTypeParam();
     const availableVariants = sortVariantsTotal[searchType as SearchTypeStr] || [];
     const currentVariant = availableVariants.find(({ o, s }) => o === sortOrder && s === sortField);
-
-    /**
-     * Если сменили SearchType и текущую сортировку не определить
-     * То сбрасываем параметры сортировки и задаем дефолтный вариант
-     * !!! FIXME: specify
-     * !!! FIXME: double calling
-     * !!! FIXME: move to featre using level (by setType wrapping)
-     */
-    useEffect(() => {
-        if (!currentVariant) {
-            setSort(defaultSortVariant);
-        }
-        /* eslint-disable-next-line react-hooks/exhaustive-deps */
-    }, [searchType]);
 
     const setSort = ({ s, o }: SortParams) => {
         setSortField(s);

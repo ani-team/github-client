@@ -1,7 +1,8 @@
 import React from "react";
 import { Tabs } from "shared/components";
 import { str } from "shared/helpers";
-import { useSearchTypeParam, typesMap } from "../params";
+import { typesMap } from "../params";
+import { useSearch } from "../hooks";
 import "./index.scss";
 
 /**
@@ -10,7 +11,7 @@ import "./index.scss";
  * @see typesMap
  */
 const SearchFilters = () => {
-    const { searchType, setSearchType } = useSearchTypeParam();
+    const { handleTypeChange, typeLiteral } = useSearch();
 
     return (
         // FIXME: resolve on tabs level
@@ -22,8 +23,8 @@ const SearchFilters = () => {
                     // FIXME: resolve on tabs level
                     className="search-filters__item mb-2"
                     name={str.capitalize(type)}
-                    active={searchType === type}
-                    onClick={() => setSearchType(type)}
+                    active={typeLiteral === type}
+                    onClick={() => handleTypeChange(type)}
                 />
             ))}
         </Tabs>
