@@ -25,10 +25,11 @@ const UserInfo = ({ username }: Props) => {
     return (
         <div className="user-info">
             <div className="user-info__img">
-                {loading && (
+                {loading ? (
                     <Skeleton.Avatar className="user-info__img-placeholder" active shape="square" />
+                ) : (
+                    <img className="user-info__img-ava" src={avatarUrl} alt=""></img>
                 )}
-                <img className="user-info__img-ava" src={avatarUrl} alt=""></img>
             </div>
             <h1 className="user-info__name">{name}</h1>
             <h4 className="user-info__username">{username}</h4>
