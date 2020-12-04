@@ -75,6 +75,7 @@ const RepoReadme = (props: Props) => {
     const { text, loading } = props;
     const uriTransformers = useLocalUri(props);
 
+    if (!loading && !text) return null;
     return (
         <div className="repo-readme mt-6">
             {loading && <SkeletonArea />}

@@ -1,14 +1,13 @@
 .repo-readme {
     background-color: #ffffff;
+    border: 1px solid var(--clr-gray--100);
+    border-radius: 6px;
 
     &__title {
         font-size: 14px;
     }
 
     &__markdown {
-        border: 1px solid var(--clr-gray--100);
-        border-radius: 6px;
-
         // [github-styles] offsets
         > :first-child {
             margin-top: 0 !important;
