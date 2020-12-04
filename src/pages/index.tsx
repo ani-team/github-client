@@ -1,5 +1,6 @@
-import React, { lazy } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React, { lazy, useEffect } from "react";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { dom } from "shared/helpers";
 import { Auth, Origin } from "features";
 
 const HomePage = lazy(() => import("./home"));
@@ -9,10 +10,28 @@ const SearchPage = lazy(() => import("./search"));
 const AuthPage = lazy(() => import("./auth"));
 
 /**
+ * @hook Логика сброса скроллинга на каждой странице
+ * @see https://medium.com/@nasir/reset-scroll-position-on-change-of-routes-react-a0bd23093dfe
+ */
+const useResetScrollAtEveryPage = () => {
+    const history = useHistory();
+
+    useEffect(() => {
+        const unlisten = history.listen(() => {
+            dom.scrollToTop();
+        });
+        return () => {
+            unlisten();
+        };
+    }, [history]);
+};
+
+/**
  * Роутинг приложения
  */
 const Routing = () => {
     const { isAuth, viewer } = Auth.useAuth();
+    useResetScrollAtEveryPage();
 
     if (!isAuth) {
         return (

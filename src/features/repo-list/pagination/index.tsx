@@ -1,6 +1,5 @@
 import React from "react";
 import { SimplePagination } from "shared/components";
-import { dom } from "shared/helpers";
 import { RepositoriesDetailsFragment } from "../queries.gen";
 import { useFilters, PAGE_SIZE } from "../hooks";
 
@@ -19,14 +18,8 @@ const RepoListPagination = (props: Props) => {
         <div className="repo-list__pagination my-6">
             {totalCount > PAGE_SIZE && pageInfo && (
                 <SimplePagination
-                    onPrev={() => {
-                        handlePaginationClick({ before: pageInfo.startCursor });
-                        dom.scrollToTop();
-                    }}
-                    onNext={() => {
-                        handlePaginationClick({ after: pageInfo.endCursor });
-                        dom.scrollToTop();
-                    }}
+                    onPrev={() => handlePaginationClick({ before: pageInfo.startCursor })}
+                    onNext={() => handlePaginationClick({ after: pageInfo.endCursor })}
                     hasNextPage={pageInfo.hasNextPage}
                     hasPrevPage={pageInfo.hasPreviousPage}
                     center
