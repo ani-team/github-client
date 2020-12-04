@@ -120,7 +120,9 @@ export const useSearchSortParams = () => {
         setSortOrder(o);
     };
 
-    return { sortOrder, sortField, availableVariants, currentVariant, setSort };
+    const setDefaultSort = () => setSort(defaultSortVariant);
+
+    return { sortOrder, sortField, availableVariants, currentVariant, setSort, setDefaultSort };
 };
 
 //#endregion Sort
@@ -132,8 +134,11 @@ export const useSearchSortParams = () => {
  */
 export const usePageParam = () => {
     const [page, setPage] = useQueryParam("p", withDefault(NumberParam, 1));
+
+    const setDefaultPage = () => setPage(undefined);
     return {
         page,
         setPage,
+        setDefaultPage,
     };
 };
