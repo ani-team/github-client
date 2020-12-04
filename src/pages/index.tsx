@@ -11,6 +11,7 @@ const AuthPage = lazy(() => import("./auth"));
 
 /**
  * @hook Логика сброса скроллинга на каждой странице
+ * @see https://medium.com/@nasir/reset-scroll-position-on-change-of-routes-react-a0bd23093dfe
  */
 const useResetScrollAtEveryPage = () => {
     const history = useHistory();
