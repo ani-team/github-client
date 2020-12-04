@@ -9,6 +9,8 @@
 
 <img alt="favicon" src="https://avatars2.githubusercontent.com/oa/1406180?s=140&u=b44629cbec5079f99a61e6f1b6297bc4797f796b&v=4" height=120 align="right" />
 
+> Powered by [Feature Driven Development](https://www.notion.so/Feature-Driven-Development-dfe306d664ae4780bcf999ccdd15e532 "Entire app was designed and builded with FDD core conceptions")
+
 GitHub client within the *React Akvelon 2020* course.
 
 [wiki]: https://github.com/martis-git/github-client/wiki
@@ -29,11 +31,13 @@ GitHub client within the *React Akvelon 2020* course.
 <!-- Указаны ссылки на "prod"-стенд как на основной и более стабильный -->
 
 - See repo/collabs list and details of [any user](https://github-client.gq/gaearon)
-- See base info of [any public repository](https://github-client.gq/facebook/react) with [branches base manipulating](https://github-client.gq/facebook/react/tree/17.0.0-dev)
+- See base info and stats of [any public repository](https://github-client.gq/facebook/react) with [branches base manipulating](https://github-client.gq/facebook/react/tree/17.0.0-dev)
 - Use search by [repositories](https://github-client.gq/search?o=desc&q=react&s=stars)/[users](https://github-client.gq/search?o=desc&q=google&s=repositories&type=users) with sorting
-- View corresponding page on github <b title="Our routing is identical with github">through origin button!</b>
+- Try our <b title="Our routing is identical with github">end-to-end routing with Github</b> with origin button, and specific adaptations on every page!
 - Connect with your account safely - [by Github OAuth](https://github-client.gq/auth)
 - [Get feedback](https://github-client.gq/some-unexisting-route-but-we-have-error-parking-page) if some errors occurred
+- Try our base interactivity on [UserPage](https://github-client.gq/gaearon) - following, starring
+- Get the best UX with our **loading && placeholder view logic**
 - Try  [**github-client right now**](https://github-client.gq) or [last dev version (but unstable)](https://dev.github-client.gq) =}
 
 > If you found issues or have ideas for service - please, [share with us](https://github.com/ani-team/github-client/issues/new) 🔥
