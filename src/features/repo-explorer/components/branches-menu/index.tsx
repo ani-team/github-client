@@ -1,19 +1,20 @@
 import React from "react";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
-import { RepoIdentity } from "models";
+import { RepoIdentity, BranchIdentity } from "models";
 import "./index.scss";
 
 type Props = {
     repo: RepoIdentity;
-    branches?: Array<{ name: string; prefix: string }>;
+    branches?: Array<BranchIdentity>;
+    onVisibleChange?: (flag: boolean) => void;
 };
 
-function BranchesMenu({ repo, branches }: Props) {
+const BranchesMenu = ({ repo, branches, onVisibleChange }: Props) => {
     return (
-        <Menu className="branches-menu" onClick={() => {}}>
+        <Menu className="branches-menu">
             {branches?.map((branch, index) => (
-                <Menu.Item key={index}>
+                <Menu.Item key={index} onClick={() => onVisibleChange?.(false)}>
                     <Link to={`/${repo.owner}/${repo.name}/tree/${branch.name}`}>
                         {branch.name}
                     </Link>
@@ -21,6 +22,6 @@ function BranchesMenu({ repo, branches }: Props) {
             ))}
         </Menu>
     );
-}
+};
 
 export default BranchesMenu;

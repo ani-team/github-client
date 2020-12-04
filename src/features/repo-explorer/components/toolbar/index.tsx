@@ -1,23 +1,35 @@
 import { Button, Dropdown, Popover } from "antd";
-import React from "react";
-import { RepoIdentity } from "models";
+import React, { useState } from "react";
+import { RepoIdentity, BranchIdentity } from "models";
 import BranchesMenu from "../branches-menu";
 import CloneMenu from "./clone-menu";
 import "./index.scss";
 
 type Props = {
     repo: RepoIdentity;
-    branches: Array<{ name: string; prefix: string }>;
+    branches: Array<BranchIdentity>;
     activeBranch: string;
 };
 
-function RepoToolbar({ repo, branches, activeBranch }: Props) {
+/**
+ * Тулбар репозитория
+ */
+const RepoToolbar = ({ repo, branches, activeBranch }: Props) => {
+    const [isBranchDropdownVisible, setBranchDropdownVisible] = useState(false);
     return (
         <div className="flex justify-between">
             <Dropdown
-                overlay={<BranchesMenu branches={branches} repo={repo} />}
+                overlay={
+                    <BranchesMenu
+                        branches={branches}
+                        repo={repo}
+                        onVisibleChange={setBranchDropdownVisible}
+                    />
+                }
                 placement="bottomLeft"
                 arrow
+                visible={isBranchDropdownVisible}
+                onVisibleChange={setBranchDropdownVisible}
                 trigger={["click"]}
             >
                 <Button className="branch-dropdown">{activeBranch}</Button>
@@ -32,6 +44,6 @@ function RepoToolbar({ repo, branches, activeBranch }: Props) {
             </Popover>
         </div>
     );
-}
+};
 
 export default RepoToolbar;

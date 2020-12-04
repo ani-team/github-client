@@ -1,8 +1,5 @@
-query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String, $first: Int, $last: Int) { 
-  user(login: $login) {
-    id
-    repositories(ownerAffiliations: $ownerAffiliations, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before, first: $first, last: $last) {
-      pageInfo {
+fragment RepositoriesDetails on RepositoryConnection {
+  	pageInfo {
         endCursor
         startCursor
         hasNextPage
@@ -22,6 +19,13 @@ query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation], $afte
         updatedAt
         viewerHasStarred
       }
+}
+
+query Repos ($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String, $first: Int, $last: Int) { 
+  user(login: $login) {
+    id
+    repositories(ownerAffiliations: $ownerAffiliations, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before, first: $first, last: $last) {
+      ...RepositoriesDetails
     } 
   }
 }

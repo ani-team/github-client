@@ -1,18 +1,15 @@
 import React from "react";
 import { GithubFilled } from "@ant-design/icons";
-import { Alert, Card, notification } from "antd";
-// !!! FIXME: loop imports
-import { useTitle } from "pages/helpers";
-import { authorizeGithub } from "../firebase";
-import { useAuth } from "../hooks";
+import { Alert, Card } from "antd";
+import { alert } from "shared/helpers";
+import { Auth } from "features";
+import { useTitle } from "../helpers";
 import "./index.scss";
-
-// FIXME: move to pages level?
 
 /**
  * @page Auth
- * @remark Авторизация проходит через firebase
- * (чтобы работало на всех стендах)
+ * @remark
+ * - Авторизация проходит через firebase (чтобы работало на всех стендах)
  * Этапы авторизации:
  * 1. Авторизация через Github (/authorize)
  * 2. Получение временного кода доступа
@@ -20,15 +17,13 @@ import "./index.scss";
  */
 const AuthPage = () => {
     useTitle("Sign in to Github Client");
-    const { login } = useAuth();
-    const showError = (message: string) =>
-        notification.error({ message: "Authorization error", description: message, top: 72 });
+    const { login } = Auth.useAuth();
 
     // TODO: add ability to specify redirect url
     const authorize = () => {
-        authorizeGithub()
+        Auth.authorizeGithub()
             .then(login)
-            .catch((err: Error) => showError(err.message));
+            .catch((err: Error) => alert.error("Authorization error", err.message));
     };
 
     return (

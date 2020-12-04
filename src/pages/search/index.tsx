@@ -3,6 +3,8 @@ import { Row, Col, Alert } from "antd";
 import { Search } from "features";
 import { useTitle } from "../helpers";
 
+const ALERT = `For a while, "organizations" are presented in search results, but not accessible on service pages`;
+
 /**
  * @page Search
  */
@@ -21,7 +23,7 @@ const SearchPage = () => {
                     style={{ borderRadius: 6, marginTop: 10 }}
                     showIcon
                     message="Organizations access"
-                    description="For a while, `organizations` are presented in search results, but not accessible on service pages"
+                    description={ALERT}
                 />
             </Col>
         </Row>

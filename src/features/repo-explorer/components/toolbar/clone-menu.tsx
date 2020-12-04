@@ -4,11 +4,11 @@ import { Button, Input, Tooltip } from "antd";
 
 type Props = { url: string };
 
-export default function CloneMenu({ url }: Props) {
+const CloneMenu = ({ url }: Props) => {
     const cloneField = useRef<Input>(null);
     const [isUrlCopied, setUrlCopied] = useState<boolean | null>(null);
     useEffect(() => {
-        if (isUrlCopied == null) return;
+        if (isUrlCopied === null) return;
         setTimeout(() => setUrlCopied(null), 1000);
     }, [isUrlCopied]);
 
@@ -37,7 +37,7 @@ export default function CloneMenu({ url }: Props) {
                     <Tooltip
                         title={isUrlCopied === false ? "Copy error" : "Copied"}
                         placement="bottom"
-                        visible={isUrlCopied != null}
+                        visible={isUrlCopied !== null}
                     >
                         <Button onClick={copyUrl} icon={<CopyOutlined className="copy-button" />} />
                     </Tooltip>
@@ -45,4 +45,6 @@ export default function CloneMenu({ url }: Props) {
             />
         </div>
     );
-}
+};
+
+export default CloneMenu;

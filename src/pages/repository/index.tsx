@@ -8,15 +8,22 @@ import { useTitle } from "../helpers";
 import "./index.scss";
 
 type Props = RouteComponentProps<{
+    /** @routeParam Логин пользователя */
     username: string;
+    /** @routeParam Имя репозитория */
     repository: string;
+    /** @routeParam Текущая ветка */
     branch?: string;
 }>;
 
+/** Стили */
 const COL_MAIN = 17;
 const COL_SIDEBAR = 6;
 const ROW_GUTTER = [24, 16] as [number, number];
 
+/**
+ * @page Страница репозитория
+ */
 const RepositoryPage = (props: Props) => {
     const { username, repository, branch } = props.match.params;
     const identity: RepoIdentity = {

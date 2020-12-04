@@ -6,6 +6,7 @@ import { useTitle } from "../helpers";
 import "./index.scss";
 
 type Props = RouteComponentProps<{
+    /** @routeParam Логин пользователя */
     username: string;
 }>;
 
@@ -18,10 +19,10 @@ const UserPage = (props: Props) => {
 
     return (
         <Row className="page page-user pb-12">
-            <Col span={6}>
+            <Col span={6} offset={1}>
                 <UserInfo username={username} />
             </Col>
-            <Col span={18}>
+            <Col span={15}>
                 <RepoList username={username} />
             </Col>
         </Row>

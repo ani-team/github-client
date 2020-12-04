@@ -2,31 +2,28 @@ import React from "react";
 import cn from "classnames";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { Repository } from "models";
+import { VeryMaybe, Repository } from "models";
 import Card from "../card";
 import Lang from "./lang";
 import "./index.scss";
 
-// !!! FIXME: specify types
 type Props = {
-    data: any;
+    /** Данные по репозиторию */
+    data: VeryMaybe<Repository>;
+    /** Формат отображения заголовка */
     format?: "owner-repo" | "repo";
+    /** @handler star/unstar */
     onStarring?: Callback;
+    /** Флаг загрузки */
     loading?: boolean;
 };
 
 /**
- * Карточка репозитория
+ * @ItemEntity Карточка репозитория
  */
 const Repo = (props: Props) => {
     const { format = "repo", onStarring, loading } = props;
-    const {
-        name,
-        primaryLanguage,
-        updatedAt,
-        viewerHasStarred: starred,
-        owner,
-    } = props.data as Partial<Repository>;
+    const { name, primaryLanguage, updatedAt, viewerHasStarred: starred, owner } = props.data || {};
     // prettier-ignore
     const title = (
         (format === "owner-repo" && `${owner?.login}/${name}`) || 

@@ -1,10 +1,11 @@
 import React from "react";
 import cn from "classnames";
 import { Select } from "antd";
-import * as Params from "../params";
+import * as Params from "../../params";
 
 /**
  * Select-меню для выбора сортировки поисковых результатов
+ * @see availableVariants
  */
 const SortSelect = ({ className }: PropsWithClassName) => {
     const { setSort, availableVariants, currentVariant } = Params.useSearchSortParams();

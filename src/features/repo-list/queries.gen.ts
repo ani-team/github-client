@@ -3,6 +3,8 @@ import * as Types from '../../models.gen';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
+export type RepositoriesDetailsFragment = { readonly totalCount: number, readonly pageInfo: { readonly endCursor?: Types.Maybe<string>, readonly startCursor?: Types.Maybe<string>, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean }, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> };
+
 export type ReposQueryVariables = Types.Exact<{
   login: Types.Scalars['String'];
   ownerAffiliations?: Types.Maybe<ReadonlyArray<Types.Maybe<Types.RepositoryAffiliation>>>;
@@ -13,7 +15,7 @@ export type ReposQueryVariables = Types.Exact<{
 }>;
 
 
-export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly totalCount: number, readonly pageInfo: { readonly endCursor?: Types.Maybe<string>, readonly startCursor?: Types.Maybe<string>, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean }, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } }> };
+export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: RepositoriesDetailsFragment }> };
 
 export type AddStarMutationVariables = Types.Exact<{
   starrableId: Types.Scalars['ID'];
@@ -29,36 +31,40 @@ export type RemoveStarMutationVariables = Types.Exact<{
 
 export type RemoveStarMutation = { readonly removeStar?: Types.Maybe<{ readonly starrable?: Types.Maybe<{ readonly id: string } | { readonly id: string } | { readonly id: string }> }> };
 
-
+export const RepositoriesDetailsFragmentDoc = gql`
+    fragment RepositoriesDetails on RepositoryConnection {
+  pageInfo {
+    endCursor
+    startCursor
+    hasNextPage
+    hasPreviousPage
+  }
+  totalCount
+  nodes {
+    id
+    name
+    primaryLanguage {
+      color
+      name
+    }
+    owner {
+      login
+    }
+    updatedAt
+    viewerHasStarred
+  }
+}
+    `;
 export const ReposDocument = gql`
     query Repos($login: String!, $ownerAffiliations: [RepositoryAffiliation], $after: String, $before: String, $first: Int, $last: Int) {
   user(login: $login) {
     id
     repositories(ownerAffiliations: $ownerAffiliations, orderBy: {field: PUSHED_AT, direction: DESC}, after: $after, before: $before, first: $first, last: $last) {
-      pageInfo {
-        endCursor
-        startCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      totalCount
-      nodes {
-        id
-        name
-        primaryLanguage {
-          color
-          name
-        }
-        owner {
-          login
-        }
-        updatedAt
-        viewerHasStarred
-      }
+      ...RepositoriesDetails
     }
   }
 }
-    `;
+    ${RepositoriesDetailsFragmentDoc}`;
 
 /**
  * __useReposQuery__

@@ -45,4 +45,14 @@
             border-bottom-right-radius: var(--radius);
         }
     }
+
+    &__skeleton.ant-skeleton-element {
+        flex-basis: 30%;
+        width: 30%;
+        border-radius: var(--radius);
+
+        & > span {
+            width: 100%;
+        }
+    }
 }

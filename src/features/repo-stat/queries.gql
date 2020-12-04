@@ -1,5 +1,6 @@
 query RepoStat($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
+    id
     # Чего не сделаешь ради единого API...
     forks {
       totalCount

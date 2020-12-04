@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import { Link } from "react-router-dom";
 import Skeleton from "./skeleton";
 import SkeletonGroup from "./skeleton-group";
 import "./index.scss";
@@ -37,9 +38,9 @@ const Card = (props: Props) => {
             )}
             <div className="card__details flex flex-col flex-grow">
                 {title && (
-                    <a className="card__title text-title" href={titleHref}>
+                    <Link className="card__title text-title" to={`${titleHref}`}>
                         {title}
-                    </a>
+                    </Link>
                 )}
                 {description && <span className="card__description">{description}</span>}
             </div>

@@ -1,11 +1,57 @@
 .repo-readme {
     background-color: #ffffff;
-    border: 1px solid var(--clr-gray--100);
-    border-radius: 6px;
 
-    code {
-        padding: 1px 4px;
-        background: var(--clr-gray--100);
+    &__title {
+        font-size: 14px;
+    }
+
+    &__markdown {
+        border: 1px solid var(--clr-gray--100);
         border-radius: 6px;
+
+        // [github-styles] offsets
+        > :first-child {
+            margin-top: 0 !important;
+        }
+        // [github-styles] headers offsets
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+        // [github-styles] <code />
+        code {
+            padding: 1px 4px;
+            background: var(--clr-gray--100);
+            border-radius: 6px;
+        }
+        // [github-styles] dividers for h1, h2
+        h1,
+        h2 {
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--clr-gray--200);
+        }
+        // [github-styles] headers font-sizes
+        h3 {
+            font-size: 20px;
+        }
+        // [github-styles] headers font-sizes
+        h4 {
+            font-size: 16px;
+        }
+        // [github-styles] for markdown quotes
+        blockquote {
+            padding: 0 1em;
+            color: var(--clr-gray--800);
+            border-left: 0.25em solid var(--clr-gray--200);
+        }
+        // [github-styles] limit images max-width
+        img {
+            max-width: 100%;
+        }
     }
 }

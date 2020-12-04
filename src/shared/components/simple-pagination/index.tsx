@@ -5,10 +5,15 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import "./index.scss";
 
 type Props = {
+    /** @handler NextPage */
     onNext: Callback;
+    /** @handler PrevPage */
     onPrev: Callback;
+    /** @flag Доступ к следующей странице */
     hasNextPage: boolean;
+    /** @flag Доступ к предыдущей странице */
     hasPrevPage: boolean;
+    /** @flag Центрировать компонент */
     center?: boolean;
 };
 
@@ -21,10 +26,10 @@ const SimplePagination = (props: Props) => {
     return (
         <div className={cn("simple-pagination", { center })}>
             <Button.Group>
-                <Button disabled={!hasPrevPage} onClick={onPrev}>
+                <Button className="prev-btn" disabled={!hasPrevPage} onClick={onPrev}>
                     <LeftOutlined /> Prev
                 </Button>
-                <Button disabled={!hasNextPage} onClick={onNext}>
+                <Button className="next-btn" disabled={!hasNextPage} onClick={onNext}>
                     Next <RightOutlined />
                 </Button>
             </Button.Group>
