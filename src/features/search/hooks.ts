@@ -1,4 +1,3 @@
-import { dom } from "shared/helpers";
 import { SearchType } from "models";
 import * as Params from "./params";
 
@@ -13,11 +12,11 @@ export const useSearch = () => {
     const { searchType, searchTypeEnum, setSearchType } = Params.useSearchTypeParam();
     const { page, setPage, setDefaultPage } = Params.usePageParam();
     /**
-     * При смене страницы - скроллим страницу вверх (к результатам)
+     * Оставляем обертку для потенциальной доп. реактивной логики в дальнейшем
+     * @remark Раньше использовался для автоскроллинга наверх
      */
     const handlePageChange: typeof setPage = (page) => {
         setPage(page);
-        dom.scrollToTop();
     };
     /**
      * Если сменили SearchType, то:
