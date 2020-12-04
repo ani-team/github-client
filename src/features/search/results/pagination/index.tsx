@@ -1,11 +1,10 @@
 import React from "react";
 import { Pagination } from "antd";
+import { PAGE_SIZE } from "../../hooks";
 
 type Props = {
     /** Текущая страница */
     page: number;
-    /** Размер страницы */
-    pageSize: number;
     /** Количество результатов */
     count: number;
     /** @handler Изменение номера страницы */
@@ -16,10 +15,10 @@ type Props = {
  * Пагинация по поиску
  */
 const ResultsPagination = (props: Props) => {
-    const { count, pageSize, page, handlePageChange } = props;
+    const { count, page, handlePageChange } = props;
     return (
         <div className="search-results__pagination text-center mt-6">
-            {count > pageSize && (
+            {count > PAGE_SIZE && (
                 <Pagination
                     current={page}
                     /**
@@ -29,9 +28,9 @@ const ResultsPagination = (props: Props) => {
                      * (как на github)
                      * @remark Да и их API не возвращает результаты после 1000
                      */
-                    total={Math.min(count, 100 * pageSize)}
+                    total={Math.min(count, 100 * PAGE_SIZE)}
                     onChange={handlePageChange}
-                    pageSize={pageSize}
+                    pageSize={PAGE_SIZE}
                     showSizeChanger={false}
                     showQuickJumper
                     responsive

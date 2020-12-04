@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import { Select } from "antd";
+import { useSearch } from "../../hooks";
 import * as Params from "../../params";
 
 /**
@@ -8,7 +9,8 @@ import * as Params from "../../params";
  * @see availableVariants
  */
 const SortSelect = ({ className }: PropsWithClassName) => {
-    const { setSort, availableVariants, currentVariant } = Params.useSearchSortParams();
+    const { availableVariants, currentVariant } = Params.useSearchSortParams();
+    const { handleSortChange } = useSearch();
 
     return (
         <div className={cn("sort-select", className)}>
@@ -16,7 +18,7 @@ const SortSelect = ({ className }: PropsWithClassName) => {
                 value={currentVariant?.label}
                 onChange={(value) => {
                     // FIXME: validate
-                    setSort(availableVariants.find(({ label }) => label === value)!);
+                    handleSortChange(availableVariants.find(({ label }) => label === value)!);
                 }}
                 dropdownStyle={{ minWidth: 300 }}
             >

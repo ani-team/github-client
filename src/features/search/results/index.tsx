@@ -1,8 +1,8 @@
 import React from "react";
+import { useSearch } from "../hooks";
 import Toolbar from "./toolbar";
 import List from "./list";
 import Pagination from "./pagination";
-import { useSearch, PAGE_SIZE } from "./hooks";
 import { useSearchQuery } from "./queries.gen";
 
 /**
@@ -31,14 +31,8 @@ const SearchResults = () => {
                 isEmpty={isEmpty}
                 isRepoSearch={isRepoSearch}
                 isUserSearch={isUserSearch}
-                pageSize={PAGE_SIZE}
             />
-            <Pagination
-                count={count}
-                handlePageChange={handlePageChange}
-                page={page}
-                pageSize={PAGE_SIZE}
-            />
+            <Pagination count={count} handlePageChange={handlePageChange} page={page} />
         </div>
     );
 };

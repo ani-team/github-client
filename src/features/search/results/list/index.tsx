@@ -4,11 +4,10 @@ import { Empty } from "antd";
 import { Repo, User, Org, Card } from "shared/components";
 import { VeryMaybe, Repository } from "models";
 import { SearchQuery } from "../queries.gen";
+import { PAGE_SIZE } from "../../hooks";
 import "./index.scss";
 
 type Props = {
-    /** Размер страницы */
-    pageSize: number;
     /** Флаг загрузки */
     loading: boolean;
     /** Результаты поиска */
@@ -25,11 +24,11 @@ type Props = {
  * Список результатов поиска
  */
 const ResultsList = (props: Props) => {
-    const { loading, nodes, pageSize, isEmpty, isRepoSearch, isUserSearch } = props;
+    const { loading, nodes, isEmpty, isRepoSearch, isUserSearch } = props;
 
     return (
         <div className="search-results__list">
-            {loading && <Card.SkeletonGroup amount={pageSize} />}
+            {loading && <Card.SkeletonGroup amount={PAGE_SIZE} />}
             {nodes?.map((node) => (
                 <div
                     key={node?.id}
