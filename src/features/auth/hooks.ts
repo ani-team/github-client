@@ -1,3 +1,5 @@
+// FIXME: @lowCoupling
+import Origin from "features/origin";
 import { useLocalStorage } from "shared/hooks";
 import { CREDENTIAL_KEY } from "./consts";
 import { UserCredential } from "./types";
@@ -7,15 +9,15 @@ import { UserCredential } from "./types";
  */
 export const useAuth = () => {
     const [viewer, setViewer] = useLocalStorage<UserCredential | null>(CREDENTIAL_KEY, null);
+    // FIXME: @dry with ...
     const isAuth = !!viewer;
 
-    // FIXME: specify redirect urls?
-    // FIXME: prohibit access?
+    // FIXME: @dangerAccess
     const login = (credential: UserCredential) => {
         setViewer(credential);
         window.location.href = `/${credential.username}`;
     };
-    // FIXME: prohibit access?
+    // FIXME: @dangerAccess
     const logout = () => {
         setViewer(null);
     };
