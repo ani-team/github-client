@@ -36,7 +36,7 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    plugins: ["react", "@typescript-eslint", "@graphql-eslint", "unicorn", "@feature-driven"],
+    plugins: ["react", "@typescript-eslint", "@graphql-eslint", "unicorn"],
     extends: [
         "react-app",
         "eslint:recommended",
@@ -94,8 +94,6 @@ module.exports = {
         "unicorn/throw-new-error": 2,
         // plugin:graphql
         "@graphql-eslint/no-anonymous-operations": 2,
-        // plugin:@feature-driven
-        "@feature-driven/explicit-abstractions": 2,
     },
     overrides: [
         {
