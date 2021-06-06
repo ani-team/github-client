@@ -9,7 +9,7 @@
 
 <img alt="favicon" src="https://avatars2.githubusercontent.com/oa/1406180?s=140&u=b44629cbec5079f99a61e6f1b6297bc4797f796b&v=4" height=120 align="right" />
 
-> Powered by [Feature Driven Architecture](https://github.com/feature-driven/wiki "Entire app was designed and builded with FDA core conceptions")
+> ⚡️ Powered by [Feature Sliced methodology](https://github.com/feature-sliced/documentation "Entire app was designed and builded with FeatureSliced core conceptions")
 
 GitHub client within the *React Akvelon 2020* course.
 
