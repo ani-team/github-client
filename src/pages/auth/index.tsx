@@ -1,5 +1,5 @@
 import React from "react";
-import { Auth } from "widgets/auth";
+import { OAuthForm } from "widgets/auth";
 import { dom } from "shared/lib/browser";
 import "./index.scss";
 
@@ -17,7 +17,7 @@ const AuthPage = () => {
 
     return (
         <div className="page page-auth">
-            <Auth.OAuthForm />
+            <OAuthForm />
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import React, { lazy, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import { Auth } from "widgets/auth";
+import { authLib, authModel } from "widgets/auth";
 import { Origin } from "widgets/origin";
 import { dom } from "shared/lib/browser";
 
@@ -31,15 +31,15 @@ const useResetScrollAtEveryPage = () => {
  * Роутинг приложения
  */
 const Routing = () => {
-    const { isAuth, viewer } = Auth.useAuth();
+    const { isAuth, viewer } = authModel.useAuth();
     useResetScrollAtEveryPage();
 
     if (!isAuth) {
         return (
             <Switch>
-                <Route exact path={Auth.routes.main} component={HomePage} />
-                <Route exact path={Auth.routes.login} component={AuthPage} />
-                <Redirect to={Auth.routes.login} />
+                <Route exact path={authLib.routes.main} component={HomePage} />
+                <Route exact path={authLib.routes.login} component={AuthPage} />
+                <Redirect to={authLib.routes.login} />
             </Switch>
         );
     }

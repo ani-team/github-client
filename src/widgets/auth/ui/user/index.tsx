@@ -1,13 +1,13 @@
 import React from "react";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
-import { useAuth } from "../hooks";
-import { routes } from "../consts";
+import { useAuth } from "../../model";
+import { routes } from "../../lib";
 
 /**
  * Плашка пользователя с базовой информацией
  */
-const User = () => {
+export const User = () => {
     const { isAuth, logout, viewer } = useAuth();
 
     /**
@@ -35,5 +35,3 @@ const User = () => {
         </span>
     );
 };
-
-export default User;

@@ -1,6 +1,6 @@
-import { Auth } from "widgets/auth";
+import { authLib } from "widgets/auth";
 
-const { CREDENTIAL_KEY } = Auth;
+const { CREDENTIAL_KEY } = authLib;
 const tempStandRegex = /^(github-client-47c49|dev-github-client)--pr\d+.+\.web\.app$/;
 
 const isTempStand = () => tempStandRegex.test(window.location.host);

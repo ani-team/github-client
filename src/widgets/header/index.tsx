@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout, Input } from "antd";
 import { Link } from "react-router-dom";
-import { Auth } from "widgets/auth";
+import { User, authModel } from "widgets/auth";
 import { GITHUB_MAIN, GITHUB_FEEDBACK } from "shared/config";
 import { ReactComponent as IcLogo } from "./logo.svg";
 import { useSearchInput } from "./hooks";
@@ -12,7 +12,7 @@ import "./index.scss";
  * @remark Содержит поисковой инпут с базовой логикой
  */
 const Header = () => {
-    const { isAuth } = Auth.useAuth();
+    const { isAuth } = authModel.useAuth();
     const { handleKeyDown, searchValue } = useSearchInput();
 
     return (
@@ -47,7 +47,7 @@ const Header = () => {
                     Feedback
                 </a>
             </div>
-            <Auth.User />
+            <User />
         </Layout.Header>
     );
 };

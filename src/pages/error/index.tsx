@@ -1,5 +1,5 @@
 import React from "react";
-import { Auth } from "widgets/auth";
+import { authModel } from "widgets/auth";
 import { Error } from "widgets/error";
 import { HeroSheet } from "widgets/hero-sheet";
 import { AppError } from "shared/api";
@@ -17,7 +17,7 @@ type Props = {
  * - На данный момент - уникально только для `401 - UNAUTHORIZED`
  */
 const useAppErrors = (error: AppError) => {
-    const { logout } = Auth.useAuth();
+    const { logout } = authModel.useAuth();
     const unauthorizedAction = {
         text: "Authorize",
         to: () => {

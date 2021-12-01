@@ -1,4 +1,4 @@
-import { UserCredential } from "./types";
+import { UserCredential } from "../model";
 
 /** @localStorage Учетные данные */
 export const CREDENTIAL_KEY = "GITHUB-CLIENT__CREDENTIAL";

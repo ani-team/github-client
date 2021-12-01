@@ -1,5 +1,5 @@
 import { persist } from "shared/lib/browser";
-import { CREDENTIAL_KEY } from "./consts";
+import { CREDENTIAL_KEY } from "../lib";
 import { UserCredential } from "./types";
 
 /**
