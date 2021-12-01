@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
-import { VeryMaybe, Repository } from "models";
+import { VeryMaybe, Repository } from "shared/api";
 import Card from "../card";
 import Lang from "./lang";
 import "./index.scss";

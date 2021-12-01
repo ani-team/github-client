@@ -56,4 +56,4 @@ export type GitCommit = {
  * Вынужденная обертка для некоторых компонентов по данным с API
  * !!! FIXME: more strict types (TotallyNullable not help...) or fix on codegen level
  */
-export type VeryMaybe<T> = import("models.gen").Maybe<Partial<T>>;
+export type VeryMaybe<T> = import("./models.gen").Maybe<Partial<T>>;

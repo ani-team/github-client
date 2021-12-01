@@ -1,6 +1,6 @@
 import { Alert, Spin } from "antd";
 import React from "react";
-import { RepoIdentity } from "models";
+import { RepoIdentity } from "shared/api";
 import { useRepoDetailsQuery } from "../queries.gen";
 import CardCommon from "./card-common";
 import CardCollaborators from "./card-collaborators";

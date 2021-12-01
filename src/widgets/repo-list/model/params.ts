@@ -1,5 +1,5 @@
 import { StringParam, useQueryParam, withDefault } from "use-query-params";
-import { RepositoryAffiliation } from "models";
+import { RepositoryAffiliation } from "shared/api";
 
 export const tabsMap: Record<string, RepositoryAffiliation> = {
     repositories: RepositoryAffiliation.Owner,

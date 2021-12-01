@@ -1,7 +1,7 @@
 import React from "react";
 import { List } from "antd";
 import { GITHUB_DOMAIN } from "shared/config";
-import { RepoIdentity, GitFile } from "models";
+import { RepoIdentity, GitFile } from "shared/api";
 import { ReactComponent as FileIcon } from "./file.svg";
 import { ReactComponent as FolderIcon } from "./folder.svg";
 

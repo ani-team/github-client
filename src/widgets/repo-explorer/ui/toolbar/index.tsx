@@ -1,6 +1,6 @@
 import { Button, Dropdown, Popover } from "antd";
 import React, { useState } from "react";
-import { RepoIdentity, BranchIdentity } from "models";
+import { RepoIdentity, BranchIdentity } from "shared/api";
 import BranchesMenu from "../branches-menu";
 import CloneMenu from "./clone-menu";
 import "./index.scss";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { BankOutlined } from "@ant-design/icons";
-import { VeryMaybe, Organization } from "models";
+import { VeryMaybe, Organization } from "shared/api";
 import Card from "../card";
 import "./index.scss";
 

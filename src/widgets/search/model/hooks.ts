@@ -1,4 +1,4 @@
-import { SearchType } from "models";
+import { SearchType } from "shared/api";
 import * as Params from "./params";
 
 export const PAGE_SIZE = 10;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Language } from "models";
+import { Language } from "shared/api";
 
 type Props = Partial<Language>;
 

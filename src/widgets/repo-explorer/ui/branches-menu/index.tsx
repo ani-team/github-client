@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
-import { RepoIdentity, BranchIdentity } from "models";
+import { RepoIdentity, BranchIdentity } from "shared/api";
 import "./index.scss";
 
 type Props = {

@@ -1,6 +1,6 @@
 import { ServerError } from "@apollo/client";
 import { GraphQLError } from "graphql";
-import { AppError } from "models";
+import { AppError } from "shared/api";
 import { Definitions } from "./definitions";
 
 /**

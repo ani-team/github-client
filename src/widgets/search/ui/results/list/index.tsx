@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import { Empty } from "antd";
 import { Repo, User, Org, Card } from "shared/ui";
-import { VeryMaybe, Repository } from "models";
+import { VeryMaybe, Repository } from "shared/api";
 import { SearchQuery } from "../../../queries.gen";
 import { PAGE_SIZE } from "../../../model";
 import "./index.scss";

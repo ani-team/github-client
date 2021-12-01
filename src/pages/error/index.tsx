@@ -2,7 +2,7 @@ import React from "react";
 import { Auth } from "widgets/auth";
 import { Error } from "widgets/error";
 import { HeroSheet } from "widgets/hero-sheet";
-import { AppError } from "models";
+import { AppError } from "shared/api";
 import { useTitle } from "../helpers";
 
 type Props = {

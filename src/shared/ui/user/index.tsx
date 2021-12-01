@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "antd";
-import { VeryMaybe, User } from "models";
+import { VeryMaybe, User } from "shared/api";
 import Card from "../card";
 
 type Props = {

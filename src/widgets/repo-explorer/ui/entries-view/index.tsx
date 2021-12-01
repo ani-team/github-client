@@ -1,7 +1,7 @@
 import React from "react";
 import { List } from "antd";
 import cn from "classnames";
-import { RepoIdentity, GitFile, GitCommit } from "models";
+import { RepoIdentity, GitFile, GitCommit } from "shared/api";
 import { useBranch } from "../../model";
 import SkeletonArea from "../skeleton-area";
 import GitFileView from "./git-file-view";

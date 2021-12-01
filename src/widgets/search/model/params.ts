@@ -1,5 +1,5 @@
 import { useQueryParam, StringParam, NumberParam, withDefault } from "use-query-params";
-import { SearchType } from "models";
+import { SearchType } from "shared/api";
 
 // FIXME: split by files?
 // FIXME: more strict types

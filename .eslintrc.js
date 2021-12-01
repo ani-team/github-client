@@ -9,7 +9,6 @@ const ALLOWED_PATH_GROUPS = [
     "entities", // FIXME: temp
     "entities/**",
     "shared/**",
-    "models", // FIXME: temp
 ].map((pattern) => ({
     pattern,
     group: "internal",

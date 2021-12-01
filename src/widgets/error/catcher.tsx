@@ -2,7 +2,7 @@ import React, { useEffect, useState, ReactNode } from "react";
 import { onError } from "@apollo/client/link/error";
 import { useApolloClient } from "@apollo/client";
 import { useLocation } from "react-router";
-import { AppError } from "models";
+import { AppError } from "shared/api";
 import { Definitions } from "./definitions";
 import { mapError } from "./helpers";
 

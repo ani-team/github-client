@@ -1,7 +1,7 @@
 import React from "react";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
-import { GitCommit } from "models";
+import { GitCommit } from "shared/api";
 import logo from "./placeholder.png";
 
 type Props = {

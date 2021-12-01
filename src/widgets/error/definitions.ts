@@ -1,4 +1,4 @@
-import { AppError } from "models";
+import { AppError } from "shared/api";
 
 /**
  * Обрабатываемые ошибки приложения

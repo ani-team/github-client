@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { RepoDetails } from "widgets/repo-details";
 import { RepoExplorer } from "widgets/repo-explorer";
 import { RepoStat } from "widgets/repo-stat";
-import { RepoIdentity } from "models";
+import { RepoIdentity } from "shared/api";
 import { useTitle } from "../helpers";
 import "./index.scss";
 

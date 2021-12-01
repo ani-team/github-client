@@ -1,4 +1,4 @@
-import { BranchIdentity, RepoIdentity } from "models";
+import { BranchIdentity, RepoIdentity } from "shared/api";
 import { RepoBranchInfoQuery, useRepoDefaultBranchQuery } from "./queries.gen";
 
 /**

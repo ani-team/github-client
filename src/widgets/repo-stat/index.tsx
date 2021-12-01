@@ -1,6 +1,6 @@
 import React from "react";
 import { Statistic, Skeleton } from "antd";
-import { RepoIdentity } from "models";
+import { RepoIdentity } from "shared/api";
 import { useRepoStatQuery } from "./queries.gen";
 import { stats, prettyValue, StatName } from "./fixtures";
 import "./index.scss";
