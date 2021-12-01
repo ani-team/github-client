@@ -6,7 +6,7 @@ import { RepoDetails } from "widgets/repo-details";
 import { RepoExplorer } from "widgets/repo-explorer";
 import { RepoStat } from "widgets/repo-stat";
 import { RepoIdentity } from "shared/api";
-import { useTitle } from "../helpers";
+import { dom } from "shared/lib/browser";
 import "./index.scss";
 
 type Props = RouteComponentProps<{
@@ -35,7 +35,7 @@ const RepositoryPage = (props: Props) => {
         branch: branch ? branch.replace(/^tree\//, "") : undefined,
     };
 
-    useTitle(`Repository · ${username}/${repository}`);
+    dom.useTitle(`Repository · ${username}/${repository}`);
 
     return (
         <div className="page page-repo">

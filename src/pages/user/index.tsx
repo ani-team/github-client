@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 import { RouteComponentProps } from "react-router-dom";
 import { UserInfo } from "widgets/user-info";
 import { RepoList } from "widgets/repo-list";
-import { useTitle } from "../helpers";
+import { dom } from "shared/lib/browser";
 import "./index.scss";
 
 type Props = RouteComponentProps<{
@@ -16,7 +16,7 @@ type Props = RouteComponentProps<{
  */
 const UserPage = (props: Props) => {
     const { username } = props.match.params;
-    useTitle(`User · ${username}`);
+    dom.useTitle(`User · ${username}`);
 
     return (
         <Row className="page page-user pb-12">

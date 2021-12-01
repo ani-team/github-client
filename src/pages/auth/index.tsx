@@ -2,8 +2,7 @@ import React from "react";
 import { GithubFilled } from "@ant-design/icons";
 import { Alert, Card } from "antd";
 import { Auth } from "widgets/auth";
-import { alert } from "shared/lib/browser";
-import { useTitle } from "../helpers";
+import { alert, dom } from "shared/lib/browser";
 import "./index.scss";
 
 /**
@@ -16,7 +15,7 @@ import "./index.scss";
  * 3. Получение токена на основании OAuth данных и полученного кода
  */
 const AuthPage = () => {
-    useTitle("Sign in to Github Client");
+    dom.useTitle("Sign in to Github Client");
     const { login } = Auth.useAuth();
 
     // TODO: add ability to specify redirect url

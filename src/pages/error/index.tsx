@@ -3,7 +3,7 @@ import { Auth } from "widgets/auth";
 import { Error } from "widgets/error";
 import { HeroSheet } from "widgets/hero-sheet";
 import { AppError } from "shared/api";
-import { useTitle } from "../helpers";
+import { dom } from "shared/lib/browser";
 
 type Props = {
     /** Приходящая ошибка от обработчика */
@@ -36,7 +36,7 @@ const useAppErrors = (error: AppError) => {
  * @remark Отображается при возникающих ошибках в приложении
  */
 const ErrorPage = ({ error }: Props) => {
-    useTitle(`Error occurred · ${error.code || "Unknown"}`);
+    dom.useTitle(`Error occurred · ${error.code || "Unknown"}`);
     const { action } = useAppErrors(error);
 
     return (

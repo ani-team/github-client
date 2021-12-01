@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Alert } from "antd";
 import { Search, searchModel } from "widgets/search";
-import { useTitle } from "../helpers";
+import { dom } from "shared/lib/browser";
 
 const ALERT = `For a while, "organizations" are presented in search results, but not accessible on service pages`;
 
@@ -10,7 +10,7 @@ const ALERT = `For a while, "organizations" are presented in search results, but
  */
 const SearchPage = () => {
     const { searchQuery } = searchModel.params.useSearchQueryParam();
-    useTitle(`Search · ${searchQuery}`);
+    dom.useTitle(`Search · ${searchQuery}`);
 
     return (
         <Row className="page page-search pb-12">

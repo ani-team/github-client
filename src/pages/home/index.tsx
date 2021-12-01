@@ -1,13 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { HeroSheet } from "widgets/hero-sheet";
-import { useTitle } from "../helpers";
+import { dom } from "shared/lib/browser";
 
 /**
  * @page Home
  */
 const HomePage = () => {
-    useTitle("Github Client - Welcome!");
+    dom.useTitle("Github Client - Welcome!");
     const history = useHistory();
     /* FIXME: specify link from Auth.feature */
 
