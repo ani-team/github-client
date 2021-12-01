@@ -2,7 +2,7 @@ import React from "react";
 import { GithubFilled } from "@ant-design/icons";
 import { Alert, Card } from "antd";
 import { Auth } from "widgets/auth";
-import { alert } from "shared/helpers";
+import { alert } from "shared/lib/browser";
 import { useTitle } from "../helpers";
 import "./index.scss";
 

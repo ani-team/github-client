@@ -4,7 +4,7 @@ import { useState } from "react";
  * @hook Логика работы с localStorage
  * @see https://usehooks.com/useLocalStorage/
  */
-function useLocalStorage<T = any>(key: string, initialValue: T): [T, (value: T) => void] {
+export function useLocalStorage<T = any>(key: string, initialValue: T): [T, (value: T) => void] {
     // State to store our value
     // Pass initial state function to useState so logic is only executed once
     const [storedValue, setStoredValue] = useState(() => {
@@ -38,5 +38,3 @@ function useLocalStorage<T = any>(key: string, initialValue: T): [T, (value: T) 
 
     return [storedValue, setValue];
 }
-
-export default useLocalStorage;

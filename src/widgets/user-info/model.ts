@@ -1,5 +1,5 @@
-import { alert } from "shared/helpers";
-import { useDebounce } from "shared/hooks";
+import { alert } from "shared/lib/browser";
+import { useDebounce } from "shared/lib/fp";
 import * as Queries from "./queries.gen";
 
 /**

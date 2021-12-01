@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs } from "shared/ui";
-import { str } from "shared/helpers";
+import * as string from "shared/lib/string";
 import { useSearch, params } from "../../model";
 import "./index.scss";
 
@@ -21,7 +21,7 @@ const SearchFilters = () => {
                     key={type}
                     // FIXME: resolve on tabs level
                     className="search-filters__item mb-2"
-                    name={str.capitalize(type)}
+                    name={string.capitalize(type)}
                     active={typeLiteral === type}
                     onClick={() => handleTypeChange(type)}
                 />

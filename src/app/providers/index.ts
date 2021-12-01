@@ -1,4 +1,4 @@
-import { compose } from "shared/helpers";
+import { compose } from "shared/lib/fp";
 import withApollo from "./with-apollo";
 import withRouter from "./with-router";
 import withAntd from "./with-antd";

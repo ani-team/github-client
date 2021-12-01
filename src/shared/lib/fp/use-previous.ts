@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 /**
  * @hook Хранение предыдущего значения
  */
-function usePrevious<T = any>(value: T): T | undefined {
+export function usePrevious<T = any>(value: T): T | undefined {
     const ref = useRef<T>();
 
     useEffect(() => {
@@ -12,5 +12,3 @@ function usePrevious<T = any>(value: T): T | undefined {
 
     return ref.current;
 }
-
-export default usePrevious;

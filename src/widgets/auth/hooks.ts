@@ -1,4 +1,4 @@
-import { useLocalStorage } from "shared/hooks";
+import { persist } from "shared/lib/browser";
 import { CREDENTIAL_KEY } from "./consts";
 import { UserCredential } from "./types";
 
@@ -6,7 +6,10 @@ import { UserCredential } from "./types";
  * @hook Использование контекста авторизации и соответствующих методов
  */
 export const useAuth = () => {
-    const [viewer, setViewer] = useLocalStorage<UserCredential | null>(CREDENTIAL_KEY, null);
+    const [viewer, setViewer] = persist.useLocalStorage<UserCredential | null>(
+        CREDENTIAL_KEY,
+        null,
+    );
     const isAuth = !!viewer;
 
     // FIXME: specify redirect urls?

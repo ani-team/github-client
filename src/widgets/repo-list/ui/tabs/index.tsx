@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs } from "shared/ui";
-import { str } from "shared/helpers";
+import * as string from "shared/lib/string";
 import { useFilters, tabsMap } from "../../model";
 
 type Props = {
@@ -25,7 +25,7 @@ const RepoListTabs = (props: Props) => {
             {Object.keys(tabsMap).map((type) => (
                 <Tabs.Item
                     key={type}
-                    name={str.capitalize(type)}
+                    name={string.capitalize(type)}
                     className="repo-list__tab"
                     active={config.tab === type}
                     onClick={() => handleTabClick(type)}
