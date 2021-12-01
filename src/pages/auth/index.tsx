@@ -1,8 +1,6 @@
 import React from "react";
-import { GithubFilled } from "@ant-design/icons";
-import { Alert, Card } from "antd";
 import { Auth } from "widgets/auth";
-import { alert, dom } from "shared/lib/browser";
+import { dom } from "shared/lib/browser";
 import "./index.scss";
 
 /**
@@ -16,30 +14,10 @@ import "./index.scss";
  */
 const AuthPage = () => {
     dom.useTitle("Sign in to Github Client");
-    const { login } = Auth.useAuth();
-
-    // TODO: add ability to specify redirect url
-    const authorize = () => {
-        Auth.authorizeGithub()
-            .then(login)
-            .catch((err: Error) => alert.error("Authorization error", err.message));
-    };
 
     return (
         <div className="page page-auth">
-            <Card className="page-auth__form" title="SIGN IN">
-                <div className="page-auth__alerts">
-                    <Alert type="info" message="While available only GitHub OAuth authorization" />
-                </div>
-                <button
-                    type="button"
-                    className="page-auth__link github"
-                    onClick={authorize}
-                    title="Authentication through Github OAuth"
-                >
-                    <GithubFilled style={{ fontSize: 64, color: "unset" }} />
-                </button>
-            </Card>
+            <Auth.OAuthForm />
         </div>
     );
 };
