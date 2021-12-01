@@ -1,7 +1,7 @@
 import React from "react";
 import { Statistic, Skeleton } from "antd";
 import { RepoIdentity } from "shared/api";
-import { useRepoStatQuery } from "./queries.gen";
+import { useRepoStatQuery } from "./api";
 import { stats, prettyValue, StatName } from "./fixtures";
 import "./index.scss";
 

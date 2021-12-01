@@ -2,7 +2,7 @@ import React from "react";
 import { Skeleton, Tag } from "antd";
 import { Language, RepoIdentity } from "shared/api";
 import DetailsCard from "../details-card";
-import { RepoDetailsQuery } from "../../queries.gen";
+import { RepoDetailsQuery } from "../../api";
 
 type Props = {
     /** Данные по репозиторию */

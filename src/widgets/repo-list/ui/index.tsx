@@ -1,5 +1,5 @@
 import React from "react";
-import { useReposQuery } from "../queries.gen";
+import { useReposQuery } from "../api";
 import { useFilters, useStarring } from "../model";
 import Tabs from "./tabs";
 import Items from "./items";

@@ -1,6 +1,6 @@
 import { alert } from "shared/lib/browser";
 import { useDebounce } from "shared/lib/fp";
-import * as Queries from "./queries.gen";
+import * as Queries from "./api";
 
 /**
  * @hook Логика подписки/отписки от пользователя

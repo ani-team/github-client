@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import DetailsCard from "../details-card";
-import { RepoDetailsQuery } from "../../queries.gen";
+import { RepoDetailsQuery } from "../../api";
 
 // FIXME: move to models
 type Collaborator = {

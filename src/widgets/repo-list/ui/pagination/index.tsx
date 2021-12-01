@@ -1,6 +1,6 @@
 import React from "react";
 import { SimplePagination } from "shared/ui";
-import { RepositoriesDetailsFragment } from "../../queries.gen";
+import { RepositoriesDetailsFragment } from "../../api";
 import { useFilters, PAGE_SIZE } from "../../model";
 
 type Props = Partial<RepositoriesDetailsFragment> & {

@@ -1,5 +1,5 @@
 import { BranchIdentity, RepoIdentity } from "shared/api";
-import { RepoBranchInfoQuery, useRepoDefaultBranchQuery } from "./queries.gen";
+import { RepoBranchInfoQuery, useRepoDefaultBranchQuery } from "./api";
 
 /**
  * @hook Получение текущей ветки репозитория

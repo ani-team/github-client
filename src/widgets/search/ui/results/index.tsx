@@ -1,6 +1,6 @@
 import React from "react";
 import { useSearch } from "../../model";
-import { useSearchQuery } from "../../queries.gen";
+import { useSearchQuery } from "../../api";
 import Toolbar from "./toolbar";
 import List from "./list";
 import Pagination from "./pagination";

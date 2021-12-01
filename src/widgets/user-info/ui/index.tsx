@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Skeleton } from "antd";
 import { useFollowing } from "../model";
-import * as Queries from "../queries.gen";
+import * as Queries from "../api";
 import "./index.scss";
 
 type Props = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { RepoIdentity } from "shared/api";
-import { useRepoBranchInfoQuery } from "../queries.gen";
+import { useRepoBranchInfoQuery } from "../api";
 import { useBranch, useRepoDetails } from "../model";
 import RepoToolbar from "./toolbar";
 import EntriesView from "./entries-view";

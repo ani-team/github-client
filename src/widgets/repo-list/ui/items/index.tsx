@@ -2,7 +2,7 @@ import React from "react";
 import { Empty } from "antd";
 import { Repo, Card } from "shared/ui";
 import { VeryMaybe, Repository } from "shared/api";
-import { RepositoriesDetailsFragment } from "../../queries.gen";
+import { RepositoriesDetailsFragment } from "../../api";
 import { useStarring } from "../../model";
 
 type Props = {

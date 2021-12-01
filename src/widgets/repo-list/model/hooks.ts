@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDebounce } from "shared/lib/fp";
 import { alert } from "shared/lib/browser";
-import * as Queries from "../queries.gen";
+import * as Queries from "../api";
 import * as Params from "./params";
 
 export const PAGE_SIZE = 30;
