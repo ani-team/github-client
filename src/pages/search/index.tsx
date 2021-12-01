@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Alert } from "antd";
-import { Search } from "widgets/search";
+import { Search, searchModel } from "widgets/search";
 import { useTitle } from "../helpers";
 
 const ALERT = `For a while, "organizations" are presented in search results, but not accessible on service pages`;
@@ -9,7 +9,7 @@ const ALERT = `For a while, "organizations" are presented in search results, but
  * @page Search
  */
 const SearchPage = () => {
-    const { searchQuery } = Search.params.useSearchQueryParam();
+    const { searchQuery } = searchModel.params.useSearchQueryParam();
     useTitle(`Search · ${searchQuery}`);
 
     return (

@@ -1,10 +1,10 @@
 import React from "react";
 import { RepoIdentity } from "models";
 import { useRepoBranchInfoQuery } from "../queries.gen";
+import { useBranch, useRepoDetails } from "../model";
 import RepoToolbar from "./toolbar";
 import EntriesView from "./entries-view";
 import RepoReadme from "./readme";
-import { useBranch, useRepoDetails } from "./hooks";
 
 type Props = {
     /** repo identity */
@@ -14,7 +14,7 @@ type Props = {
 /**
  * @feature FileExplorer репозитория
  */
-const Explorer = ({ repo }: Props) => {
+export const RepoExplorer = ({ repo }: Props) => {
     const { branch } = useBranch(repo);
     const { loading, data } = useRepoBranchInfoQuery({
         variables: {
@@ -43,5 +43,3 @@ const Explorer = ({ repo }: Props) => {
         </div>
     );
 };
-
-export default Explorer;
