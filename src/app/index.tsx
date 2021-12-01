@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 import Routing from "pages";
-import Header from "./header";
+import Header from "widgets/header";
 import { withHocs, ErrorHandlingProvider } from "./hocs";
 import "./index.scss";
 
