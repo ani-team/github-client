@@ -10,6 +10,6 @@ import withAntd from "./with-antd";
  * - логику подключения к API (withApollo)
  * - логику инициализации роутера (withRouter)
  */
-export const withHocs = compose(withAntd, withRouter, withApollo);
+export const withProviders = compose(withAntd, withRouter, withApollo);
 
 export { ErrorHandlingProvider } from "./with-error-handling";

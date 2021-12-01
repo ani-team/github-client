@@ -1,0 +1,34 @@
+// NOTE: Временно используем вспомогательные utilities-классы, на время разработки прототипа приложения
+@import "~tailwindcss/dist/utilities.css";
+// css-переменные проекта
+@import "./vars.scss";
+// нормализация стилей проекта
+@import "./normalize.scss";
+// нормализация стилей antd компонентов
+@import "./normalize-antd.scss";
+// классы-утилиты
+@import "./utils.scss";
+
+.gc-app {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--ff-primary);
+    background-color: var(--clr-background);
+
+    &-content {
+        flex-grow: 1;
+    }
+
+    .page {
+        margin: 20px 10%;
+    }
+
+    .ant-layout {
+        background-color: unset;
+
+        &-content {
+            // FIXME: deprecated (find better solution)
+            overflow: overlay;
+        }
+    }
+}

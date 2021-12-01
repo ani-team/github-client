@@ -2,7 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import Routing from "pages";
 import Header from "widgets/header";
-import { withHocs, ErrorHandlingProvider } from "./hocs";
+import { withProviders, ErrorHandlingProvider } from "./providers";
 import "./index.scss";
 
 /**
@@ -25,4 +25,4 @@ const App = () => {
     );
 };
 
-export default withHocs(App);
+export default withProviders(App);
