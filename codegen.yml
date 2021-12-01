@@ -20,7 +20,7 @@ config:
   # Типы генерируются на лету, без Pick - для чистоты информации по типу
   preResolveTypes: true
 generates:
-  src/models.gen.ts:
+  src/shared/api/models.gen.ts:
     plugins:
       - add
       - typescript
@@ -29,7 +29,7 @@ generates:
     # Типы схемы и запросы - разделены
     presetConfig:
       extension: .gen.ts
-      baseTypesPath: models.gen.ts
+      baseTypesPath: shared/api/models.gen.ts
     plugins:
       - add
       - typescript-operations
