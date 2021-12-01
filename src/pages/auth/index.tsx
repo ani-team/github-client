@@ -1,8 +1,8 @@
 import React from "react";
 import { GithubFilled } from "@ant-design/icons";
 import { Alert, Card } from "antd";
+import { Auth } from "widgets/auth";
 import { alert } from "shared/helpers";
-import { Auth } from "widgets";
 import { useTitle } from "../helpers";
 import "./index.scss";
 

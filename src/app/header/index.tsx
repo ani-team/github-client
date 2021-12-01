@@ -1,8 +1,8 @@
 import React from "react";
 import { Layout, Input } from "antd";
 import { Link } from "react-router-dom";
+import { Auth } from "widgets/auth";
 import { GITHUB_MAIN, GITHUB_FEEDBACK } from "shared/get-env";
-import { Auth } from "widgets";
 import { ReactComponent as IcLogo } from "./logo.svg";
 import { useSearchInput } from "./hooks";
 import "./index.scss";

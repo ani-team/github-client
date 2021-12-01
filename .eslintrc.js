@@ -1,25 +1,36 @@
 /** Разрешенные импорты (с публичными API) */
-const ALLOWED_PATH_GROUPS = ["shared", "shared/**", "pages", "widgets", "models"].map(
-    (pattern) => ({
-        pattern,
-        group: "internal",
-        position: "after",
-    }),
-);
+const ALLOWED_PATH_GROUPS = [
+    "pages",
+    "pages/**",
+    "widgets", // FIXME: temp
+    "widgets/**",
+    "features", // FIXME: temp
+    "features/**",
+    "entities", // FIXME: temp
+    "entities/**",
+    "shared/**",
+    "models", // FIXME: temp
+].map((pattern) => ({
+    pattern,
+    group: "internal",
+    position: "after",
+}));
 /** Для запрета приватных путей */
 const DENIED_PATH_GROUPS = [
     // Private imports are prohibited, use public imports instead
     "app/**",
-    "pages/**",
-    "widgets/**",
-    "shared/*/**",
-    "models.gen",
+    "pages/*/**",
+    "widgets/*/**",
+    "features/*/**",
+    "entities/*/**",
+    "shared/*/*/**",
     // Prefer absolute imports instead of relatives (for root modules)
     "../**/app",
     "../**/pages",
     "../**/widgets",
+    "../**/features",
+    "../**/entities",
     "../**/shared",
-    "../**/models",
 ];
 
 module.exports = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { HeroSheet } from "widgets";
+import { HeroSheet } from "widgets/hero-sheet";
 import { useTitle } from "../helpers";
 
 /**

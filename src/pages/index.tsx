@@ -1,7 +1,8 @@
 import React, { lazy, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { Auth } from "widgets/auth";
+import { Origin } from "widgets/origin";
 import { dom } from "shared/helpers";
-import { Auth, Origin } from "widgets";
 
 const HomePage = lazy(() => import("./home"));
 const RepositoryPage = lazy(() => import("./repository"));

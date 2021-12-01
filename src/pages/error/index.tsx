@@ -1,5 +1,7 @@
 import React from "react";
-import { Auth, Error, HeroSheet } from "widgets";
+import { Auth } from "widgets/auth";
+import { Error } from "widgets/error";
+import { HeroSheet } from "widgets/hero-sheet";
 import { AppError } from "models";
 import { useTitle } from "../helpers";
 
