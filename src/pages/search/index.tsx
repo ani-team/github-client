@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Alert } from "antd";
-import { Search } from "features";
+import { Search } from "widgets";
 import { useTitle } from "../helpers";
 
 const ALERT = `For a while, "organizations" are presented in search results, but not accessible on service pages`;

@@ -1,5 +1,5 @@
 /** Разрешенные импорты (с публичными API) */
-const ALLOWED_PATH_GROUPS = ["shared", "shared/**", "pages", "features", "models"].map(
+const ALLOWED_PATH_GROUPS = ["shared", "shared/**", "pages", "widgets", "models"].map(
     (pattern) => ({
         pattern,
         group: "internal",
@@ -11,13 +11,13 @@ const DENIED_PATH_GROUPS = [
     // Private imports are prohibited, use public imports instead
     "app/**",
     "pages/**",
-    "features/**",
+    "widgets/**",
     "shared/*/**",
     "models.gen",
     // Prefer absolute imports instead of relatives (for root modules)
     "../**/app",
     "../**/pages",
-    "../**/features",
+    "../**/widgets",
     "../**/shared",
     "../**/models",
 ];

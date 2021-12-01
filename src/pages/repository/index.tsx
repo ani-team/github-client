@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "antd";
 import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
-import { RepoDetails, RepoExplorer, RepoStat } from "features";
+import { RepoDetails, RepoExplorer, RepoStat } from "widgets";
 import { RepoIdentity } from "models";
 import { useTitle } from "../helpers";
 import "./index.scss";

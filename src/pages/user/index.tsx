@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "antd";
 import { RouteComponentProps } from "react-router-dom";
-import { UserInfo, RepoList } from "features";
+import { UserInfo, RepoList } from "widgets";
 import { useTitle } from "../helpers";
 import "./index.scss";
 

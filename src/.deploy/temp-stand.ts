@@ -1,4 +1,4 @@
-import { Auth } from "features";
+import { Auth } from "widgets";
 
 const { CREDENTIAL_KEY } = Auth;
 const tempStandRegex = /^(github-client-47c49|dev-github-client)--pr\d+.+\.web\.app$/;

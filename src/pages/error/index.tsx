@@ -1,5 +1,5 @@
 import React from "react";
-import { Auth, Error, HeroSheet } from "features";
+import { Auth, Error, HeroSheet } from "widgets";
 import { AppError } from "models";
 import { useTitle } from "../helpers";
 
