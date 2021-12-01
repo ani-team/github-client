@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import { firebaseConfig } from "shared/get-env";
+import { firebaseConfig } from "shared/config";
 
 /**
  * Инициализация firebase приложения

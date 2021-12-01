@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs } from "shared/components";
+import { Tabs } from "shared/ui";
 import { str } from "shared/helpers";
 import { useSearch, params } from "../../model";
 import "./index.scss";

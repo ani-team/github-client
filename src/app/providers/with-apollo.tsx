@@ -2,7 +2,7 @@ import React from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { Auth } from "widgets/auth";
-import { API_URL } from "shared/get-env";
+import { API_URL } from "shared/config";
 
 /**
  * Инициализация API.baseUrl

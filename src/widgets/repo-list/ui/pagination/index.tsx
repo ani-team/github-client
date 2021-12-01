@@ -1,5 +1,5 @@
 import React from "react";
-import { SimplePagination } from "shared/components";
+import { SimplePagination } from "shared/ui";
 import { RepositoriesDetailsFragment } from "../../queries.gen";
 import { useFilters, PAGE_SIZE } from "../../model";
 
