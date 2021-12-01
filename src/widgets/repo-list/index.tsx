@@ -16,7 +16,7 @@ type Props = {
  * FIXME: rename to UserRepoList? (coz - user as dep)
  * FIXME: simplify inner components
  */
-const RepoList = ({ username }: Props) => {
+export const RepoList = ({ username }: Props) => {
     const { handleTabClick, handlePaginationClick, config } = useFilters();
     const { data, loading, variables } = useReposQuery({
         variables: { login: username, ...config },
@@ -43,5 +43,3 @@ const RepoList = ({ username }: Props) => {
         </div>
     );
 };
-
-export default RepoList;

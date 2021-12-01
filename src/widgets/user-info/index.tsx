@@ -13,7 +13,7 @@ type Props = {
  * @feature Карточка пользователя
  * FIXME: rename to UserDetails
  */
-const UserInfo = ({ username }: Props) => {
+export const UserInfo = ({ username }: Props) => {
     const { data, loading, variables } = Queries.useUserInfoQuery({
         variables: { login: username },
     });
@@ -51,5 +51,3 @@ const UserInfo = ({ username }: Props) => {
         </div>
     );
 };
-
-export default UserInfo;

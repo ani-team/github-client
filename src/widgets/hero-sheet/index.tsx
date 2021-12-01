@@ -27,7 +27,7 @@ type Props = {
  * Hero секция
  * @remark Используется как базовое отображение информации для HomePage, ErrorPage
  */
-const HeroSheet = ({ title, description, action, useSadHero = false }: Props) => {
+export const HeroSheet = ({ title, description, action, useSadHero = false }: Props) => {
     const history = useHistory();
     const backAction: UserAction = {
         text: "Back",
@@ -53,5 +53,3 @@ const HeroSheet = ({ title, description, action, useSadHero = false }: Props) =>
         </div>
     );
 };
-
-export default HeroSheet;

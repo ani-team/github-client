@@ -1,2 +1,3 @@
-export { default as Catcher } from "./catcher";
-export * from "./definitions";
+import * as Error from "./init";
+
+export { Error };

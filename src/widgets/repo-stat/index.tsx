@@ -15,7 +15,7 @@ type Props = {
 /**
  * @feature Статистика репозитория
  */
-const RepoStat = ({ repo }: Props) => {
+export const RepoStat = ({ repo }: Props) => {
     const { data, loading } = useRepoStatQuery({ variables: repo });
     const baseUrl = `https://github.com/${repo.owner}/${repo.name}`;
 
@@ -51,5 +51,3 @@ const RepoStat = ({ repo }: Props) => {
         </div>
     );
 };
-
-export default RepoStat;

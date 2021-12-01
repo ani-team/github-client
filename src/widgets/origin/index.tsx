@@ -18,7 +18,7 @@ const PROHIBITED_ROUTES = [
 /**
  * @feature Кнопка-редирект на исходную страницу на GitHub
  */
-const Origin = () => {
+export const Origin = () => {
     const { pathname, search } = useLocation();
     const location = `${pathname}${search}`;
     /** Скрываем кнопку для запрещенных роутов */
@@ -38,5 +38,3 @@ const Origin = () => {
         </button>
     );
 };
-
-export default Origin;

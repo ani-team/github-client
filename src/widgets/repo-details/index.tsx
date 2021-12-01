@@ -14,7 +14,7 @@ type Props = {
 /**
  * @feature Информация по репозиторию
  */
-const RepoDetails = ({ repo: identity }: Props) => {
+export const RepoDetails = ({ repo: identity }: Props) => {
     const { data, loading } = useRepoDetailsQuery({
         variables: {
             name: identity.name,
@@ -39,5 +39,3 @@ const RepoDetails = ({ repo: identity }: Props) => {
         </div>
     );
 };
-
-export default RepoDetails;
