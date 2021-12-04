@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DetailsCard from "../details-card";
+import { DetailsCard } from "shared/ui";
 import { RepoDetailsQuery } from "../../api";
 
 // FIXME: move to models

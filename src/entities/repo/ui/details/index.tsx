@@ -1,12 +1,11 @@
 import React from "react";
 import { Skeleton, Tag } from "antd";
-import { Language, RepoIdentity } from "shared/api";
-import DetailsCard from "../details-card";
-import { RepoDetailsQuery } from "../../api";
+import { Language, RepoIdentity, Repository } from "shared/api";
+import { DetailsCard } from "shared/ui";
 
 type Props = {
     /** Данные по репозиторию */
-    repository: RepoDetailsQuery["repository"];
+    repository: Repository;
     /** repo identity */
     identity: RepoIdentity;
     /** Флаг загрузки */
@@ -16,7 +15,7 @@ type Props = {
 /**
  * Общая информация по репозиторию
  */
-const CardCommon = (props: Props) => {
+export const RepoDetails = (props: Props) => {
     const { repository, identity, loading } = props;
     const languages = repository?.languages?.nodes?.filter((lang): lang is Language => !!lang);
     return (
@@ -49,5 +48,3 @@ const CardCommon = (props: Props) => {
         </DetailsCard>
     );
 };
-
-export default CardCommon;

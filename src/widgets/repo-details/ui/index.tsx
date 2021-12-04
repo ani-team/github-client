@@ -1,8 +1,8 @@
 import { Alert, Spin } from "antd";
 import React from "react";
+import { RepoDetails as Details } from "entities/repo";
 import { RepoIdentity } from "shared/api";
 import { useRepoDetailsQuery } from "../api";
-import CardCommon from "./card-common";
 import CardCollaborators from "./card-collaborators";
 import "./index.scss";
 
@@ -26,7 +26,12 @@ export const RepoDetails = ({ repo: identity }: Props) => {
 
     return (
         <div className="flex flex-col">
-            <CardCommon identity={identity} loading={loading} repository={repository} />
+            <Details
+                identity={identity}
+                loading={loading}
+                // @ts-ignore
+                repository={repository}
+            />
             <CardCollaborators repository={repository} />
             <Spin spinning={loading}>
                 <Alert
