@@ -6,15 +6,6 @@
     font-size: var(--fsz);
     background-color: var(--clr-text) !important;
 
-    &__logo {
-        height: 32px;
-        transition: var(--transition);
-
-        &:hover {
-            opacity: 0.7;
-        }
-    }
-
     &__search {
         // FIXME: temp (hardcoded)
         width: 256px;

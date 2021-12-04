@@ -12,5 +12,11 @@
         "color-hex-length": "long",
         "at-rule-no-unknown": null,
         "scss/at-rule-no-unknown": true
-    }
+    },
+    "ignoreFiles": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx"
+    ]
 }
