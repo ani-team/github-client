@@ -1,7 +1,7 @@
 import React from "react";
 import Markdown from "react-markdown";
 import gfm from "remark-gfm";
-import SkeletonArea from "../skeleton-area";
+import { SkeletonArea } from "shared/ui/skeleton-area";
 import CodeRenderer from "./code-renderer";
 import "./index.scss";
 
@@ -71,7 +71,7 @@ const useLocalUri = ({ repoUrl, branch }: Props) => {
  * TODO: Плохо обрабатываются сочетания markdown и html - возможно позже надо завезти отдельный htmlParser
  * @see https://github.com/remarkjs/react-markdown
  */
-const RepoReadme = (props: Props) => {
+export const RepoReadme = (props: Props) => {
     const { text, loading } = props;
     const uriTransformers = useLocalUri(props);
 
@@ -101,5 +101,3 @@ const RepoReadme = (props: Props) => {
         </div>
     );
 };
-
-export default RepoReadme;

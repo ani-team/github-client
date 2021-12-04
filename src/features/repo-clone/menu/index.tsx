@@ -1,10 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { CopyOutlined } from "@ant-design/icons";
 import { Button, Input, Tooltip } from "antd";
+import { RepoIdentity } from "shared/api";
+import "index.scss";
 
-type Props = { url: string };
+export type RepoCloneMenuProps = { data: RepoIdentity };
 
-const CloneMenu = ({ url }: Props) => {
+export const RepoCloneMenu = ({ data }: Props) => {
+    const url = `https://github.com/${data.owner}/${data.name}.git`;
     const cloneField = useRef<Input>(null);
     const [isUrlCopied, setUrlCopied] = useState<boolean | null>(null);
     useEffect(() => {
@@ -46,5 +49,3 @@ const CloneMenu = ({ url }: Props) => {
         </div>
     );
 };
-
-export default CloneMenu;

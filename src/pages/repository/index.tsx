@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, Row } from "antd";
 import { RouteComponentProps } from "react-router";
-import { Link } from "react-router-dom";
 import { RepoDetails } from "widgets/repo-details";
 import { RepoExplorer } from "widgets/repo-explorer";
 import { RepoActions } from "features/repo-actions";
+import { RepoBreadcrumbs } from "entities/repo";
 import { RepoIdentity } from "shared/api";
 import { dom } from "shared/lib/browser";
 import "./index.scss";
@@ -41,13 +41,7 @@ const RepositoryPage = (props: Props) => {
         <div className="page page-repo">
             <Row className="mt-2" gutter={ROW_GUTTER}>
                 <Col span={COL_MAIN}>
-                    <h2 className="m-0">
-                        <Link to={`/${identity.owner}`} className="owner">
-                            {identity.owner}
-                        </Link>
-                        <span>{" / "}</span>
-                        <Link to={`/${identity.owner}/${identity.name}`}>{identity.name}</Link>
-                    </h2>
+                    <RepoBreadcrumbs data={identity} />
                 </Col>
                 <Col span={COL_SIDEBAR}>
                     <RepoActions repo={identity} />

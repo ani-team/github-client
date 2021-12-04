@@ -1,10 +1,11 @@
 import React from "react";
+import { RepoBranches } from "features/repo-branches";
+import { RepoClone } from "features/repo-clone";
+import { RepoReadme, repoLib } from "entities/repo";
 import { RepoIdentity } from "shared/api";
 import { useRepoBranchInfoQuery } from "../api";
 import { useBranch, useRepoDetails } from "../model";
-import RepoToolbar from "./toolbar";
 import EntriesView from "./entries-view";
-import RepoReadme from "./readme";
 
 type Props = {
     /** repo identity */
@@ -28,10 +29,13 @@ export const RepoExplorer = ({ repo }: Props) => {
         },
     });
     const { branches, files, lastCommit, readme } = useRepoDetails(data);
-    const repoUrl = `${repo.owner}/${repo.name}`;
+    const repoUrl = repoLib.getIdentityUri(repo);
     return (
         <div>
-            <RepoToolbar repo={repo} branches={branches} activeBranch={branch} />
+            <div className="flex justify-between">
+                <RepoBranches activeBranch={branch} branches={branches} repo={repo} />
+                <RepoClone data={repo} />
+            </div>
             <EntriesView
                 files={files}
                 lastCommit={lastCommit}

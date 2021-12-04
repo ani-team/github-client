@@ -10,7 +10,7 @@ type Props = {
     onVisibleChange?: (flag: boolean) => void;
 };
 
-const BranchesMenu = ({ repo, branches, onVisibleChange }: Props) => {
+export const RepoBranchesMenu = ({ repo, branches, onVisibleChange }: Props) => {
     return (
         <Menu className="branches-menu">
             {branches?.map((branch, index) => (
@@ -23,5 +23,3 @@ const BranchesMenu = ({ repo, branches, onVisibleChange }: Props) => {
         </Menu>
     );
 };
-
-export default BranchesMenu;
