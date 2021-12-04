@@ -2,7 +2,8 @@ import React from "react";
 import cn from "classnames";
 import { Empty } from "antd";
 import { RepoCard } from "entities/repo";
-import { User, Org, Card } from "shared/ui";
+import { UserCard } from "entities/user";
+import { Org, Card } from "shared/ui";
 import { VeryMaybe, Repository } from "shared/api";
 import { SearchQuery } from "../../../api";
 import { PAGE_SIZE } from "../../../model";
@@ -43,7 +44,7 @@ const ResultsList = (props: Props) => {
                         ((node as any)?.__typename === "Organization" ? (
                             <Org data={node} />
                         ) : (
-                            <User data={node} />
+                            <UserCard data={node} />
                         ))}
                 </div>
             ))}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { VeryMaybe, User } from "shared/api";
-import Card from "../card";
+import { Card } from "shared/ui";
 
 type Props = {
     /** Данные по пользователю */
@@ -13,7 +13,7 @@ type Props = {
 /**
  * @ItemEntity Карточка пользователя
  */
-const UserCard = (props: Props) => {
+export const UserCard = (props: Props) => {
     const { data, onFollowing } = props;
     const { avatarUrl, login, viewerIsFollowing, bio } = data || {};
     return (
@@ -37,5 +37,3 @@ const UserCard = (props: Props) => {
         />
     );
 };
-
-export default UserCard;
