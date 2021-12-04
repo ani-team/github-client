@@ -1,9 +1,9 @@
 import { Alert, Spin } from "antd";
 import React from "react";
-import { RepoDetails as Details } from "entities/repo";
+import { RepoDetails as Details, RepoCollaborators } from "entities/repo";
 import { RepoIdentity } from "shared/api";
 import { useRepoDetailsQuery } from "../api";
-import CardCollaborators from "./card-collaborators";
+
 import "./index.scss";
 
 type Props = {
@@ -32,7 +32,10 @@ export const RepoDetails = ({ repo: identity }: Props) => {
                 // @ts-ignore
                 repository={repository}
             />
-            <CardCollaborators repository={repository} />
+            <RepoCollaborators
+                // @ts-ignore
+                repository={repository}
+            />
             <Spin spinning={loading}>
                 <Alert
                     style={{ borderRadius: 6, marginTop: 10 }}

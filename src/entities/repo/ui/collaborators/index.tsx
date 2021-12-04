@@ -1,31 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { DetailsCard } from "shared/ui";
-import { RepoDetailsQuery } from "../../api";
-
-// FIXME: move to models
-type Collaborator = {
-    /** id */
-    id: string;
-    /** Имя пользователя */
-    name: string;
-    /** Логин пользователя */
-    login: string;
-    /** Аватар */
-    avatarUrl: string;
-};
+import { Repository, User } from "shared/api";
 
 type Props = {
     /** Данные по репозиторию */
-    repository: RepoDetailsQuery["repository"];
+    repository: Repository;
 };
 
 /**
  * Коллабораторы репозитория
  */
-const CardCollaborators = ({ repository }: Props) => {
+export const RepoCollaborators = ({ repository }: Props) => {
     const collaborators = repository?.collaborators?.nodes?.filter(
-        (collaborator): collaborator is Collaborator => !!collaborator,
+        (collaborator): collaborator is User => !!collaborator,
     );
 
     if (!collaborators) return null;
@@ -42,5 +30,3 @@ const CardCollaborators = ({ repository }: Props) => {
         </DetailsCard>
     );
 };
-
-export default CardCollaborators;

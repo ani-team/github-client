@@ -57,3 +57,15 @@ export type GitCommit = {
  * !!! FIXME: more strict types (TotallyNullable not help...) or fix on codegen level
  */
 export type VeryMaybe<T> = import("./models.gen").Maybe<Partial<T>>;
+
+// FIXME: move to models
+type Collaborator = {
+    /** id */
+    id: string;
+    /** Имя пользователя */
+    name: string;
+    /** Логин пользователя */
+    login: string;
+    /** Аватар */
+    avatarUrl: string;
+};
