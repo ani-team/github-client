@@ -3,7 +3,8 @@ import cn from "classnames";
 import { Empty } from "antd";
 import { RepoCard } from "entities/repo";
 import { UserCard } from "entities/user";
-import { Org, Card } from "shared/ui";
+import { OrgCard } from "entities/org";
+import { Card } from "shared/ui";
 import { VeryMaybe, Repository } from "shared/api";
 import { SearchQuery } from "../../../api";
 import { PAGE_SIZE } from "../../../model";
@@ -42,7 +43,7 @@ const ResultsList = (props: Props) => {
                     )}
                     {isUserSearch &&
                         ((node as any)?.__typename === "Organization" ? (
-                            <Org data={node} />
+                            <OrgCard data={node} />
                         ) : (
                             <UserCard data={node} />
                         ))}

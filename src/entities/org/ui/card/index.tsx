@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "antd";
 import { BankOutlined } from "@ant-design/icons";
 import { VeryMaybe, Organization } from "shared/api";
-import Card from "../card";
+import { Card } from "shared/ui";
 import "./index.scss";
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 /**
  * @ItemEntity Карточка организации
  */
-const Org = (props: Props) => {
+export const OrgCard = (props: Props) => {
     const { avatarUrl, login, description, url } = props.data || {};
 
     return (
@@ -41,5 +41,3 @@ const Org = (props: Props) => {
         />
     );
 };
-
-export default Org;
