@@ -1,7 +1,8 @@
 import React from "react";
 import cn from "classnames";
 import { Empty } from "antd";
-import { Repo, User, Org, Card } from "shared/ui";
+import { RepoCard } from "entities/repo";
+import { User, Org, Card } from "shared/ui";
 import { VeryMaybe, Repository } from "shared/api";
 import { SearchQuery } from "../../../api";
 import { PAGE_SIZE } from "../../../model";
@@ -36,7 +37,7 @@ const ResultsList = (props: Props) => {
                 >
                     {/* !!! FIXME: simplify */}
                     {isRepoSearch && (
-                        <Repo data={node as VeryMaybe<Repository>} format="owner-repo" />
+                        <RepoCard data={node as VeryMaybe<Repository>} format="owner-repo" />
                     )}
                     {isUserSearch &&
                         ((node as any)?.__typename === "Organization" ? (

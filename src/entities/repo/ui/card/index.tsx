@@ -3,7 +3,7 @@ import cn from "classnames";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import { VeryMaybe, Repository } from "shared/api";
-import Card from "../card";
+import { Card } from "shared/ui";
 import Lang from "./lang";
 import "./index.scss";
 
@@ -21,7 +21,7 @@ type Props = {
 /**
  * @ItemEntity Карточка репозитория
  */
-const Repo = (props: Props) => {
+export const RepoCard = (props: Props) => {
     const { format = "repo", onStarring, loading } = props;
     const { name, primaryLanguage, updatedAt, viewerHasStarred: starred, owner } = props.data || {};
     // prettier-ignore
@@ -55,5 +55,3 @@ const Repo = (props: Props) => {
         />
     );
 };
-
-export default Repo;

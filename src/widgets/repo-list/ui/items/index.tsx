@@ -1,6 +1,7 @@
 import React from "react";
 import { Empty } from "antd";
-import { Repo, Card } from "shared/ui";
+import { RepoCard } from "entities/repo";
+import { Card } from "shared/ui";
 import { VeryMaybe, Repository } from "shared/api";
 import { RepositoriesDetailsFragment } from "../../api";
 import { useStarring } from "../../model";
@@ -29,7 +30,7 @@ const RepoListItems = (props: Props) => {
             {loading && <Card.SkeletonGroup amount={10} />}
             {length !== 0 ? (
                 nodes?.map((node) => (
-                    <Repo
+                    <RepoCard
                         onStarring={() => starring.handle(node?.id, node?.viewerHasStarred)}
                         key={node?.id}
                         data={node as VeryMaybe<Repository>}
