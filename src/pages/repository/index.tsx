@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router";
 import { Link } from "react-router-dom";
 import { RepoDetails } from "widgets/repo-details";
 import { RepoExplorer } from "widgets/repo-explorer";
-import { RepoStat } from "widgets/repo-stat";
+import { RepoActions } from "features/repo-actions";
 import { RepoIdentity } from "shared/api";
 import { dom } from "shared/lib/browser";
 import "./index.scss";
@@ -50,7 +50,7 @@ const RepositoryPage = (props: Props) => {
                     </h2>
                 </Col>
                 <Col span={COL_SIDEBAR}>
-                    <RepoStat repo={identity} />
+                    <RepoActions repo={identity} />
                 </Col>
             </Row>
             <Row className="page-repo__main mt-2" gutter={ROW_GUTTER}>
