@@ -1,8 +1,9 @@
 import React, { lazy, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import { authLib, authModel } from "widgets/auth";
 import { Origin } from "widgets/origin";
+import { authModel } from "entities/auth";
 import { dom } from "shared/lib/browser";
+import { routes } from "./routes";
 
 const HomePage = lazy(() => import("./home"));
 const RepositoryPage = lazy(() => import("./repository"));
@@ -37,9 +38,9 @@ const Routing = () => {
     if (!isAuth) {
         return (
             <Switch>
-                <Route exact path={authLib.routes.main} component={HomePage} />
-                <Route exact path={authLib.routes.login} component={AuthPage} />
-                <Redirect to={authLib.routes.login} />
+                <Route exact path={routes.main} component={HomePage} />
+                <Route exact path={routes.login} component={AuthPage} />
+                <Redirect to={routes.login} />
             </Switch>
         );
     }

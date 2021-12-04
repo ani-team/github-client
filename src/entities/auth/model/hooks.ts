@@ -1,6 +1,6 @@
 import { persist } from "shared/lib/browser";
 import { CREDENTIAL_KEY } from "../lib";
-import { UserCredential } from "./types";
+import { UserCredential } from "../types";
 
 /**
  * @hook Использование контекста авторизации и соответствующих методов

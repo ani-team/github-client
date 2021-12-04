@@ -1,7 +1,8 @@
 import React from "react";
 import { Layout } from "antd";
-import { User, authModel } from "widgets/auth";
+import { User } from "widgets/auth";
 import { SearchInput } from "features/search";
+import { authModel } from "entities/auth";
 import { GITHUB_MAIN, GITHUB_FEEDBACK } from "shared/config";
 import { BrandLogo, NavItem } from "shared/ui";
 import "./index.scss";

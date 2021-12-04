@@ -1,6 +1,5 @@
-import { authLib } from "widgets/auth";
+import { authLib } from "entities/auth";
 
-const { CREDENTIAL_KEY } = authLib;
 const tempStandRegex = /^(github-client-47c49|dev-github-client)--pr\d+.+\.web\.app$/;
 
 const isTempStand = () => tempStandRegex.test(window.location.host);
@@ -22,7 +21,7 @@ export const loadLocalStorageFromDevIfNeeded = async () => {
     const { default: createGuest } = await import("cross-domain-storage/guest");
     const storage = createGuest(devStorageUrl);
     const userCredentialRaw = await new Promise<string | undefined>((resolve, reject) =>
-        storage.get(CREDENTIAL_KEY, (error: any, data: string | undefined) => {
+        storage.get(authLib.CREDENTIAL_KEY, (error: any, data: string | undefined) => {
             if (error) {
                 reject(error);
                 return;
@@ -31,6 +30,6 @@ export const loadLocalStorageFromDevIfNeeded = async () => {
         }),
     );
     if (userCredentialRaw) {
-        localStorage.setItem(CREDENTIAL_KEY, userCredentialRaw);
+        localStorage.setItem(authLib.CREDENTIAL_KEY, userCredentialRaw);
     }
 };

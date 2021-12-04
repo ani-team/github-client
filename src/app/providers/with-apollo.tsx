@@ -1,7 +1,7 @@
 import React from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { authLib } from "widgets/auth";
+import { authLib } from "entities/auth";
 import { API_URL } from "shared/config";
 
 /**

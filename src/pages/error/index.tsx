@@ -1,7 +1,7 @@
 import React from "react";
-import { authModel } from "widgets/auth";
 import { Error } from "widgets/error";
 import { HeroSheet } from "widgets/hero-sheet";
+import { authModel } from "entities/auth";
 import { AppError } from "shared/api";
 import { dom } from "shared/lib/browser";
 

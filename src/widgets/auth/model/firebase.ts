@@ -1,11 +1,11 @@
-import { AuthContext } from "../types";
-import firebase from "./init";
+import firebase from "firebase/app";
+import { AuthContext } from "./types";
 
 /**
  * Проверка респонса от сервиса во время авторизации
  * @remark Минимально нужные поля для продолжения работы в системе
  */
-const isValidAuthContext = (ctx: any): ctx is AuthContext => {
+export const isValidAuthContext = (ctx: any): ctx is AuthContext => {
     return (
         typeof ctx?.credential?.accessToken === "string" &&
         typeof ctx?.additionalUserInfo.username === "string"
@@ -16,7 +16,7 @@ const isValidAuthContext = (ctx: any): ctx is AuthContext => {
  * Авторизация Github OAuth через firebase
  * @remark Стоит использовать только на странице Авторизации!!!
  */
-function authGithub() {
+export function authGithub() {
     const provider = new firebase.auth.GithubAuthProvider();
     provider.addScope("repo");
     provider.addScope("user:follow");
@@ -37,5 +37,3 @@ function authGithub() {
             };
         });
 }
-
-export default authGithub;

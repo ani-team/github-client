@@ -1,4 +1,4 @@
-import { UserCredential } from "../model";
+import { UserCredential } from "../types";
 
 /** @localStorage Учетные данные */
 export const CREDENTIAL_KEY = "GITHUB-CLIENT__CREDENTIAL";
@@ -10,10 +10,3 @@ export const getCredential = () => {
 
 /** @localStorage Получение токена доступа */
 export const getToken = () => getCredential().accessToken;
-
-/** Базовые роуты модуля авторизации */
-export const routes = {
-    main: "/",
-    logout: "/",
-    login: "/auth",
-};

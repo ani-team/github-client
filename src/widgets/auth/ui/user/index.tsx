@@ -1,14 +1,15 @@
 import React from "react";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../model";
-import { routes } from "../../lib";
+// FIXME:
+import { routes } from "pages/routes";
+import { authModel } from "entities/auth";
 
 /**
  * Плашка пользователя с базовой информацией
  */
 export const User = () => {
-    const { isAuth, logout, viewer } = useAuth();
+    const { isAuth, logout, viewer } = authModel.useAuth();
 
     /**
      * FIXME: Использовать Link?

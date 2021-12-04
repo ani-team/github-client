@@ -1,16 +1,18 @@
 import React from "react";
 import { GithubFilled } from "@ant-design/icons";
 import { Alert, Card } from "antd";
+import { authModel } from "entities/auth";
 import { alert } from "shared/lib/browser";
-import { firebase, useAuth } from "../../model";
+
+import * as model from "../../model";
 
 export const OAuthForm = () => {
-    const { login } = useAuth();
+    const { login } = authModel.useAuth();
 
     // TODO: add ability to specify redirect url
     const authorize = () => {
-        firebase
-            .authorizeGithub()
+        model.firebase
+            .authGithub()
             .then(login)
             .catch((err: Error) => alert.error("Authorization error", err.message));
     };
