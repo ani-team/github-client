@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { CopyOutlined } from "@ant-design/icons";
 import { Button, Input, Tooltip } from "antd";
 import { RepoIdentity } from "shared/api";
-import "index.scss";
+import "./index.scss";
 
 export type RepoCloneMenuProps = { data: RepoIdentity };
 
-export const RepoCloneMenu = ({ data }: Props) => {
+export const RepoCloneMenu = ({ data }: RepoCloneMenuProps) => {
     const url = `https://github.com/${data.owner}/${data.name}.git`;
     const cloneField = useRef<Input>(null);
     const [isUrlCopied, setUrlCopied] = useState<boolean | null>(null);
