@@ -1,6 +1,6 @@
 import React, { lazy, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import { Origin } from "widgets/origin";
+import { Origin } from "features/origin";
 import { authModel } from "entities/auth";
 import { dom } from "shared/lib/browser";
 import { routes } from "./routes";
