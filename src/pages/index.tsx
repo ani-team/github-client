@@ -10,6 +10,7 @@ const RepositoryPage = lazy(() => import("./repository"));
 const UserPage = lazy(() => import("./user"));
 const SearchPage = lazy(() => import("./search"));
 const AuthPage = lazy(() => import("./auth"));
+const OrganizationPage = lazy(() => import("./org"));
 
 /**
  * @hook Логика сброса скроллинга на каждой странице
@@ -50,7 +51,10 @@ const Routing = () => {
             <Origin />
             <Switch>
                 <Route exact path="/search" component={SearchPage} />
+                <Route exact path="/org/:orgname" component={OrganizationPage} />
                 <Route exact path="/:username" component={UserPage} />
+                {/* FIXME: url */}
+                {/* <Route exact path="/:organization" component={UserPage} /> */}
                 <Route
                     path="/:username/:repository/:branch(tree/[\w\d-_./]+)?"
                     component={RepositoryPage}
