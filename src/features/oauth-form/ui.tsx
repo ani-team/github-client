@@ -4,7 +4,7 @@ import { Alert, Card } from "antd";
 import { authModel } from "entities/auth";
 import { alert } from "shared/lib/browser";
 
-import * as model from "../../model";
+import * as model from "./model";
 
 export const OAuthForm = () => {
     const { login } = authModel.useAuth();

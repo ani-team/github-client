@@ -8,7 +8,7 @@ import { authModel } from "entities/auth";
 /**
  * Плашка пользователя с базовой информацией
  */
-export const User = () => {
+export const AuthToolbar = () => {
     const { isAuth, logout, viewer } = authModel.useAuth();
 
     /**

@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "antd";
-import { User } from "widgets/auth";
+import { AuthToolbar } from "features/auth-toolbar";
 import { SearchInput } from "features/search";
 import { authModel } from "entities/auth";
 import { GITHUB_MAIN, GITHUB_FEEDBACK } from "shared/config";
@@ -22,7 +22,7 @@ const Header = () => {
                 <NavItem href={GITHUB_MAIN}>GitHub</NavItem>
                 <NavItem href={GITHUB_FEEDBACK}>Feedback</NavItem>
             </div>
-            <User />
+            <AuthToolbar />
         </Layout.Header>
     );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { OAuthForm } from "widgets/auth";
+import { OAuthForm } from "features/oauth-form";
 import { dom } from "shared/lib/browser";
 import "./index.scss";
 
