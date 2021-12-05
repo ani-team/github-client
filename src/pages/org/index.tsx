@@ -25,8 +25,8 @@ const OrganizationPage = (props: Props) => {
         <div className="page page-org">
             <Row className="mt-2" gutter={ROW_GUTTER}>
                 <Col span={COL_MAIN}>
-                    <OrgPinned orgname={orgname} />
-                    <OrgRepoList orgname={orgname} />
+                    <OrgPinned className="mt-6" orgname={orgname} />
+                    <OrgRepoList className="mt-6" orgname={orgname} />
                 </Col>
                 <Col span={COL_SIDEBAR}>
                     <SkeletonArea />

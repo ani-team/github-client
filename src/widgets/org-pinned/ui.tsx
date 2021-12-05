@@ -1,4 +1,5 @@
 import React from "react";
+import cn from "classnames";
 import { RepoCard } from "entities/repo";
 import { Card } from "shared/ui";
 import { useOrgPinnedQuery } from "./api";
@@ -6,8 +7,9 @@ import "./styles.scss";
 
 type Props = {
     orgname: string;
+    className?: string;
 };
-export const OrgPinned = ({ orgname }: Props) => {
+export const OrgPinned = ({ orgname, className }: Props) => {
     const { data, loading } = useOrgPinnedQuery({ variables: { login: orgname } });
     const pinnedItems = data?.organization?.pinnedItems.nodes;
 
@@ -16,7 +18,7 @@ export const OrgPinned = ({ orgname }: Props) => {
     }
 
     return (
-        <div className="org-pinned">
+        <div className={cn("org-pinned", className)}>
             <h2>Pinned</h2>
             <OrgPinnedContent orgname={orgname} />
         </div>

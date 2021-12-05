@@ -1,4 +1,5 @@
 import React from "react";
+import cn from "classnames";
 import { Empty } from "antd";
 import { RepoCard } from "entities/repo";
 import { Card } from "shared/ui";
@@ -7,10 +8,11 @@ import "./styles.scss";
 
 type Props = {
     orgname: string;
+    className?: string;
 };
-export const OrgRepoList = ({ orgname }: Props) => {
+export const OrgRepoList = ({ orgname, className }: Props) => {
     return (
-        <div className="org-repo-list">
+        <div className={cn("org-repo-list", className)}>
             <h2>Repositories</h2>
             <OrgRepoListContent orgname={orgname} />
         </div>
