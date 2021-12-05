@@ -1,0 +1,21 @@
+query OrgPinned ($login: String!)  {
+  organization(login: $login) {
+    pinnedItems(first: 6) {
+      nodes {
+        ... on Repository {
+            id
+            name
+            primaryLanguage {
+                color
+                name
+            }
+            owner {
+                login
+            }
+            updatedAt
+            viewerHasStarred
+        }
+      }
+    }
+  }
+}

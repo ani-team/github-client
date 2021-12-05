@@ -1,10 +1,7 @@
 import React from "react";
 import { Col, Row } from "antd";
 import { RouteComponentProps } from "react-router";
-import { RepoDetails } from "widgets/repo-details";
-import { RepoExplorer } from "widgets/repo-explorer";
-import { RepoActions } from "features/repo-actions";
-import { RepoBreadcrumbs } from "entities/repo";
+import { OrgPinned } from "widgets/org-pinned";
 import { SkeletonArea } from "shared/ui";
 import { dom } from "shared/lib/browser";
 import "./index.scss";
@@ -27,7 +24,7 @@ const OrganizationPage = (props: Props) => {
         <div className="page page-org">
             <Row className="mt-2" gutter={ROW_GUTTER}>
                 <Col span={COL_MAIN}>
-                    <SkeletonArea />
+                    <OrgPinned orgname={orgname} />
                 </Col>
                 <Col span={COL_SIDEBAR}>
                     <SkeletonArea />

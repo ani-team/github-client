@@ -817,6 +817,9 @@ export type BotAvatarUrlArgs = {
   size?: Maybe<Scalars['Int']>;
 };
 
+/** Types which can be actors for `BranchActorAllowance` objects. */
+export type BranchActorAllowanceActor = Team | User;
+
 /** A branch protection rule. */
 export type BranchProtectionRule = Node & {
   /** Can this branch be deleted. */
@@ -825,6 +828,8 @@ export type BranchProtectionRule = Node & {
   readonly allowsForcePushes: Scalars['Boolean'];
   /** A list of conflicts matching branches protection rule and other branch protection rules */
   readonly branchProtectionRuleConflicts: BranchProtectionRuleConflictConnection;
+  /** A list of actors able to bypass PRs for this branch protection rule. */
+  readonly bypassPullRequestAllowances: BypassPullRequestAllowanceConnection;
   /** The actor who created this branch protection rule. */
   readonly creator?: Maybe<Actor>;
   /** Identifies the primary key from the database. */
@@ -873,6 +878,15 @@ export type BranchProtectionRule = Node & {
 
 /** A branch protection rule. */
 export type BranchProtectionRuleBranchProtectionRuleConflictsArgs = {
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  last?: Maybe<Scalars['Int']>;
+};
+
+
+/** A branch protection rule. */
+export type BranchProtectionRuleBypassPullRequestAllowancesArgs = {
   after?: Maybe<Scalars['String']>;
   before?: Maybe<Scalars['String']>;
   first?: Maybe<Scalars['Int']>;
@@ -955,6 +969,35 @@ export type BranchProtectionRuleEdge = {
   readonly cursor: Scalars['String'];
   /** The item at the end of the edge. */
   readonly node?: Maybe<BranchProtectionRule>;
+};
+
+/** A team or user who has the ability to bypass a pull request requirement on a protected branch. */
+export type BypassPullRequestAllowance = Node & {
+  /** The actor that can dismiss. */
+  readonly actor?: Maybe<BranchActorAllowanceActor>;
+  /** Identifies the branch protection rule associated with the allowed user or team. */
+  readonly branchProtectionRule?: Maybe<BranchProtectionRule>;
+  readonly id: Scalars['ID'];
+};
+
+/** The connection type for BypassPullRequestAllowance. */
+export type BypassPullRequestAllowanceConnection = {
+  /** A list of edges. */
+  readonly edges?: Maybe<ReadonlyArray<Maybe<BypassPullRequestAllowanceEdge>>>;
+  /** A list of nodes. */
+  readonly nodes?: Maybe<ReadonlyArray<Maybe<BypassPullRequestAllowance>>>;
+  /** Information to aid in pagination. */
+  readonly pageInfo: PageInfo;
+  /** Identifies the total count of items in the connection. */
+  readonly totalCount: Scalars['Int'];
+};
+
+/** An edge in a connection. */
+export type BypassPullRequestAllowanceEdge = {
+  /** A cursor for use in pagination. */
+  readonly cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  readonly node?: Maybe<BypassPullRequestAllowance>;
 };
 
 /** The Common Vulnerability Scoring System */
@@ -2559,6 +2602,8 @@ export type CreateBranchProtectionRuleInput = {
   readonly restrictsReviewDismissals?: Maybe<Scalars['Boolean']>;
   /** A list of User or Team IDs allowed to dismiss reviews on pull requests targeting matching branches. */
   readonly reviewDismissalActorIds?: Maybe<ReadonlyArray<Scalars['ID']>>;
+  /** A list of User or Team IDs allowed to bypass pull requests targeting matching branches. */
+  readonly bypassPullRequestActorIds?: Maybe<ReadonlyArray<Scalars['ID']>>;
   /** Is pushing to matching branches restricted. */
   readonly restrictsPushes?: Maybe<Scalars['Boolean']>;
   /** A list of User, Team or App IDs allowed to push to matching branches. */
@@ -19894,6 +19939,8 @@ export type UpdateBranchProtectionRuleInput = {
   readonly restrictsReviewDismissals?: Maybe<Scalars['Boolean']>;
   /** A list of User or Team IDs allowed to dismiss reviews on pull requests targeting matching branches. */
   readonly reviewDismissalActorIds?: Maybe<ReadonlyArray<Scalars['ID']>>;
+  /** A list of User or Team IDs allowed to bypass pull requests targeting matching branches. */
+  readonly bypassPullRequestActorIds?: Maybe<ReadonlyArray<Scalars['ID']>>;
   /** Is pushing to matching branches restricted. */
   readonly restrictsPushes?: Maybe<Scalars['Boolean']>;
   /** A list of User, Team or App IDs allowed to push to matching branches. */
