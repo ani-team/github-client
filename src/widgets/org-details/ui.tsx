@@ -1,8 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { Avatar, Col, Row, Card } from "antd";
-// import { RepoCard } from "entities/repo";
-// import { Card } from "shared/ui";
+import { Card } from "antd";
 import { useOrgDetailsQuery } from "./api";
 import "./styles.scss";
 

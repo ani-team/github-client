@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row } from "antd";
 import { RouteComponentProps } from "react-router";
 import { OrgPinned } from "widgets/org-pinned";
+import { OrgPopular } from "widgets/org-popular";
 import { OrgRepoList } from "widgets/org-repo-list";
 import { OrgDetails } from "widgets/org-details";
 // import { SkeletonArea } from "shared/ui";
@@ -26,7 +27,8 @@ const OrganizationPage = (props: Props) => {
         <div className="page page-org">
             <Row className="mt-2" gutter={ROW_GUTTER}>
                 <Col span={COL_MAIN}>
-                    <OrgPinned orgname={orgname} />
+                    <OrgPopular orgname={orgname} />
+                    <OrgPinned orgname={orgname} className="mt-6" />
                     <OrgRepoList orgname={orgname} className="mt-6" />
                 </Col>
                 <Col span={COL_SIDEBAR}>

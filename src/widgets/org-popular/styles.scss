@@ -1,9 +1,9 @@
-.org-pinned {
+.org-popular {
     &-content {
         .repo {
-            flex-basis: 32%;
+            flex-basis: 48%;
             &:not(:last-child) {
-                margin-right: 1.5rem;
+                margin-bottom: 1.5rem;
             }
         }
     }

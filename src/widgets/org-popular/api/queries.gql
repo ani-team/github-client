@@ -1,0 +1,21 @@
+query OrgPopular ($login: String!)  {
+  organization(login: $login) {
+    repositories(first: 6, orderBy: { field: STARGAZERS, direction:DESC }) {
+      nodes {
+        ... on Repository {
+            id
+            name
+            primaryLanguage {
+                color
+                name
+            }
+            owner {
+                login
+            }
+            updatedAt
+            viewerHasStarred
+        }
+      }
+    }
+  }
+}

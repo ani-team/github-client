@@ -33,7 +33,7 @@ const OrgPinnedContent = ({ orgname }: Props) => {
         return <Card.SkeletonGroup amount={3} />;
     }
     return (
-        <div className="org-pinned-content flex justify-between">
+        <div className="org-pinned-content flex">
             {pinnedItems?.map((repo) => (
                 // @ts-ignore
                 <RepoCard key={repo?.id} data={repo} loading={loading} />
