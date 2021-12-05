@@ -1,5 +1,4 @@
 import React from "react";
-import { Empty } from "antd";
 import { RepoCard } from "entities/repo";
 import { Card } from "shared/ui";
 import { useOrgPinnedQuery } from "./api";
@@ -9,6 +8,13 @@ type Props = {
     orgname: string;
 };
 export const OrgPinned = ({ orgname }: Props) => {
+    const { data, loading } = useOrgPinnedQuery({ variables: { login: orgname } });
+    const pinnedItems = data?.organization?.pinnedItems.nodes;
+
+    if (!loading && !pinnedItems?.length) {
+        return null;
+    }
+
     return (
         <div className="org-pinned">
             <h2>Pinned</h2>
@@ -24,17 +30,9 @@ const OrgPinnedContent = ({ orgname }: Props) => {
     if (loading) {
         return <Card.SkeletonGroup amount={3} />;
     }
-    if (!pinnedItems) {
-        return (
-            <Empty
-                className="repo-list__placeholder"
-                description={<h2>There is no pinned items</h2>}
-            />
-        );
-    }
     return (
         <div className="org-pinned-content flex justify-between">
-            {pinnedItems.map((repo) => (
+            {pinnedItems?.map((repo) => (
                 // @ts-ignore
                 <RepoCard key={repo?.id} data={repo} loading={loading} />
             ))}

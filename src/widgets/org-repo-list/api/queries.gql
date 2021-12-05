@@ -1,0 +1,19 @@
+query OrgRepoList ($login: String!)  {
+  organization(login: $login) {
+    repositories(first: 10) {
+      nodes {
+        id
+        name
+        primaryLanguage {
+            color
+            name
+        }
+        owner {
+            login
+        }
+        updatedAt
+        viewerHasStarred
+        }
+    }
+  }
+}
