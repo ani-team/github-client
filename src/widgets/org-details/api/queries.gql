@@ -1,0 +1,10 @@
+query OrgDetails ($login: String!)  {
+  organization(login: $login) {
+    name
+    description
+    location
+    email
+    avatarUrl
+    twitterUsername
+  }
+}

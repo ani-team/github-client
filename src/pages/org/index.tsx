@@ -3,7 +3,8 @@ import { Col, Row } from "antd";
 import { RouteComponentProps } from "react-router";
 import { OrgPinned } from "widgets/org-pinned";
 import { OrgRepoList } from "widgets/org-repo-list";
-import { SkeletonArea } from "shared/ui";
+import { OrgDetails } from "widgets/org-details";
+// import { SkeletonArea } from "shared/ui";
 import { dom } from "shared/lib/browser";
 import "./index.scss";
 
@@ -25,11 +26,11 @@ const OrganizationPage = (props: Props) => {
         <div className="page page-org">
             <Row className="mt-2" gutter={ROW_GUTTER}>
                 <Col span={COL_MAIN}>
-                    <OrgPinned className="mt-6" orgname={orgname} />
-                    <OrgRepoList className="mt-6" orgname={orgname} />
+                    <OrgPinned orgname={orgname} />
+                    <OrgRepoList orgname={orgname} className="mt-6" />
                 </Col>
                 <Col span={COL_SIDEBAR}>
-                    <SkeletonArea />
+                    <OrgDetails orgname={orgname} />
                 </Col>
             </Row>
             {/* <Row className="page-org__main mt-2" gutter={ROW_GUTTER}>

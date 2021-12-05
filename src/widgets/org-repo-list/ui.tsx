@@ -26,7 +26,7 @@ const OrgRepoListContent = ({ orgname }: Props) => {
     if (loading) {
         return <Card.SkeletonGroup amount={10} />;
     }
-    if (!repositories) {
+    if (!repositories?.length) {
         return (
             <Empty
                 className="repo-list__placeholder"
