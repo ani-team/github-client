@@ -18,11 +18,7 @@ export const OrgDetails = ({ orgname, className }: Props) => {
 
     return (
         <div className={cn("org-details", className)}>
-            <Card
-                hoverable
-                style={{ width: "100%" }}
-                cover={<img alt="avatar" src={org?.avatarUrl} />}
-            >
+            <Card style={{ width: "100%" }} cover={<img alt="avatar" src={org?.avatarUrl} />}>
                 <Card.Meta title={org?.name} description={org?.description} />
             </Card>
         </div>
