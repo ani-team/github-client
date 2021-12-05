@@ -14,7 +14,7 @@ export type OrgPinnedQuery = { readonly organization?: Types.Maybe<{ readonly pi
 export const OrgPinnedDocument = gql`
     query OrgPinned($login: String!) {
   organization(login: $login) {
-    pinnedItems(first: 6) {
+    pinnedItems(first: 3) {
       nodes {
         ... on Repository {
           id
