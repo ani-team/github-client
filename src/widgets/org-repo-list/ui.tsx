@@ -1,10 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import cn from "classnames";
-import { Empty, Input } from "antd";
+import { Empty } from "antd";
+import { RepoSearch, repoSearchModel } from "features/repo-search";
 import { RepoCard } from "entities/repo";
-import { Repository } from "shared/api";
 import { Card } from "shared/ui";
-import { useOrgRepoListQuery, useOrgRepoSearchQuery } from "./api";
 import "./styles.scss";
 
 type Props = {
@@ -12,25 +11,13 @@ type Props = {
     className?: string;
 };
 
-const useRepoSearch = () => {
-    const [query, setQuery] = useState("");
-    const handleChange = useCallback((event) => {
-        setQuery(event.target.value);
-    }, []);
-
-    return { query, handleChange };
-};
 export const OrgRepoList = ({ orgname, className }: Props) => {
-    const { query, handleChange } = useRepoSearch();
+    const { query, handleChange } = repoSearchModel.useInput();
 
     return (
         <div className={cn("org-repo-list", className)}>
             <h2>Repositories</h2>
-            <Input.Search
-                className="mb-4"
-                placeholder="Find a repository..."
-                onChange={handleChange}
-            />
+            <RepoSearch value={query} onChange={handleChange} />
             <OrgRepoListContent orgname={orgname} query={query} />
         </div>
     );
@@ -42,12 +29,9 @@ type ContentProps = {
 };
 const OrgRepoListContent = ({ orgname, query }: ContentProps) => {
     const searchQuery = `org:${orgname} ${query}`;
-    // const { data, loading } = useOrgRepoListQuery({ variables: { login: orgname } });
-    // const repositories = data?.organization?.repositories.nodes;
-    const { data, loading } = useOrgRepoSearchQuery({ variables: { query: searchQuery } });
-    const repositories = data?.search.nodes as Repository[];
+    const { repositories, response } = repoSearchModel.useQuery(searchQuery);
 
-    if (loading) {
+    if (response.loading) {
         return <Card.SkeletonGroup amount={10} />;
     }
     if (!repositories?.length) {
@@ -62,7 +46,7 @@ const OrgRepoListContent = ({ orgname, query }: ContentProps) => {
         <div className="org-repo-list-content">
             {repositories.map((repo) => (
                 // @ts-ignore
-                <RepoCard key={repo?.id} data={repo} loading={loading} />
+                <RepoCard key={repo?.id} data={repo} />
             ))}
         </div>
     );

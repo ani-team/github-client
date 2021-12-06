@@ -1,7 +1,7 @@
-query OrgRepoList ($login: String!)  {
-  organization(login: $login) {
-    repositories(first: 10) {
-      nodes {
+query RepoSearch ($query: String!)  {
+  search(query: $query, type: REPOSITORY, first: 10) {
+    nodes {
+      ... on Repository {
         id
         name
         primaryLanguage {
@@ -14,6 +14,7 @@ query OrgRepoList ($login: String!)  {
         updatedAt
         viewerHasStarred
         }
-    }
+      }
   }
 }
+
