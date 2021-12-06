@@ -10,6 +10,13 @@ export type OrgRepoListQueryVariables = Types.Exact<{
 
 export type OrgRepoListQuery = { readonly organization?: Types.Maybe<{ readonly repositories: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } }> };
 
+export type OrgRepoSearchQueryVariables = Types.Exact<{
+  query: Types.Scalars['String'];
+}>;
+
+
+export type OrgRepoSearchQuery = { readonly search: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } };
+
 
 export const OrgRepoListDocument = gql`
     query OrgRepoList($login: String!) {
@@ -58,3 +65,50 @@ export function useOrgRepoListLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type OrgRepoListQueryHookResult = ReturnType<typeof useOrgRepoListQuery>;
 export type OrgRepoListLazyQueryHookResult = ReturnType<typeof useOrgRepoListLazyQuery>;
 export type OrgRepoListQueryResult = Apollo.QueryResult<OrgRepoListQuery, OrgRepoListQueryVariables>;
+export const OrgRepoSearchDocument = gql`
+    query OrgRepoSearch($query: String!) {
+  search(query: $query, type: REPOSITORY, first: 10) {
+    nodes {
+      ... on Repository {
+        id
+        name
+        primaryLanguage {
+          color
+          name
+        }
+        owner {
+          login
+        }
+        updatedAt
+        viewerHasStarred
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useOrgRepoSearchQuery__
+ *
+ * To run a query within a React component, call `useOrgRepoSearchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOrgRepoSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOrgRepoSearchQuery({
+ *   variables: {
+ *      query: // value for 'query'
+ *   },
+ * });
+ */
+export function useOrgRepoSearchQuery(baseOptions?: Apollo.QueryHookOptions<OrgRepoSearchQuery, OrgRepoSearchQueryVariables>) {
+        return Apollo.useQuery<OrgRepoSearchQuery, OrgRepoSearchQueryVariables>(OrgRepoSearchDocument, baseOptions);
+      }
+export function useOrgRepoSearchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<OrgRepoSearchQuery, OrgRepoSearchQueryVariables>) {
+          return Apollo.useLazyQuery<OrgRepoSearchQuery, OrgRepoSearchQueryVariables>(OrgRepoSearchDocument, baseOptions);
+        }
+export type OrgRepoSearchQueryHookResult = ReturnType<typeof useOrgRepoSearchQuery>;
+export type OrgRepoSearchLazyQueryHookResult = ReturnType<typeof useOrgRepoSearchLazyQuery>;
+export type OrgRepoSearchQueryResult = Apollo.QueryResult<OrgRepoSearchQuery, OrgRepoSearchQueryVariables>;

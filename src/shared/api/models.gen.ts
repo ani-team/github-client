@@ -17108,7 +17108,7 @@ export type RequiredStatusCheckDescription = {
 export type RequiredStatusCheckInput = {
   /** Status check context that must pass for commits to be accepted to the matching branch. */
   readonly context: Scalars['String'];
-  /** The ID of the App that must set the status in order for it to be accepted. */
+  /** The ID of the App that must set the status in order for it to be accepted. Omit this value to use whichever app has recently been setting this status, or use "any" to allow any app to set the status. */
   readonly appId?: Maybe<Scalars['ID']>;
 };
 

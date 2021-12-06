@@ -1,27 +1,51 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import cn from "classnames";
-import { Empty } from "antd";
+import { Empty, Input } from "antd";
 import { RepoCard } from "entities/repo";
+import { Repository } from "shared/api";
 import { Card } from "shared/ui";
-import { useOrgRepoListQuery } from "./api";
+import { useOrgRepoListQuery, useOrgRepoSearchQuery } from "./api";
 import "./styles.scss";
 
 type Props = {
     orgname: string;
     className?: string;
 };
+
+const useRepoSearch = () => {
+    const [query, setQuery] = useState("");
+    const handleChange = useCallback((event) => {
+        setQuery(event.target.value);
+    }, []);
+
+    return { query, handleChange };
+};
 export const OrgRepoList = ({ orgname, className }: Props) => {
+    const { query, handleChange } = useRepoSearch();
+
     return (
         <div className={cn("org-repo-list", className)}>
             <h2>Repositories</h2>
-            <OrgRepoListContent orgname={orgname} />
+            <Input.Search
+                className="mb-4"
+                placeholder="Find a repository..."
+                onChange={handleChange}
+            />
+            <OrgRepoListContent orgname={orgname} query={query} />
         </div>
     );
 };
 
-const OrgRepoListContent = ({ orgname }: Props) => {
-    const { data, loading } = useOrgRepoListQuery({ variables: { login: orgname } });
-    const repositories = data?.organization?.repositories.nodes;
+type ContentProps = {
+    orgname: string;
+    query: string;
+};
+const OrgRepoListContent = ({ orgname, query }: ContentProps) => {
+    const searchQuery = `org:${orgname} ${query}`;
+    // const { data, loading } = useOrgRepoListQuery({ variables: { login: orgname } });
+    // const repositories = data?.organization?.repositories.nodes;
+    const { data, loading } = useOrgRepoSearchQuery({ variables: { query: searchQuery } });
+    const repositories = data?.search.nodes as Repository[];
 
     if (loading) {
         return <Card.SkeletonGroup amount={10} />;
