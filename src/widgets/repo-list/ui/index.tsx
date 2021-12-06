@@ -1,4 +1,5 @@
 import React from "react";
+import { RepoSearch, repoSearchModel } from "features/repo-search";
 import { useReposQuery } from "../api";
 import { useFilters, useStarring } from "../model";
 import Tabs from "./tabs";
@@ -18,12 +19,14 @@ type Props = {
  */
 export const RepoList = ({ username }: Props) => {
     const { handleTabClick, handlePaginationClick, config } = useFilters();
+    const searchInput = repoSearchModel.useInput();
     const { data, loading, variables } = useReposQuery({
         variables: { login: username, ...config },
     });
     // TODO: transmit id and viewerHasStarred of nodes to handler func
     const starring = useStarring(variables);
-    const { repositories } = data?.user || {};
+    // const { repositories } = data?.user || {};
+    const searchRepos = repoSearchModel.useQuery(`user:${username} ${searchInput.query}`);
 
     return (
         <div className="repo-list">
@@ -31,15 +34,23 @@ export const RepoList = ({ username }: Props) => {
                 handleTabClick={handleTabClick}
                 config={config}
                 loading={loading}
-                totalCount={repositories?.totalCount}
+                totalCount={searchRepos.response?.data?.search.repositoryCount}
+            />
+            <RepoSearch
+                className="mt-4"
+                value={searchInput.query}
+                onChange={searchInput.handleChange}
             />
             <Items
                 loading={loading}
-                nodes={repositories?.nodes}
+                nodes={searchRepos.repositories}
                 starring={starring}
                 username={username}
             />
-            <Pagination handlePaginationClick={handlePaginationClick} {...repositories} />
+            <Pagination
+                handlePaginationClick={handlePaginationClick}
+                {...searchRepos.repositories}
+            />
         </div>
     );
 };

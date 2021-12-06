@@ -17,7 +17,7 @@ export const OrgRepoList = ({ orgname, className }: Props) => {
     return (
         <div className={cn("org-repo-list", className)}>
             <h2>Repositories</h2>
-            <RepoSearch value={query} onChange={handleChange} />
+            <RepoSearch className="mb-4" value={query} onChange={handleChange} />
             <OrgRepoListContent orgname={orgname} query={query} />
         </div>
     );

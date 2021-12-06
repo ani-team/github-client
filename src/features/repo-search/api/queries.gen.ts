@@ -8,7 +8,7 @@ export type RepoSearchQueryVariables = Types.Exact<{
 }>;
 
 
-export type RepoSearchQuery = { readonly search: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } };
+export type RepoSearchQuery = { readonly search: { readonly repositoryCount: number, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } };
 
 
 export const RepoSearchDocument = gql`
@@ -29,6 +29,7 @@ export const RepoSearchDocument = gql`
         viewerHasStarred
       }
     }
+    repositoryCount
   }
 }
     `;

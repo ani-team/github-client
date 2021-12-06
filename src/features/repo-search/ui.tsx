@@ -10,7 +10,7 @@ type Props = {
 export const RepoSearch = ({ className, value, onChange }: Props) => {
     return (
         <Input.Search
-            className="mb-4"
+            className={className}
             placeholder="Find a repository..."
             onChange={onChange}
             value={value}
