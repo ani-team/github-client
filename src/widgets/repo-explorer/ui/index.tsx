@@ -13,7 +13,7 @@ type Props = {
 };
 
 /**
- * @feature FileExplorer репозитория
+ * FileExplorer репозитория
  */
 export const RepoExplorer = ({ repo }: Props) => {
     const { branch } = useBranch(repo);

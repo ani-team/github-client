@@ -10,7 +10,7 @@ type Props = {
 };
 
 /**
- * @feature Карточка пользователя
+ * Карточка пользователя
  * FIXME: rename to UserDetails
  */
 export const UserInfo = ({ username }: Props) => {

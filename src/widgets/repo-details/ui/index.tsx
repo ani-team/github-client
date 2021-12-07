@@ -12,7 +12,7 @@ type Props = {
 };
 
 /**
- * @feature Информация по репозиторию
+ * Информация по репозиторию
  */
 export const RepoDetails = ({ repo: identity }: Props) => {
     const { data, loading } = useRepoDetailsQuery({

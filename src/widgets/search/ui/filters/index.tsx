@@ -5,7 +5,7 @@ import { useSearch, params } from "../../model";
 import "./index.scss";
 
 /**
- * @feature Фильтры для поиска
+ * Фильтры для поиска
  * @remark Допустимые типы: `Users`, `Repositories`
  * @see typesMap
  */

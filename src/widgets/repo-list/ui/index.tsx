@@ -12,7 +12,7 @@ type Props = {
 };
 
 /**
- * @feature Список репозиториев пользователя
+ * Список репозиториев пользователя
  * FIXME: rename to UserRepoList? (coz - user as dep)
  * FIXME: simplify inner components
  */

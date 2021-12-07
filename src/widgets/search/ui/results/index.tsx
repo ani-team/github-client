@@ -6,7 +6,7 @@ import List from "./list";
 import Pagination from "./pagination";
 
 /**
- * @feature Результаты поиска
+ * Результаты поиска
  * @remark Отображение результатов поиска на основании запроса и конфига
  */
 const SearchResults = () => {

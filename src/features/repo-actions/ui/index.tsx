@@ -14,7 +14,7 @@ type Props = {
 };
 
 /**
- * @feature Статистика репозитория
+ * Статистика репозитория
  */
 export const RepoActions = ({ repo }: Props) => {
     const { data, loading } = useRepoStatQuery({ variables: repo });

@@ -32,7 +32,7 @@ const useAppError = () => {
 };
 
 /**
- * @feature Обертка для обработки ошибок
+ * Обертка для обработки ошибок
  * FIXME: add ErrorBoundaries
  */
 const Catcher = ({ handler, children, onNetworkError }: Props) => {

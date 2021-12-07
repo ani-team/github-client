@@ -16,7 +16,7 @@ const PROHIBITED_ROUTES = [
 ];
 
 /**
- * @feature Кнопка-редирект на исходную страницу на GitHub
+ * Кнопка-редирект на исходную страницу на GitHub
  */
 export const Origin = () => {
     const { pathname, search } = useLocation();
