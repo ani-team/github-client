@@ -8,12 +8,13 @@ export type OrgRepoListQueryVariables = Types.Exact<{
 }>;
 
 
-export type OrgRepoListQuery = { readonly organization?: Types.Maybe<{ readonly repositories: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } }> };
+export type OrgRepoListQuery = { readonly organization?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } }> };
 
 
 export const OrgRepoListDocument = gql`
     query OrgRepoList($login: String!) {
   organization(login: $login) {
+    id
     repositories(first: 10) {
       nodes {
         id

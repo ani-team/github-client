@@ -8,12 +8,13 @@ export type OrgDetailsQueryVariables = Types.Exact<{
 }>;
 
 
-export type OrgDetailsQuery = { readonly organization?: Types.Maybe<{ readonly name?: Types.Maybe<string>, readonly description?: Types.Maybe<string>, readonly location?: Types.Maybe<string>, readonly email?: Types.Maybe<string>, readonly avatarUrl: any, readonly twitterUsername?: Types.Maybe<string> }> };
+export type OrgDetailsQuery = { readonly organization?: Types.Maybe<{ readonly id: string, readonly name?: Types.Maybe<string>, readonly description?: Types.Maybe<string>, readonly location?: Types.Maybe<string>, readonly email?: Types.Maybe<string>, readonly avatarUrl: any, readonly twitterUsername?: Types.Maybe<string> }> };
 
 
 export const OrgDetailsDocument = gql`
     query OrgDetails($login: String!) {
   organization(login: $login) {
+    id
     name
     description
     location

@@ -1,5 +1,6 @@
 query OrgPinned ($login: String!)  {
   organization(login: $login) {
+    id
     pinnedItems(first: 3) {
       nodes {
         ... on Repository {

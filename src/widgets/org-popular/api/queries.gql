@@ -1,6 +1,8 @@
 query OrgPopular ($login: String!)  {
   organization(login: $login) {
+    id
     repositories(first: 6, orderBy: { field: STARGAZERS, direction:DESC }) {
+
       nodes {
         ... on Repository {
             id

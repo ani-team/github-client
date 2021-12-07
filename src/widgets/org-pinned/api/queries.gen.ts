@@ -8,12 +8,13 @@ export type OrgPinnedQueryVariables = Types.Exact<{
 }>;
 
 
-export type OrgPinnedQuery = { readonly organization?: Types.Maybe<{ readonly pinnedItems: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } }> };
+export type OrgPinnedQuery = { readonly organization?: Types.Maybe<{ readonly id: string, readonly pinnedItems: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } }> };
 
 
 export const OrgPinnedDocument = gql`
     query OrgPinned($login: String!) {
   organization(login: $login) {
+    id
     pinnedItems(first: 3) {
       nodes {
         ... on Repository {

@@ -8,12 +8,13 @@ export type OrgPopularQueryVariables = Types.Exact<{
 }>;
 
 
-export type OrgPopularQuery = { readonly organization?: Types.Maybe<{ readonly repositories: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } }> };
+export type OrgPopularQuery = { readonly organization?: Types.Maybe<{ readonly id: string, readonly repositories: { readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> } }> };
 
 
 export const OrgPopularDocument = gql`
     query OrgPopular($login: String!) {
   organization(login: $login) {
+    id
     repositories(first: 6, orderBy: {field: STARGAZERS, direction: DESC}) {
       nodes {
         ... on Repository {

@@ -36,7 +36,7 @@ const OrgPopularContent = ({ orgname }: Props) => {
         <div className="org-popular-content flex flex-wrap justify-between">
             {repositories?.map((repo) => (
                 // @ts-ignore
-                <RepoCard key={repo?.id} data={repo} loading={loading} />
+                <RepoCard key={repo?.id} data={repo} />
             ))}
         </div>
     );

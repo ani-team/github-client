@@ -1,5 +1,6 @@
 query OrgDetails ($login: String!)  {
   organization(login: $login) {
+    id
     name
     description
     location
