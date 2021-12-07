@@ -3,6 +3,7 @@ import cn from "classnames";
 import { RepoCard } from "entities/repo";
 import { Card } from "shared/ui";
 import { useOrgPopularQuery } from "./api";
+import { useVisibility } from "./model";
 import "./styles.scss";
 
 type Props = {
@@ -10,12 +11,8 @@ type Props = {
     className?: string;
 };
 export const OrgPopular = ({ orgname, className }: Props) => {
-    const { data, loading } = useOrgPopularQuery({ variables: { login: orgname } });
-    const repositories = data?.organization?.repositories.nodes;
-
-    if (!loading && !repositories?.length) {
-        return null;
-    }
+    const isVisible = useVisibility(orgname);
+    if (!isVisible) return null;
 
     return (
         <div className={cn("org-popular", className)}>
