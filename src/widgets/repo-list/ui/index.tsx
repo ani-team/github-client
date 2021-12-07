@@ -1,7 +1,8 @@
 import React from "react";
 import { RepoSearch, repoSearchModel } from "features/repo-search";
-import { useReposQuery } from "../api";
-import { useFilters, useStarring } from "../model";
+import { repoStarModel } from "features/repo-star";
+import { useReposQuery, ReposDocument } from "../api";
+import { useFilters } from "../model";
 import Tabs from "./tabs";
 import Items from "./items";
 import Pagination from "./pagination";
@@ -24,7 +25,10 @@ export const RepoList = ({ username }: Props) => {
         variables: { login: username, ...config },
     });
     // TODO: transmit id and viewerHasStarred of nodes to handler func
-    const starring = useStarring(variables);
+    // const starring = useStarring(variables);
+    const starring = repoStarModel.useStarring({
+        refetchQueries: [{ variables, query: ReposDocument }],
+    });
     // const { repositories } = data?.user || {};
     const searchRepos = repoSearchModel.useQuery(`user:${username} ${searchInput.query}`);
 

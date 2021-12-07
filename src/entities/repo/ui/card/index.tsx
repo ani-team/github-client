@@ -1,7 +1,6 @@
 import React from "react";
-import cn from "classnames";
-import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
+import { RepoStar } from "features/repo-star";
 import { VeryMaybe, Repository } from "shared/api";
 import { Card } from "shared/ui";
 import Lang from "./lang";
@@ -23,14 +22,13 @@ type Props = {
  */
 export const RepoCard = (props: Props) => {
     const { format = "repo", onStarring, loading } = props;
-    const { name, primaryLanguage, updatedAt, viewerHasStarred: starred, owner } = props.data || {};
+    const { name, primaryLanguage, updatedAt, owner } = props.data || {};
     // prettier-ignore
     const title = (
         (format === "owner-repo" && `${owner?.login}/${name}`) || 
         (format === "repo" && name) ||
         ""
     );
-    const FavBtn = starred ? HeartFilled : HeartOutlined;
 
     return (
         <Card
@@ -48,9 +46,7 @@ export const RepoCard = (props: Props) => {
             }
             actions={
                 // TODO: impl later for search page
-                onStarring && (
-                    <FavBtn className={cn("repo__fav", { starred })} onClick={onStarring} />
-                )
+                onStarring && <RepoStar onStarring={onStarring} data={props.data} />
             }
         />
     );

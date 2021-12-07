@@ -1,0 +1,13 @@
+.repo__fav {
+    font-size: 28px;
+    cursor: pointer;
+    transition: var(--transition);
+
+    &.starred svg {
+        fill: var(--clr-primary);
+    }
+
+    &:hover {
+        opacity: 0.6;
+    }
+}

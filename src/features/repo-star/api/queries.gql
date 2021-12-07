@@ -1,0 +1,17 @@
+# FIXME: simplify
+
+mutation AddStar($starrableId: ID!) {
+  addStar(input: {starrableId: $starrableId }) {
+    starrable {
+      id
+    }
+  }
+}
+
+mutation RemoveStar($starrableId: ID!) {
+  removeStar(input: {starrableId: $starrableId }) {
+    starrable {
+      id
+    }
+  }
+}

@@ -1,10 +1,10 @@
 import React from "react";
 import { Empty } from "antd";
+import { repoStarModel } from "features/repo-star";
 import { RepoCard } from "entities/repo";
 import { Card } from "shared/ui";
 import { VeryMaybe, Repository } from "shared/api";
 import { RepositoriesDetailsFragment } from "../../api";
-import { useStarring } from "../../model";
 
 type Props = {
     /** Флаг загрузки */
@@ -12,7 +12,7 @@ type Props = {
     /** Список элементов-репозиториев */
     nodes: RepositoriesDetailsFragment["nodes"];
     /** Мутации по star/unstarring */
-    starring: ReturnType<typeof useStarring>;
+    starring: ReturnType<typeof repoStarModel.useStarring>;
     /** Логин owner-а */
     username: string;
 };
@@ -34,6 +34,7 @@ const RepoListItems = (props: Props) => {
                         onStarring={() => starring.handle(node?.id, node?.viewerHasStarred)}
                         key={node?.id}
                         data={node as VeryMaybe<Repository>}
+                        // loading={starring.isLoading(node?.id)}
                         loading={starring.debouncedLoadingId === node?.id}
                     />
                 ))
