@@ -12,7 +12,8 @@ export const useInput = () => {
 };
 
 export const useQuery = (searchQuery: string) => {
-    const response = useRepoSearchQuery({ variables: { query: searchQuery } });
+    const variables = { query: searchQuery };
+    const response = useRepoSearchQuery({ variables });
     const repositories = response.data?.search.nodes as Repository[];
-    return { repositories, response };
+    return { repositories, response, variables };
 };
