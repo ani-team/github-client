@@ -3,6 +3,7 @@ import cn from "classnames";
 import { RepoCard } from "entities/repo";
 import { Card } from "shared/ui";
 import { useOrgPinnedQuery } from "./api";
+import { useVisibility } from "./model";
 import "./styles.scss";
 
 type Props = {
@@ -10,12 +11,8 @@ type Props = {
     className?: string;
 };
 export const OrgPinned = ({ orgname, className }: Props) => {
-    const { data, loading } = useOrgPinnedQuery({ variables: { login: orgname } });
-    const pinnedItems = data?.organization?.pinnedItems.nodes;
-
-    if (!loading && !pinnedItems?.length) {
-        return null;
-    }
+    const isVisible = useVisibility(orgname);
+    if (!isVisible) return null;
 
     return (
         <div className={cn("org-pinned", className)}>
