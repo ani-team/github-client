@@ -3,11 +3,11 @@ import * as Types from '../../../shared/api/models.gen';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-export type RepoFieldsFragment = { readonly id: string, readonly name: string, readonly url: any, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly owner: { readonly login: string } | { readonly login: string }, readonly primaryLanguage?: Types.Maybe<{ readonly name: string, readonly color?: Types.Maybe<string> }> };
+export type RepoFieldsFragment = { id: string, name: string, url: any, updatedAt: any, viewerHasStarred: boolean, owner: { login: string } | { login: string }, primaryLanguage?: Types.Maybe<{ name: string, color?: Types.Maybe<string> }> };
 
-export type UserFieldsFragment = { readonly id: string, readonly login: string, readonly bio?: Types.Maybe<string>, readonly avatarUrl: any, readonly viewerIsFollowing: boolean };
+export type UserFieldsFragment = { id: string, login: string, bio?: Types.Maybe<string>, avatarUrl: any, viewerIsFollowing: boolean };
 
-export type OrgFieldsFragment = { readonly id: string, readonly login: string, readonly avatarUrl: any, readonly description?: Types.Maybe<string>, readonly url: any };
+export type OrgFieldsFragment = { id: string, login: string, avatarUrl: any, description?: Types.Maybe<string>, url: any };
 
 export type SearchQueryVariables = Types.Exact<{
   query: Types.Scalars['String'];
@@ -17,7 +17,7 @@ export type SearchQueryVariables = Types.Exact<{
 }>;
 
 
-export type SearchQuery = { readonly search: { readonly userCount: number, readonly repositoryCount: number, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<OrgFieldsFragment | RepoFieldsFragment | UserFieldsFragment>>> } };
+export type SearchQuery = { search: { userCount: number, repositoryCount: number, nodes?: Types.Maybe<Array<Types.Maybe<OrgFieldsFragment | RepoFieldsFragment | UserFieldsFragment>>> } };
 
 export const RepoFieldsFragmentDoc = gql`
     fragment RepoFields on Repository {

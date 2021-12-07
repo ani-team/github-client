@@ -15,8 +15,8 @@ config:
   withHooks: true
   # Из типов для схемы исключается служебное поле __typename
   skipTypename: true
-  # Все типы из схемы и запросов - иммутабельны
-  immutableTypes: true
+  # # Все типы из схемы и запросов - иммутабельны
+  # immutableTypes: true
   # Типы генерируются на лету, без Pick - для чистоты информации по типу
   preResolveTypes: true
 generates:

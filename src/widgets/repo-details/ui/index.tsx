@@ -26,16 +26,8 @@ export const RepoDetails = ({ repo: identity }: Props) => {
 
     return (
         <div className="flex flex-col">
-            <Details
-                identity={identity}
-                loading={loading}
-                // @ts-ignore
-                repository={repository}
-            />
-            <RepoCollaborators
-                // @ts-ignore
-                repository={repository}
-            />
+            <Details identity={identity} loading={loading} repository={repository} />
+            <RepoCollaborators repository={repository} />
             <Spin spinning={loading}>
                 <Alert
                     style={{ borderRadius: 6, marginTop: 10 }}

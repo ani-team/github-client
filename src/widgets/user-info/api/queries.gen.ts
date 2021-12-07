@@ -8,21 +8,21 @@ export type UserInfoQueryVariables = Types.Exact<{
 }>;
 
 
-export type UserInfoQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly name?: Types.Maybe<string>, readonly avatarUrl: any, readonly bio?: Types.Maybe<string>, readonly viewerIsFollowing: boolean, readonly isViewer: boolean }> };
+export type UserInfoQuery = { user?: Types.Maybe<{ id: string, name?: Types.Maybe<string>, avatarUrl: any, bio?: Types.Maybe<string>, viewerIsFollowing: boolean, isViewer: boolean }> };
 
 export type FollowUserMutationVariables = Types.Exact<{
   userId: Types.Scalars['ID'];
 }>;
 
 
-export type FollowUserMutation = { readonly followUser?: Types.Maybe<{ readonly user?: Types.Maybe<{ readonly id: string }> }> };
+export type FollowUserMutation = { followUser?: Types.Maybe<{ user?: Types.Maybe<{ id: string }> }> };
 
 export type UnfollowUserMutationVariables = Types.Exact<{
   userId: Types.Scalars['ID'];
 }>;
 
 
-export type UnfollowUserMutation = { readonly unfollowUser?: Types.Maybe<{ readonly user?: Types.Maybe<{ readonly id: string }> }> };
+export type UnfollowUserMutation = { unfollowUser?: Types.Maybe<{ user?: Types.Maybe<{ id: string }> }> };
 
 
 export const UserInfoDocument = gql`

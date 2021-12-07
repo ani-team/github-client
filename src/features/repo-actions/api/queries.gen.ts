@@ -9,7 +9,7 @@ export type RepoStatQueryVariables = Types.Exact<{
 }>;
 
 
-export type RepoStatQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly forks: { readonly totalCount: number }, readonly stargazers: { readonly totalCount: number }, readonly watchers: { readonly totalCount: number } }> };
+export type RepoStatQuery = { repository?: Types.Maybe<{ id: string, forks: { totalCount: number }, stargazers: { totalCount: number }, watchers: { totalCount: number } }> };
 
 
 export const RepoStatDocument = gql`

@@ -9,7 +9,7 @@ export type RepoDetailsQueryVariables = Types.Exact<{
 }>;
 
 
-export type RepoDetailsQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly name: string, readonly description?: Types.Maybe<string>, readonly homepageUrl?: Types.Maybe<any>, readonly languages?: Types.Maybe<{ readonly totalCount: number, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly color?: Types.Maybe<string> }>>> }>, readonly collaborators?: Types.Maybe<{ readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name?: Types.Maybe<string>, readonly login: string, readonly avatarUrl: any }>>> }> }> };
+export type RepoDetailsQuery = { repository?: Types.Maybe<{ id: string, name: string, description?: Types.Maybe<string>, homepageUrl?: Types.Maybe<any>, languages?: Types.Maybe<{ totalCount: number, nodes?: Types.Maybe<Array<Types.Maybe<{ id: string, name: string, color?: Types.Maybe<string> }>>> }>, collaborators?: Types.Maybe<{ nodes?: Types.Maybe<Array<Types.Maybe<{ id: string, name?: Types.Maybe<string>, login: string, avatarUrl: any }>>> }> }> };
 
 
 export const RepoDetailsDocument = gql`

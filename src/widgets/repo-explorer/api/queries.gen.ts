@@ -9,7 +9,7 @@ export type RepoDefaultBranchQueryVariables = Types.Exact<{
 }>;
 
 
-export type RepoDefaultBranchQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly defaultBranchRef?: Types.Maybe<{ readonly name: string }> }> };
+export type RepoDefaultBranchQuery = { repository?: Types.Maybe<{ id: string, defaultBranchRef?: Types.Maybe<{ name: string }> }> };
 
 export type RepoBranchInfoQueryVariables = Types.Exact<{
   owner: Types.Scalars['String'];
@@ -21,7 +21,7 @@ export type RepoBranchInfoQueryVariables = Types.Exact<{
 }>;
 
 
-export type RepoBranchInfoQuery = { readonly repository?: Types.Maybe<{ readonly id: string, readonly url: any, readonly ref?: Types.Maybe<{ readonly name: string, readonly target?: Types.Maybe<{ readonly id: string, readonly messageHeadline: string, readonly author?: Types.Maybe<{ readonly date?: Types.Maybe<any>, readonly name?: Types.Maybe<string>, readonly user?: Types.Maybe<{ readonly avatarUrl: any, readonly login: string }> }> }> }>, readonly object?: Types.Maybe<{ readonly entries?: Types.Maybe<ReadonlyArray<{ readonly name: string, readonly extension?: Types.Maybe<string>, readonly type: string }>> }>, readonly contentLower?: Types.Maybe<{ readonly text?: Types.Maybe<string> }>, readonly contentUpper?: Types.Maybe<{ readonly text?: Types.Maybe<string> }>, readonly refs?: Types.Maybe<{ readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly name: string, readonly prefix: string }>>> }> }> };
+export type RepoBranchInfoQuery = { repository?: Types.Maybe<{ id: string, url: any, ref?: Types.Maybe<{ name: string, target?: Types.Maybe<{ id: string, messageHeadline: string, author?: Types.Maybe<{ date?: Types.Maybe<any>, name?: Types.Maybe<string>, user?: Types.Maybe<{ avatarUrl: any, login: string }> }> }> }>, object?: Types.Maybe<{ entries?: Types.Maybe<Array<{ name: string, extension?: Types.Maybe<string>, type: string }>> }>, contentLower?: Types.Maybe<{ text?: Types.Maybe<string> }>, contentUpper?: Types.Maybe<{ text?: Types.Maybe<string> }>, refs?: Types.Maybe<{ nodes?: Types.Maybe<Array<Types.Maybe<{ name: string, prefix: string }>>> }> }> };
 
 
 export const RepoDefaultBranchDocument = gql`

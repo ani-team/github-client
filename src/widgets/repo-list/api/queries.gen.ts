@@ -3,11 +3,11 @@ import * as Types from '../../../shared/api/models.gen';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-export type RepositoriesDetailsFragment = { readonly totalCount: number, readonly pageInfo: { readonly endCursor?: Types.Maybe<string>, readonly startCursor?: Types.Maybe<string>, readonly hasNextPage: boolean, readonly hasPreviousPage: boolean }, readonly nodes?: Types.Maybe<ReadonlyArray<Types.Maybe<{ readonly id: string, readonly name: string, readonly updatedAt: any, readonly viewerHasStarred: boolean, readonly primaryLanguage?: Types.Maybe<{ readonly color?: Types.Maybe<string>, readonly name: string }>, readonly owner: { readonly login: string } | { readonly login: string } }>>> };
+export type RepositoriesDetailsFragment = { totalCount: number, pageInfo: { endCursor?: Types.Maybe<string>, startCursor?: Types.Maybe<string>, hasNextPage: boolean, hasPreviousPage: boolean }, nodes?: Types.Maybe<Array<Types.Maybe<{ id: string, name: string, updatedAt: any, viewerHasStarred: boolean, primaryLanguage?: Types.Maybe<{ color?: Types.Maybe<string>, name: string }>, owner: { login: string } | { login: string } }>>> };
 
 export type ReposQueryVariables = Types.Exact<{
   login: Types.Scalars['String'];
-  ownerAffiliations?: Types.Maybe<ReadonlyArray<Types.Maybe<Types.RepositoryAffiliation>>>;
+  ownerAffiliations?: Types.Maybe<Array<Types.Maybe<Types.RepositoryAffiliation>>>;
   after?: Types.Maybe<Types.Scalars['String']>;
   before?: Types.Maybe<Types.Scalars['String']>;
   first?: Types.Maybe<Types.Scalars['Int']>;
@@ -15,21 +15,21 @@ export type ReposQueryVariables = Types.Exact<{
 }>;
 
 
-export type ReposQuery = { readonly user?: Types.Maybe<{ readonly id: string, readonly repositories: RepositoriesDetailsFragment }> };
+export type ReposQuery = { user?: Types.Maybe<{ id: string, repositories: RepositoriesDetailsFragment }> };
 
 export type AddStarMutationVariables = Types.Exact<{
   starrableId: Types.Scalars['ID'];
 }>;
 
 
-export type AddStarMutation = { readonly addStar?: Types.Maybe<{ readonly starrable?: Types.Maybe<{ readonly id: string } | { readonly id: string } | { readonly id: string }> }> };
+export type AddStarMutation = { addStar?: Types.Maybe<{ starrable?: Types.Maybe<{ id: string } | { id: string } | { id: string }> }> };
 
 export type RemoveStarMutationVariables = Types.Exact<{
   starrableId: Types.Scalars['ID'];
 }>;
 
 
-export type RemoveStarMutation = { readonly removeStar?: Types.Maybe<{ readonly starrable?: Types.Maybe<{ readonly id: string } | { readonly id: string } | { readonly id: string }> }> };
+export type RemoveStarMutation = { removeStar?: Types.Maybe<{ starrable?: Types.Maybe<{ id: string } | { id: string } | { id: string }> }> };
 
 export const RepositoriesDetailsFragmentDoc = gql`
     fragment RepositoriesDetails on RepositoryConnection {
