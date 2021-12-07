@@ -1,7 +1,7 @@
 import { Alert, Spin } from "antd";
 import React from "react";
 import { RepoDetails as Details, RepoCollaborators } from "entities/repo";
-import { RepoIdentity } from "shared/api";
+import { RepoIdentity, Repository } from "shared/api";
 import { useRepoDetailsQuery } from "../api";
 
 import "./index.scss";
@@ -24,10 +24,14 @@ export const RepoDetails = ({ repo: identity }: Props) => {
     });
     const repository = data?.repository;
 
+    if (!loading && !repository) {
+        return null;
+    }
+
     return (
         <div className="flex flex-col">
-            <Details identity={identity} loading={loading} repository={repository} />
-            <RepoCollaborators repository={repository} />
+            <Details identity={identity} loading={loading} repository={repository as Repository} />
+            <RepoCollaborators repository={repository as Repository} />
             <Spin spinning={loading}>
                 <Alert
                     style={{ borderRadius: 6, marginTop: 10 }}
