@@ -1,0 +1,10 @@
+{
+    "warning": true,
+    "tsConfig": "tsconfig.json",
+    "fontSize": "10px",
+    "graphVizOptions": {
+        "G": {
+            "rankdir": "LR"
+        }
+    }
+}
