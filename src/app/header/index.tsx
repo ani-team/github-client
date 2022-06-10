@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Input } from "antd";
 import { Link } from "react-router-dom";
 import { GITHUB_MAIN, GITHUB_FEEDBACK } from "shared/get-env";
-import { Auth } from "features";
+import * as Auth from "features/auth";
 import { ReactComponent as IcLogo } from "./logo.svg";
 import { useSearchInput } from "./hooks";
 import "./index.scss";

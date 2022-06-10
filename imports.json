@@ -1,0 +1,434 @@
+{
+	".deploy/index.ts": [
+		".deploy/temp-stand.ts"
+	],
+	".deploy/temp-stand.ts": [
+		"features/auth/index.ts"
+	],
+	"app/header/hooks.ts": [],
+	"app/header/index.scss": [],
+	"app/header/index.tsx": [
+		"app/header/hooks.ts",
+		"app/header/index.scss",
+		"app/header/logo.svg",
+		"features/auth/index.ts",
+		"shared/get-env/index.ts"
+	],
+	"app/header/logo.svg": [],
+	"app/hocs/index.ts": [
+		"app/hocs/with-antd.tsx",
+		"app/hocs/with-apollo.tsx",
+		"app/hocs/with-error-handling.tsx",
+		"app/hocs/with-router.tsx",
+		"shared/helpers/index.ts"
+	],
+	"app/hocs/with-antd.tsx": [],
+	"app/hocs/with-apollo.tsx": [
+		"features/auth/index.ts",
+		"shared/get-env/index.ts"
+	],
+	"app/hocs/with-error-handling.tsx": [
+		"features/error/index.ts",
+		"models.ts",
+		"pages/error/index.tsx",
+		"shared/helpers/index.ts"
+	],
+	"app/hocs/with-router.tsx": [],
+	"app/index.scss": [
+		"app/styles/normalize-antd.scss",
+		"app/styles/normalize.scss",
+		"app/styles/utils.scss",
+		"app/styles/vars.scss"
+	],
+	"app/index.tsx": [
+		"app/header/index.tsx",
+		"app/hocs/index.ts",
+		"app/index.scss",
+		"pages/index.tsx"
+	],
+	"app/styles/normalize-antd.scss": [],
+	"app/styles/normalize.scss": [],
+	"app/styles/utils.scss": [],
+	"app/styles/vars.scss": [],
+	"features/auth/consts.ts": [
+		"features/auth/types.ts"
+	],
+	"features/auth/firebase/auth-github.ts": [
+		"features/auth/firebase/init.ts",
+		"features/auth/types.ts"
+	],
+	"features/auth/firebase/index.ts": [
+		"features/auth/firebase/auth-github.ts"
+	],
+	"features/auth/firebase/init.ts": [
+		"shared/get-env/index.ts"
+	],
+	"features/auth/hooks.ts": [
+		"features/auth/consts.ts",
+		"features/auth/types.ts",
+		"shared/hooks/index.ts"
+	],
+	"features/auth/index.ts": [
+		"features/auth/consts.ts",
+		"features/auth/firebase/index.ts",
+		"features/auth/hooks.ts",
+		"features/auth/user/index.tsx"
+	],
+	"features/auth/types.ts": [],
+	"features/auth/user/index.tsx": [
+		"features/auth/consts.ts",
+		"features/auth/hooks.ts"
+	],
+	"features/error/catcher.tsx": [
+		"features/error/definitions.ts",
+		"features/error/helpers.ts",
+		"models.ts"
+	],
+	"features/error/definitions.ts": [
+		"models.ts"
+	],
+	"features/error/helpers.ts": [
+		"features/error/definitions.ts",
+		"models.ts"
+	],
+	"features/error/index.ts": [
+		"features/error/catcher.tsx",
+		"features/error/definitions.ts"
+	],
+	"features/hero-sheet/assets/github-icon-sad.svg": [],
+	"features/hero-sheet/assets/github-icon.svg": [],
+	"features/hero-sheet/index.scss": [],
+	"features/hero-sheet/index.tsx": [
+		"features/hero-sheet/assets/github-icon-sad.svg",
+		"features/hero-sheet/assets/github-icon.svg",
+		"features/hero-sheet/index.scss"
+	],
+	"features/origin/index.scss": [],
+	"features/origin/index.tsx": [
+		"features/origin/index.scss"
+	],
+	"features/repo-details/card-collaborators/index.tsx": [
+		"features/repo-details/details-card/index.tsx",
+		"features/repo-details/queries.gen.ts"
+	],
+	"features/repo-details/card-common/index.tsx": [
+		"features/repo-details/details-card/index.tsx",
+		"features/repo-details/queries.gen.ts",
+		"models.ts"
+	],
+	"features/repo-details/details-card/index.scss": [],
+	"features/repo-details/details-card/index.tsx": [
+		"features/repo-details/details-card/index.scss"
+	],
+	"features/repo-details/index.scss": [
+		"shared/mixins.scss"
+	],
+	"features/repo-details/index.tsx": [
+		"features/repo-details/card-collaborators/index.tsx",
+		"features/repo-details/card-common/index.tsx",
+		"features/repo-details/index.scss",
+		"features/repo-details/queries.gen.ts",
+		"models.ts"
+	],
+	"features/repo-details/queries.gen.ts": [
+		"models.gen.ts"
+	],
+	"features/repo-explorer/components/branches-menu/index.scss": [],
+	"features/repo-explorer/components/branches-menu/index.tsx": [
+		"features/repo-explorer/components/branches-menu/index.scss",
+		"models.ts"
+	],
+	"features/repo-explorer/components/entries-view/file.svg": [],
+	"features/repo-explorer/components/entries-view/folder.svg": [],
+	"features/repo-explorer/components/entries-view/git-file-view.tsx": [
+		"features/repo-explorer/components/entries-view/file.svg",
+		"features/repo-explorer/components/entries-view/folder.svg",
+		"models.ts",
+		"shared/get-env/index.ts"
+	],
+	"features/repo-explorer/components/entries-view/index.scss": [
+		"shared/mixins.scss"
+	],
+	"features/repo-explorer/components/entries-view/index.tsx": [
+		"features/repo-explorer/components/entries-view/git-file-view.tsx",
+		"features/repo-explorer/components/entries-view/index.scss",
+		"features/repo-explorer/components/entries-view/last-commit-header.tsx",
+		"features/repo-explorer/components/skeleton-area/index.tsx",
+		"features/repo-explorer/hooks.ts",
+		"models.ts"
+	],
+	"features/repo-explorer/components/entries-view/last-commit-header.tsx": [
+		"features/repo-explorer/components/entries-view/placeholder.png",
+		"models.ts"
+	],
+	"features/repo-explorer/components/entries-view/placeholder.png": [],
+	"features/repo-explorer/components/hooks.ts": [
+		"features/repo-explorer/queries.gen.ts",
+		"models.ts"
+	],
+	"features/repo-explorer/components/index.tsx": [
+		"features/repo-explorer/components/entries-view/index.tsx",
+		"features/repo-explorer/components/hooks.ts",
+		"features/repo-explorer/components/readme/index.tsx",
+		"features/repo-explorer/components/toolbar/index.tsx",
+		"features/repo-explorer/queries.gen.ts",
+		"models.ts"
+	],
+	"features/repo-explorer/components/readme/code-renderer.tsx": [],
+	"features/repo-explorer/components/readme/index.scss": [],
+	"features/repo-explorer/components/readme/index.tsx": [
+		"features/repo-explorer/components/readme/code-renderer.tsx",
+		"features/repo-explorer/components/readme/index.scss",
+		"features/repo-explorer/components/skeleton-area/index.tsx"
+	],
+	"features/repo-explorer/components/skeleton-area/index.scss": [],
+	"features/repo-explorer/components/skeleton-area/index.tsx": [
+		"features/repo-explorer/components/skeleton-area/index.scss"
+	],
+	"features/repo-explorer/components/toolbar/clone-menu.tsx": [],
+	"features/repo-explorer/components/toolbar/index.scss": [],
+	"features/repo-explorer/components/toolbar/index.tsx": [
+		"features/repo-explorer/components/branches-menu/index.tsx",
+		"features/repo-explorer/components/toolbar/clone-menu.tsx",
+		"features/repo-explorer/components/toolbar/index.scss",
+		"models.ts"
+	],
+	"features/repo-explorer/hooks.ts": [
+		"features/repo-explorer/queries.gen.ts",
+		"models.ts"
+	],
+	"features/repo-explorer/index.ts": [
+		"features/repo-explorer/components/index.tsx"
+	],
+	"features/repo-explorer/queries.gen.ts": [
+		"models.gen.ts"
+	],
+	"features/repo-list/hooks.ts": [
+		"features/repo-list/params.ts",
+		"features/repo-list/queries.gen.ts",
+		"shared/helpers/index.ts",
+		"shared/hooks/index.ts"
+	],
+	"features/repo-list/index.scss": [],
+	"features/repo-list/index.tsx": [
+		"features/repo-list/hooks.ts",
+		"features/repo-list/index.scss",
+		"features/repo-list/items/index.tsx",
+		"features/repo-list/pagination/index.tsx",
+		"features/repo-list/queries.gen.ts",
+		"features/repo-list/tabs/index.tsx"
+	],
+	"features/repo-list/items/index.tsx": [
+		"features/repo-list/hooks.ts",
+		"features/repo-list/queries.gen.ts",
+		"models.ts",
+		"shared/components/card/index.tsx",
+		"shared/components/repo/index.tsx"
+	],
+	"features/repo-list/pagination/index.tsx": [
+		"features/repo-list/hooks.ts",
+		"features/repo-list/queries.gen.ts",
+		"shared/components/simple-pagination/index.tsx"
+	],
+	"features/repo-list/params.ts": [
+		"models.ts"
+	],
+	"features/repo-list/queries.gen.ts": [
+		"models.gen.ts"
+	],
+	"features/repo-list/tabs/index.tsx": [
+		"features/repo-list/hooks.ts",
+		"features/repo-list/params.ts",
+		"shared/components/tabs/index.tsx",
+		"shared/helpers/index.ts"
+	],
+	"features/search/filters/index.scss": [],
+	"features/search/filters/index.tsx": [
+		"features/search/filters/index.scss",
+		"features/search/hooks.ts",
+		"features/search/params.ts",
+		"shared/components/tabs/index.tsx",
+		"shared/helpers/index.ts"
+	],
+	"features/search/hooks.ts": [
+		"features/search/params.ts",
+		"models.ts"
+	],
+	"features/search/index.tsx": [
+		"features/search/filters/index.tsx",
+		"features/search/params.ts",
+		"features/search/results/index.tsx"
+	],
+	"features/search/params.ts": [
+		"models.ts"
+	],
+	"features/search/results/index.tsx": [
+		"features/search/hooks.ts",
+		"features/search/results/list/index.tsx",
+		"features/search/results/pagination/index.tsx",
+		"features/search/results/queries.gen.ts",
+		"features/search/results/toolbar/index.tsx"
+	],
+	"features/search/results/list/index.scss": [],
+	"features/search/results/list/index.tsx": [
+		"features/search/hooks.ts",
+		"features/search/results/list/index.scss",
+		"features/search/results/queries.gen.ts",
+		"models.ts",
+		"shared/components/card/index.tsx",
+		"shared/components/org/index.tsx",
+		"shared/components/repo/index.tsx",
+		"shared/components/user/index.tsx"
+	],
+	"features/search/results/pagination/index.tsx": [
+		"features/search/hooks.ts"
+	],
+	"features/search/results/queries.gen.ts": [
+		"models.gen.ts"
+	],
+	"features/search/results/toolbar/index.scss": [],
+	"features/search/results/toolbar/index.tsx": [
+		"features/search/results/toolbar/index.scss",
+		"features/search/results/toolbar/sort-select.tsx"
+	],
+	"features/search/results/toolbar/sort-select.tsx": [
+		"features/search/hooks.ts",
+		"features/search/params.ts"
+	],
+	"features/user-info/hooks.ts": [
+		"features/user-info/queries.gen.ts",
+		"shared/helpers/index.ts",
+		"shared/hooks/index.ts"
+	],
+	"features/user-info/index.scss": [],
+	"features/user-info/index.tsx": [
+		"features/user-info/hooks.ts",
+		"features/user-info/index.scss",
+		"features/user-info/queries.gen.ts"
+	],
+	"features/user-info/queries.gen.ts": [
+		"models.gen.ts"
+	],
+	"index.tsx": [
+		".deploy/index.ts",
+		"app/index.tsx",
+		"serviceWorker.ts"
+	],
+	"models.gen.ts": [],
+	"models.ts": [
+		"models.gen.ts"
+	],
+	"pages/auth/index.scss": [],
+	"pages/auth/index.tsx": [
+		"features/auth/index.ts",
+		"pages/auth/index.scss",
+		"pages/helpers.ts",
+		"shared/helpers/index.ts"
+	],
+	"pages/error/index.tsx": [
+		"features/auth/index.ts",
+		"features/error/index.ts",
+		"features/hero-sheet/index.tsx",
+		"models.ts",
+		"pages/helpers.ts"
+	],
+	"pages/helpers.ts": [],
+	"pages/home/index.tsx": [
+		"features/hero-sheet/index.tsx",
+		"pages/helpers.ts"
+	],
+	"pages/index.tsx": [
+		"features/auth/index.ts",
+		"features/origin/index.tsx",
+		"pages/auth/index.tsx",
+		"pages/home/index.tsx",
+		"pages/repository/index.tsx",
+		"pages/search/index.tsx",
+		"pages/user/index.tsx",
+		"shared/helpers/index.ts"
+	],
+	"pages/repository/index.scss": [],
+	"pages/repository/index.tsx": [
+		"features/repo-details/index.tsx",
+		"features/repo-explorer/index.ts",
+		"models.ts",
+		"pages/helpers.ts",
+		"pages/repository/index.scss"
+	],
+	"pages/search/index.tsx": [
+		"features/search/index.tsx",
+		"pages/helpers.ts"
+	],
+	"pages/user/index.scss": [],
+	"pages/user/index.tsx": [
+		"features/repo-list/index.tsx",
+		"features/user-info/index.tsx",
+		"pages/helpers.ts",
+		"pages/user/index.scss"
+	],
+	"serviceWorker.ts": [],
+	"shared/components/card/index.scss": [],
+	"shared/components/card/index.tsx": [
+		"shared/components/card/index.scss",
+		"shared/components/card/skeleton-group/index.tsx",
+		"shared/components/card/skeleton/index.tsx"
+	],
+	"shared/components/card/skeleton-group/index.tsx": [
+		"shared/components/card/skeleton/index.tsx"
+	],
+	"shared/components/card/skeleton/index.scss": [],
+	"shared/components/card/skeleton/index.tsx": [
+		"shared/components/card/skeleton/index.scss"
+	],
+	"shared/components/org/index.scss": [],
+	"shared/components/org/index.tsx": [
+		"models.ts",
+		"shared/components/card/index.tsx",
+		"shared/components/org/index.scss"
+	],
+	"shared/components/repo/index.scss": [],
+	"shared/components/repo/index.tsx": [
+		"models.ts",
+		"shared/components/card/index.tsx",
+		"shared/components/repo/index.scss",
+		"shared/components/repo/lang.tsx"
+	],
+	"shared/components/repo/lang.tsx": [
+		"models.ts"
+	],
+	"shared/components/simple-pagination/index.scss": [],
+	"shared/components/simple-pagination/index.tsx": [
+		"shared/components/simple-pagination/index.scss"
+	],
+	"shared/components/tabs/index.tsx": [
+		"shared/components/tabs/item/index.tsx"
+	],
+	"shared/components/tabs/item/index.scss": [],
+	"shared/components/tabs/item/index.tsx": [
+		"shared/components/tabs/item/index.scss"
+	],
+	"shared/components/user/index.tsx": [
+		"models.ts",
+		"shared/components/card/index.tsx"
+	],
+	"shared/get-env/index.ts": [],
+	"shared/helpers/alert.ts": [],
+	"shared/helpers/compose.ts": [],
+	"shared/helpers/dom.ts": [],
+	"shared/helpers/index.ts": [
+		"shared/helpers/alert.ts",
+		"shared/helpers/compose.ts",
+		"shared/helpers/dom.ts",
+		"shared/helpers/string.ts"
+	],
+	"shared/helpers/string.ts": [],
+	"shared/hooks/index.ts": [
+		"shared/hooks/use-debounce.ts",
+		"shared/hooks/use-local-storage.ts",
+		"shared/hooks/use-previous.ts"
+	],
+	"shared/hooks/use-debounce.ts": [],
+	"shared/hooks/use-local-storage.ts": [],
+	"shared/hooks/use-previous.ts": [],
+	"shared/mixins.scss": []
+}

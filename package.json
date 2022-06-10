@@ -36,6 +36,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:madge": "node madge.js",
     "build": "react-scripts build",
     "test": "npm run react:test && npm run lint:test",
     "react:test": "react-scripts test --watchAll=false",

@@ -1,5 +1,7 @@
 import React from "react";
-import { Auth, Error, HeroSheet } from "features";
+import * as Auth from "features/auth";
+import * as Error from "features/error";
+import HeroSheet from "features/hero-sheet";
 import { AppError } from "models";
 import { useTitle } from "../helpers";
 

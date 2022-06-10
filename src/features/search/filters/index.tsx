@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs } from "shared/components";
+import Tabs from "shared/components/tabs";
 import { str } from "shared/helpers";
 import { typesMap } from "../params";
 import { useSearch } from "../hooks";

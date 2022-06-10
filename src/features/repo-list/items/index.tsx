@@ -1,6 +1,7 @@
 import React from "react";
 import { Empty } from "antd";
-import { Repo, Card } from "shared/components";
+import Card from "shared/components/card";
+import Repo from "shared/components/repo";
 import { VeryMaybe, Repository } from "models";
 import { RepositoriesDetailsFragment } from "../queries.gen";
 import { useStarring } from "../hooks";

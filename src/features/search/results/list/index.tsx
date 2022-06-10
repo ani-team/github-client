@@ -1,7 +1,10 @@
 import React from "react";
 import cn from "classnames";
 import { Empty } from "antd";
-import { Repo, User, Org, Card } from "shared/components";
+import Repo from "shared/components/repo";
+import User from "shared/components/user";
+import Org from "shared/components/org";
+import Card from "shared/components/card";
 import { VeryMaybe, Repository } from "models";
 import { SearchQuery } from "../queries.gen";
 import { PAGE_SIZE } from "../../hooks";
